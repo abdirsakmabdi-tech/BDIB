@@ -46,8 +46,8 @@ const focusAreas = [
   {
     title: "Digital Economy",
     href: "#digital-economy",
-    src: "/slides/solar-panels.jpg",
-    alt: "Solar panels and modern infrastructure",
+    src: "/slides/digital-economy.jpg",
+    alt: "A person using a smartphone with app icons on screen",
   },
   {
     title: "Health Financing",
