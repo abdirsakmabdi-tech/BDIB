@@ -14,7 +14,19 @@ function navHref(href: string) {
   return href.startsWith("#") ? `/${href}` : href;
 }
 
-export default function HeaderBar({ navLogoSvg }: { navLogoSvg: string }) {
+function NavLogo({ className }: { className: string }) {
+  return (
+    <img
+      src="/Mylogo.png"
+      alt="Puntland Development & Investment Bank"
+      width={798}
+      height={296}
+      className={`w-auto object-contain object-left ${className}`}
+    />
+  );
+}
+
+export default function HeaderBar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -100,10 +112,7 @@ export default function HeaderBar({ navLogoSvg }: { navLogoSvg: string }) {
             className="flex shrink-0 items-center"
             aria-label="Puntland Development & Investment Bank home"
           >
-            <span
-              className="inline-flex h-8 w-auto items-center sm:h-9 lg:h-[72px] [&_svg]:block [&_svg]:h-full [&_svg]:w-auto"
-              dangerouslySetInnerHTML={{ __html: navLogoSvg }}
-            />
+            <NavLogo className="h-10 sm:h-12 lg:h-[76px]" />
           </Link>
 
           <div className="flex shrink-0 items-center gap-4">
@@ -161,10 +170,7 @@ export default function HeaderBar({ navLogoSvg }: { navLogoSvg: string }) {
               aria-label="Puntland Development & Investment Bank home"
               onClick={() => setMobileOpen(false)}
             >
-              <span
-                className="inline-flex h-8 w-auto items-center sm:h-9 [&_svg]:block [&_svg]:h-full [&_svg]:w-auto"
-                dangerouslySetInnerHTML={{ __html: navLogoSvg }}
-              />
+              <NavLogo className="h-10 sm:h-12" />
             </Link>
             <button
               type="button"

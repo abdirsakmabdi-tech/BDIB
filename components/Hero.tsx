@@ -59,7 +59,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-linear-to-t from-black/70 via-black/35 to-transparent" />
       <div className="pointer-events-none absolute bottom-0 left-0 h-[62%] w-full max-w-[54rem] bg-[linear-gradient(to_top_right,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.32)_45%,transparent_80%)]" />
 
-      <div className="absolute right-6 bottom-16 left-6 text-white sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] lg:bottom-24">
+      <div className="absolute inset-x-6 top-[50svh] -translate-y-1/2 text-center text-white sm:inset-x-auto sm:top-auto sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] sm:translate-y-0 sm:text-left lg:bottom-24">
         <h1 className="mb-3 font-sans text-hero font-medium leading-[1.1] tracking-tight text-white">
           The Puntland Development &amp; Investment Bank (PDIB)
         </h1>
