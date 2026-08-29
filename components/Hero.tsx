@@ -58,7 +58,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-[#03301a]/70 via-[#0b2240]/20 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/78 via-black/28 via-45% to-transparent" />
 
-      <div className="absolute right-6 bottom-44 left-6 text-left text-white sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] lg:bottom-24">
+      <div className="absolute right-6 bottom-56 left-6 text-left text-white sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] lg:bottom-24">
         <h1 className="mb-3 font-sans text-hero font-medium leading-[1.1] tracking-tight text-white">
           The Puntland Development &amp; Investment Bank (PDIB)
         </h1>
@@ -72,9 +72,9 @@ export default function Hero() {
           type="button"
           aria-label="Previous slide"
           onClick={() => goTo(current - 1)}
-          className="grid size-8 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
+          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
         >
-          <svg viewBox="0 0 24 24" className="size-3 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
             <path d="M15 4L7 12l8 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
@@ -82,9 +82,9 @@ export default function Hero() {
           type="button"
           aria-label="Next slide"
           onClick={() => goTo(current + 1)}
-          className="grid size-8 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
+          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
         >
-          <svg viewBox="0 0 24 24" className="size-3 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
             <path d="M9 4l8 8-8 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
