@@ -7,6 +7,9 @@ export async function POST(request: NextRequest) {
     lastName?: string;
     email?: string;
     phone?: string;
+    organization?: string;
+    role?: string;
+    topic?: string;
     message?: string;
   };
 
@@ -21,7 +24,6 @@ export async function POST(request: NextRequest) {
   const message = body.message?.trim() ?? "";
   const firstName = body.firstName?.trim() ?? "";
   const lastName = body.lastName?.trim() ?? "";
-  const phone = body.phone?.trim() ?? "";
 
   const fullName = name || `${firstName} ${lastName}`.trim();
 

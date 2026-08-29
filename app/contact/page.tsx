@@ -14,55 +14,56 @@ export default function ContactPage() {
     <main>
       <Header />
 
-      <section className="relative h-svh min-h-[100vh] overflow-hidden">
-        <Image
-          src="/contact-hero.jpg"
-          alt=""
-          fill
-          priority
-          quality={95}
-          sizes="100vw"
-          className="object-cover object-[center_72%]"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
-        <div className="absolute right-6 bottom-6 left-6 z-10 sm:right-auto sm:bottom-8 sm:left-[6.5vw]">
-          <h1 className="font-sans text-[clamp(36px,4vw,52px)] leading-[1.08] font-bold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
-            Contact Us
-          </h1>
-        </div>
-      </section>
-
-      <article className="bg-white px-6 pt-16 pb-24 sm:px-[6.5vw] sm:pt-24 sm:pb-32">
+      <article className="bg-white px-6 pt-32 pb-24 sm:px-[6.5vw] sm:pt-40 sm:pb-32 lg:pt-44">
         <section className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
-          <div>
-            <h2 className="font-sans text-[clamp(34px,3.4vw,52px)] leading-[1.15] font-bold tracking-tight text-pdib-title">
-              Contact Us
-            </h2>
-            <h3 className="mt-10 text-[18px] font-bold text-pdib-title">
-              Garowe, Puntland, Somalia (Head Office)
-            </h3>
-            <ul className="mt-5 space-y-4 text-[16px] leading-[1.6] text-pdib-text">
-              <li className="flex gap-3">
-                <PinIcon />
-                <span>Puntland Development &amp; Investment Bank, Garowe, Puntland, Somalia</span>
-              </li>
-              <li className="flex gap-3">
-                <MailIcon />
+          <aside>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+              <Image
+                src="/contact-building.jpg"
+                alt="PDIB head office in Garowe"
+                fill
+                priority
+                sizes="(min-width: 1024px) 42vw, 87vw"
+                className="object-cover object-[center_35%]"
+              />
+            </div>
+
+            <div className="mt-6 flex items-start justify-between gap-6">
+              <div>
+                <h2 className="text-[18px] font-bold tracking-tight text-pdib-title">
+                  Customer Support
+                </h2>
                 <a
                   href="mailto:info@pdib.so"
-                  className="transition-colors hover:text-pdib-green"
+                  className="mt-1 block text-[14px] text-[#6b6b6b] transition-colors hover:text-pdib-green"
                 >
                   info@pdib.so
                 </a>
-              </li>
-            </ul>
-          </div>
+              </div>
+              <div className="flex items-center gap-3 pt-1 text-pdib-title">
+                <a
+                  href="#"
+                  aria-label="X"
+                  className="transition-colors hover:text-pdib-green"
+                >
+                  <XIcon />
+                </a>
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  className="transition-colors hover:text-pdib-green"
+                >
+                  <LinkedInIcon />
+                </a>
+              </div>
+            </div>
+          </aside>
 
           <div>
-            <h2 className="font-sans text-[clamp(34px,3.4vw,52px)] leading-[1.15] font-bold tracking-tight text-pdib-title">
-              Get in Touch
-            </h2>
+            <p className="text-[14px] text-[#6b6b6b]">Contact us</p>
+            <h1 className="mt-2 font-sans text-[clamp(40px,5vw,56px)] leading-[1.08] font-bold tracking-tight text-pdib-title">
+              Get a quote
+            </h1>
             <ContactForm />
           </div>
         </section>
@@ -71,38 +72,18 @@ export default function ContactPage() {
   );
 }
 
-function PinIcon() {
+function XIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      className="mt-0.5 shrink-0 text-pdib-green"
-      aria-hidden="true"
-    >
-      <path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21z" />
-      <circle cx="12" cy="9.8" r="2.2" />
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+      <path d="M17.6 4H20l-6.2 7.1L21 20h-5.5l-4.3-5.6L6.3 20H4l6.7-7.6L3.4 4h5.6l3.9 5.1L17.6 4zm-1 14.4h1.5L7.5 5.5H5.9l10.7 12.9z" />
     </svg>
   );
 }
 
-function MailIcon() {
+function LinkedInIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      className="mt-0.5 shrink-0 text-pdib-green"
-      aria-hidden="true"
-    >
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="M3 7l9 7 9-7" />
+    <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
+      <path d="M6.5 9.5H4V20h2.5V9.5zM5.2 4C4.3 4 3.5 4.8 3.5 5.8S4.3 7.5 5.2 7.5 7 6.7 7 5.8 6.2 4 5.2 4zM20 20h-2.5v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V20H11.3V9.5h2.4v1.4h.1c.3-.6 1.2-1.6 2.8-1.6 3 0 3.5 2 3.5 4.5V20z" />
     </svg>
   );
 }
