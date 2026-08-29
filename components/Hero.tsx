@@ -72,9 +72,9 @@ export default function Hero() {
           type="button"
           aria-label="Previous slide"
           onClick={() => goTo(current - 1)}
-          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
+          className="grid size-8 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
         >
-          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-3 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
             <path d="M15 4L7 12l8 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
@@ -82,9 +82,9 @@ export default function Hero() {
           type="button"
           aria-label="Next slide"
           onClick={() => goTo(current + 1)}
-          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
+          className="grid size-8 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
         >
-          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-3 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
             <path d="M9 4l8 8-8 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
