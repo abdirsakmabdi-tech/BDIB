@@ -55,27 +55,26 @@ export default function Hero() {
       ))}
       <div className="pointer-events-none absolute inset-0 bg-linear-to-bl from-amber-100/18 via-transparent to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(560px_200px_at_50%_0%,rgba(0,0,0,0.28),rgba(0,0,0,0.1)_38%,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-[#03301a]/72 via-[#0b2240]/28 to-transparent sm:from-[#03301a]/65 sm:via-[#0b2240]/22 sm:to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-linear-to-t from-black/70 via-black/35 to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-0 h-[62%] w-full max-w-[54rem] bg-[linear-gradient(to_top_right,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.32)_45%,transparent_80%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-[#03301a]/70 via-[#0b2240]/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/78 via-black/28 via-45% to-transparent" />
 
-      <div className="absolute inset-x-6 top-[50svh] -translate-y-1/2 text-center text-white sm:inset-x-auto sm:top-auto sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] sm:translate-y-0 sm:text-left lg:bottom-24">
+      <div className="absolute right-6 bottom-44 left-6 text-left text-white sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] lg:bottom-24">
         <h1 className="mb-3 font-sans text-hero font-medium leading-[1.1] tracking-tight text-white">
           The Puntland Development &amp; Investment Bank (PDIB)
         </h1>
-        <p className="text-lead font-normal">
+        <p className="text-[15px] font-normal leading-snug text-white/80 sm:text-[16px]">
           Where Investment Meets Development
         </p>
       </div>
 
-      <div className="absolute top-[100svh] right-6 z-20 flex -translate-y-full gap-1.5 sm:right-[6.5vw]">
+      <div className="absolute top-[100svh] left-6 z-20 flex -translate-y-full gap-1 sm:left-auto sm:right-[6.5vw] sm:gap-1.5">
         <button
           type="button"
           aria-label="Previous slide"
           onClick={() => goTo(current - 1)}
-          className="grid size-12 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100"
+          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
         >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
             <path d="M15 4L7 12l8 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
@@ -83,9 +82,9 @@ export default function Hero() {
           type="button"
           aria-label="Next slide"
           onClick={() => goTo(current + 1)}
-          className="grid size-12 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100"
+          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
         >
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
             <path d="M9 4l8 8-8 8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>

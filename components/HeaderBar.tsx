@@ -80,8 +80,7 @@ export default function HeaderBar() {
       style={showBar ? { backgroundColor: BAR } : undefined}
     >
       {!showBar ? (
-        <div className="pointer-events-none flex items-center justify-between px-4 pt-6 sm:px-6 sm:pt-8 lg:justify-center lg:px-10 lg:pt-10">
-          <span className="size-10 shrink-0 lg:hidden" aria-hidden="true" />
+        <div className="pointer-events-none flex items-center justify-between px-6 pt-6 sm:px-[6.5vw] sm:pt-8">
           <a
             href="#home"
             className="pointer-events-auto flex shrink-0 items-center rounded-md bg-black/28 px-3.5 py-2.5 backdrop-blur-[2px]"
