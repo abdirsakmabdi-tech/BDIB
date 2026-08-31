@@ -1,5 +1,6 @@
 import { ViewTransition } from "react";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 import { boardMembers, executiveMembers, type Member } from "@/lib/team";
 
 function PlusIcon() {
@@ -10,26 +11,29 @@ function PlusIcon() {
   );
 }
 
-function MemberCard({ member }: { member: Member }) {
+function MemberCard({ member, index }: { member: Member; index: number }) {
   const href = `/team/${member.slug}`;
+  const rowDelay = (index % 3) * 100;
 
   return (
     <article className="relative flex h-full flex-col">
-      <Link
-        href={href}
-        className="group relative block aspect-[4/5] overflow-hidden bg-[#f4f2ee]"
-        aria-label={`Open profile for ${member.name}`}
-      >
-        <ViewTransition name={`member-photo-${member.slug}`} share="member-morph" default="none">
-          <img
-            src={member.src}
-            alt={member.name}
-            className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          />
-        </ViewTransition>
-      </Link>
+      <Reveal delayMs={rowDelay}>
+        <Link
+          href={href}
+          className="group relative block aspect-[4/5] overflow-hidden bg-[#f4f2ee]"
+          aria-label={`Open profile for ${member.name}`}
+        >
+          <ViewTransition name={`member-photo-${member.slug}`} share="member-morph" default="none">
+            <img
+              src={member.src}
+              alt={member.name}
+              className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
+          </ViewTransition>
+        </Link>
+      </Reveal>
 
-      <div className="relative mt-[30px] flex min-h-[168px] flex-1 flex-col pr-[72px]">
+      <Reveal delayMs={rowDelay + 100} className="relative mt-[30px] flex min-h-[168px] flex-1 flex-col pr-[72px]">
         <Link
           href={href}
           className="flex items-baseline justify-between gap-[30px]"
@@ -62,7 +66,7 @@ function MemberCard({ member }: { member: Member }) {
         >
           <PlusIcon />
         </Link>
-      </div>
+      </Reveal>
     </article>
   );
 }
@@ -70,12 +74,14 @@ function MemberCard({ member }: { member: Member }) {
 function MemberGrid({ title, members }: { title: string; members: Member[] }) {
   return (
     <div>
-      <h3 className="mb-12 font-sans text-[clamp(34px,3.4vw,52px)] leading-[1.15] font-bold tracking-tight text-pdib-title">
-        {title}
-      </h3>
+      <Reveal>
+        <h3 className="mb-12 font-sans text-[clamp(34px,3.4vw,52px)] leading-[1.15] font-bold tracking-tight text-pdib-title">
+          {title}
+        </h3>
+      </Reveal>
       <div className="grid grid-cols-1 items-stretch gap-x-[30px] gap-y-[75px] sm:grid-cols-2 lg:grid-cols-3">
-        {members.map((member) => (
-          <MemberCard key={member.slug} member={member} />
+        {members.map((member, index) => (
+          <MemberCard key={member.slug} member={member} index={index} />
         ))}
       </div>
     </div>

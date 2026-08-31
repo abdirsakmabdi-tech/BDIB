@@ -37,6 +37,51 @@ const slides = [
 ];
 
 const SLIDE_INTERVAL_MS = 6000;
+const WORD_STAGGER_MS = 80;
+const HEADLINE = "The Puntland Development & Investment Bank (PDIB)";
+const TAGLINE = "Where Investment Meets Development";
+const HEADLINE_WORD_COUNT = HEADLINE.split(" ").length;
+
+function WordReveal({
+  text,
+  delayStartMs = 0,
+}: {
+  text: string;
+  delayStartMs?: number;
+}) {
+  const [shown, setShown] = useState(false);
+  const words = text.split(" ");
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(true);
+      return;
+    }
+    const id = requestAnimationFrame(() => setShown(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  return (
+    <>
+      {words.map((word, index) => (
+        <span
+          key={`${word}-${index}`}
+          className={`inline-block transition duration-[550ms] ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
+            shown ? "translate-y-0 opacity-100" : "translate-y-[0.45em] opacity-0"
+          }`}
+          style={{
+            transitionDelay: shown
+              ? `${delayStartMs + index * WORD_STAGGER_MS}ms`
+              : "0ms",
+          }}
+        >
+          {word}
+          {index < words.length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -75,10 +120,13 @@ export default function Hero() {
 
       <div className="absolute right-6 bottom-56 left-6 text-left text-white sm:right-auto sm:bottom-20 sm:left-[6.5vw] sm:max-w-[min(640px,60vw)] lg:bottom-24">
         <h1 className="mb-3 font-sans text-hero font-medium leading-[1.1] tracking-tight text-white">
-          The Puntland Development &amp; Investment Bank (PDIB)
+          <WordReveal text={HEADLINE} />
         </h1>
         <p className="text-[15px] font-normal leading-snug text-white/80 sm:text-[16px]">
-          Where Investment Meets Development
+          <WordReveal
+            text={TAGLINE}
+            delayStartMs={HEADLINE_WORD_COUNT * WORD_STAGGER_MS}
+          />
         </p>
       </div>
 
