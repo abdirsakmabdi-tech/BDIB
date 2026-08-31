@@ -83,16 +83,10 @@ export default function HeaderBar() {
         <div className="pointer-events-none flex items-center justify-between px-6 pt-6 sm:px-[6.5vw] sm:pt-8">
           <a
             href="#home"
-            className="pointer-events-auto flex shrink-0 items-center rounded-md bg-black/28 px-3.5 py-2.5 backdrop-blur-[2px]"
+            className="pointer-events-auto flex shrink-0 items-center rounded-md bg-white px-3.5 py-2.5"
             aria-label="Puntland Development & Investment Bank home"
           >
-            <img
-              src="/usethisone.png?v=2"
-              alt="Puntland Development & Investment Bank"
-              width={344}
-              height={50}
-              className="h-auto w-[min(68vw,15.5rem)] object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]"
-            />
+            <NavLogo className="h-10 sm:h-12" />
           </a>
           <button
             type="button"

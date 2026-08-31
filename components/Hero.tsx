@@ -5,6 +5,16 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
+    src: "/slides/hero-bridge.jpg",
+    alt: "An aerial view of a bridge crossing a river between forest and town",
+    object: "object-center",
+  },
+  {
+    src: "/slides/hero-camels.jpg",
+    alt: "Camels walking through shallow coastal water",
+    object: "object-[center_58%]",
+  },
+  {
     src: "/slides/field-spray.jpg",
     alt: "A tractor spraying crops in a green agricultural field",
     object: "object-[center_48%]",

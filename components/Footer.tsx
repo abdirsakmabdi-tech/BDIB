@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import Link from "next/link";
 
 function toHref(href: string) {
@@ -68,14 +66,6 @@ const social = [
 ];
 
 export default function Footer() {
-  const logoSvg = readFileSync(
-    path.join(process.cwd(), "public", "logo for navigation.svg"),
-    "utf8",
-  )
-    .replace(/<\?xml[\s\S]*?\?>/, "")
-    .replace(/<!DOCTYPE[\s\S]*?>/, "")
-    .replace(/\s(width|height)="100%"/g, "");
-
   return (
     <footer className="bg-[#f3f3f3]">
       <div className="px-6 pt-14 pb-16 sm:px-[6.5vw] sm:pt-16 sm:pb-20">
@@ -86,9 +76,12 @@ export default function Footer() {
               className="inline-flex"
               aria-label="Puntland Development & Investment Bank home"
             >
-              <span
-                className="inline-flex h-14 w-auto items-center sm:h-16 [&_svg]:block [&_svg]:h-full [&_svg]:w-auto"
-                dangerouslySetInnerHTML={{ __html: logoSvg }}
+              <img
+                src="/Mylogo.png"
+                alt="Puntland Development & Investment Bank"
+                width={798}
+                height={296}
+                className="h-14 w-auto object-contain object-left sm:h-16"
               />
             </Link>
             <p className="mt-8 text-[13px] font-bold tracking-[0.12em] text-pdib-title uppercase">
