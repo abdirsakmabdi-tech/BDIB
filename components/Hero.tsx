@@ -15,6 +15,11 @@ const slides = [
     object: "object-[center_58%]",
   },
   {
+    src: "/slides/hero-fish.jpg",
+    alt: "A large silver fish held over green water",
+    object: "object-center",
+  },
+  {
     src: "/slides/field-spray.jpg",
     alt: "A tractor spraying crops in a green agricultural field",
     object: "object-[center_48%]",
