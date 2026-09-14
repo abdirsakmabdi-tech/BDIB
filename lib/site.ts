@@ -10,6 +10,12 @@ export type NavItem = {
 
 export const navItems: NavItem[] = [
   {
+    href: "/",
+    label: "Home",
+    kicker: "Puntland Development & Investment Bank",
+    groups: [],
+  },
+  {
     href: "#who-we-are",
     label: "Who we are",
     kicker: "Puntland Development & Investment Bank",

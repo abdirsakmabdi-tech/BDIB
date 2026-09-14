@@ -84,10 +84,10 @@ export default function HeaderBar() {
   }
 
   const linkClass =
-    "shrink-0 rounded-lg px-3 py-1.5 text-[13px] font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-200 hover:bg-black/5";
+    "shrink-0 rounded-lg px-3 py-1.5 text-[14px] font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-200 hover:bg-black/5";
 
   const buttonClass =
-    "inline-flex shrink-0 items-center gap-1.5 rounded-full bg-pdib-primary px-4 py-2.5 text-[12px] font-bold tracking-[0.06em] whitespace-nowrap text-white uppercase shadow-sm transition-colors duration-200 hover:bg-pdib-primary-hover";
+    "inline-flex shrink-0 items-center gap-1.5 rounded-full bg-pdib-primary px-4 py-2.5 text-[13px] font-bold tracking-[0.06em] whitespace-nowrap text-white uppercase shadow-sm transition-colors duration-200 hover:bg-pdib-primary-hover";
 
   const mainNavItems = navItems.filter((item) => item.variant !== "button");
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
@@ -344,7 +344,7 @@ function OfferDropdown({
           key={link.label}
           role="menuitem"
           href={navHref(link.href)}
-          className="block border-b border-slate-200/80 px-5 py-3.5 text-[15px] font-medium text-pdib-title transition-colors last:border-b-0 hover:bg-slate-50 hover:text-pdib-primary"
+          className="block border-b border-slate-200/80 px-5 py-3.5 text-[16px] font-medium text-pdib-title transition-colors last:border-b-0 hover:bg-slate-50 hover:text-pdib-primary"
           onClick={onNavigate}
         >
           {link.label}

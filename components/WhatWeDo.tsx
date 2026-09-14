@@ -57,6 +57,15 @@ const focusAreas = [
       "Investment in schools, health facilities, water, and community infrastructure for inclusive growth.",
   },
   {
+    label: "Tourism",
+    title: "Tourism",
+    href: "/tourism",
+    src: "/slides/tourism.jpg",
+    alt: "Scenic view of a town from a rock overhang",
+    description:
+      "Empowering tourism in Puntland — financing hospitality, destinations, and visitor experiences that create jobs.",
+  },
+  {
     label: "Export & Manufacturing",
     title: "Export and manufacturing",
     href: "#export-and-manufacturing",
