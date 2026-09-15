@@ -6,9 +6,11 @@ function toHref(href: string) {
 
 const footerLinks = [
   { href: "/about", label: "About us" },
+  { href: "/about#our-history", label: "Our History" },
   { href: "/#what-we-do", label: "Priority Sectors" },
   { href: "/financial", label: "Financial" },
-  { href: "/#our-team", label: "Our team" },
+  { href: "/#board-of-directors", label: "Board of Directors" },
+  { href: "/#management-team", label: "Management Team" },
   { href: "/contact", label: "Contact" },
   { href: "/#how-to-apply", label: "How to Apply" },
 ];

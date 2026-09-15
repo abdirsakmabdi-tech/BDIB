@@ -4,7 +4,11 @@ import { ViewTransition } from "react";
 import Link from "next/link";
 import { useRef } from "react";
 import Reveal from "@/components/Reveal";
-import { allMembers, type Member } from "@/lib/team";
+import {
+  boardMembers,
+  executiveMembers,
+  type Member,
+} from "@/lib/team";
 
 function LinkedInIcon() {
   return (
@@ -72,7 +76,15 @@ function MemberCard({ member }: { member: Member }) {
   );
 }
 
-export default function Team() {
+function TeamGroup({
+  id,
+  title,
+  members,
+}: {
+  id: string;
+  title: string;
+  members: Member[];
+}) {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
   function scrollByCard(direction: -1 | 1) {
@@ -83,76 +95,93 @@ export default function Team() {
   }
 
   return (
+    <div id={id} className="scroll-mt-28">
+      <Reveal>
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-[12px] font-bold tracking-[0.16em] text-pdib-green uppercase sm:text-[13px]">
+              People
+            </p>
+            <h2 className="mt-3 font-sans text-[clamp(24px,2.4vw,34px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+              {title}
+            </h2>
+          </div>
+
+          <div className="flex gap-1.5">
+            <button
+              type="button"
+              aria-label={`Previous ${title}`}
+              onClick={() => scrollByCard(-1)}
+              className="grid size-10 place-items-center bg-pdib-title text-white transition-colors hover:bg-pdib-green sm:size-11"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 4L7 12l8 8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label={`Next ${title}`}
+              onClick={() => scrollByCard(1)}
+              className="grid size-10 place-items-center bg-pdib-title text-white transition-colors hover:bg-pdib-green sm:size-11"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 4l8 8-8 8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal delayMs={100}>
+        <div
+          ref={scrollerRef}
+          className="mt-10 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory sm:mt-12 sm:gap-5 [&::-webkit-scrollbar]:hidden"
+        >
+          {members.map((member) => (
+            <MemberCard key={member.slug} member={member} />
+          ))}
+        </div>
+      </Reveal>
+    </div>
+  );
+}
+
+export default function Team() {
+  return (
     <section id="our-team" className="bg-white">
-      <div className="px-6 py-16 sm:px-[6.5vw] sm:py-24">
-        <Reveal>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-[12px] font-bold tracking-[0.16em] text-pdib-green uppercase sm:text-[13px]">
-                People
-              </p>
-              <h2 className="mt-3 font-sans text-[clamp(24px,2.4vw,34px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
-                Our team
-              </h2>
-            </div>
-
-            <div className="flex gap-1.5">
-              <button
-                type="button"
-                aria-label="Previous team members"
-                onClick={() => scrollByCard(-1)}
-                className="grid size-10 place-items-center bg-pdib-title text-white transition-colors hover:bg-pdib-green sm:size-11"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="size-4"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M15 4L7 12l8 8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <button
-                type="button"
-                aria-label="Next team members"
-                onClick={() => scrollByCard(1)}
-                className="grid size-10 place-items-center bg-pdib-title text-white transition-colors hover:bg-pdib-green sm:size-11"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="size-4"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.4"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M9 4l8 8-8 8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delayMs={100}>
-          <div
-            ref={scrollerRef}
-            className="mt-10 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory sm:mt-12 sm:gap-5 [&::-webkit-scrollbar]:hidden"
-          >
-            {allMembers.map((member) => (
-              <MemberCard key={member.slug} member={member} />
-            ))}
-          </div>
-        </Reveal>
+      <div className="flex flex-col gap-16 px-6 py-16 sm:gap-20 sm:px-[6.5vw] sm:py-24">
+        <TeamGroup
+          id="board-of-directors"
+          title="Board of Directors"
+          members={boardMembers}
+        />
+        <TeamGroup
+          id="management-team"
+          title="Management Team"
+          members={executiveMembers}
+        />
       </div>
     </section>
   );

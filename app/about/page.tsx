@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 export const metadata: Metadata = {
   title: "About us | PDIB",
   description:
-    "The Puntland Development & Investment Bank — vision, mission, and our role as Puntland’s leading development finance institution.",
+    "The Puntland Development & Investment Bank — history, vision, mission, and our role as Puntland’s leading development finance institution.",
 };
 
 export default function AboutPage() {
@@ -27,7 +27,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
         <div className="absolute right-6 bottom-6 left-6 z-10 sm:right-auto sm:bottom-8 sm:left-[6.5vw]">
           <h1 className="font-sans text-[clamp(36px,4vw,52px)] leading-[1.08] font-bold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
-            Who we are
+            About us
           </h1>
         </div>
       </section>
@@ -60,26 +60,41 @@ export default function AboutPage() {
               meets development.
             </p>
 
-            <div id="vision" className="scroll-mt-28 pt-4">
+            <div id="our-history" className="scroll-mt-28 pt-4">
               <h3 className="text-[22px] font-bold tracking-tight text-pdib-primary">
-                Vision
+                Our History
               </h3>
               <p className="mt-3">
-                A <strong>prosperous Puntland</strong> where investment drives{" "}
-                <strong>sustainable development</strong> and shared opportunity.
+                PDIB was established to advance Puntland&apos;s development
+                agenda by mobilizing long-term capital for productive sectors.
+                Over time, the Bank has grown into a trusted partner for
+                enterprises, communities, and institutions investing in
+                inclusive, sustainable growth across the region.
               </p>
             </div>
 
-            <div id="mission" className="scroll-mt-28 pt-2">
-              <h3 className="text-[22px] font-bold tracking-tight text-pdib-primary">
-                Mission
-              </h3>
-              <p className="mt-3">
-                To finance and support projects that grow Puntland&apos;s economy
-                — from <strong>fisheries and agriculture</strong> to{" "}
-                <strong>renewable energy</strong> —{" "}
-                <strong>where investment meets development</strong>.
-              </p>
+            <div id="mission-vision" className="scroll-mt-28 space-y-6 pt-2">
+              <div id="vision">
+                <h3 className="text-[22px] font-bold tracking-tight text-pdib-primary">
+                  Vision
+                </h3>
+                <p className="mt-3">
+                  A <strong>prosperous Puntland</strong> where investment drives{" "}
+                  <strong>sustainable development</strong> and shared opportunity.
+                </p>
+              </div>
+
+              <div id="mission">
+                <h3 className="text-[22px] font-bold tracking-tight text-pdib-primary">
+                  Mission
+                </h3>
+                <p className="mt-3">
+                  To finance and support projects that grow Puntland&apos;s economy
+                  — from <strong>fisheries and agriculture</strong> to{" "}
+                  <strong>renewable energy</strong> —{" "}
+                  <strong>where investment meets development</strong>.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -87,4 +102,3 @@ export default function AboutPage() {
     </main>
   );
 }
-

@@ -1,158 +1,189 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/slides/hero-bridge.jpg",
-    alt: "An aerial view of a bridge crossing a river between forest and town",
-    object: "object-center",
+    src: "/slides/fisheries-port.jpg",
+    alt: "A coastal port supporting fisheries and maritime trade",
+    object: "object-cover object-[center_40%]",
+    title: "Fisheries & the Blue Economy",
+    body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
+    href: "/fisheries",
+    cta: "Explore fisheries",
+    tab: "Fisheries",
   },
   {
-    src: "/slides/hero-camels.jpg",
-    alt: "Camels walking through shallow coastal water",
-    object: "object-[center_58%]",
+    src: "/slides/agriculture-field.jpg",
+    alt: "A flowering agricultural field in Puntland",
+    object: "object-cover object-[center_45%]",
+    title: "Agriculture Financing",
+    body: "Capital for crops, irrigation, and agribusinesses that strengthen food security and rural income.",
+    href: "/agriculture",
+    cta: "Explore agriculture",
+    tab: "Agriculture",
   },
   {
-    src: "/slides/hero-fish.jpg",
-    alt: "A large silver fish held over green water",
-    object: "object-center",
+    src: "/slides/livestock-goats.jpg",
+    alt: "Goats grazing in a green pasture",
+    object: "object-cover object-[center_40%]",
+    title: "Livestock Sector",
+    body: "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
+    href: "/livestock",
+    cta: "Explore livestock",
+    tab: "Livestock",
   },
   {
-    src: "/slides/field-spray.jpg",
-    alt: "A tractor spraying crops in a green agricultural field",
-    object: "object-[center_48%]",
+    src: "/slides/renewable-energy.jpg",
+    alt: "Wind turbines along a misty mountain ridge",
+    object: "object-cover object-center",
+    title: "Renewable Energy",
+    body: "Climate-aligned funding for solar, wind, and clean energy projects that power communities and industry.",
+    href: "/renewable-energy",
+    cta: "Explore energy",
+    tab: "Renewable Energy",
   },
   {
-    src: "/slides/hero-fish-farm.jpg",
-    alt: "An aerial view of a floating fish farm",
-    object: "object-center",
+    src: "/slides/tourism.jpg",
+    alt: "Scenic coastal landscape supporting tourism in Puntland",
+    object: "object-cover object-[center_35%]",
+    title: "Tourism in Puntland",
+    body: "Financing hospitality, destinations, and visitor experiences that create jobs and support local communities.",
+    href: "/tourism",
+    cta: "Explore tourism",
+    tab: "Tourism",
   },
-  {
-    src: "/slides/hero-goats.jpg",
-    alt: "A herd of goats grazing in a green pasture",
-    object: "object-[center_45%]",
-  },
-];
+] as const;
 
-const SLIDE_INTERVAL_MS = 6000;
-const WORD_STAGGER_MS = 80;
-const HEADLINE = "The Puntland Development & Investment Bank (PDIB)";
-const TAGLINE = "Where Investment Meets Development";
-const HEADLINE_WORD_COUNT = HEADLINE.split(" ").length;
+const SLIDE_INTERVAL_MS = 7000;
 
-function WordReveal({
-  text,
-  delayStartMs = 0,
-}: {
-  text: string;
-  delayStartMs?: number;
-}) {
-  const [shown, setShown] = useState(false);
-  const words = text.split(" ");
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setShown(true);
-      return;
-    }
-    const id = requestAnimationFrame(() => setShown(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  return (
-    <>
-      {words.map((word, index) => (
-        <span
-          key={`${word}-${index}`}
-          className={`inline-block transition duration-[550ms] ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none ${
-            shown ? "translate-y-0 opacity-100" : "translate-y-[0.45em] opacity-0"
-          }`}
-          style={{
-            transitionDelay: shown
-              ? `${delayStartMs + index * WORD_STAGGER_MS}ms`
-              : "0ms",
-          }}
-        >
-          {word}
-          {index < words.length - 1 ? "\u00A0" : ""}
-        </span>
-      ))}
-    </>
-  );
+function pad(n: number) {
+  return String(n).padStart(2, "0");
 }
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = slides.length;
+  const slide = slides[current];
 
   useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const timer = setInterval(
-      () => setCurrent((index) => (index + 1) % slides.length),
+      () => setCurrent((index) => (index + 1) % total),
       SLIDE_INTERVAL_MS,
     );
     return () => clearInterval(timer);
-  }, [current]);
-
-  const goTo = (index: number) =>
-    setCurrent((index + slides.length) % slides.length);
+  }, [current, paused, total]);
 
   return (
-    <section id="home" className="relative h-svh min-h-[100vh] overflow-hidden">
-      {slides.map((slide, index) => (
+    <section
+      id="home"
+      className="relative h-svh min-h-[100vh] overflow-hidden bg-[#1a1a1a]"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {slides.map((item, index) => (
         <Image
-          key={slide.src}
-          src={slide.src}
-          alt={index === current ? slide.alt : ""}
+          key={item.src}
+          src={item.src}
+          alt={index === current ? item.alt : ""}
           fill
           priority={index === 0}
           quality={95}
           sizes="100vw"
-          className={`object-cover brightness-[1.16] contrast-[1.06] saturate-[1.04] transition-opacity duration-1000 ${slide.object} ${
+          className={`${item.object} transition-opacity duration-1000 ease-out ${
             index === current ? "opacity-100" : "opacity-0"
           }`}
         />
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-bl from-amber-100/18 via-transparent to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(560px_200px_at_50%_0%,rgba(0,0,0,0.28),rgba(0,0,0,0.1)_38%,transparent_70%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-[#03301a]/70 via-[#0b2240]/20 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/78 via-black/28 via-45% to-transparent" />
 
-      <div className="absolute inset-0 z-10 flex items-center px-6 pt-24 sm:px-[6.5vw] sm:pt-28">
-        <div className="max-w-[min(640px,90vw)] text-left text-white">
-          <h1 className="mb-3 font-sans text-hero font-medium leading-[1.1] tracking-tight text-white">
-            <WordReveal text={HEADLINE} />
-          </h1>
-          <p className="text-[15px] font-normal leading-snug text-white/80 sm:text-[16px]">
-            <WordReveal
-              text={TAGLINE}
-              delayStartMs={HEADLINE_WORD_COUNT * WORD_STAGGER_MS}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/15"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-black/25"
+      />
+
+      <div className="absolute inset-x-0 top-0 bottom-11 z-10 flex items-center px-6 pt-20 sm:bottom-12 sm:px-[6.5vw] sm:pt-24">
+        <div
+          key={slide.src}
+          className="max-w-[min(560px,92vw)] text-white transition-opacity duration-700"
+        >
+          <div className="flex items-center gap-3">
+            <p className="text-[11px] font-medium tracking-[0.08em] text-white/90 sm:text-[12px]">
+              {pad(current + 1)} / {pad(total)}
+            </p>
+            <span
+              aria-hidden="true"
+              className="h-px w-7 bg-white/80 sm:w-9"
             />
+          </div>
+
+          <p className="mt-4 text-[11px] font-bold tracking-[0.16em] text-pdib-primary uppercase sm:text-[12px]">
+            PDIB · Priority Sectors
           </p>
+
+          <h1 className="mt-2.5 font-sans text-[clamp(24px,3vw,40px)] leading-[1.12] font-medium tracking-tight text-white">
+            {slide.title}
+          </h1>
+
+          <p className="mt-4 max-w-md text-[13px] leading-[1.6] text-white/88 sm:text-[14px]">
+            {slide.body}
+          </p>
+
+          <Link
+            href={slide.href}
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-pdib-primary px-4 py-2.5 text-[11px] font-bold tracking-[0.12em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover sm:px-5 sm:text-[12px]"
+          >
+            {slide.cta}
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-6 z-20 flex gap-1 sm:bottom-8 sm:left-[6.5vw] sm:gap-1.5">
-        <button
-          type="button"
-          aria-label="Previous slide"
-          onClick={() => goTo(current - 1)}
-          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
-        >
-          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
-            <path d="M15 4L7 12l8 8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          aria-label="Next slide"
-          onClick={() => goTo(current + 1)}
-          className="grid size-9 place-items-center bg-white text-[#222] transition-colors hover:bg-neutral-100 sm:size-12"
-        >
-          <svg viewBox="0 0 24 24" className="size-3.5 sm:size-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
-            <path d="M9 4l8 8-8 8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
+      <div
+        role="tablist"
+        aria-label="Priority sector slides"
+        className="absolute inset-x-0 bottom-0 z-20 flex h-11 items-stretch gap-0 border-t border-white/10 bg-black/40 px-3 sm:h-12 sm:px-5 lg:px-[6.5vw]"
+      >
+        {slides.map((item, index) => {
+          const active = index === current;
+          return (
+            <button
+              key={item.tab}
+              type="button"
+              role="tab"
+              aria-selected={active}
+              aria-label={`Show ${item.tab} slide`}
+              onClick={() => setCurrent(index)}
+              className="group relative flex w-auto shrink-0 flex-col justify-center px-2.5 py-1.5 text-left sm:px-3"
+            >
+              <span
+                aria-hidden="true"
+                className={`absolute inset-x-0 top-0 h-px transition-colors ${
+                  active ? "bg-white" : "bg-transparent group-hover:bg-white/35"
+                }`}
+              />
+              <span className="text-[8px] leading-none tracking-[0.04em] text-white/50">
+                {pad(index + 1)} / {pad(total)}
+              </span>
+              <span
+                className={`mt-0.5 text-[9px] leading-tight font-medium whitespace-nowrap sm:text-[10px] ${
+                  active ? "text-white" : "text-white/70 group-hover:text-white/90"
+                }`}
+              >
+                {item.tab}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </section>
   );

@@ -333,7 +333,7 @@ function OfferDropdown({
       id={id}
       role="menu"
       aria-label={`${label} submenu`}
-      className={`absolute top-full z-40 mt-3 w-[min(280px,70vw)] rounded-xl border border-slate-200/90 bg-white py-1 shadow-[0_12px_32px_rgba(15,23,42,0.12)] ${
+      className={`absolute top-full z-40 mt-2 min-w-[220px] bg-white py-2 shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${
         align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
       }`}
       style={{ animation: "pdibMegaIn 160ms ease-out" }}
@@ -344,7 +344,7 @@ function OfferDropdown({
           key={link.label}
           role="menuitem"
           href={navHref(link.href)}
-          className="block border-b border-slate-200/80 px-5 py-3.5 text-[16px] font-medium text-pdib-title transition-colors last:border-b-0 hover:bg-slate-50 hover:text-pdib-primary"
+          className="block px-5 py-2.5 text-[14px] font-medium text-pdib-title transition-colors hover:bg-[#f5f5f5] hover:text-pdib-green"
           onClick={onNavigate}
         >
           {link.label}

@@ -16,10 +16,21 @@ export const navItems: NavItem[] = [
     groups: [],
   },
   {
-    href: "#who-we-are",
-    label: "Who we are",
+    href: "/about",
+    label: "About us",
     kicker: "Puntland Development & Investment Bank",
-    groups: [],
+    groups: [
+      {
+        title: "About us",
+        links: [
+          { href: "/about#our-history", label: "Our History" },
+          { href: "/about#mission-vision", label: "Mission and Vision" },
+          { href: "#board-of-directors", label: "Board of Directors" },
+          { href: "#management-team", label: "Management Team" },
+          { href: "#corporate-governance", label: "Corporate Governance" },
+        ],
+      },
+    ],
   },
   {
     href: "#what-we-do",
@@ -38,12 +49,6 @@ export const navItems: NavItem[] = [
         ],
       },
     ],
-  },
-  {
-    href: "#our-team",
-    label: "Our team",
-    kicker: "Board and executive leadership",
-    groups: [],
   },
   {
     href: "#news",
@@ -87,15 +92,26 @@ export const searchableContent: SearchResult[] = [
     summary: "May 14-15, 2026 · Moscow, Russia",
   },
   {
-    title: "Who we are",
-    href: "#who-we-are",
-    summary: "About the Puntland Development & Investment Bank",
-  },
-  {
     title: "About us",
     href: "/about",
     summary:
       "Puntland’s leading development finance institution, supporting sustainable economic growth",
+  },
+  {
+    title: "Our History",
+    href: "/about#our-history",
+    summary: "The story of the Puntland Development & Investment Bank",
+  },
+  {
+    title: "Mission and Vision",
+    href: "/about#mission-vision",
+    summary: "PDIB vision and mission for sustainable development in Puntland",
+  },
+  {
+    title: "Corporate Governance",
+    href: "#corporate-governance",
+    summary:
+      "PDIB corporate governance, transparency, and accountability framework",
   },
   {
     title: "What we offer",
@@ -155,19 +171,14 @@ export const searchableContent: SearchResult[] = [
     summary: "How to apply, business plan outline, and application requirements",
   },
   {
-    title: "Our team",
-    href: "#our-team",
-    summary: "PDIB Board of Directors and executive leadership",
-  },
-  {
-    title: "Our Board Members",
-    href: "#our-team",
+    title: "Board of Directors",
+    href: "#board-of-directors",
     summary: "PDIB Board of Directors",
   },
   {
-    title: "Our Executive Members",
-    href: "#our-team",
-    summary: "PDIB executive leadership team",
+    title: "Management Team",
+    href: "#management-team",
+    summary: "PDIB management and executive leadership team",
   },
   {
     title: "News & Insights",

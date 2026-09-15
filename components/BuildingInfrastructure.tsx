@@ -51,21 +51,27 @@ export default function BuildingInfrastructure() {
       </Reveal>
       <div className="relative z-10 grid w-full grid-cols-1 gap-12 px-6 sm:px-[6.5vw] lg:grid-cols-2 lg:gap-16 xl:gap-24">
         <OverlayList title="Services Offered" items={services} />
-        <OverlayList title="Governance and Management" items={governance} />
+        <OverlayList
+          id="corporate-governance"
+          title="Governance and Management"
+          items={governance}
+        />
       </div>
     </section>
   );
 }
 
 function OverlayList({
+  id,
   title,
   items,
 }: {
+  id?: string;
   title: string;
   items: { title: string; body: string }[];
 }) {
   return (
-    <div>
+    <div id={id} className={id ? "scroll-mt-28" : undefined}>
       <Reveal delayMs={100}>
         <h2 className="font-sans text-[clamp(20px,2.1vw,26px)] leading-[1.15] font-bold tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">
           {title}
