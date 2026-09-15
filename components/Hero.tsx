@@ -96,7 +96,7 @@ export default function Hero() {
           priority={index === 0}
           quality={95}
           sizes="100vw"
-          className={`${item.object} transition-opacity duration-1000 ease-out ${
+          className={`${item.object} brightness-[1.12] contrast-[1.02] transition-opacity duration-1000 ease-out ${
             index === current ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -104,11 +104,11 @@ export default function Hero() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/75 via-black/45 to-black/15"
+        className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/45 via-black/20 to-transparent"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-black/25"
+        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-black/10"
       />
 
       <div className="absolute inset-x-0 top-0 bottom-11 z-10 flex items-center px-6 pt-20 sm:bottom-12 sm:px-[6.5vw] sm:pt-24">
