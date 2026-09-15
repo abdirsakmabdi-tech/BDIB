@@ -92,6 +92,15 @@ const focusAreas = [
     description:
       "Finance for clinics, equipment, and health enterprises that improve access to care across Puntland.",
   },
+  {
+    label: "Mining & Natural Resources",
+    title: "Mining & Natural Resources",
+    href: "/mining-natural-resources",
+    src: "/slides/mining-natural-resources.jpg",
+    alt: "Heavy machinery working in an open mining quarry",
+    description:
+      "Financing for responsible mining, quarrying, and natural resource ventures that create jobs and strengthen Puntland’s productive economy.",
+  },
 ];
 
 export default function WhatWeDo() {

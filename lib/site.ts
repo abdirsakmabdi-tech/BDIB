@@ -166,6 +166,12 @@ export const searchableContent: SearchResult[] = [
       "PDIB finances schools, health facilities, water, and community infrastructure",
   },
   {
+    title: "Mining & Natural Resources",
+    href: "/mining-natural-resources",
+    summary:
+      "PDIB financing for responsible mining, quarrying, and natural resource ventures in Puntland",
+  },
+  {
     title: "Apply for funding",
     href: "#how-to-apply",
     summary: "How to apply, business plan outline, and application requirements",
