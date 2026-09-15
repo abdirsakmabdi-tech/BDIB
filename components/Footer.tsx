@@ -52,7 +52,7 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/8 bg-white">
+    <footer className="border-t border-black/8 bg-[#eef0f8]">
       <div className="px-6 py-14 sm:px-[6.5vw] sm:py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)_minmax(240px,0.85fr)] lg:items-start lg:gap-14 xl:gap-20">
           <div className="flex flex-col justify-between gap-10 lg:min-h-[280px]">

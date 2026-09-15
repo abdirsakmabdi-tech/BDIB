@@ -40,7 +40,7 @@ export default function SectorHero({
           <h1
             className={`mt-3 font-sans leading-snug font-medium tracking-tight text-white ${
               compactTitle
-                ? "text-[clamp(18px,1.9vw,24px)]"
+                ? "text-[clamp(16px,1.6vw,20px)]"
                 : "text-[clamp(22px,2.4vw,28px)]"
             }`}
           >
