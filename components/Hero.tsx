@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/slides/fisheries-port.jpg",
-    alt: "A coastal port supporting fisheries and maritime trade",
-    object: "object-cover object-[center_40%]",
+    src: "/slides/fisheries-catch.jpg",
+    alt: "A fisherman holding a freshly caught fish at sunset over coastal waters",
+    object: "object-cover object-[center_45%]",
     title: "Fisheries & the Blue Economy",
     body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
     href: "/fisheries",

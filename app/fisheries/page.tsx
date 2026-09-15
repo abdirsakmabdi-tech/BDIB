@@ -17,10 +17,10 @@ export default function FisheriesPage() {
       <Header />
       <SectorHero
         src="/fisheries-hero.jpg"
-        alt="Coastal fisheries and the blue economy"
-        title="Fisheries"
+        alt="A fisherman holding a freshly caught fish at sunset over coastal waters"
+        title="Fisheries & the Blue Economy"
         intro={intro}
-        objectClassName="object-cover object-[center_40%]"
+        objectClassName="object-cover object-[center_45%]"
       />
 
       <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">

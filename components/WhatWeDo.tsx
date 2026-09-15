@@ -6,8 +6,8 @@ const focusAreas = [
     label: "Fisheries",
     title: "Fisheries (the Blue Economy)",
     href: "/fisheries",
-    src: "/slides/fisheries-boat.jpg",
-    alt: "A fishing boat at sea",
+    src: "/slides/fisheries-catch.jpg",
+    alt: "A fisherman holding a freshly caught fish at sunset over coastal waters",
     description:
       "Financing for boats, cold chain, processing, and coastal livelihoods along Puntland’s coastline.",
   },
