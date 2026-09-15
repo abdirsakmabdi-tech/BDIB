@@ -39,7 +39,7 @@ export default function SearchOverlay({ open, onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-40 grid place-items-center bg-[#081820]/72"
+      className="fixed inset-0 z-[60] grid place-items-center bg-[#081820]/72"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}

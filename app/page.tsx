@@ -14,9 +14,9 @@ export default function Home() {
       <Hero />
       <WhoWeAre />
       <WhatWeDo />
-      <TourismImpact />
       <BuildingInfrastructure />
       <Partners />
+      <TourismImpact />
       <Team />
     </main>
   );

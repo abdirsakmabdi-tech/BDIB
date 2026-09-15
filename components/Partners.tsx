@@ -20,6 +20,7 @@ const partners = [
   {
     name: "Shuraako Capital",
     src: "/partners/shuraako.jpg",
+    scale: 1.45,
   },
 ] as const;
 
@@ -29,20 +30,24 @@ function LogoTrack({ ariaHidden }: { ariaHidden?: boolean }) {
       aria-hidden={ariaHidden ? true : undefined}
       className="partners-marquee-track flex shrink-0 list-none items-center gap-6 p-0 sm:gap-8 lg:gap-10"
     >
-      {partners.map((partner) => (
-        <li
-          key={`${ariaHidden ? "dup-" : ""}${partner.name}`}
-          className="flex h-[72px] w-[190px] shrink-0 items-center justify-center sm:h-20 sm:w-[210px]"
-        >
-          <Image
-            src={partner.src}
-            alt={ariaHidden ? "" : partner.name}
-            width={210}
-            height={80}
-            className="h-full w-auto max-w-full object-contain"
-          />
-        </li>
-      ))}
+      {partners.map((partner) => {
+        const scale = "scale" in partner ? partner.scale : 1;
+        return (
+          <li
+            key={`${ariaHidden ? "dup-" : ""}${partner.name}`}
+            className="flex h-20 w-[220px] shrink-0 items-center justify-center sm:h-24 sm:w-[250px]"
+          >
+            <Image
+              src={partner.src}
+              alt={ariaHidden ? "" : partner.name}
+              width={250}
+              height={96}
+              className="h-full w-auto max-w-full object-contain"
+              style={scale !== 1 ? { transform: `scale(${scale})` } : undefined}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 }

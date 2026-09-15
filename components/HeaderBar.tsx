@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { navItems, type NavLink } from "@/lib/site";
+import SearchOverlay from "@/components/SearchOverlay";
 
 const INK = "#3f3832";
 const PRIMARY = "#23ba4a";
@@ -37,6 +38,7 @@ export default function HeaderBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dropdownId = useId();
 
@@ -45,6 +47,7 @@ export default function HeaderBar() {
       if (event.key === "Escape") {
         setMobileOpen(false);
         setOpenMenu(null);
+        setSearchOpen(false);
       }
     }
     document.addEventListener("keydown", onKey);
@@ -52,16 +55,17 @@ export default function HeaderBar() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = mobileOpen || searchOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileOpen]);
+  }, [mobileOpen, searchOpen]);
 
   useEffect(() => {
     setOpenMenu(null);
     setMobileOpen(false);
     setMobileExpanded(null);
+    setSearchOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -84,23 +88,19 @@ export default function HeaderBar() {
   }
 
   const linkClass =
-    "shrink-0 rounded-lg px-3 py-1.5 text-[14px] font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-200 hover:bg-black/5";
+    "shrink-0 rounded-lg px-3 py-1.5 text-[15px] font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-200 hover:bg-black/5";
 
   const buttonClass =
-    "inline-flex shrink-0 items-center gap-1.5 rounded-full bg-pdib-primary px-4 py-2.5 text-[13px] font-bold tracking-[0.06em] whitespace-nowrap text-white uppercase shadow-sm transition-colors duration-200 hover:bg-pdib-primary-hover";
+    "inline-flex shrink-0 items-center gap-1.5 bg-pdib-primary px-4 py-2.5 text-[14px] font-bold tracking-[0.06em] whitespace-nowrap text-white uppercase shadow-sm transition-colors duration-200 hover:bg-pdib-primary-hover";
 
   const mainNavItems = navItems.filter((item) => item.variant !== "button");
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
 
-  function renderDesktopItem(
-    item: (typeof navItems)[number],
-    options?: { align?: "center" | "right" },
-  ) {
+  function renderDesktopItem(item: (typeof navItems)[number]) {
     const withMenu = hasSubmenu(item);
     const isOpen = openMenu === item.label;
     const isButton = item.variant === "button";
     const panelId = `${dropdownId}-${item.label.replace(/\s+/g, "-")}`;
-    const align = options?.align ?? (isButton ? "right" : "center");
 
     if (!withMenu) {
       return (
@@ -147,7 +147,7 @@ export default function HeaderBar() {
             id={panelId}
             label={item.label}
             links={submenuLinks(item)}
-            align={align}
+            oneColumn={isButton}
             onMouseEnter={() => openDesktopMenu(item.label)}
             onNavigate={() => setOpenMenu(null)}
           />
@@ -168,8 +168,8 @@ export default function HeaderBar() {
           href={navHref(item.href)}
           className={
             isButton
-              ? "m-4 rounded-full bg-white px-6 py-3 text-center text-[15px] font-bold tracking-[0.06em] text-pdib-primary uppercase"
-              : "border-b border-white/25 px-6 py-4 text-[16px] font-medium tracking-[0.02em] text-white"
+              ? "m-4 bg-white px-6 py-3 text-center text-[16px] font-bold tracking-[0.06em] text-pdib-primary uppercase"
+              : "border-b border-white/25 px-6 py-4 text-[17px] font-medium tracking-[0.02em] text-white"
           }
           onClick={() => setMobileOpen(false)}
         >
@@ -183,7 +183,7 @@ export default function HeaderBar() {
         <div className="flex items-stretch">
           <Link
             href={navHref(item.href)}
-            className={`flex-1 px-6 py-4 text-[16px] font-medium tracking-[0.02em] ${
+            className={`flex-1 px-6 py-4 text-[17px] font-medium tracking-[0.02em] ${
               isButton ? "font-bold text-white uppercase" : "text-white"
             }`}
             onClick={() => setMobileOpen(false)}
@@ -206,7 +206,7 @@ export default function HeaderBar() {
               <Link
                 key={link.label}
                 href={navHref(link.href)}
-                className="block border-b border-white/10 px-6 py-3 pl-8 text-[15px] leading-snug text-white/95 last:border-b-0"
+                className="block border-b border-white/10 px-6 py-3 pl-8 text-[15px] font-normal leading-snug text-white/95 last:border-b-0"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -220,39 +220,52 @@ export default function HeaderBar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-30 border-b border-black/5 bg-white">
-      <div className="relative flex h-[76px] items-center gap-4 px-4 sm:px-[4vw] lg:px-[5vw]">
+      <div className="flex h-[96px] items-center gap-4 px-4 pb-2 sm:px-[4vw] lg:gap-6 lg:px-[5vw]">
         <Link
           href="/"
           className="relative z-10 flex shrink-0 items-center"
           aria-label="Puntland Development & Investment Bank home"
         >
-          <NavLogo className="h-7 sm:h-8 lg:h-9" />
+          <NavLogo className="h-9 sm:h-10 lg:h-11" />
         </Link>
 
-        <nav
-          aria-label="Primary"
-          className="absolute top-1/2 left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1 lg:flex xl:gap-1.5"
-        >
-          {mainNavItems.map((item) => renderDesktopItem(item))}
-          <Link
-            href="/contact"
-            className={linkClass}
-            style={{ color: INK }}
-            onMouseEnter={scheduleCloseDesktopMenu}
+        <div className="relative z-10 ml-auto flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-4">
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-1 lg:flex xl:gap-1.5"
           >
-            Contact
-          </Link>
-        </nav>
+            {mainNavItems.map((item) => renderDesktopItem(item))}
+            <Link
+              href="/contact"
+              className={linkClass}
+              style={{ color: INK }}
+              onMouseEnter={scheduleCloseDesktopMenu}
+            >
+              Contact
+            </Link>
+          </nav>
 
-        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-3">
-          <div className="hidden items-center gap-2 lg:flex">
-            {ctaNavItems.map((item) =>
-              renderDesktopItem(item, { align: "right" }),
-            )}
-          </div>
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-full bg-white/90 shadow-sm lg:hidden"
+            className="grid size-10 shrink-0 place-items-center transition-colors hover:bg-black/5"
+            style={{ color: INK }}
+            aria-label="Open search"
+            onClick={() => {
+              setMobileOpen(false);
+              setOpenMenu(null);
+              setSearchOpen(true);
+            }}
+          >
+            <SearchIcon />
+          </button>
+
+          <div className="hidden shrink-0 items-center gap-2 lg:flex">
+            {ctaNavItems.map((item) => renderDesktopItem(item))}
+          </div>
+
+          <button
+            type="button"
+            className="grid size-10 shrink-0 place-items-center rounded-full bg-white/90 shadow-sm lg:hidden"
             style={{ color: INK }}
             aria-label="Open menu"
             aria-expanded={mobileOpen}
@@ -263,6 +276,8 @@ export default function HeaderBar() {
         </div>
       </div>
 
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+
       {mobileOpen ? (
         <div className="pointer-events-auto fixed inset-0 z-50 lg:hidden">
           <button
@@ -272,14 +287,14 @@ export default function HeaderBar() {
             onClick={() => setMobileOpen(false)}
           />
 
-          <div className="relative z-10 flex h-[76px] items-center justify-between bg-white/95 px-4 sm:px-6">
+          <div className="relative z-10 flex h-[96px] items-center justify-between bg-white/95 px-4 sm:px-6">
             <Link
               href="/"
               className="flex shrink-0 items-center"
               aria-label="Puntland Development & Investment Bank home"
               onClick={() => setMobileOpen(false)}
             >
-              <NavLogo className="h-8 sm:h-9" />
+              <NavLogo className="h-9 sm:h-10" />
             </Link>
             <button
               type="button"
@@ -294,13 +309,13 @@ export default function HeaderBar() {
 
           <nav
             aria-label="Mobile"
-            className="absolute top-[76px] right-0 bottom-0 z-10 flex w-[min(86vw,22rem)] flex-col overflow-y-auto sm:w-[min(42vw,24rem)]"
+            className="absolute top-[96px] right-0 bottom-0 z-10 flex w-[min(86vw,22rem)] flex-col overflow-y-auto sm:w-[min(42vw,24rem)]"
             style={{ backgroundColor: PRIMARY }}
           >
             {mainNavItems.map(renderMobileItem)}
             <Link
               href="/contact"
-              className="border-b border-white/25 px-6 py-4 text-[16px] font-medium tracking-[0.02em] text-white"
+              className="border-b border-white/25 px-6 py-4 text-[17px] font-medium tracking-[0.02em] text-white"
               onClick={() => setMobileOpen(false)}
             >
               Contact
@@ -317,24 +332,28 @@ function OfferDropdown({
   id,
   label,
   links,
-  align = "center",
+  oneColumn = false,
   onMouseEnter,
   onNavigate,
 }: {
   id: string;
   label: string;
   links: NavLink[];
-  align?: "center" | "right";
+  oneColumn?: boolean;
   onMouseEnter: () => void;
   onNavigate: () => void;
 }) {
+  const twoColumn = !oneColumn && links.length > 2;
+
   return (
     <div
       id={id}
       role="menu"
       aria-label={`${label} submenu`}
-      className={`absolute top-full z-40 mt-2 min-w-[220px] bg-white py-2 shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${
-        align === "right" ? "right-0" : "left-1/2 -translate-x-1/2"
+      className={`absolute top-full left-0 z-40 mt-1 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${
+        twoColumn
+          ? "grid min-w-[420px] grid-cols-2 gap-x-10 gap-y-1 px-6 py-4"
+          : "min-w-[220px] py-2"
       }`}
       style={{ animation: "pdibMegaIn 160ms ease-out" }}
       onMouseEnter={onMouseEnter}
@@ -344,7 +363,13 @@ function OfferDropdown({
           key={link.label}
           role="menuitem"
           href={navHref(link.href)}
-          className="block px-5 py-2.5 text-[14px] font-medium text-pdib-title transition-colors hover:bg-[#f5f5f5] hover:text-pdib-green"
+          className={`block text-[15px] font-normal text-pdib-title transition-colors hover:bg-black/5 ${
+            twoColumn ? "px-2 py-2.5" : "px-5 py-2.5"
+          }`}
+          style={{
+            fontWeight: 400,
+            fontVariationSettings: '"wght" 400',
+          }}
           onClick={onNavigate}
         >
           {link.label}
@@ -367,6 +392,23 @@ function Chevron({ open, size = 18 }: { open: boolean; size?: number }) {
       aria-hidden="true"
     >
       <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="M16.5 16.5L21 21" strokeLinecap="round" />
     </svg>
   );
 }
