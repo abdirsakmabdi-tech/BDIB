@@ -1,7 +1,10 @@
+"use client";
+
 import { ViewTransition } from "react";
 import Link from "next/link";
+import { useRef } from "react";
 import Reveal from "@/components/Reveal";
-import { boardMembers, executiveMembers, type Member } from "@/lib/team";
+import { allMembers, type Member } from "@/lib/team";
 
 function LinkedInIcon() {
   return (
@@ -24,77 +27,132 @@ function LinkedInIcon() {
   );
 }
 
-function MemberCard({ member, index }: { member: Member; index: number }) {
+function MemberCard({ member }: { member: Member }) {
   const href = `/team/${member.slug}`;
-  const delay = (index % 4) * 70;
 
   return (
-    <Reveal delayMs={delay}>
-      <article className="flex w-full max-w-[200px] flex-col sm:max-w-[220px]">
-        <Link
-          href={href}
-          className="relative block aspect-square overflow-hidden bg-[#ececec]"
-          aria-label={`Open profile for ${member.name}`}
+    <article className="flex w-[220px] shrink-0 snap-start flex-col sm:w-[240px]">
+      <Link
+        href={href}
+        className="relative block aspect-square overflow-hidden bg-[#ececec]"
+        aria-label={`Open profile for ${member.name}`}
+      >
+        <ViewTransition
+          name={`member-photo-${member.slug}`}
+          share="member-morph"
+          default="none"
         >
-          <ViewTransition
-            name={`member-photo-${member.slug}`}
-            share="member-morph"
-            default="none"
-          >
-            <img
-              src={member.src}
-              alt={member.name}
-              className="h-full w-full object-cover object-top"
-            />
-          </ViewTransition>
+          <img
+            src={member.src}
+            alt={member.name}
+            className="h-full w-full object-cover object-top"
+          />
+        </ViewTransition>
+      </Link>
+
+      <div className="flex flex-col bg-[#f4f4f4] px-3.5 pt-3.5 pb-3.5">
+        <Link href={href} className="block">
+          <h3 className="font-sans text-[15px] leading-snug font-medium tracking-tight text-pdib-title sm:text-[16px]">
+            {member.name}
+          </h3>
+          <p className="mt-1 text-[12px] leading-snug text-pdib-text sm:text-[13px]">
+            {member.role}
+          </p>
         </Link>
 
-        <div className="flex flex-col bg-[#f4f4f4] px-3.5 pt-3.5 pb-3.5">
-          <Link href={href} className="block">
-            <h3 className="font-sans text-[15px] leading-snug font-medium tracking-tight text-pdib-title sm:text-[16px]">
-              {member.name}
-            </h3>
-            <p className="mt-1 text-[12px] leading-snug text-pdib-text sm:text-[13px]">
-              {member.role}
-            </p>
-          </Link>
-
-          <a
-            href={href}
-            aria-label={`Open profile for ${member.name}`}
-            className="mt-3 inline-flex text-pdib-title transition-colors hover:text-pdib-green"
-          >
-            <LinkedInIcon />
-          </a>
-        </div>
-      </article>
-    </Reveal>
-  );
-}
-
-function MemberGrid({ title, members }: { title: string; members: Member[] }) {
-  return (
-    <div>
-      <Reveal>
-        <h2 className="mb-8 font-sans text-[clamp(24px,2.4vw,34px)] leading-[1.2] font-bold tracking-tight text-pdib-title sm:mb-10">
-          {title}
-        </h2>
-      </Reveal>
-      <div className="flex flex-wrap gap-4 sm:gap-5">
-        {members.map((member, index) => (
-          <MemberCard key={member.slug} member={member} index={index} />
-        ))}
+        <a
+          href={href}
+          aria-label={`Open profile for ${member.name}`}
+          className="mt-3 inline-flex text-pdib-title transition-colors hover:text-pdib-green"
+        >
+          <LinkedInIcon />
+        </a>
       </div>
-    </div>
+    </article>
   );
 }
 
 export default function Team() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
+  function scrollByCard(direction: -1 | 1) {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = Math.min(280, el.clientWidth * 0.85) * direction;
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  }
+
   return (
     <section id="our-team" className="bg-white">
-      <div className="space-y-16 px-6 py-16 sm:space-y-20 sm:px-[6.5vw] sm:py-24">
-        <MemberGrid title="Our Board Members" members={boardMembers} />
-        <MemberGrid title="Our Executive Members" members={executiveMembers} />
+      <div className="px-6 py-16 sm:px-[6.5vw] sm:py-24">
+        <Reveal>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[12px] font-bold tracking-[0.16em] text-pdib-green uppercase sm:text-[13px]">
+                People
+              </p>
+              <h2 className="mt-3 font-sans text-[clamp(24px,2.4vw,34px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+                Our team
+              </h2>
+            </div>
+
+            <div className="flex gap-1.5">
+              <button
+                type="button"
+                aria-label="Previous team members"
+                onClick={() => scrollByCard(-1)}
+                className="grid size-10 place-items-center bg-pdib-title text-white transition-colors hover:bg-pdib-green sm:size-11"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="size-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M15 4L7 12l8 8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                type="button"
+                aria-label="Next team members"
+                onClick={() => scrollByCard(1)}
+                className="grid size-10 place-items-center bg-pdib-title text-white transition-colors hover:bg-pdib-green sm:size-11"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="size-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9 4l8 8-8 8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delayMs={100}>
+          <div
+            ref={scrollerRef}
+            className="mt-10 flex gap-4 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] snap-x snap-mandatory sm:mt-12 sm:gap-5 [&::-webkit-scrollbar]:hidden"
+          >
+            {allMembers.map((member) => (
+              <MemberCard key={member.slug} member={member} />
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
