@@ -69,8 +69,8 @@ const focusAreas = [
     label: "Export & Manufacturing",
     title: "Export and manufacturing",
     href: "#export-and-manufacturing",
-    src: "/slides/export-manufacturing.jpg",
-    alt: "Burlap export sacks on a shipping pallet",
+    src: "/slides/export-manufacturing-port.jpg",
+    alt: "Cargo ships and cranes at a busy export port",
     description:
       "Working capital and long-term finance for producers and manufacturers competing in regional markets.",
   },
