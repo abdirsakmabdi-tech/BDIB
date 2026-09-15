@@ -1,3 +1,6 @@
+const videoSrc =
+  process.env.NEXT_PUBLIC_TOURISM_VIDEO_URL?.trim() || "/0915.mp4";
+
 export default function TourismImpact() {
   return (
     <section id="tourism-impact" className="my-10 bg-white sm:my-14 lg:my-16">
@@ -11,7 +14,7 @@ export default function TourismImpact() {
           preload="metadata"
           aria-label="Tourism in Puntland"
         >
-          <source src="/0915.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
         </video>
 
         <div
