@@ -16,8 +16,8 @@ export default function TourismPage() {
     <main>
       <Header />
       <SectorHero
-        src="/tourism-hero.jpg"
-        alt="Women riding a camel along a scenic beach"
+        src="/slides/tourism-coast.jpg"
+        alt="Aerial view of a Puntland beach and turquoise coastline"
         title="Tourism"
         intro={intro}
       />

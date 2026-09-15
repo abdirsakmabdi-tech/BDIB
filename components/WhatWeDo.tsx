@@ -60,8 +60,8 @@ const focusAreas = [
     label: "Tourism",
     title: "Tourism",
     href: "/tourism",
-    src: "/slides/tourism.jpg",
-    alt: "Scenic view of a town from a rock overhang",
+    src: "/slides/tourism-coast.jpg",
+    alt: "Aerial view of a Puntland beach and turquoise coastline",
     description:
       "Empowering tourism in Puntland — financing hospitality, destinations, and visitor experiences that create jobs.",
   },

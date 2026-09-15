@@ -46,9 +46,9 @@ const slides = [
     tab: "Renewable Energy",
   },
   {
-    src: "/slides/tourism.jpg",
-    alt: "Scenic coastal landscape supporting tourism in Puntland",
-    object: "object-cover object-[center_35%]",
+    src: "/slides/tourism-coast.jpg",
+    alt: "Aerial view of a Puntland beach and turquoise coastline",
+    object: "object-cover object-center",
     title: "Tourism in Puntland",
     body: "Financing hospitality, destinations, and visitor experiences that create jobs and support local communities.",
     href: "/tourism",
