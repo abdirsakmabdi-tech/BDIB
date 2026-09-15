@@ -7,6 +7,7 @@ type SectorHeroProps = {
   intro: string;
   eyebrow?: string;
   objectClassName?: string;
+  compactTitle?: boolean;
 };
 
 export default function SectorHero({
@@ -16,6 +17,7 @@ export default function SectorHero({
   intro,
   eyebrow = "Priority Sectors",
   objectClassName = "object-cover object-center",
+  compactTitle = false,
 }: SectorHeroProps) {
   return (
     <section className="relative h-svh min-h-[100vh] overflow-hidden">
@@ -35,10 +37,20 @@ export default function SectorHero({
           <p className="text-[12px] font-bold tracking-[0.18em] text-pdib-primary uppercase sm:text-[13px]">
             {eyebrow}
           </p>
-          <h1 className="mt-3 font-sans text-[clamp(22px,2.4vw,28px)] leading-snug font-medium tracking-tight text-white">
+          <h1
+            className={`mt-3 font-sans leading-snug font-medium tracking-tight text-white ${
+              compactTitle
+                ? "text-[clamp(18px,1.9vw,24px)]"
+                : "text-[clamp(22px,2.4vw,28px)]"
+            }`}
+          >
             {title}
           </h1>
-          <p className="mt-4 max-w-md text-[15px] leading-[1.55] text-white/90 sm:text-[16px]">
+          <p
+            className={`mt-4 max-w-md leading-[1.55] text-white/90 ${
+              compactTitle ? "text-[14px] sm:text-[15px]" : "text-[15px] sm:text-[16px]"
+            }`}
+          >
             {intro}
           </p>
         </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Header from "@/components/Header";
+import SectorHero from "@/components/SectorHero";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -9,61 +9,58 @@ export const metadata: Metadata = {
     "Get in touch with the Puntland Development & Investment Bank — email, head office, and enquiry form.",
 };
 
+const intro =
+  "Reach the Puntland Development & Investment Bank — head office, email, and enquiry form for partnerships and financing.";
+
 export default function ContactPage() {
   return (
     <main>
       <Header />
+      <SectorHero
+        src="/contact-building.jpg"
+        alt="PDIB head office in Garowe"
+        title="Contact us"
+        intro={intro}
+        eyebrow="Get in touch"
+        objectClassName="object-cover object-[center_35%]"
+      />
 
-      <article className="bg-white px-6 pt-32 pb-24 sm:px-[6.5vw] sm:pt-40 sm:pb-32 lg:pt-44">
+      <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
         <section className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
           <aside>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-              <Image
-                src="/contact-building.jpg"
-                alt="PDIB head office in Garowe"
-                fill
-                priority
-                sizes="(min-width: 1024px) 42vw, 87vw"
-                className="object-cover object-[center_35%]"
-              />
-            </div>
+            <h2 className="text-[18px] font-bold tracking-tight text-pdib-title">
+              Customer Support
+            </h2>
+            <a
+              href="mailto:info@pdib.so"
+              className="mt-1 block text-[14px] text-[#6b6b6b] transition-colors hover:text-pdib-green"
+            >
+              info@pdib.so
+            </a>
 
-            <div className="mt-6 flex items-start justify-between gap-6">
-              <div>
-                <h2 className="text-[18px] font-bold tracking-tight text-pdib-title">
-                  Customer Support
-                </h2>
-                <a
-                  href="mailto:info@pdib.so"
-                  className="mt-1 block text-[14px] text-[#6b6b6b] transition-colors hover:text-pdib-green"
-                >
-                  info@pdib.so
-                </a>
-              </div>
-              <div className="flex items-center gap-3 pt-1 text-pdib-title">
-                <a
-                  href="#"
-                  aria-label="X"
-                  className="transition-colors hover:text-pdib-green"
-                >
-                  <XIcon />
-                </a>
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="transition-colors hover:text-pdib-green"
-                >
-                  <LinkedInIcon />
-                </a>
-              </div>
+            <div className="mt-6 flex items-center gap-3 text-pdib-title">
+              <a
+                href="#"
+                aria-label="X"
+                className="transition-colors hover:text-pdib-green"
+              >
+                <XIcon />
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="transition-colors hover:text-pdib-green"
+              >
+                <LinkedInIcon />
+              </a>
             </div>
           </aside>
 
           <div>
             <p className="text-[14px] text-[#6b6b6b]">Contact us</p>
-            <h1 className="mt-2 font-sans text-[clamp(40px,5vw,56px)] leading-[1.08] font-bold tracking-tight text-pdib-title">
+            <h2 className="mt-2 font-sans text-[clamp(28px,3.2vw,40px)] leading-[1.1] font-bold tracking-tight text-pdib-title">
               Get a quote
-            </h1>
+            </h2>
             <ContactForm />
           </div>
         </section>

@@ -20,7 +20,7 @@ export default function MemberProfile({ member }: { member: Member }) {
           <div className="flex items-start justify-between gap-6">
             <p className="text-nav tracking-[0.16em] uppercase">{member.role}</p>
             <Link
-              href="/#our-team"
+              href="/team"
               className="shrink-0 text-nav tracking-[0.16em] uppercase"
             >
               Return [ X ]

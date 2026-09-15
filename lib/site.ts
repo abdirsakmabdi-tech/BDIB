@@ -25,8 +25,7 @@ export const navItems: NavItem[] = [
         links: [
           { href: "/about#our-history", label: "Our History" },
           { href: "/about#mission-vision", label: "Mission and Vision" },
-          { href: "#board-of-directors", label: "Board of Directors" },
-          { href: "#management-team", label: "Management Team" },
+          { href: "/team", label: "Our team" },
           { href: "#corporate-governance", label: "Corporate Governance" },
         ],
       },
@@ -177,14 +176,9 @@ export const searchableContent: SearchResult[] = [
     summary: "How to apply, business plan outline, and application requirements",
   },
   {
-    title: "Board of Directors",
-    href: "#board-of-directors",
-    summary: "PDIB Board of Directors",
-  },
-  {
-    title: "Management Team",
-    href: "#management-team",
-    summary: "PDIB management and executive leadership team",
+    title: "Our team",
+    href: "/team",
+    summary: "PDIB Board of Directors and management team",
   },
   {
     title: "News & Insights",

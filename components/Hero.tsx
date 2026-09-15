@@ -36,9 +36,9 @@ const slides = [
     tab: "Livestock",
   },
   {
-    src: "/slides/renewable-energy.jpg",
-    alt: "Wind turbines along a misty mountain ridge",
-    object: "object-cover object-center",
+    src: "/slides/renewable-energy-windfarm.jpg",
+    alt: "Wind turbines across rolling hills at sunset",
+    object: "object-cover object-[center_45%]",
     title: "Renewable Energy",
     body: "Climate-aligned funding for solar, wind, and clean energy projects that power communities and industry.",
     href: "/renewable-energy",
