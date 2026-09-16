@@ -3,35 +3,44 @@ import Reveal from "@/components/Reveal";
 
 export default function WhoWeAre() {
   return (
-    <section id="who-we-are" className="bg-[#eef0f8]">
-      <div className="px-6 pt-16 pb-10 sm:px-[6.5vw] sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <h2 className="font-sans text-[clamp(24px,2.4vw,34px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
-              About us
+    <section id="who-we-are" className="bg-[#fafbfc]">
+      <div className="px-6 py-16 sm:px-[6.5vw] sm:py-20 lg:py-24">
+        <Reveal>
+          <div className="w-fit">
+            <h2 className="text-[18px] font-semibold tracking-tight text-[#001c2a] sm:text-[20px]">
+              About
             </h2>
-          </Reveal>
+            <span
+              aria-hidden="true"
+              className="mt-2 block h-[3px] w-12 bg-[#001c2a]"
+            />
+          </div>
+        </Reveal>
 
-          <Reveal delayMs={100}>
-            <p className="mt-6 text-[17px] leading-[1.7] text-pdib-text sm:text-[18px]">
-              The Puntland Development and Investment Bank (PDIB) is
-              Puntland&apos;s leading development finance institution, dedicated
-              to supporting sustainable economic growth. PDIB provides affordable
-              medium- and long-term financing for businesses and infrastructure
-              projects that create jobs, boost productivity, and strengthen the
-              economy.
+        <Reveal delayMs={100}>
+          <div className="mt-12 ml-auto max-w-2xl text-left lg:mt-16">
+            <h3 className="font-sans text-[clamp(24px,2.8vw,34px)] leading-[1.15] font-normal tracking-tight text-[#001c2a]">
+              The Puntland Development
+              <br />
+              &amp; Investment Bank
+            </h3>
+            <p className="mt-5 text-[15px] leading-[1.7] text-[#5a5a5a] sm:text-[16px]">
+              is Puntland&apos;s leading development finance institution,
+              dedicated to supporting sustainable economic growth. PDIB
+              provides affordable medium- and long-term financing for
+              businesses and infrastructure projects that create jobs, boost
+              productivity, and strengthen the economy.
             </p>
-          </Reveal>
-
-          <Reveal delayMs={200}>
-            <Link
-              href="/about"
-              className="mt-8 inline-block border-b-2 border-pdib-primary pb-1 text-[16px] font-bold text-pdib-title transition-colors hover:border-pdib-primary-hover hover:text-pdib-green"
-            >
-              More about us
-            </Link>
-          </Reveal>
-        </div>
+            <div className="mt-8">
+              <Link
+                href="/about"
+                className="inline-flex items-center rounded-full border border-[#001c2a] px-5 py-2 text-[14px] font-medium text-[#001c2a] transition-colors hover:bg-[#001c2a] hover:text-white"
+              >
+                Learn more
+              </Link>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

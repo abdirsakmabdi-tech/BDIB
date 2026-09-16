@@ -101,6 +101,15 @@ const focusAreas = [
     description:
       "Financing for responsible exploration, extraction, processing, and value-added activities across Puntland’s mineral and natural-resource sector.",
   },
+  {
+    label: "Women & Youth",
+    title: "Women and Youth Led Business",
+    href: "/women-youth-led-business",
+    src: "/slides/women-youth-led-business.jpg",
+    alt: "A woman entrepreneur working at a small grocery stall",
+    description:
+      "Financing women- and youth-led enterprises so founders can invest, grow, and create jobs across Puntland.",
+  },
 ];
 
 export default function WhatWeDo() {

@@ -171,6 +171,12 @@ export const searchableContent: SearchResult[] = [
       "PDIB financing for responsible mining, quarrying, and natural resource ventures in Puntland",
   },
   {
+    title: "Women and Youth Led Business",
+    href: "/women-youth-led-business",
+    summary:
+      "PDIB financing for women- and youth-led enterprises that create jobs across Puntland",
+  },
+  {
     title: "Apply for funding",
     href: "#how-to-apply",
     summary: "How to apply, business plan outline, and application requirements",

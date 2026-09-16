@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import WhoWeAre from "@/components/WhoWeAre";
-import Partners from "@/components/Partners";
+import PartnersFeatured from "@/components/PartnersFeatured";
 import WhatWeDo from "@/components/WhatWeDo";
 import BuildingInfrastructure from "@/components/BuildingInfrastructure";
 import TourismImpact from "@/components/TourismImpact";
@@ -15,9 +15,9 @@ export default function Home() {
       <WhoWeAre />
       <WhatWeDo />
       <BuildingInfrastructure />
-      <Partners />
       <TourismImpact />
       <Team />
+      <PartnersFeatured />
     </main>
   );
 }

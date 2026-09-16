@@ -55,6 +55,16 @@ const slides = [
     cta: "Explore tourism",
     tab: "Tourism",
   },
+  {
+    src: "/slides/women-youth-led-business.jpg",
+    alt: "A woman entrepreneur working at a small grocery stall",
+    object: "object-cover object-[center_35%]",
+    title: "Women and Youth Led Business",
+    body: "Financing women- and youth-led enterprises so founders can invest, grow, and create jobs across Puntland.",
+    href: "/women-youth-led-business",
+    cta: "Explore this sector",
+    tab: "Women & Youth",
+  },
 ] as const;
 
 const SLIDE_INTERVAL_MS = 7000;
@@ -83,7 +93,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-svh min-h-[100vh] overflow-hidden bg-[#1a1a1a]"
+      className="relative h-[110svh] min-h-[110vh] overflow-hidden bg-[#3c4858]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -96,54 +106,34 @@ export default function Hero() {
           priority={index === 0}
           quality={95}
           sizes="100vw"
-          className={`${item.object} brightness-[1.12] contrast-[1.02] transition-opacity duration-1000 ease-out ${
+          className={`${item.object} transition-opacity duration-1000 ease-out ${
             index === current ? "opacity-100" : "opacity-0"
           }`}
         />
       ))}
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-linear-to-r from-black/45 via-black/20 to-transparent"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-black/10"
-      />
-
-      <div className="absolute inset-x-0 top-0 bottom-11 z-10 flex items-center px-6 pt-20 sm:bottom-12 sm:px-[6.5vw] sm:pt-24">
+      <div className="absolute inset-x-0 top-0 bottom-12 z-10 flex items-end justify-start px-6 pb-16 sm:px-[6.5vw] sm:pb-20 lg:pb-24">
         <div
           key={slide.src}
-          className="max-w-[min(560px,92vw)] text-white transition-opacity duration-700"
+          className="w-full max-w-[min(420px,92vw)] text-left text-white transition-opacity duration-700 [text-shadow:0_1px_12px_rgba(0,0,0,0.45)]"
         >
-          <div className="flex items-center gap-3">
-            <p className="text-[11px] font-medium tracking-[0.08em] text-white/90 sm:text-[12px]">
-              {pad(current + 1)} / {pad(total)}
-            </p>
-            <span
-              aria-hidden="true"
-              className="h-px w-7 bg-white/80 sm:w-9"
-            />
-          </div>
-
-          <p className="mt-4 text-[11px] font-bold tracking-[0.16em] text-pdib-primary uppercase sm:text-[12px]">
-            PDIB · Priority Sectors
+          <p className="text-[11px] font-medium tracking-[0.14em] text-white/80 uppercase">
+            {pad(current + 1)} / {pad(total)} · Priority sectors
           </p>
 
-          <h1 className="mt-2.5 font-sans text-[clamp(24px,3vw,40px)] leading-[1.12] font-medium tracking-tight text-white">
+          <h1 className="mt-3 font-sans text-[clamp(28px,4vw,40px)] leading-[1.05] font-bold tracking-tight text-white uppercase">
             {slide.title}
           </h1>
 
-          <p className="mt-4 max-w-md text-[13px] leading-[1.6] text-white/88 sm:text-[14px]">
+          <p className="mt-4 max-w-[380px] text-[16px] leading-[1.45] font-normal text-white sm:text-[18px]">
             {slide.body}
           </p>
 
           <Link
             href={slide.href}
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-pdib-primary px-4 py-2.5 text-[11px] font-bold tracking-[0.12em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover sm:px-5 sm:text-[12px]"
+            className="mt-6 inline-flex items-center rounded-full border border-[#001c2a] bg-white px-4 py-2 text-[15px] font-normal tracking-wide text-[#001c2a] transition-colors hover:bg-[#001c2a] hover:text-white sm:px-5 sm:text-[17px] lg:text-[20px]"
           >
             {slide.cta}
-            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
@@ -151,7 +141,7 @@ export default function Hero() {
       <div
         role="tablist"
         aria-label="Priority sector slides"
-        className="absolute inset-x-0 bottom-0 z-20 flex h-11 items-stretch gap-0 border-t border-white/10 bg-black/40 px-3 sm:h-12 sm:px-5 lg:px-[6.5vw]"
+        className="absolute inset-x-0 bottom-0 z-20 flex h-11 items-stretch gap-0 border-t border-white/15 bg-black/35 px-3 sm:h-12 sm:px-5 lg:px-[6.5vw]"
       >
         {slides.map((item, index) => {
           const active = index === current;
@@ -167,7 +157,7 @@ export default function Hero() {
             >
               <span
                 aria-hidden="true"
-                className={`absolute inset-x-0 top-0 h-px transition-colors ${
+                className={`absolute inset-x-0 top-0 h-0.5 transition-colors ${
                   active ? "bg-white" : "bg-transparent group-hover:bg-white/35"
                 }`}
               />
@@ -175,7 +165,7 @@ export default function Hero() {
                 {pad(index + 1)} / {pad(total)}
               </span>
               <span
-                className={`mt-0.5 text-[9px] leading-tight font-medium whitespace-nowrap sm:text-[10px] ${
+                className={`mt-0.5 text-[9px] leading-tight font-medium whitespace-nowrap uppercase sm:text-[10px] ${
                   active ? "text-white" : "text-white/70 group-hover:text-white/90"
                 }`}
               >

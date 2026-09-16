@@ -7,7 +7,6 @@ import { navItems, type NavLink } from "@/lib/site";
 import SearchOverlay from "@/components/SearchOverlay";
 
 const INK = "#3f3832";
-const PRIMARY = "#23ba4a";
 
 function navHref(href: string) {
   return href.startsWith("#") ? `/${href}` : href;
@@ -88,10 +87,10 @@ export default function HeaderBar() {
   }
 
   const linkClass =
-    "shrink-0 rounded-lg px-3 py-1.5 text-[15px] font-medium tracking-[0.01em] whitespace-nowrap transition-colors duration-200 hover:bg-black/5";
+    "shrink-0 px-3 py-1.5 text-[14px] font-medium tracking-[0.02em] whitespace-nowrap text-[#333] uppercase transition-colors duration-200 hover:bg-black/5";
 
   const buttonClass =
-    "inline-flex shrink-0 items-center gap-1.5 bg-pdib-primary px-4 py-2.5 text-[14px] font-bold tracking-[0.06em] whitespace-nowrap text-white uppercase shadow-sm transition-colors duration-200 hover:bg-pdib-primary-hover";
+    "inline-flex shrink-0 items-center gap-1.5 border border-[#001c2a] bg-[#001c2a] px-4 py-2 text-[13px] font-medium tracking-[0.06em] whitespace-nowrap text-white uppercase transition-colors duration-200 hover:bg-white hover:text-[#001c2a]";
 
   const mainNavItems = navItems.filter((item) => item.variant !== "button");
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
@@ -108,7 +107,6 @@ export default function HeaderBar() {
           key={item.label}
           href={navHref(item.href)}
           className={isButton ? buttonClass : linkClass}
-          style={isButton ? undefined : { color: INK }}
           onMouseEnter={scheduleCloseDesktopMenu}
         >
           {item.label}
@@ -133,7 +131,6 @@ export default function HeaderBar() {
                   isOpen ? "bg-black/5" : ""
                 }`
           }
-          style={isButton ? undefined : { color: INK }}
           aria-expanded={isOpen}
           aria-controls={panelId}
           aria-haspopup="true"
@@ -168,8 +165,8 @@ export default function HeaderBar() {
           href={navHref(item.href)}
           className={
             isButton
-              ? "m-4 bg-white px-6 py-3 text-center text-[16px] font-bold tracking-[0.06em] text-pdib-primary uppercase"
-              : "border-b border-white/25 px-6 py-4 text-[17px] font-medium tracking-[0.02em] text-white"
+              ? "m-4 border border-[#001c2a] bg-[#001c2a] px-6 py-3 text-center text-[14px] font-medium tracking-[0.06em] text-white uppercase"
+              : "border-b border-black/10 px-6 py-4 text-[15px] font-semibold tracking-[0.06em] text-[#333] uppercase"
           }
           onClick={() => setMobileOpen(false)}
         >
@@ -179,12 +176,12 @@ export default function HeaderBar() {
     }
 
     return (
-      <div key={item.label} className="border-b border-white/25">
+      <div key={item.label} className="border-b border-black/10">
         <div className="flex items-stretch">
           <Link
             href={navHref(item.href)}
-            className={`flex-1 px-6 py-4 text-[17px] font-medium tracking-[0.02em] ${
-              isButton ? "font-bold text-white uppercase" : "text-white"
+            className={`flex-1 px-6 py-4 text-[15px] font-semibold tracking-[0.06em] uppercase ${
+              isButton ? "text-[#001c2a]" : "text-[#333]"
             }`}
             onClick={() => setMobileOpen(false)}
           >
@@ -192,7 +189,7 @@ export default function HeaderBar() {
           </Link>
           <button
             type="button"
-            className="grid w-14 place-items-center text-white"
+            className="grid w-14 place-items-center text-[#333]"
             aria-label={`${expanded ? "Collapse" : "Expand"} ${item.label} submenu`}
             aria-expanded={expanded}
             onClick={() => setMobileExpanded(expanded ? null : item.label)}
@@ -201,12 +198,12 @@ export default function HeaderBar() {
           </button>
         </div>
         {expanded ? (
-          <div className="bg-black/10 pb-4">
+          <div className="bg-[#f9ddb1]/35 pb-3">
             {submenuLinks(item).map((link) => (
               <Link
                 key={link.label}
                 href={navHref(link.href)}
-                className="block border-b border-white/10 px-6 py-3 pl-8 text-[15px] font-normal leading-snug text-white/95 last:border-b-0"
+                className="block px-6 py-2.5 pl-8 text-[14px] font-normal text-[#333]"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -219,8 +216,33 @@ export default function HeaderBar() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 border-b border-black/5 bg-white">
-      <div className="flex h-[96px] items-center gap-4 px-4 pb-2 sm:px-[4vw] lg:gap-6 lg:px-[5vw]">
+    <header className="fixed inset-x-0 top-0 z-30 bg-white">
+      {/* ACCF-style utility bar */}
+      <div
+        className="flex h-[45px] items-center justify-end gap-0 px-4 sm:px-[4vw] lg:px-[5vw]"
+        style={{ backgroundColor: "#f9ddb1" }}
+      >
+        <button
+          type="button"
+          className="px-4 text-[12px] font-medium tracking-[0.04em] text-[#285761] uppercase transition-opacity hover:opacity-70 sm:px-5"
+          onClick={() => {
+            setMobileOpen(false);
+            setOpenMenu(null);
+            setSearchOpen(true);
+          }}
+        >
+          Search
+        </button>
+        <span aria-hidden="true" className="h-3 w-px bg-[#285761]/35" />
+        <Link
+          href="/contact"
+          className="px-4 text-[12px] font-medium tracking-[0.04em] text-[#285761] uppercase transition-opacity hover:opacity-70 sm:px-5"
+        >
+          Contact us
+        </Link>
+      </div>
+
+      <div className="flex h-[88px] items-center gap-4 border-b border-black/5 px-4 sm:px-[4vw] lg:gap-6 lg:px-[5vw]">
         <Link
           href="/"
           className="relative z-10 flex shrink-0 items-center"
@@ -229,35 +251,13 @@ export default function HeaderBar() {
           <NavLogo className="h-9 sm:h-10 lg:h-11" />
         </Link>
 
-        <div className="relative z-10 ml-auto flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-4">
+        <div className="relative z-10 ml-auto flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-3">
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-1 lg:flex xl:gap-1.5"
+            className="hidden items-center gap-0.5 lg:flex"
           >
             {mainNavItems.map((item) => renderDesktopItem(item))}
-            <Link
-              href="/contact"
-              className={linkClass}
-              style={{ color: INK }}
-              onMouseEnter={scheduleCloseDesktopMenu}
-            >
-              Contact
-            </Link>
           </nav>
-
-          <button
-            type="button"
-            className="grid size-10 shrink-0 place-items-center transition-colors hover:bg-black/5"
-            style={{ color: INK }}
-            aria-label="Open search"
-            onClick={() => {
-              setMobileOpen(false);
-              setOpenMenu(null);
-              setSearchOpen(true);
-            }}
-          >
-            <SearchIcon />
-          </button>
 
           <div className="hidden shrink-0 items-center gap-2 lg:flex">
             {ctaNavItems.map((item) => renderDesktopItem(item))}
@@ -265,7 +265,7 @@ export default function HeaderBar() {
 
           <button
             type="button"
-            className="grid size-10 shrink-0 place-items-center rounded-full bg-white/90 shadow-sm lg:hidden"
+            className="grid size-10 shrink-0 place-items-center lg:hidden"
             style={{ color: INK }}
             aria-label="Open menu"
             aria-expanded={mobileOpen}
@@ -287,7 +287,7 @@ export default function HeaderBar() {
             onClick={() => setMobileOpen(false)}
           />
 
-          <div className="relative z-10 flex h-[96px] items-center justify-between bg-white/95 px-4 sm:px-6">
+          <div className="relative z-10 flex h-[88px] items-center justify-between bg-white px-4 sm:px-6">
             <Link
               href="/"
               className="flex shrink-0 items-center"
@@ -309,18 +309,70 @@ export default function HeaderBar() {
 
           <nav
             aria-label="Mobile"
-            className="absolute top-[96px] right-0 bottom-0 z-10 flex w-[min(86vw,22rem)] flex-col overflow-y-auto sm:w-[min(42vw,24rem)]"
-            style={{ backgroundColor: PRIMARY }}
+            className="absolute top-[88px] right-0 bottom-0 z-10 flex w-[min(86vw,22rem)] flex-col overflow-y-auto bg-white sm:w-[min(42vw,24rem)]"
           >
-            {mainNavItems.map(renderMobileItem)}
+            {mainNavItems.map((item) => {
+              const withMenu = hasSubmenu(item);
+              const expanded = mobileExpanded === item.label;
+              if (!withMenu) {
+                return (
+                  <Link
+                    key={item.label}
+                    href={navHref(item.href)}
+                    className="border-b border-black/10 px-6 py-4 text-[15px] font-semibold tracking-[0.06em] text-[#333] uppercase"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+              return (
+                <div key={item.label} className="border-b border-black/10">
+                  <div className="flex items-stretch">
+                    <Link
+                      href={navHref(item.href)}
+                      className="flex-1 px-6 py-4 text-[15px] font-semibold tracking-[0.06em] text-[#333] uppercase"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                    <button
+                      type="button"
+                      className="grid w-14 place-items-center text-[#333]"
+                      aria-label={`${expanded ? "Collapse" : "Expand"} ${item.label} submenu`}
+                      aria-expanded={expanded}
+                      onClick={() =>
+                        setMobileExpanded(expanded ? null : item.label)
+                      }
+                    >
+                      <Chevron open={expanded} />
+                    </button>
+                  </div>
+                  {expanded ? (
+                    <div className="bg-[#f9ddb1]/35 pb-3">
+                      {submenuLinks(item).map((link) => (
+                        <Link
+                          key={link.label}
+                          href={navHref(link.href)}
+                          className="block px-6 py-2.5 pl-8 text-[14px] font-normal text-[#333]"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
             <Link
               href="/contact"
-              className="border-b border-white/25 px-6 py-4 text-[17px] font-medium tracking-[0.02em] text-white"
+              className="border-b border-black/10 px-6 py-4 text-[15px] font-semibold tracking-[0.06em] text-[#333] uppercase"
               onClick={() => setMobileOpen(false)}
             >
-              Contact
+              Contact us
             </Link>
-            {ctaNavItems.map(renderMobileItem)}
+            {ctaNavItems.map((item) => renderMobileItem(item))}
           </nav>
         </div>
       ) : null}
@@ -392,23 +444,6 @@ function Chevron({ open, size = 18 }: { open: boolean; size?: number }) {
       aria-hidden="true"
     >
       <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      aria-hidden="true"
-    >
-      <circle cx="11" cy="11" r="6.5" />
-      <path d="M16.5 16.5L21 21" strokeLinecap="round" />
     </svg>
   );
 }
