@@ -1,134 +1,134 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
 
 function toHref(href: string) {
   return href.startsWith("#") ? `/${href}` : href;
 }
 
-const aboutLinks = [
-  { href: "/about", label: "About us" },
-  { href: "/about#our-history", label: "Our History" },
-  { href: "/team", label: "Our team" },
-];
-
-const legalLinks = [
-  { href: "/contact", label: "Privacy policy" },
-  { href: "/contact", label: "Terms of service" },
-  { href: "/contact", label: "Cookie policy" },
-];
-
-const connectLinks = [
-  { href: "#", label: "X" },
-  { href: "#", label: "Facebook" },
-  { href: "#", label: "LinkedIn" },
-  { href: "#", label: "YouTube" },
-];
-
-function FooterColumn({
-  title,
-  children,
-}: {
-  title: string;
-  children: ReactNode;
-}) {
-  return (
-    <div>
-      <p className="text-[14px] font-semibold text-pdib-title">{title}</p>
-      <div className="mt-3 flex flex-col gap-2">{children}</div>
-    </div>
-  );
-}
-
-function FooterLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link
-      href={toHref(href)}
-      className="text-[14px] text-pdib-text/60 transition-colors hover:text-pdib-green"
-    >
-      {label}
-    </Link>
-  );
-}
+const columns = [
+  {
+    title: "Home",
+    href: "/",
+    links: [] as { href: string; label: string }[],
+  },
+  {
+    title: "About us",
+    href: "/about",
+    links: [
+      { href: "/about#our-history", label: "Our History" },
+      { href: "/about#mission-vision", label: "Mission and Vision" },
+      { href: "/team", label: "Our team" },
+      { href: "/about#corporate-governance", label: "Corporate Governance" },
+    ],
+  },
+  {
+    title: "What we offer",
+    href: "/#what-we-do",
+    links: [
+      { href: "/financial", label: "Financial" },
+      { href: "/specialized-interventions", label: "Specialized interventions" },
+      { href: "/#focus-areas", label: "Priority Sectors" },
+    ],
+  },
+  {
+    title: "Priority sectors",
+    href: "/#focus-areas",
+    links: [
+      { href: "/fisheries", label: "Fisheries" },
+      { href: "/agriculture", label: "Agriculture" },
+      { href: "/livestock", label: "Livestock" },
+      { href: "/tourism", label: "Tourism" },
+      { href: "/women-youth-led-business", label: "Women & Youth" },
+    ],
+  },
+  {
+    title: "Work with us",
+    href: "/#how-to-apply",
+    links: [
+      { href: "/#how-to-apply", label: "How to Apply" },
+      { href: "/contact", label: "Contact us" },
+      { href: "/#partners-featured", label: "Partners" },
+    ],
+  },
+  {
+    title: "Connect",
+    href: "/contact",
+    links: [
+      { href: "#", label: "X" },
+      { href: "#", label: "Facebook" },
+      { href: "#", label: "LinkedIn" },
+      { href: "#", label: "YouTube" },
+    ],
+  },
+] as const;
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-black/8 bg-[#eef0f8]">
-      <div className="px-6 py-14 sm:px-[6.5vw] sm:py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.4fr)_minmax(240px,0.85fr)] lg:items-start lg:gap-14 xl:gap-20">
-          <div className="flex flex-col justify-between gap-10 lg:min-h-[280px]">
-            <Link
-              href="/"
-              className="inline-flex w-fit"
-              aria-label="Puntland Development & Investment Bank home"
-            >
-              <img
-                src="/Mylogo.png"
-                alt="Puntland Development & Investment Bank"
-                width={798}
-                height={296}
-                className="h-11 w-auto object-contain object-left sm:h-12"
-              />
-            </Link>
+    <footer className="mt-auto">
+      {/* Logo band — white */}
+      <div className="border-t border-black/15 bg-white px-6 py-10 sm:px-[6.5vw] sm:py-12">
+        <div className="flex items-center justify-center">
+          <Link
+            href="/"
+            className="inline-flex"
+            aria-label="Puntland Development & Investment Bank home"
+          >
+            <img
+              src="/Mylogo.png"
+              alt="Puntland Development & Investment Bank"
+              width={798}
+              height={296}
+              className="h-12 w-auto object-contain sm:h-14"
+            />
+          </Link>
+        </div>
+      </div>
 
-            <p className="text-[12px] leading-relaxed text-pdib-text/45 sm:text-[13px]">
-              © {new Date().getFullYear()} Puntland Development &amp; Investment
-              Bank
-            </p>
-          </div>
+      {/* Links + copyright — blue */}
+      <div className="relative overflow-hidden bg-[#0c198a] text-white">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute top-0 right-0 flex h-full w-10 sm:w-14"
+        >
+          <span className="h-full w-1/3 bg-[#1e88e5]" />
+          <span className="h-full w-1/3 bg-pdib-lime" />
+          <span className="h-full w-1/3 bg-[#e67e22]" />
+        </div>
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:gap-x-12">
-            <div className="flex flex-col gap-10">
-              <FooterColumn title="About">
-                {aboutLinks.map((link) => (
-                  <FooterLink key={link.label} {...link} />
-                ))}
-              </FooterColumn>
-
-              <FooterColumn title="PDIB">
-                <p className="text-[14px] leading-[1.55] text-pdib-text/60">
-                  Garowe, Puntland
-                  <br />
-                  Somalia
-                </p>
-                <a
-                  href="mailto:info@pdib.so"
-                  className="text-[14px] text-pdib-text/60 transition-colors hover:text-pdib-green"
+        <div className="border-t border-white/20 px-6 py-12 sm:px-[6.5vw] sm:py-14 lg:pr-20">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
+            {columns.map((column) => (
+              <div key={column.title}>
+                <Link
+                  href={toHref(column.href)}
+                  className="text-[14px] font-semibold text-white transition-opacity hover:opacity-80"
                 >
-                  info@pdib.so
-                </a>
-              </FooterColumn>
-            </div>
-
-            <div className="flex flex-col gap-10">
-              <FooterColumn title="Legal">
-                {legalLinks.map((link) => (
-                  <FooterLink key={link.label} {...link} />
-                ))}
-              </FooterColumn>
-
-              <FooterColumn title="Connect">
-                {connectLinks.map((link) => (
-                  <FooterLink key={link.label} {...link} />
-                ))}
-              </FooterColumn>
-            </div>
+                  {column.title}
+                </Link>
+                {column.links.length > 0 ? (
+                  <ul className="mt-3 flex list-none flex-col gap-2 p-0">
+                    {column.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          href={toHref(link.href)}
+                          className="text-[13px] text-white/75 transition-colors hover:text-white"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
           </div>
+        </div>
 
-          <aside className="bg-linear-to-br from-[#e8f6ee] via-[#eef8f2] to-[#e7f3fc] p-7 sm:p-8">
-            <h2 className="text-[20px] font-semibold tracking-tight text-pdib-title sm:text-[22px]">
-              Apply for funding
-            </h2>
-            <p className="mt-3 text-[14px] leading-[1.55] text-pdib-text/65">
-              Be the first to explore PDIB financing opportunities and how to
-              apply.
-            </p>
-            <Link
-              href="/#how-to-apply"
-              className="mt-6 inline-flex items-center justify-center bg-pdib-title px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-pdib-green"
-            >
-              Get started
-            </Link>
-          </aside>
+        <div className="border-t border-white/20 px-6 py-5 sm:px-[6.5vw] lg:pr-20">
+          <p className="text-center text-[12px] text-white/70 sm:text-[13px]">
+            Copyright © {year} — Puntland Development &amp; Investment Bank
+          </p>
         </div>
       </div>
     </footer>
