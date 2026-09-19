@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 const slides = [
   {
     src: "/slides/fisheries-catch.jpg",
-    alt: "A fisherman holding a freshly caught fish at sunset over coastal waters",
-    object: "object-cover object-[center_45%]",
+    alt: "Fishermen carrying a large shark along a Puntland beach with boats offshore",
+    object: "object-cover object-[center_50%]",
     title: "Fisheries & the Blue Economy",
     body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
     href: "/fisheries",
@@ -26,9 +26,9 @@ const slides = [
     tab: "Agriculture",
   },
   {
-    src: "/slides/livestock-goats.jpg",
-    alt: "Goats grazing in a green pasture",
-    object: "object-cover object-[center_40%]",
+    src: "/slides/livestock-herd.jpg",
+    alt: "A large herd of camels crossing dry reddish terrain under a blue sky",
+    object: "object-cover object-[center_58%] scale-105",
     title: "Livestock Sector",
     body: "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
     href: "/livestock",
@@ -46,9 +46,9 @@ const slides = [
     tab: "Renewable Energy",
   },
   {
-    src: "/slides/tourism-coast.jpg",
-    alt: "Aerial view of a Puntland beach and turquoise coastline",
-    object: "object-cover object-center",
+    src: "/slides/tourism-puntland.jpg",
+    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
+    object: "object-cover object-center scale-105",
     title: "Tourism in Puntland",
     body: "Financing hospitality, destinations, and visitor experiences that create jobs and support local communities.",
     href: "/tourism",
@@ -58,7 +58,7 @@ const slides = [
   {
     src: "/slides/women-youth-led-business.jpg",
     alt: "A woman entrepreneur working at a small grocery stall",
-    object: "object-cover object-[center_35%]",
+    object: "object-cover object-top",
     title: "Women and Youth Led Business",
     body: "Financing women- and youth-led enterprises so founders can invest, grow, and create jobs across Puntland.",
     href: "/women-youth-led-business",

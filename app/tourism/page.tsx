@@ -16,10 +16,11 @@ export default function TourismPage() {
     <main>
       <Header />
       <SectorHero
-        src="/slides/tourism-coast.jpg"
-        alt="Aerial view of a Puntland beach and turquoise coastline"
+        src="/slides/tourism-puntland.jpg"
+        alt="Aerial view of a busy turquoise beach with tents, banners, and boats"
         title="Tourism"
         intro={intro}
+        objectClassName="object-cover object-center"
       />
 
       <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">

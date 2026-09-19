@@ -22,6 +22,10 @@ const partners = [
     src: "/partners/shuraako.jpg",
     scale: 1.45,
   },
+  {
+    name: "Ministry of Finance, Puntland",
+    src: "/partners/ministry-of-finance-puntland.jpg",
+  },
 ] as const;
 
 function LogoTrack({ ariaHidden }: { ariaHidden?: boolean }) {

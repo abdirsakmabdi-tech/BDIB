@@ -20,7 +20,7 @@ export default function WomenYouthLedBusinessPage() {
         alt="A woman entrepreneur working at a small grocery stall"
         title="Women and Youth Led Business"
         intro={intro}
-        objectClassName="object-cover object-[center_35%]"
+        objectClassName="object-cover object-top"
       />
 
       <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">

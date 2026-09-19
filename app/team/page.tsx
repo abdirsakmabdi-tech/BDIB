@@ -40,12 +40,10 @@ export default function TeamPage() {
     <main>
       <Header />
       <SectorHero
-        src="/about-hero.jpg"
-        alt="PDIB leadership and team"
+        variant="solid"
         title="Our team"
         intro={intro}
         eyebrow="About PDIB"
-        objectClassName="object-cover object-[center_40%]"
         compactTitle
       />
 

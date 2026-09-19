@@ -7,7 +7,7 @@ const focusAreas = [
     title: "Fisheries (the Blue Economy)",
     href: "/fisheries",
     src: "/slides/fisheries-catch.jpg",
-    alt: "A fisherman holding a freshly caught fish at sunset over coastal waters",
+    alt: "Fishermen carrying a large shark along a Puntland beach with boats offshore",
     description:
       "Financing for boats, cold chain, processing, and coastal livelihoods along Puntland’s coastline.",
   },
@@ -33,8 +33,8 @@ const focusAreas = [
     label: "Livestock",
     title: "Livestock Financing",
     href: "/livestock",
-    src: "/slides/livestock-goats.jpg",
-    alt: "A herd of goats grazing in a green pasture",
+    src: "/slides/livestock-herd.jpg",
+    alt: "A large herd of camels crossing dry reddish terrain under a blue sky",
     description:
       "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
   },
@@ -60,8 +60,8 @@ const focusAreas = [
     label: "Tourism",
     title: "Tourism",
     href: "/tourism",
-    src: "/slides/tourism-coast.jpg",
-    alt: "Aerial view of a Puntland beach and turquoise coastline",
+    src: "/slides/tourism-puntland.jpg",
+    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
     description:
       "Empowering tourism in Puntland — financing hospitality, destinations, and visitor experiences that create jobs.",
   },

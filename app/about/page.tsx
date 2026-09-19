@@ -16,12 +16,10 @@ export default function AboutPage() {
     <main>
       <Header />
       <SectorHero
-        src="/about-hero.jpg"
-        alt="About the Puntland Development & Investment Bank"
+        variant="solid"
         title="About us"
         intro={intro}
         eyebrow="About PDIB"
-        objectClassName="object-cover object-center"
       />
 
       <article className="bg-white px-6 pt-16 pb-24 sm:px-[6.5vw] sm:pt-24 sm:pb-32">

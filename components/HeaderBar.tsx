@@ -219,12 +219,12 @@ export default function HeaderBar() {
     <header className="fixed inset-x-0 top-0 z-30 bg-white">
       {/* ACCF-style utility bar */}
       <div
-        className="flex h-[45px] items-center justify-end gap-0 px-4 sm:px-[4vw] lg:px-[5vw]"
+        className="flex h-6 items-center justify-end gap-0 px-4 sm:px-[4vw] lg:px-[5vw]"
         style={{ backgroundColor: "#f9ddb1" }}
       >
         <button
           type="button"
-          className="px-4 text-[12px] font-medium tracking-[0.04em] text-[#285761] uppercase transition-opacity hover:opacity-70 sm:px-5"
+          className="px-3 text-[11px] font-medium tracking-[0.04em] text-[#285761] uppercase transition-opacity hover:opacity-70 sm:px-4"
           onClick={() => {
             setMobileOpen(false);
             setOpenMenu(null);
@@ -233,10 +233,10 @@ export default function HeaderBar() {
         >
           Search
         </button>
-        <span aria-hidden="true" className="h-3 w-px bg-[#285761]/35" />
+        <span aria-hidden="true" className="h-2.5 w-px bg-[#285761]/35" />
         <Link
           href="/contact"
-          className="px-4 text-[12px] font-medium tracking-[0.04em] text-[#285761] uppercase transition-opacity hover:opacity-70 sm:px-5"
+          className="px-3 text-[11px] font-medium tracking-[0.04em] text-[#285761] uppercase transition-opacity hover:opacity-70 sm:px-4"
         >
           Contact us
         </Link>

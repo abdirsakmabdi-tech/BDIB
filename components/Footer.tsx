@@ -6,11 +6,6 @@ function toHref(href: string) {
 
 const columns = [
   {
-    title: "Home",
-    href: "/",
-    links: [] as { href: string; label: string }[],
-  },
-  {
     title: "About us",
     href: "/about",
     links: [
@@ -66,38 +61,25 @@ export default function Footer() {
 
   return (
     <footer className="mt-auto">
-      {/* Logo band — white */}
-      <div className="border-t border-black/15 bg-white px-6 py-10 sm:px-[6.5vw] sm:py-12">
-        <div className="flex items-center justify-center">
-          <Link
-            href="/"
-            className="inline-flex"
-            aria-label="Puntland Development & Investment Bank home"
-          >
-            <img
-              src="/Mylogo.png"
-              alt="Puntland Development & Investment Bank"
-              width={798}
-              height={296}
-              className="h-12 w-auto object-contain sm:h-14"
-            />
-          </Link>
-        </div>
-      </div>
-
-      {/* Links + copyright — blue */}
       <div className="relative overflow-hidden bg-[#0c198a] text-white">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-0 right-0 flex h-full w-10 sm:w-14"
-        >
-          <span className="h-full w-1/3 bg-[#1e88e5]" />
-          <span className="h-full w-1/3 bg-pdib-lime" />
-          <span className="h-full w-1/3 bg-[#e67e22]" />
-        </div>
-
-        <div className="border-t border-white/20 px-6 py-12 sm:px-[6.5vw] sm:py-14 lg:pr-20">
+        <div className="border-t border-white/20 px-6 py-12 sm:px-[6.5vw] sm:py-14">
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
+            <div className="col-span-2 flex items-start sm:col-span-1">
+              <Link
+                href="/"
+                className="inline-flex items-center rounded bg-white px-5 py-4"
+                aria-label="Puntland Development & Investment Bank home"
+              >
+                <img
+                  src="/Mylogo.png"
+                  alt="Puntland Development & Investment Bank"
+                  width={798}
+                  height={296}
+                  className="h-14 w-auto object-contain object-left sm:h-16"
+                />
+              </Link>
+            </div>
+
             {columns.map((column) => (
               <div key={column.title}>
                 <Link
@@ -106,26 +88,24 @@ export default function Footer() {
                 >
                   {column.title}
                 </Link>
-                {column.links.length > 0 ? (
-                  <ul className="mt-3 flex list-none flex-col gap-2 p-0">
-                    {column.links.map((link) => (
-                      <li key={link.label}>
-                        <Link
-                          href={toHref(link.href)}
-                          className="text-[13px] text-white/75 transition-colors hover:text-white"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
+                <ul className="mt-3 flex list-none flex-col gap-2 p-0">
+                  {column.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={toHref(link.href)}
+                        className="text-[13px] text-white/75 transition-colors hover:text-white"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="border-t border-white/20 px-6 py-5 sm:px-[6.5vw] lg:pr-20">
+        <div className="border-t border-white/20 px-6 py-5 sm:px-[6.5vw]">
           <p className="text-center text-[12px] text-white/70 sm:text-[13px]">
             Copyright © {year} — Puntland Development &amp; Investment Bank
           </p>

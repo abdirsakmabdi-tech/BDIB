@@ -22,20 +22,29 @@ const partners = [
   {
     name: "Shuraako Capital",
     src: "/partners/shuraako.jpg",
+    scale: 1.4,
+  },
+  {
+    name: "Ministry of Finance, Puntland",
+    src: "/partners/ministry-of-finance-puntland.jpg",
   },
 ] as const;
 
 type Partner = (typeof partners)[number];
 
 function LogoCell({ partner }: { partner: Partner }) {
+  const scale = "scale" in partner ? partner.scale : 1;
+
   return (
-    <div className="relative h-20 w-full min-w-0 sm:h-24 lg:h-28">
+    <div className="flex h-24 w-full min-w-0 items-center justify-start sm:h-28 lg:h-32">
       <Image
         src={partner.src}
         alt={partner.name}
-        fill
-        sizes="(max-width: 1024px) 30vw, 180px"
-        className="object-contain object-left"
+        width={320}
+        height={128}
+        sizes="(max-width: 1024px) 34vw, 260px"
+        className="h-[4.5rem] w-auto max-w-full object-contain object-left sm:h-20 lg:h-24"
+        style={{ transform: `scale(${scale})`, transformOrigin: "left center" }}
       />
     </div>
   );
@@ -62,9 +71,9 @@ export default function PartnersFeatured() {
                 PDIB works with trusted development partners,
               </h3>
               <p className="mt-5 max-w-md text-[15px] leading-[1.7] text-[#5a5a5a] sm:text-[16px]">
-                including UNDP, KfW, FMO, IFC / World Bank Group, and Shuraako
-                Capital — collaborating to expand access to finance and grow
-                Puntland&apos;s productive sectors.
+                including UNDP, KfW, FMO, IFC, Shuraako Capital, and the
+                Ministry of Finance of Puntland — collaborating to expand access
+                to finance and grow Puntland&apos;s productive sectors.
               </p>
               <Link
                 href="#partners-featured"
@@ -76,17 +85,10 @@ export default function PartnersFeatured() {
           </Reveal>
 
           <Reveal delayMs={100}>
-            <div className="flex w-full flex-col gap-8 sm:gap-10">
-              <div className="grid w-full grid-cols-3 items-center gap-x-4 sm:gap-x-8">
-                {partners.slice(0, 3).map((partner) => (
-                  <LogoCell key={partner.name} partner={partner} />
-                ))}
-              </div>
-              <div className="grid w-full grid-cols-3 items-center gap-x-4 sm:gap-x-8">
-                {partners.slice(3).map((partner) => (
-                  <LogoCell key={partner.name} partner={partner} />
-                ))}
-              </div>
+            <div className="grid w-full grid-cols-3 items-center justify-items-start gap-x-4 gap-y-0 sm:gap-x-8">
+              {partners.map((partner) => (
+                <LogoCell key={partner.name} partner={partner} />
+              ))}
             </div>
           </Reveal>
         </div>

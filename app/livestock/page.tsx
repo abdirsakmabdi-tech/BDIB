@@ -16,10 +16,11 @@ export default function LivestockPage() {
     <main>
       <Header />
       <SectorHero
-        src="/livestock-hero.jpg"
-        alt="Livestock grazing in Puntland"
+        src="/slides/livestock-herd.jpg"
+        alt="A large herd of camels crossing dry reddish terrain under a blue sky"
         title="Livestock Financing"
         intro={intro}
+        objectClassName="object-cover object-[center_58%]"
       />
 
       <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">

@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+// Swap these imports to restore the previous left-aligned carousel hero:
+// import Hero from "@/components/Hero";
+import Hero from "@/components/HeroSpotlight";
 import WhoWeAre from "@/components/WhoWeAre";
 import PartnersFeatured from "@/components/PartnersFeatured";
 import WhatWeDo from "@/components/WhatWeDo";
