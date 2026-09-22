@@ -19,7 +19,7 @@ export default function AboutPage() {
         variant="solid"
         title="About us"
         intro={intro}
-        eyebrow="About PDIB"
+        eyebrow=""
       />
 
       <article className="bg-white px-6 pt-16 pb-24 sm:px-[6.5vw] sm:pt-24 sm:pb-32">

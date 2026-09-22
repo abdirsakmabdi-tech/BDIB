@@ -25,8 +25,10 @@ export default function SectorHero({
 
   return (
     <section
-      className={`relative h-svh min-h-[100vh] overflow-hidden ${
-        isSolid ? "bg-[#036522]" : ""
+      className={`relative overflow-hidden ${
+        isSolid
+          ? "flex h-[70svh] min-h-[280px] items-center bg-[#036522]/80 pt-[max(6.5rem,14vh)]"
+          : "h-svh min-h-[100vh]"
       }`}
     >
       {!isSolid && src ? (
@@ -44,17 +46,25 @@ export default function SectorHero({
         </>
       ) : null}
 
-      <div className="absolute inset-0 z-10 flex items-center px-6 sm:px-[6.5vw]">
+      <div
+        className={`z-10 flex items-center px-6 sm:px-[6.5vw] ${
+          isSolid ? "relative w-full py-10 sm:py-12" : "absolute inset-0"
+        }`}
+      >
         <div className="max-w-xl text-left">
-          <p
-            className={`text-[12px] font-bold tracking-[0.18em] uppercase sm:text-[13px] ${
-              isSolid ? "text-white/90" : "text-pdib-primary"
-            }`}
-          >
-            {eyebrow}
-          </p>
+          {eyebrow ? (
+            <p
+              className={`text-[12px] font-bold tracking-[0.18em] uppercase sm:text-[13px] ${
+                isSolid ? "text-white/90" : "text-pdib-primary"
+              }`}
+            >
+              {eyebrow}
+            </p>
+          ) : null}
           <h1
-            className={`mt-3 font-sans leading-snug font-medium tracking-tight text-white ${
+            className={`font-sans leading-snug font-medium tracking-tight text-white ${
+              eyebrow ? "mt-3" : ""
+            } ${
               compactTitle
                 ? "text-[clamp(16px,1.6vw,20px)]"
                 : "text-[clamp(22px,2.4vw,28px)]"

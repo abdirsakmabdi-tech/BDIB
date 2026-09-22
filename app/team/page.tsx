@@ -43,7 +43,7 @@ export default function TeamPage() {
         variant="solid"
         title="Our team"
         intro={intro}
-        eyebrow="About PDIB"
+        eyebrow=""
         compactTitle
       />
 
