@@ -31,6 +31,20 @@ export default function SectorHero({
           : "h-svh min-h-[100vh]"
       }`}
     >
+      {isSolid ? (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <Image
+            src="/pdib-mark-hero-blend.png"
+            alt=""
+            fill
+            priority
+            quality={95}
+            sizes="100vw"
+            className="object-contain object-[88%_center] opacity-25 mix-blend-soft-light sm:object-[82%_center] lg:object-[78%_center]"
+          />
+        </div>
+      ) : null}
+
       {!isSolid && src ? (
         <>
           <Image

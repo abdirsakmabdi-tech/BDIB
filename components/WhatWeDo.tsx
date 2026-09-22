@@ -57,15 +57,6 @@ const focusAreas = [
       "Investment in schools, health facilities, water, and community infrastructure for inclusive growth.",
   },
   {
-    label: "Tourism",
-    title: "Tourism",
-    href: "/tourism",
-    src: "/slides/tourism-puntland.jpg",
-    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
-    description:
-      "Empowering tourism in Puntland — financing hospitality, destinations, and visitor experiences that create jobs.",
-  },
-  {
     label: "Export & Manufacturing",
     title: "Export and manufacturing",
     href: "#export-and-manufacturing",
@@ -109,6 +100,15 @@ const focusAreas = [
     alt: "A woman entrepreneur working at a small grocery stall",
     description:
       "Financing women- and youth-led enterprises so founders can invest, grow, and create jobs across Puntland.",
+  },
+  {
+    label: "Tourism",
+    title: "Tourism Financing",
+    href: "/tourism",
+    src: "/slides/tourism-puntland.jpg",
+    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
+    description:
+      "Support for hospitality, coastal destinations, and visitor enterprises that create jobs and grow the visitor economy.",
   },
 ];
 
