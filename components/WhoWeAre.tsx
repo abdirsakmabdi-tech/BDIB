@@ -86,7 +86,7 @@ export default function WhoWeAre() {
           <div className="mx-auto mt-5 max-w-2xl text-center sm:mt-6">
             <p className="text-[15px] leading-[1.7] text-white/90 sm:text-[16px]">
               Puntland&apos;s leading development finance institution —
-              providing affordable medium- and long-term financing that creates
+              providing affordable short, medium- and long-term financing that creates
               jobs, boosts productivity, and strengthens the economy.
             </p>
             <div className="mt-7">

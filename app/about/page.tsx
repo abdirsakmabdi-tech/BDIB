@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const intro =
-  "Puntland’s leading development finance institution — supporting sustainable economic growth through medium- and long-term financing.";
+  "Puntland’s leading development finance institution — supporting sustainable economic growth through short, medium- and long-term financing.";
 
 export default function AboutPage() {
   return (
@@ -38,7 +38,7 @@ export default function AboutPage() {
               The Puntland Development and Investment Bank (PDIB) is Puntland&apos;s{" "}
               <strong>leading development finance institution</strong>, dedicated
               to supporting sustainable economic growth. PDIB provides affordable{" "}
-              <strong>medium- and long-term financing</strong> for businesses and
+              <strong>short, medium- and long-term financing</strong> for businesses and
               infrastructure projects that create jobs, boost productivity, and
               strengthen the economy.
             </p>
