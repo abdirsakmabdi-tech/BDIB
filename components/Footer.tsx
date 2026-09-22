@@ -62,46 +62,61 @@ export default function Footer() {
   return (
     <footer className="mt-auto">
       <div className="relative overflow-hidden bg-[#0c198a] text-white">
-        <div className="border-t border-white/20 px-6 py-12 sm:px-[6.5vw] sm:py-14">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
-            <div className="col-span-2 flex items-start sm:col-span-1">
-              <Link
-                href="/"
-                className="inline-flex items-center rounded bg-white px-5 py-4"
-                aria-label="Puntland Development & Investment Bank home"
-              >
-                <img
-                  src="/Mylogo.png"
-                  alt="Puntland Development & Investment Bank"
-                  width={798}
-                  height={296}
-                  className="h-14 w-auto object-contain object-left sm:h-16"
-                />
-              </Link>
-            </div>
+        <div className="flex flex-col lg:flex-row">
+          {/* Logo carve — white panel with soft right curve, contained to this column */}
+          <div className="relative flex shrink-0 items-center justify-center bg-white px-6 py-10 sm:px-[6.5vw] lg:w-[240px] lg:justify-start lg:bg-transparent lg:px-8 lg:py-14 xl:w-[280px]">
+            <svg
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-[calc(100%+2.5rem)] lg:block"
+              viewBox="0 0 140 100"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0 0 H108 C128 22 128 78 108 100 H0 Z"
+                fill="#ffffff"
+              />
+            </svg>
 
-            {columns.map((column) => (
-              <div key={column.title}>
-                <Link
-                  href={toHref(column.href)}
-                  className="text-[14px] font-semibold text-white transition-opacity hover:opacity-80"
-                >
-                  {column.title}
-                </Link>
-                <ul className="mt-3 flex list-none flex-col gap-2 p-0">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={toHref(link.href)}
-                        className="text-[13px] text-white/75 transition-colors hover:text-white"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <Link
+              href="/"
+              className="relative z-10 inline-flex items-center"
+              aria-label="Puntland Development & Investment Bank home"
+            >
+              <img
+                src="/pdib-logo-footer.png"
+                alt="Puntland Development & Investment Bank"
+                width={300}
+                height={112}
+                className="h-16 w-auto object-contain object-left sm:h-[4.5rem]"
+              />
+            </Link>
+          </div>
+
+          <div className="min-w-0 flex-1 px-6 py-12 sm:px-[6.5vw] sm:py-14 lg:px-10 lg:pl-12">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-6">
+              {columns.map((column) => (
+                <div key={column.title}>
+                  <Link
+                    href={toHref(column.href)}
+                    className="text-[14px] font-semibold text-white transition-opacity hover:opacity-80"
+                  >
+                    {column.title}
+                  </Link>
+                  <ul className="mt-3 flex list-none flex-col gap-2 p-0">
+                    {column.links.map((link) => (
+                      <li key={link.label}>
+                        <Link
+                          href={toHref(link.href)}
+                          className="text-[13px] text-white/75 transition-colors hover:text-white"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

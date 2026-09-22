@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 
 export default function WhoWeAre() {
   return (
-    <section id="who-we-are" className="bg-[#036522]">
+    <section id="who-we-are" className="bg-[#036522]/80">
       <div className="px-6 py-16 sm:px-[6.5vw] sm:py-20 lg:py-24">
         <Reveal>
           <div className="w-fit">

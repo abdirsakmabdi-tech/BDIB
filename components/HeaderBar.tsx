@@ -90,7 +90,7 @@ export default function HeaderBar() {
     "shrink-0 px-3 py-1.5 text-[14px] font-medium tracking-[0.02em] whitespace-nowrap text-[#333] uppercase transition-colors duration-200 hover:bg-black/5";
 
   const buttonClass =
-    "inline-flex shrink-0 items-center gap-1.5 border border-[#001c2a] bg-[#001c2a] px-4 py-2 text-[13px] font-medium tracking-[0.06em] whitespace-nowrap text-white uppercase transition-colors duration-200 hover:bg-white hover:text-[#001c2a]";
+    "inline-flex shrink-0 items-center gap-1.5 border border-pdib-primary bg-pdib-primary px-4 py-2 text-[13px] font-medium tracking-[0.06em] whitespace-nowrap text-pdib-title uppercase transition-colors duration-200 hover:bg-pdib-primary-hover";
 
   const mainNavItems = navItems.filter((item) => item.variant !== "button");
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
@@ -165,7 +165,7 @@ export default function HeaderBar() {
           href={navHref(item.href)}
           className={
             isButton
-              ? "m-4 border border-[#001c2a] bg-[#001c2a] px-6 py-3 text-center text-[14px] font-medium tracking-[0.06em] text-white uppercase"
+              ? "m-4 border border-pdib-primary bg-pdib-primary px-6 py-3 text-center text-[14px] font-medium tracking-[0.06em] text-pdib-title uppercase"
               : "border-b border-black/10 px-6 py-4 text-[15px] font-semibold tracking-[0.06em] text-[#333] uppercase"
           }
           onClick={() => setMobileOpen(false)}
@@ -248,7 +248,7 @@ export default function HeaderBar() {
           className="relative z-10 flex shrink-0 items-center"
           aria-label="Puntland Development & Investment Bank home"
         >
-          <NavLogo className="h-9 sm:h-10 lg:h-11" />
+          <NavLogo className="h-11 sm:h-12 lg:h-14" />
         </Link>
 
         <div className="relative z-10 ml-auto flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-3">
@@ -294,7 +294,7 @@ export default function HeaderBar() {
               aria-label="Puntland Development & Investment Bank home"
               onClick={() => setMobileOpen(false)}
             >
-              <NavLogo className="h-9 sm:h-10" />
+              <NavLogo className="h-11 sm:h-12" />
             </Link>
             <button
               type="button"

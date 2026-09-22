@@ -46,8 +46,8 @@ export default function BuildingInfrastructure() {
           sizes="100vw"
           className="object-cover object-[center_70%]"
         />
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/30 to-black/25" />
+        <div className="absolute inset-0 bg-[#036522]/70" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#036522]/80 via-[#036522]/40 to-[#036522]/30" />
       </Reveal>
       <div className="relative z-10 grid w-full grid-cols-1 gap-12 px-6 sm:px-[6.5vw] lg:grid-cols-2 lg:gap-16 xl:gap-24">
         <OverlayList title="Services Offered" items={services} />

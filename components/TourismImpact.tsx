@@ -63,26 +63,31 @@ const slides = [
 
 const SLIDE_INTERVAL_MS = 6000;
 
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
+
 export default function TourismImpact() {
   const [current, setCurrent] = useState(0);
   const slide = slides[current];
+  const total = slides.length;
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = setInterval(
-      () => setCurrent((index) => (index + 1) % slides.length),
+      () => setCurrent((index) => (index + 1) % total),
       SLIDE_INTERVAL_MS,
     );
     return () => clearInterval(timer);
-  }, [current]);
+  }, [current, total]);
 
   return (
     <section
       id="priority-sectors-impact"
-      className="relative h-[min(78vh,720px)] min-h-[520px] overflow-hidden bg-white"
+      className="relative h-[min(78vh,720px)] min-h-[520px] overflow-hidden bg-[#0a1628]"
     >
-      <div className="absolute inset-0 lg:right-[min(42%,460px)]">
+      <div className="absolute inset-0">
         {slides.map((item, index) => (
           <Image
             key={item.src}
@@ -90,7 +95,7 @@ export default function TourismImpact() {
             alt={index === current ? item.alt : ""}
             fill
             quality={90}
-            sizes="(max-width: 1024px) 100vw, 70vw"
+            sizes="100vw"
             className={`${item.object} transition-opacity duration-1000 ease-out ${
               index === current ? "opacity-100" : "opacity-0"
             }`}
@@ -99,74 +104,66 @@ export default function TourismImpact() {
         ))}
       </div>
 
-      <div className="relative z-10 flex h-full items-end justify-end p-4 sm:p-5 lg:items-center lg:justify-end lg:p-6">
-        <aside className="flex w-full max-h-[min(85%,560px)] flex-col overflow-hidden border border-white/20 bg-[#001c2a] lg:w-[min(42%,440px)]">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-transparent"
+      />
+
+      <div className="relative z-10 flex h-full items-center justify-start px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+        <aside
+          key={slide.src}
+          className="flex w-full max-w-[min(420px,92vw)] flex-col rounded-2xl bg-[#036522] px-6 py-7 shadow-[0_16px_48px_rgba(0,0,0,0.28)] transition-opacity duration-500 sm:rounded-3xl sm:px-8 sm:py-8"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] font-semibold tracking-[0.14em] text-white/55 uppercase">
+              {pad(current + 1)} / {pad(total)}
+            </span>
+            <span aria-hidden="true" className="h-px flex-1 bg-white/20" />
+          </div>
+
+          <p className="mt-4 text-[12px] font-bold tracking-[0.16em] text-white uppercase">
+            {slide.label}
+          </p>
+
+          <h2 className="mt-2 font-sans text-[clamp(22px,2.4vw,32px)] leading-[1.18] font-semibold tracking-tight text-white">
+            {slide.headline}
+          </h2>
+
+          <p className="mt-3 max-w-[34ch] text-[14px] leading-[1.6] text-white/80 sm:text-[15px]">
+            {slide.body}
+          </p>
+
+          <Link
+            href={slide.href}
+            className="mt-6 inline-flex items-center gap-2 self-start rounded-full bg-white px-5 py-2.5 text-[13px] font-semibold tracking-wide text-[#036522] transition-colors hover:bg-[#f0f4f8]"
+          >
+            Learn more
+            <span aria-hidden="true">→</span>
+          </Link>
+
           <div
-            aria-hidden="true"
-            className="h-1.5 w-full shrink-0 bg-[#f9ddb1]"
-          />
-
-          <div className="flex flex-col px-5 py-6 sm:px-7 sm:py-7 lg:px-8 lg:py-8">
-            <div
-              key={slide.src}
-              className="text-left transition-opacity duration-500"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-[11px] font-semibold tracking-[0.14em] text-white/55 uppercase">
-                  {String(current + 1).padStart(2, "0")} /{" "}
-                  {String(slides.length).padStart(2, "0")}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="h-px flex-1 bg-white/20"
+            role="tablist"
+            aria-label="Priority sector slides"
+            className="mt-7 flex items-center gap-2"
+          >
+            {slides.map((item, index) => {
+              const active = index === current;
+              return (
+                <button
+                  key={item.src}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-label={`Show ${item.label}`}
+                  onClick={() => setCurrent(index)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    active
+                      ? "w-8 bg-white"
+                      : "w-1.5 bg-white/30 hover:bg-white/50"
+                  }`}
                 />
-              </div>
-
-              <p className="mt-3 text-[12px] font-bold tracking-[0.16em] text-white uppercase">
-                {slide.label}
-              </p>
-
-              <h2 className="mt-2 font-sans text-[clamp(20px,2.3vw,30px)] leading-[1.18] font-semibold tracking-tight text-white">
-                {slide.headline}
-              </h2>
-
-              <p className="mt-3 max-w-[34ch] text-[14px] leading-[1.6] text-white/80">
-                {slide.body}
-              </p>
-
-              <Link
-                href={slide.href}
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-[13px] font-medium tracking-wide text-[#001c2a] transition-colors hover:bg-transparent hover:text-white hover:ring-1 hover:ring-white"
-              >
-                Learn more
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-
-            <div
-              role="tablist"
-              aria-label="Priority sector slides"
-              className="mt-6 flex items-center gap-2"
-            >
-              {slides.map((item, index) => {
-                const active = index === current;
-                return (
-                  <button
-                    key={item.src}
-                    type="button"
-                    role="tab"
-                    aria-selected={active}
-                    aria-label={`Show ${item.label}`}
-                    onClick={() => setCurrent(index)}
-                    className={`h-1.5 rounded-full transition-all ${
-                      active
-                        ? "w-8 bg-white"
-                        : "w-1.5 bg-white/30 hover:bg-white/50"
-                    }`}
-                  />
-                );
-              })}
-            </div>
+              );
+            })}
           </div>
         </aside>
       </div>
