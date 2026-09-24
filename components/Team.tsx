@@ -136,11 +136,16 @@ function MemberCard({ member }: { member: Member }) {
   return (
     <Link
       href={`/team/${member.slug}`}
-      className="group flex flex-col"
+      className="group relative flex flex-col"
       aria-label={`${member.name}, ${member.role}`}
     >
-      <div className="flex aspect-[3/4] w-full items-center justify-center rounded-t-2xl bg-[#5a6b52] transition-opacity group-hover:opacity-90">
+      <div className="relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#5a6b52]">
         <PersonIcon />
+        <div className="absolute inset-0 flex items-center justify-center bg-[#d8e5d0] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <span className="text-[14px] font-semibold tracking-[0.08em] text-[#036522] uppercase">
+            Coming soon
+          </span>
+        </div>
       </div>
     </Link>
   );
