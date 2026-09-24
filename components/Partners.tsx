@@ -18,6 +18,10 @@ const partners = [
     src: "/partners/ifc.png",
   },
   {
+    name: "The World Bank",
+    src: "/partners/world-bank.png",
+  },
+  {
     name: "Shuraako Capital",
     src: "/partners/shuraako.jpg",
     scale: 1.45,
