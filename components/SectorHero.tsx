@@ -31,20 +31,6 @@ export default function SectorHero({
           : "h-svh min-h-[100vh]"
       }`}
     >
-      {isSolid ? (
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <Image
-            src="/pdib-mark-hero-blend.png"
-            alt=""
-            fill
-            priority
-            quality={95}
-            sizes="100vw"
-            className="object-contain object-[88%_center] opacity-25 mix-blend-soft-light sm:object-[82%_center] lg:object-[78%_center]"
-          />
-        </div>
-      ) : null}
-
       {!isSolid && src ? (
         <>
           <Image
@@ -60,9 +46,25 @@ export default function SectorHero({
         </>
       ) : null}
 
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
+        <Image
+          src="/pdib-mark-hero-blend.png"
+          alt=""
+          fill
+          priority={isSolid}
+          quality={90}
+          sizes="100vw"
+          className={`object-contain object-[88%_center] mix-blend-soft-light sm:object-[82%_center] lg:object-[78%_center] ${
+            isSolid ? "opacity-25" : "opacity-35"
+          }`}
+        />
+      </div>
+
       <div
-        className={`z-10 flex items-center px-6 sm:px-[6.5vw] ${
-          isSolid ? "relative w-full py-10 sm:py-12" : "absolute inset-0"
+        className={`z-10 flex items-center ${
+          isSolid
+            ? "relative w-full px-4 py-10 sm:px-[4vw] sm:py-12 lg:px-[5vw]"
+            : "absolute inset-0 px-6 sm:px-[6.5vw]"
         }`}
       >
         <div className="max-w-xl text-left">

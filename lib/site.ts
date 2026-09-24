@@ -23,10 +23,13 @@ export const navItems: NavItem[] = [
       {
         title: "About us",
         links: [
-          { href: "/about#our-history", label: "Our History" },
-          { href: "/about#mission-vision", label: "Mission and Vision" },
+          { href: "/about/history", label: "Our History" },
+          { href: "/about/mission-vision", label: "Mission and Vision" },
           { href: "/team", label: "Our team" },
-          { href: "#corporate-governance", label: "Corporate Governance" },
+          {
+            href: "/about/corporate-governance",
+            label: "Corporate Governance",
+          },
         ],
       },
     ],
@@ -98,17 +101,17 @@ export const searchableContent: SearchResult[] = [
   },
   {
     title: "Our History",
-    href: "/about#our-history",
+    href: "/about/history",
     summary: "The story of the Puntland Development & Investment Bank",
   },
   {
     title: "Mission and Vision",
-    href: "/about#mission-vision",
+    href: "/about/mission-vision",
     summary: "PDIB vision and mission for sustainable development in Puntland",
   },
   {
     title: "Corporate Governance",
-    href: "#corporate-governance",
+    href: "/about/corporate-governance",
     summary:
       "PDIB corporate governance, transparency, and accountability framework",
   },

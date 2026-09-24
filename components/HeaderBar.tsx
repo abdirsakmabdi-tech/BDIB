@@ -395,18 +395,14 @@ function OfferDropdown({
   onMouseEnter: () => void;
   onNavigate: () => void;
 }) {
-  const twoColumn = !oneColumn && links.length > 2;
+  const twoColumn = false;
 
   return (
     <div
       id={id}
       role="menu"
       aria-label={`${label} submenu`}
-      className={`absolute top-full left-0 z-40 mt-1 bg-white shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${
-        twoColumn
-          ? "grid min-w-[420px] grid-cols-2 gap-x-10 gap-y-1 px-6 py-4"
-          : "min-w-[220px] py-2"
-      }`}
+      className="absolute top-full left-0 z-40 mt-1 min-w-[220px] bg-white py-1.5 shadow-[0_8px_24px_rgba(15,23,42,0.12)]"
       style={{ animation: "pdibMegaIn 160ms ease-out" }}
       onMouseEnter={onMouseEnter}
     >
@@ -415,9 +411,7 @@ function OfferDropdown({
           key={link.label}
           role="menuitem"
           href={navHref(link.href)}
-          className={`block text-[15px] font-normal text-pdib-title transition-colors hover:bg-black/5 ${
-            twoColumn ? "px-2 py-2.5" : "px-5 py-2.5"
-          }`}
+          className="block px-5 py-1.5 text-[15px] font-normal text-pdib-title transition-colors hover:bg-black/5"
           style={{
             fontWeight: 400,
             fontVariationSettings: '"wght" 400',

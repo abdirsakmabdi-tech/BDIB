@@ -1,169 +1,196 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
+import {
+  allMembers,
+  boardMembers,
+  executiveMembers,
+  type Member,
+} from "@/lib/team";
 
-const slides = [
-  {
-    id: "our-team",
-    title: "Our team",
-    body: "PDIB is led by experienced professionals committed to financing sustainable growth and shared opportunity across Puntland. Our management team delivers day-to-day strategy and operations, while the Board provides governance, oversight, and long-term direction.",
-    href: "/team",
-  },
-  {
-    id: "board",
-    title: "The Board",
-    body: "PDIB has in place a fully constituted, broad-based and independent Board of Directors that exercises overall governance and oversight of the Bank, determines its strategic direction, and provides effective oversight of the Bank’s Management. The Board is composed of seven directors, comprising one executive director and six non-executive directors.",
-    href: "/team#board-of-directors",
-  },
-  {
-    id: "management",
-    title: "Management Team",
-    body: "Our management team delivers day-to-day strategy and operations — leading credit, finance, and delivery so PDIB can finance productive sectors and support inclusive growth across Puntland.",
-    href: "/team#management-team",
-  },
+const filters = [
+  { id: "all", label: "All" },
+  { id: "board", label: "Board" },
+  { id: "leadership", label: "Executive leadership" },
 ] as const;
 
-const SLIDE_INTERVAL_MS = 7000;
+type FilterId = (typeof filters)[number]["id"];
+
+const PAGE_SIZE = 3;
 
 export default function Team() {
-  const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const total = slides.length;
-  const slide = slides[current];
+  const [filter, setFilter] = useState<FilterId>("all");
+  const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    if (paused) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const members = useMemo(() => {
+    if (filter === "board") return boardMembers;
+    if (filter === "leadership") return executiveMembers;
+    return allMembers;
+  }, [filter]);
 
-    const timer = setInterval(
-      () => setCurrent((index) => (index + 1) % total),
-      SLIDE_INTERVAL_MS,
-    );
-    return () => clearInterval(timer);
-  }, [current, paused, total]);
+  const totalPages = Math.max(1, Math.ceil(members.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages - 1);
+  const visible = members.slice(
+    safePage * PAGE_SIZE,
+    safePage * PAGE_SIZE + PAGE_SIZE,
+  );
 
-  function goTo(index: number) {
-    setCurrent((index + total) % total);
+  function setFilterAndReset(next: FilterId) {
+    setFilter(next);
+    setPage(0);
+  }
+
+  function goPrev() {
+    setPage((p) => (p - 1 + totalPages) % totalPages);
+  }
+
+  function goNext() {
+    setPage((p) => (p + 1) % totalPages);
   }
 
   return (
     <section
       id="our-team"
-      className="scroll-mt-28 bg-white px-6 py-12 sm:px-[6.5vw] sm:py-16 lg:py-20"
+      className="scroll-mt-28 bg-[#f4f5f0] px-4 py-14 sm:px-[4vw] sm:py-16 lg:px-[5vw] lg:py-20"
     >
-      <div
-        className="relative overflow-hidden bg-[#eef0f8] px-7 py-10 sm:px-10 sm:py-12 lg:min-h-[300px] lg:px-14 lg:py-14"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div key={slide.id} className="transition-opacity duration-500">
-          <h2 className="max-w-xl font-sans text-[clamp(18px,1.8vw,24px)] leading-[1.2] font-medium tracking-tight text-[#0c198a]">
-            {slide.title}
-          </h2>
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <h2 className="max-w-xl font-sans text-[clamp(28px,3.2vw,42px)] leading-[1.15] font-semibold tracking-tight text-pdib-title">
+          The Faces Behind Our Mission
+        </h2>
 
-          <div className="mt-12 flex flex-col gap-8 lg:mt-16 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-            <div className="flex max-w-xl items-start gap-4">
-              <span
-                aria-hidden="true"
-                className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full border border-[#0c198a]/35 text-[#0c198a]"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="size-4"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                >
-                  <path
-                    d="M5 12.5l4.2 4.2L19 7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <div>
-                <p className="text-[14px] leading-[1.65] text-[#0c198a]/75 sm:text-[15px]">
-                  {slide.body}
-                </p>
-                <Link
-                  href={slide.href}
-                  className="mt-4 inline-flex text-[13px] font-medium text-[#0c198a] underline-offset-4 transition-opacity hover:underline"
-                >
-                  Learn more
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex shrink-0 items-center gap-2.5 self-end">
-              <button
-                type="button"
-                aria-label="Previous slide"
-                onClick={() => goTo(current - 1)}
-                className="grid size-9 place-items-center rounded-full border border-[#0c198a]/30 text-[#0c198a] transition-colors hover:bg-[#0c198a]/8"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="size-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M15 5L8 12l7 7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <button
-                type="button"
-                aria-label="Next slide"
-                onClick={() => goTo(current + 1)}
-                className="grid size-9 place-items-center rounded-full border border-[#0c198a]/30 text-[#0c198a] transition-colors hover:bg-[#0c198a]/8"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="size-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M9 5l7 7-7 7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
+        <div className="flex shrink-0 items-center gap-3 self-end sm:self-auto">
+          <button
+            type="button"
+            aria-label="Previous team members"
+            onClick={goPrev}
+            className="grid size-10 place-items-center rounded-full border border-pdib-title/25 text-pdib-title transition-colors hover:bg-pdib-title hover:text-white"
+          >
+            <ChevronLeft />
+          </button>
+          <span className="min-w-[3.5rem] text-center text-[14px] font-medium tracking-tight text-pdib-title">
+            {safePage + 1}/{totalPages}
+          </span>
+          <button
+            type="button"
+            aria-label="Next team members"
+            onClick={goNext}
+            className="grid size-10 place-items-center rounded-full border border-pdib-title/25 text-pdib-title transition-colors hover:bg-pdib-title hover:text-white"
+          >
+            <ChevronRight />
+          </button>
         </div>
+      </div>
 
+      <div className="mt-10 flex flex-col gap-8 lg:mt-12 lg:flex-row lg:gap-10">
         <div
           role="tablist"
-          aria-label="Team slides"
-          className="mt-8 flex gap-2"
+          aria-label="Team filters"
+          className="flex shrink-0 flex-row flex-wrap gap-2 lg:w-40 lg:flex-col lg:gap-2.5"
         >
-          {slides.map((item, index) => (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              aria-selected={index === current}
-              aria-label={`Show ${item.title}`}
-              onClick={() => setCurrent(index)}
-              className={`h-1 w-7 transition-colors ${
-                index === current
-                  ? "bg-[#0c198a]"
-                  : "bg-[#0c198a]/25 hover:bg-[#0c198a]/40"
-              }`}
-            />
-          ))}
+          {filters.map((item) => {
+            const active = filter === item.id;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setFilterAndReset(item.id)}
+                className={`rounded-full px-4 py-2 text-left text-[13px] font-medium tracking-tight transition-colors lg:w-full ${
+                  active
+                    ? "bg-pdib-title text-white"
+                    : "border border-pdib-title/20 bg-white text-pdib-title hover:border-pdib-title/40"
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <ul className="grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+            {visible.map((member) => (
+              <li key={member.slug}>
+                <MemberCard member={member} />
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8">
+            <Link
+              href="/team"
+              className="inline-flex text-[14px] font-medium text-[#036522] underline-offset-4 transition-opacity hover:underline"
+            >
+              View full team
+            </Link>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function MemberCard({ member }: { member: Member }) {
+  return (
+    <Link
+      href={`/team/${member.slug}`}
+      className="group flex flex-col"
+      aria-label={`${member.name}, ${member.role}`}
+    >
+      <div className="flex aspect-[3/4] w-full items-center justify-center rounded-t-2xl bg-[#5a6b52] transition-opacity group-hover:opacity-90">
+        <PersonIcon />
+      </div>
+    </Link>
+  );
+}
+
+function PersonIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="size-16 text-white/85 sm:size-20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.35"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="8" r="3.4" />
+      <path
+        d="M5.2 19.2c1.7-3.2 4-4.8 6.8-4.8s5.1 1.6 6.8 4.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ChevronLeft() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="size-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="M15 5L8 12l7 7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ChevronRight() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="size-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

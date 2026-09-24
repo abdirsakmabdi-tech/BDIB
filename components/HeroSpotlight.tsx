@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const scenes = [
   {
     id: "intro",
-    tab: "PDIB",
+    tab: "Who We Are",
     src: "/slides/tourism-puntland.jpg",
     alt: "Coastline and development opportunity across Puntland",
     object: "object-cover object-center scale-105",
