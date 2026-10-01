@@ -33,7 +33,7 @@ function StatementPanel({
         <p className="text-[13px] font-bold tracking-[0.22em] text-[#036522] uppercase sm:text-[14px]">
           Our
         </p>
-        <h2 className="mt-1 font-sans text-[clamp(36px,5vw,64px)] leading-[1.05] font-semibold tracking-tight text-pdib-title">
+        <h2 className="mt-1 font-sans text-[clamp(28px,3.5vw,44px)] leading-[1.1] font-semibold tracking-tight text-pdib-title">
           {title}
         </h2>
         <p className="mt-6 text-[16px] leading-[1.7] text-pdib-text sm:mt-8 sm:text-[18px] [&_strong]:font-bold [&_strong]:text-pdib-title">
@@ -59,7 +59,7 @@ export default function MissionVisionPage() {
 
       <StatementPanel
         title="Mission"
-        align="right"
+        align="left"
         body={
           <>
             To finance and support projects that grow Puntland&apos;s economy —

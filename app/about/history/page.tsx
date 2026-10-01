@@ -50,12 +50,12 @@ export default function HistoryPage() {
     <main>
       <Header />
       <SectorHero
-        src="/slides/history-hero.jpg"
-        alt="Spark of light marking PDIB’s journey and beginnings"
+        src="/slides/history-hero-v2.jpg"
+        alt="Collage of priority sectors reflecting PDIB’s development journey"
         title="Our History"
         intro={intro}
         eyebrow=""
-        objectClassName="object-cover object-[78%_center]"
+        objectClassName="object-cover object-center"
         compactTitle
       />
 

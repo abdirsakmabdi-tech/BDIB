@@ -9,11 +9,16 @@ import SearchOverlay from "@/components/SearchOverlay";
 const INK = "#3f3832";
 
 function navHref(href: string) {
+  if (!href) return "#";
   return href.startsWith("#") ? `/${href}` : href;
 }
 
 function hasSubmenu(item: (typeof navItems)[number]) {
   return item.groups.some((group) => group.links.length > 0);
+}
+
+function isMenuOnly(item: (typeof navItems)[number]) {
+  return !item.href;
 }
 
 function submenuLinks(item: (typeof navItems)[number]): NavLink[] {
@@ -151,30 +156,51 @@ export default function HeaderBar() {
         onMouseLeave={scheduleCloseDesktopMenu}
         onFocusCapture={() => openDesktopMenu(item.label)}
       >
-        <Link
-          href={navHref(item.href)}
-          className={
-            isButton
-              ? buttonClass
-              : `inline-flex items-center gap-1.5 ${linkClass} ${
-                  isOpen ? "text-[#036522]" : ""
-                }`
-          }
-          aria-expanded={isOpen}
-          aria-controls={panelId}
-          aria-haspopup="true"
-        >
-          {item.label}
-          {!isButton ? <Chevron open={isOpen} size={12} /> : null}
-          {!isButton ? (
+        {isMenuOnly(item) ? (
+          <button
+            type="button"
+            className={`inline-flex items-center gap-1.5 ${linkClass} ${
+              isOpen ? "text-[#036522]" : ""
+            }`}
+            aria-expanded={isOpen}
+            aria-controls={panelId}
+            aria-haspopup="true"
+          >
+            {item.label}
+            <Chevron open={isOpen} size={12} />
             <span
               aria-hidden="true"
               className={`absolute inset-x-3 bottom-0 h-0.5 origin-left bg-[#036522] transition-transform duration-200 ${
                 isOpen ? "scale-x-100" : "scale-x-0 group-hover/nav:scale-x-100"
               }`}
             />
-          ) : null}
-        </Link>
+          </button>
+        ) : (
+          <Link
+            href={navHref(item.href)}
+            className={
+              isButton
+                ? buttonClass
+                : `inline-flex items-center gap-1.5 ${linkClass} ${
+                    isOpen ? "text-[#036522]" : ""
+                  }`
+            }
+            aria-expanded={isOpen}
+            aria-controls={panelId}
+            aria-haspopup="true"
+          >
+            {item.label}
+            {!isButton ? <Chevron open={isOpen} size={12} /> : null}
+            {!isButton ? (
+              <span
+                aria-hidden="true"
+                className={`absolute inset-x-3 bottom-0 h-0.5 origin-left bg-[#036522] transition-transform duration-200 ${
+                  isOpen ? "scale-x-100" : "scale-x-0 group-hover/nav:scale-x-100"
+                }`}
+              />
+            ) : null}
+          </Link>
+        )}
 
         {isOpen ? (
           <OfferDropdown
@@ -214,15 +240,27 @@ export default function HeaderBar() {
     return (
       <div key={item.label} className="border-b border-black/8">
         <div className="flex items-stretch">
-          <Link
-            href={navHref(item.href)}
-            className={`flex-1 px-6 py-4 text-[16px] font-semibold tracking-tight ${
-              isButton ? "text-[#036522]" : "text-[#1a1a1a]"
-            }`}
-            onClick={() => setMobileOpen(false)}
-          >
-            {item.label}
-          </Link>
+          {isMenuOnly(item) ? (
+            <button
+              type="button"
+              className={`flex-1 px-6 py-4 text-left text-[16px] font-semibold tracking-tight ${
+                isButton ? "text-[#036522]" : "text-[#1a1a1a]"
+              }`}
+              onClick={() => setMobileExpanded(expanded ? null : item.label)}
+            >
+              {item.label}
+            </button>
+          ) : (
+            <Link
+              href={navHref(item.href)}
+              className={`flex-1 px-6 py-4 text-[16px] font-semibold tracking-tight ${
+                isButton ? "text-[#036522]" : "text-[#1a1a1a]"
+              }`}
+              onClick={() => setMobileOpen(false)}
+            >
+              {item.label}
+            </Link>
+          )}
           <button
             type="button"
             className="grid w-14 place-items-center text-[#1a1a1a]"
@@ -393,13 +431,25 @@ export default function HeaderBar() {
               return (
                 <div key={item.label} className="border-b border-black/8">
                   <div className="flex items-stretch">
-                    <Link
-                      href={navHref(item.href)}
-                      className="flex-1 px-6 py-4 text-[16px] font-semibold tracking-tight text-[#1a1a1a]"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
+                    {isMenuOnly(item) ? (
+                      <button
+                        type="button"
+                        className="flex-1 px-6 py-4 text-left text-[16px] font-semibold tracking-tight text-[#1a1a1a]"
+                        onClick={() =>
+                          setMobileExpanded(expanded ? null : item.label)
+                        }
+                      >
+                        {item.label}
+                      </button>
+                    ) : (
+                      <Link
+                        href={navHref(item.href)}
+                        className="flex-1 px-6 py-4 text-[16px] font-semibold tracking-tight text-[#1a1a1a]"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
                     <button
                       type="button"
                       className="grid w-14 place-items-center text-[#1a1a1a]"

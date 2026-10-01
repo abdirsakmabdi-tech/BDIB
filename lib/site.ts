@@ -35,7 +35,7 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    href: "#what-we-do",
+    href: "",
     label: "What we offer",
     kicker: "Financial solutions, interventions, and priority sectors",
     groups: [
@@ -117,7 +117,7 @@ export const searchableContent: SearchResult[] = [
   },
   {
     title: "What we offer",
-    href: "#what-we-do",
+    href: "/financial",
     summary:
       "Financial solutions, specialized interventions, and priority sectors",
   },
