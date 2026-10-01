@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, {
+  PageBody,
+} from "@/components/PageContent";
+import { AccordionPanel } from "@/components/HistoryAccordions";
 
 export const metadata: Metadata = {
   title: "Our History | PDIB",
@@ -11,23 +15,61 @@ export const metadata: Metadata = {
 const intro =
   "How PDIB grew into a trusted partner for enterprises, communities, and institutions across Puntland.";
 
-const sectionTitle =
-  "-mx-4 w-[calc(100%+2rem)] bg-[#46543d] px-4 py-3 text-[20px] font-semibold tracking-tight text-[#dce4c9] sm:-mx-[4vw] sm:w-[calc(100%+8vw)] sm:px-[4vw] sm:py-3.5 sm:text-[22px] lg:-mx-[5vw] lg:w-[calc(100%+10vw)] lg:px-[5vw]";
+const services = [
+  {
+    title: "Loans and Financing",
+    body: "Offering various loan products tailored for businesses, agriculture, and infrastructure projects.",
+  },
+  {
+    title: "Financial Advisory",
+    body: "Providing guidance and support to entrepreneurs and businesses to enhance their financial management and operational efficiency.",
+  },
+  {
+    title: "Capacity Building",
+    body: "Investing in training and development programs for local financial institutions and businesses to strengthen the overall economic landscape.",
+  },
+];
+
+const governance = [
+  {
+    title: "Corporate Governance",
+    body: "Ensuring transparency and accountability in operations through a well-structured governance framework.",
+  },
+  {
+    title: "Risk Management",
+    body: "Implementing robust risk assessment and management practices to safeguard the bank's financial health and sustainability.",
+  },
+  {
+    title: "Capacity Building",
+    body: "Investing in training and development programs for local financial institutions and businesses to strengthen the overall economic landscape.",
+  },
+];
 
 export default function HistoryPage() {
   return (
     <main>
       <Header />
       <SectorHero
-        variant="solid"
+        src="/slides/history-hero.jpg"
+        alt="Spark of light marking PDIB’s journey and beginnings"
         title="Our History"
         intro={intro}
         eyebrow=""
+        objectClassName="object-cover object-[78%_center]"
+        compactTitle
       />
 
-      <article className="bg-white px-4 pt-16 pb-24 sm:px-[4vw] sm:pt-24 sm:pb-32 lg:px-[5vw]">
-        <h2 className={sectionTitle}>Our History</h2>
-        <div className="mt-6 max-w-3xl space-y-6 text-[17px] leading-[1.65] text-pdib-text [&_strong]:font-bold">
+      <PageContent className="!pb-8 sm:!pb-10">
+        <header className="mb-8 sm:mb-10">
+          <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
+            Our History
+          </h2>
+          <span
+            aria-hidden="true"
+            className="mt-2.5 block h-0.5 w-8 rounded-full bg-[#23ba4a]"
+          />
+        </header>
+        <PageBody>
           <p>
             PDIB was established to advance Puntland&apos;s development agenda
             by mobilizing long-term capital for productive sectors. From the
@@ -49,8 +91,23 @@ export default function HistoryPage() {
             development finance institution — where investment meets
             development.
           </p>
+        </PageBody>
+      </PageContent>
+
+      <section className="bg-white px-8 pt-6 pb-14 sm:px-14 sm:pt-8 sm:pb-16 lg:px-24 lg:pb-20">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+          <AccordionPanel
+            title="Services Offered"
+            intro="PDIB supports businesses, institutions, and communities with financing and advisory solutions that strengthen Puntland’s productive economy."
+            items={services}
+          />
+          <AccordionPanel
+            title="Governance and Management"
+            intro="Strong oversight, risk discipline, and continuous capability building keep PDIB accountable as it delivers on its development mandate."
+            items={governance}
+          />
         </div>
-      </article>
+      </section>
     </main>
   );
 }

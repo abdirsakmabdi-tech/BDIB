@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Specialized Interventions | PDIB",
@@ -44,8 +45,8 @@ export default function SpecializedInterventionsPage() {
         objectClassName="object-cover object-[center_40%]"
       />
 
-      <article className="bg-white px-6 pt-12 pb-16 sm:px-[6.5vw] sm:pt-16 sm:pb-20">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow className="!pb-16 sm:!pb-20">
+        <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
             PDIB implements Special Programs designed to provide targeted support
@@ -57,12 +58,12 @@ export default function SpecializedInterventionsPage() {
             stages of growth — enhancing sustainability and accelerating
             Puntland&apos;s socio-economic transformation.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
 
       <section
         aria-label="Special programmes"
-        className="flex flex-col gap-8 bg-white px-6 pb-16 sm:gap-10 sm:px-[6.5vw] sm:pb-24"
+        className="flex flex-col gap-8 bg-white px-8 pb-20 sm:gap-10 sm:px-14 sm:pb-28 lg:px-24"
       >
         {programmes.map((programme) => (
           <article
@@ -74,7 +75,7 @@ export default function SpecializedInterventionsPage() {
               className={`${programme.panelClass} flex items-center px-8 py-12 sm:px-12 sm:py-16 lg:px-14 lg:py-20`}
             >
               <div className="max-w-xl">
-                <h2 className="font-sans text-[clamp(22px,2.4vw,32px)] leading-[1.15] font-bold tracking-[0.04em] text-pdib-title uppercase">
+                <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
                   {programme.title}
                 </h2>
                 <p className="mt-6 text-[16px] leading-[1.65] text-pdib-text sm:text-[17px]">

@@ -17,13 +17,19 @@ export default function Footer() {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col gap-12 px-6 py-20 sm:px-[6.5vw] sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:py-28">
+      <div className="relative z-10 flex flex-col gap-12 px-8 py-20 sm:px-14 sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-24 lg:py-28">
         <Link
           href="/"
-          className="shrink-0 font-sans text-[clamp(36px,5vw,56px)] leading-none font-semibold tracking-tight text-white"
+          className="relative z-10 inline-flex shrink-0 items-center rounded-md bg-white px-4 py-3 sm:px-5 sm:py-3.5"
           aria-label="Puntland Development & Investment Bank home"
         >
-          PDIB
+          <img
+            src="/Mylogo.png?v=16"
+            alt="Puntland Development & Investment Bank"
+            width={300}
+            height={94}
+            className="h-14 w-auto object-contain object-left sm:h-16"
+          />
         </Link>
 
         <div className="flex flex-col gap-10 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-10 lg:gap-x-16 xl:gap-x-20">
@@ -88,7 +94,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative z-10 border-t border-white/15 px-6 py-4 sm:px-[6.5vw]">
+      <div className="relative z-10 border-t border-white/15 px-8 py-4 sm:px-14 lg:px-24">
         <p className="text-center text-[12px] text-white/65 sm:text-left">
           Copyright © {year} — Puntland Development &amp; Investment Bank
         </p>

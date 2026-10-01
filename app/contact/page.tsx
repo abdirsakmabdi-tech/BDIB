@@ -21,16 +21,14 @@ export default function ContactPage() {
     <main>
       <Header />
       <SectorHero
-        src="/contact-building.jpg"
-        alt="PDIB head office in Garowe"
+        variant="solid"
         title="Contact us"
         intro={intro}
         eyebrow="Get in touch"
-        objectClassName="object-cover object-[center_35%]"
         compactTitle
       />
 
-      <article className="bg-white px-6 pt-14 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
+      <article className="bg-white px-8 pt-14 pb-20 sm:px-14 sm:pt-16 sm:pb-28 lg:px-24">
         <section className="grid items-start gap-14 lg:grid-cols-2 lg:gap-16 xl:gap-20">
           <aside>
             <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.2] font-bold tracking-tight text-pdib-title">

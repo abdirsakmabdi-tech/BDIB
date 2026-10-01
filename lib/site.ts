@@ -47,7 +47,7 @@ export const navItems: NavItem[] = [
             href: "/specialized-interventions",
             label: "Specialized interventions",
           },
-          { href: "#focus-areas", label: "Priority Sectors" },
+          { href: "/priority-sectors", label: "Priority Sectors" },
         ],
       },
     ],
@@ -135,7 +135,7 @@ export const searchableContent: SearchResult[] = [
   },
   {
     title: "Priority Sectors",
-    href: "#focus-areas",
+    href: "/priority-sectors",
     summary:
       "PDIB priority sectors: livestock, fisheries, agriculture, energy, and infrastructure",
   },

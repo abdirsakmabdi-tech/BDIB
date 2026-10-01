@@ -63,7 +63,7 @@ function LogoTrack({ ariaHidden }: { ariaHidden?: boolean }) {
 export default function Partners() {
   return (
     <section id="partners" className="border-y border-black/5 bg-white">
-      <div className="px-6 pt-8 pb-6 sm:px-[6.5vw] sm:pt-10 sm:pb-8">
+      <div className="px-8 pt-8 pb-6 sm:px-14 sm:pt-10 sm:pb-8 lg:px-24">
         <p className="text-center text-[11px] font-bold tracking-[0.16em] text-pdib-green uppercase sm:text-[12px]">
           Our partners
         </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Tourism | PDIB",
@@ -23,8 +24,8 @@ export default function TourismPage() {
         objectClassName="object-cover object-center"
       />
 
-      <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow>
+        <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
             Puntland Development &amp; Investment Bank is committed to empowering
@@ -42,8 +43,8 @@ export default function TourismPage() {
             creates opportunities for young people, women-led enterprises, and
             local suppliers across the tourism value chain.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }

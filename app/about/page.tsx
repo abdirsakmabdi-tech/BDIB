@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, {
+  PageBody,
+  PageSectionTitle,
+} from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "About us | PDIB",
@@ -16,23 +20,17 @@ export default function AboutPage() {
     <main>
       <Header />
       <SectorHero
-        variant="solid"
+        src="/about-hero-collage.jpg"
+        alt="Collage of priority sectors including mining, agriculture, livestock, infrastructure, energy, ports, fisheries, and tourism"
         title="About us"
         intro={intro}
         eyebrow=""
+        objectClassName="object-cover object-center"
       />
 
-      <article className="bg-white px-4 pt-16 pb-24 sm:px-[4vw] sm:pt-24 sm:pb-32 lg:px-[5vw]">
-        <header className="max-w-3xl">
-          <p className="text-[13px] font-bold tracking-[0.14em] text-pdib-green uppercase">
-            About PDIB
-          </p>
-          <h2 className="mt-3 font-sans text-[clamp(34px,3.4vw,52px)] leading-[1.15] font-bold tracking-tight text-pdib-title">
-            About us
-          </h2>
-        </header>
-
-        <div className="mt-8 max-w-3xl space-y-6 text-[17px] leading-[1.65] text-pdib-text sm:mt-10 [&_strong]:font-bold">
+      <PageContent>
+        <PageSectionTitle>About us</PageSectionTitle>
+        <PageBody>
           <p>
             The Puntland Development and Investment Bank (PDIB) is Puntland&apos;s{" "}
             <strong>leading development finance institution</strong>, dedicated
@@ -48,8 +46,8 @@ export default function AboutPage() {
             expanding <strong>financial inclusion</strong> — where investment
             meets development.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }

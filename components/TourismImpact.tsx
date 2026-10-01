@@ -109,7 +109,7 @@ export default function TourismImpact() {
         className="absolute inset-0 bg-gradient-to-r from-black/35 via-black/10 to-transparent"
       />
 
-      <div className="relative z-10 flex h-full items-center justify-start px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
+      <div className="relative z-10 flex h-full items-center justify-start px-8 py-10 sm:px-14 sm:py-12 lg:px-24 lg:py-14">
         <aside
           key={slide.src}
           className="flex w-full max-w-[min(420px,92vw)] flex-col rounded-2xl bg-[#036522] px-6 py-7 shadow-[0_16px_48px_rgba(0,0,0,0.28)] transition-opacity duration-500 sm:rounded-3xl sm:px-8 sm:py-8"
@@ -125,7 +125,7 @@ export default function TourismImpact() {
             {slide.label}
           </p>
 
-          <h2 className="mt-2 font-sans text-[clamp(22px,2.4vw,32px)] leading-[1.18] font-semibold tracking-tight text-white">
+          <h2 className="mt-2 font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-white">
             {slide.headline}
           </h2>
 

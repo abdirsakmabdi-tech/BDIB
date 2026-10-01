@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Social Infrastructure | PDIB",
@@ -23,8 +24,8 @@ export default function SocialInfrastructurePage() {
         objectClassName="object-cover object-[center_35%]"
       />
 
-      <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow>
+        <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
             Strong communities depend on the places people use every day —
@@ -35,8 +36,8 @@ export default function SocialInfrastructurePage() {
             expands public services, creates local jobs, and improves quality of
             life in urban and rural communities.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }

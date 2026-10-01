@@ -25,12 +25,16 @@ export default function TeamPage() {
         compactTitle
       />
 
-      <article className="bg-[#f4f5f0] px-4 pt-12 pb-8 sm:px-[4vw] sm:pt-16 sm:pb-10 lg:px-[5vw]">
+      <article className="bg-[#f4f5f0] px-8 pt-14 pb-8 sm:px-14 sm:pt-16 sm:pb-10 lg:px-24">
         <div className="max-w-2xl">
-          <h2 className="font-sans text-[clamp(28px,3vw,40px)] leading-[1.15] font-semibold tracking-tight text-pdib-title">
+          <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
             The Faces Behind Our Mission
           </h2>
-          <p className="mt-4 text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
+          <span
+            aria-hidden="true"
+            className="mt-4 block h-1 w-12 rounded-full bg-[#23ba4a]"
+          />
+          <p className="mt-5 text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
             {intro} Our management team delivers day-to-day strategy and
             operations, while the Board provides governance, oversight, and
             long-term direction.
@@ -40,7 +44,7 @@ export default function TeamPage() {
 
       <section
         id="board-of-directors"
-        className="scroll-mt-28 bg-[#f4f5f0] px-4 pb-14 sm:px-[4vw] sm:pb-16 lg:px-[5vw]"
+        className="scroll-mt-28 bg-[#f4f5f0] px-8 pb-14 sm:px-14 sm:pb-16 lg:px-24"
       >
         <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
           The Board
@@ -60,7 +64,7 @@ export default function TeamPage() {
 
       <section
         id="management-team"
-        className="scroll-mt-28 bg-[#f4f5f0] px-4 pb-20 sm:px-[4vw] sm:pb-24 lg:px-[5vw]"
+        className="scroll-mt-28 bg-[#f4f5f0] px-8 pb-20 sm:px-14 sm:pb-24 lg:px-24"
       >
         <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
           Executive leadership
@@ -84,7 +88,7 @@ function MemberCard({ member }: { member: Member }) {
       className="group relative flex flex-col"
       aria-label={`${member.name}, ${member.role}`}
     >
-      <div className="relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#5a6b52]">
+      <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#5a6b52]">
         <svg
           viewBox="0 0 24 24"
           className="size-16 text-white/85 sm:size-20"

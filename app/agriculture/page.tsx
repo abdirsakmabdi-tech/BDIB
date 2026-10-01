@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Agriculture Financing | PDIB",
@@ -23,8 +24,8 @@ export default function AgriculturePage() {
         objectClassName="object-cover object-[center_45%]"
       />
 
-      <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow>
+        <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
             Agriculture is a cornerstone of Puntland&apos;s economy and rural
@@ -37,8 +38,8 @@ export default function AgriculturePage() {
             <strong>medium- and long-term financing</strong> and promotion of{" "}
             <strong>sustainable farming practices</strong>.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }

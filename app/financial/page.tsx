@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Financial Interventions | PDIB",
@@ -16,8 +17,8 @@ const products = [
   {
     id: "term-loans",
     title: "Term Loans",
-    src: "/slides/export-manufacturing.jpg",
-    alt: "Goods prepared for enterprise and trade",
+    src: "/slides/term-loans.jpg",
+    alt: "Illustration of business growth and term loan financing",
     panelClass: "bg-pdib-primary/10",
     paragraphs: [
       "PDIB offers medium to long-term term loans designed to support capital investments that fuel business growth and Puntland’s development. These loans primarily fund business expansion, modernization, technologization, and asset acquisition — including productive plants and equipment — so enterprises can improve efficiency and competitiveness.",
@@ -27,8 +28,8 @@ const products = [
   {
     id: "project-financing",
     title: "Project Financing",
-    src: "/slides/hero-construction.jpg",
-    alt: "Large-scale construction and infrastructure works",
+    src: "/slides/project-financing-v5.jpg",
+    alt: "Project financing across infrastructure, energy, industry, and agribusiness",
     panelClass: "bg-pdib-green/10",
     paragraphs: [
       "Provides long-term funding for large and complex development projects against the security of projected cash flows generated from the project assets, as well as the realizable value of those assets — supporting infrastructure, industry, and Public-Private Partnerships across Puntland.",
@@ -50,8 +51,8 @@ export default function FinancialPage() {
         objectClassName="object-cover object-[center_60%]"
       />
 
-      <article className="bg-white px-6 pt-12 pb-8 sm:px-[6.5vw] sm:pt-16 sm:pb-10">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow className="!pb-8 sm:!pb-10">
+        <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
             PDIB offers financial solutions that improve the quality of life of
@@ -62,12 +63,12 @@ export default function FinancialPage() {
             small, medium, and large enterprises, infrastructure development,
             Public-Private Partnerships, and others.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
 
       <section
         aria-label="Financial products"
-        className="flex flex-col gap-8 bg-white px-6 pb-16 sm:gap-10 sm:px-[6.5vw] sm:pb-24"
+        className="flex flex-col gap-8 bg-white px-8 pb-20 sm:gap-10 sm:px-14 sm:pb-28 lg:px-24"
       >
         {products.map((product) => (
             <article
@@ -90,7 +91,7 @@ export default function FinancialPage() {
                 className={`${product.panelClass} flex items-center px-8 py-12 sm:px-12 sm:py-16 lg:px-14 lg:py-20`}
               >
                 <div className="max-w-xl">
-                  <h2 className="font-sans text-[clamp(22px,2.4vw,32px)] leading-[1.15] font-bold tracking-[0.04em] text-pdib-title uppercase">
+                  <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
                     {product.title}
                   </h2>
                   <div className="mt-6 space-y-4 text-[16px] leading-[1.65] text-pdib-text sm:text-[17px]">

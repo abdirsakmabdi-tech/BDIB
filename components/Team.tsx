@@ -52,10 +52,10 @@ export default function Team() {
   return (
     <section
       id="our-team"
-      className="scroll-mt-28 bg-[#f4f5f0] px-4 py-14 sm:px-[4vw] sm:py-16 lg:px-[5vw] lg:py-20"
+      className="scroll-mt-28 bg-[#f4f5f0] px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20"
     >
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="max-w-xl font-sans text-[clamp(28px,3.2vw,42px)] leading-[1.15] font-semibold tracking-tight text-pdib-title">
+        <h2 className="max-w-xl font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
           The Faces Behind Our Mission
         </h2>
 
@@ -139,7 +139,7 @@ function MemberCard({ member }: { member: Member }) {
       className="group relative flex flex-col"
       aria-label={`${member.name}, ${member.role}`}
     >
-      <div className="relative flex aspect-[4/5] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#5a6b52]">
+      <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#5a6b52]">
         <PersonIcon />
         <div className="absolute inset-0 flex items-center justify-center bg-[#d8e5d0] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <span className="text-[14px] font-semibold tracking-[0.08em] text-[#036522] uppercase">

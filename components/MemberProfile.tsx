@@ -16,7 +16,7 @@ export default function MemberProfile({ member }: { member: Member }) {
       </div>
 
       <ViewTransition enter="profile-panel" exit="profile-panel" default="none">
-        <div className="flex min-h-0 flex-1 flex-col px-8 py-8 sm:px-12 lg:px-[5.5vw] lg:py-12">
+        <div className="flex min-h-0 flex-1 flex-col px-8 py-8 sm:px-12 lg:px-8 lg:py-12">
           <div className="flex items-start justify-between gap-6">
             <p className="text-nav tracking-[0.16em] uppercase">{member.role}</p>
             <Link
@@ -27,7 +27,7 @@ export default function MemberProfile({ member }: { member: Member }) {
             </Link>
           </div>
 
-          <h1 className="mt-14 max-w-[12ch] text-[clamp(40px,5.2vw,72px)] leading-[1.05] font-semibold tracking-tight lg:mt-20">
+          <h1 className="mt-14 max-w-[12ch] text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight lg:mt-20">
             {member.name}
           </h1>
 

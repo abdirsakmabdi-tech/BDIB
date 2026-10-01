@@ -25,76 +25,75 @@ export default function SectorHero({
 
   return (
     <section
-      className={`relative overflow-hidden ${
-        isSolid
-          ? "flex h-[70svh] min-h-[280px] items-center bg-[#036522]/80 pt-[max(6.5rem,14vh)]"
-          : "h-svh min-h-[100vh]"
+      className={`relative overflow-hidden pt-[max(6.5rem,10vh)] ${
+        isSolid ? "bg-[#036522]" : "bg-[#f4f5f0]"
       }`}
     >
-      {!isSolid && src ? (
-        <>
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority
-            quality={95}
-            sizes="100vw"
-            className={objectClassName}
-          />
-          <div aria-hidden="true" className="absolute inset-0 bg-black/35" />
-        </>
-      ) : null}
-
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1]">
-        <Image
-          src="/pdib-mark-hero-blend.png"
-          alt=""
-          fill
-          priority={isSolid}
-          quality={90}
-          sizes="100vw"
-          className={`object-contain object-[88%_center] mix-blend-soft-light sm:object-[82%_center] lg:object-[78%_center] ${
-            isSolid ? "opacity-25" : "opacity-35"
-          }`}
-        />
-      </div>
-
-      <div
-        className={`z-10 flex items-center ${
-          isSolid
-            ? "relative w-full px-4 py-10 sm:px-[4vw] sm:py-12 lg:px-[5vw]"
-            : "absolute inset-0 px-6 sm:px-[6.5vw]"
-        }`}
-      >
-        <div className="max-w-xl text-left">
-          {eyebrow ? (
-            <p
-              className={`text-[12px] font-bold tracking-[0.18em] uppercase sm:text-[13px] ${
-                isSolid ? "text-white/90" : "text-pdib-primary"
+      <div className="mx-auto grid min-h-[420px] w-full lg:min-h-[60svh] lg:grid-cols-2 lg:items-stretch">
+        {/* Left: copy */}
+        <div className="flex items-center px-8 py-12 sm:px-14 sm:py-14 lg:px-24 lg:py-16">
+          <div className="max-w-xl text-left">
+            {eyebrow ? (
+              <p
+                className={`text-[12px] font-bold tracking-[0.18em] uppercase sm:text-[13px] ${
+                  isSolid ? "text-white/90" : "text-[#036522]"
+                }`}
+              >
+                {eyebrow}
+              </p>
+            ) : null}
+            <h1
+              className={`font-sans leading-[1.12] font-bold tracking-tight ${
+                eyebrow ? "mt-3" : ""
+              } ${
+                isSolid ? "text-white" : "text-pdib-title"
+              } ${
+                compactTitle
+                  ? "text-[clamp(20px,2vw,24px)]"
+                  : "text-[clamp(22px,2.4vw,28px)]"
               }`}
             >
-              {eyebrow}
+              {title}
+            </h1>
+            <p
+              className={`mt-5 max-w-lg leading-[1.55] ${
+                isSolid ? "text-white/90" : "text-pdib-text"
+              } ${
+                compactTitle
+                  ? "text-[15px] sm:text-[16px]"
+                  : "text-[16px] sm:text-[18px]"
+              }`}
+            >
+              {intro}
             </p>
-          ) : null}
-          <h1
-            className={`font-sans leading-snug font-medium tracking-tight text-white ${
-              eyebrow ? "mt-3" : ""
-            } ${
-              compactTitle
-                ? "text-[clamp(16px,1.6vw,20px)]"
-                : "text-[clamp(22px,2.4vw,28px)]"
-            }`}
-          >
-            {title}
-          </h1>
-          <p
-            className={`mt-4 max-w-md leading-[1.55] ${
-              isSolid ? "text-white/90" : "text-white/90"
-            } ${compactTitle ? "text-[14px] sm:text-[15px]" : "text-[15px] sm:text-[16px]"}`}
-          >
-            {intro}
-          </p>
+          </div>
+        </div>
+
+        {/* Right: image / mark */}
+        <div className="relative h-[42svh] min-h-[240px] w-full sm:h-[48svh] lg:h-auto lg:min-h-full">
+          {isSolid || !src ? (
+            <div className="absolute inset-0 bg-[#036522]">
+              <Image
+                src="/pdib-mark-hero-blend.png"
+                alt=""
+                fill
+                priority
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain object-center opacity-40 mix-blend-soft-light"
+              />
+            </div>
+          ) : (
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              priority
+              quality={95}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className={objectClassName}
+            />
+          )}
         </div>
       </div>
     </section>

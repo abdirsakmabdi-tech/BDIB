@@ -72,7 +72,7 @@ export default function AvatarUploadPage() {
 
       <section
         aria-label="Avatar upload"
-        className="px-6 py-12 sm:px-[6.5vw] sm:py-16 lg:py-20"
+        className="px-6 py-12 sm:px-6 sm:py-16 lg:py-20"
       >
         <article className="mx-auto grid max-w-6xl grid-cols-1 overflow-hidden lg:grid-cols-2">
           <div className="relative min-h-[280px] bg-[#e8ece8] sm:min-h-[360px] lg:min-h-[480px]">

@@ -8,9 +8,9 @@ const scenes = [
   {
     id: "intro",
     tab: "Who We Are",
-    src: "/slides/tourism-puntland.jpg",
-    alt: "Coastline and development opportunity across Puntland",
-    object: "object-cover object-center scale-105",
+    src: "/slides/hero-priority-sectors-v2.jpg",
+    alt: "Collage of priority sectors including mining, agriculture, livestock, infrastructure, solar, wind, ports, fisheries, and tourism",
+    object: "object-cover object-center",
     headline: "Puntland Development & Investment Bank",
     body: "Puntland’s leading development finance institution — providing affordable short, medium- and long-term financing that creates jobs, boosts productivity, and strengthens the economy.",
     href: "/about",
@@ -87,7 +87,7 @@ const scenes = [
 const SLIDE_INTERVAL_MS = 7000;
 
 const arrowClass =
-  "absolute top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-black/25 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-[#001c2a] sm:size-12";
+  "absolute z-20 flex size-10 items-center justify-center rounded-full border border-[#036522]/30 bg-white/90 text-[#036522] shadow-sm backdrop-blur-md transition-colors hover:border-[#036522] hover:bg-[#036522] hover:text-white sm:size-11";
 
 export default function HeroSpotlight() {
   const [current, setCurrent] = useState(0);
@@ -115,38 +115,155 @@ export default function HeroSpotlight() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#0a1628]"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#f4f5f0] mb-10 sm:mb-12 lg:mb-0 lg:block lg:min-h-[90svh]"
     >
-      <div className="absolute inset-0 overflow-hidden">
-        {scenes.map((item, index) => {
-          const active = index === current;
-          return (
-            <Image
-              key={item.id}
-              src={item.src}
-              alt={active ? item.alt : ""}
-              fill
-              priority={index === 0}
-              quality={95}
-              sizes="100vw"
-              className={`${item.object} transition-opacity duration-1000 ease-out ${
-                active ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          );
-        })}
+      {/* Mobile: stacked flow — text then image */}
+      <div className="flex flex-1 flex-col lg:hidden">
+        <div className="flex flex-1 flex-col justify-center px-8 pt-40 pb-6 sm:px-14 sm:pt-44 sm:pb-8">
+          <div key={scene.id} className="w-full max-w-xl text-left">
+            <div className="relative border-l-[5px] border-[#036522] pl-4">
+              <h1 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
+                {scene.headline}
+              </h1>
+              <p className="mt-2.5 max-w-[38ch] text-[14px] leading-[1.55] text-pdib-text">
+                {scene.body}
+              </p>
+            </div>
+            <div className="mt-4 pl-[calc(1rem+5px)]">
+              <Link
+                href={scene.href}
+                className="inline-flex items-center gap-2 bg-[#036522] px-4 py-2 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-[#047a29]"
+              >
+                {scene.cta}
+                <span aria-hidden="true">›</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative h-[38svh] min-h-[220px] w-full shrink-0">
+          {scenes.map((item, index) => {
+            const active = index === current;
+            return (
+              <Image
+                key={`m-${item.id}`}
+                src={item.src}
+                alt={active ? item.alt : ""}
+                fill
+                priority={index === 0}
+                quality={95}
+                sizes="100vw"
+                className={`${item.object} transition-opacity duration-700 ease-out ${
+                  active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            );
+          })}
+
+          <button
+            type="button"
+            aria-label="Previous slide"
+            onClick={goPrev}
+            className={`${arrowClass} top-1/2 left-3 -translate-y-1/2`}
+          >
+            <ChevronLeftIcon />
+          </button>
+          <button
+            type="button"
+            aria-label="Next slide"
+            onClick={goNext}
+            className={`${arrowClass} top-1/2 right-3 -translate-y-1/2`}
+          >
+            <ChevronRightIcon />
+          </button>
+
+          <div
+            role="tablist"
+            aria-label="Hero scenes"
+            className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-3 pb-3"
+          >
+            <div className="flex max-w-full gap-1.5 overflow-x-auto rounded-full bg-black/35 px-2.5 py-1.5 backdrop-blur-md">
+              {scenes.map((item, index) => {
+                const active = index === current;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={active}
+                    aria-label={`Show ${item.tab}`}
+                    onClick={() => setCurrent(index)}
+                    className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-tight whitespace-nowrap transition-colors ${
+                      active
+                        ? "border-white bg-white text-[#001c2a]"
+                        : "border-white/50 bg-transparent text-white"
+                    }`}
+                  >
+                    {item.tab}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-black/25"
-      />
+      {/* Desktop: text left / image right */}
+      <div className="absolute inset-0 hidden lg:grid lg:grid-cols-2">
+        <div className="bg-[#f4f5f0]" />
+        <div className="relative overflow-hidden">
+          {scenes.map((item, index) => {
+            const active = index === current;
+            return (
+              <Image
+                key={item.id}
+                src={item.src}
+                alt={active ? item.alt : ""}
+                fill
+                priority={index === 0}
+                quality={95}
+                sizes="50vw"
+                className={`${item.object} transition-opacity duration-700 ease-out ${
+                  active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="absolute inset-0 z-10 hidden lg:flex lg:w-1/2">
+        <div className="flex w-full items-center justify-start px-8 pt-52 pb-36 sm:px-14 lg:px-24">
+          <div
+            key={`d-${scene.id}`}
+            className="relative w-full max-w-[min(540px,92vw)] text-left transition-opacity duration-500"
+          >
+            <div className="relative border-l-[5px] border-[#036522] pl-4 sm:pl-5">
+              <h1 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
+                {scene.headline}
+              </h1>
+              <p className="mt-2.5 max-w-[38ch] text-[14px] leading-[1.55] text-pdib-text sm:mt-3 sm:text-[15px]">
+                {scene.body}
+              </p>
+            </div>
+            <div className="mt-4 pl-[calc(1rem+5px)] sm:mt-5 sm:pl-[calc(1.25rem+5px)]">
+              <Link
+                href={scene.href}
+                className="inline-flex items-center gap-2 bg-[#036522] px-4 py-2 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-[#047a29] sm:text-[14px]"
+              >
+                {scene.cta}
+                <span aria-hidden="true">›</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <button
         type="button"
         aria-label="Previous slide"
         onClick={goPrev}
-        className={`${arrowClass} left-3 sm:left-5 lg:left-8`}
+        className={`${arrowClass} top-1/2 left-8 hidden -translate-y-1/2 lg:flex`}
       >
         <ChevronLeftIcon />
       </button>
@@ -154,44 +271,17 @@ export default function HeroSpotlight() {
         type="button"
         aria-label="Next slide"
         onClick={goNext}
-        className={`${arrowClass} right-3 sm:right-5 lg:right-8`}
+        className={`${arrowClass} top-1/2 right-8 hidden -translate-y-1/2 lg:flex`}
       >
         <ChevronRightIcon />
       </button>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-start px-4 sm:px-8 lg:px-[5vw]">
-        <div
-          key={scene.id}
-          className="relative w-full max-w-[min(540px,92vw)] translate-y-10 bg-white/65 px-7 py-6 backdrop-blur-[2px] transition-opacity duration-500 sm:translate-y-14 sm:px-9 sm:py-7"
-        >
-          <div className="relative border-l-[5px] border-[#036522] pl-4 sm:pl-5">
-            <h1 className="font-sans text-[clamp(22px,2.8vw,34px)] leading-[1.15] font-semibold tracking-tight text-[#1a1a1a]">
-              {scene.headline}
-            </h1>
-
-            <p className="mt-2.5 max-w-[38ch] text-[14px] leading-[1.55] text-[#333] sm:mt-3 sm:text-[15px]">
-              {scene.body}
-            </p>
-          </div>
-
-          <div className="mt-4 pl-[calc(1rem+5px)] sm:mt-5 sm:pl-[calc(1.25rem+5px)]">
-            <Link
-              href={scene.href}
-              className="inline-flex items-center gap-2 bg-[#036522] px-4 py-2 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-[#047a29] sm:text-[14px]"
-            >
-              {scene.cta}
-              <span aria-hidden="true">›</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <div
         role="tablist"
         aria-label="Hero scenes"
-        className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-5 sm:pb-7"
+        className="absolute inset-x-0 bottom-0 z-20 hidden justify-center px-4 pb-7 lg:flex"
       >
-        <div className="flex max-w-full flex-wrap items-center justify-center gap-2 overflow-x-auto rounded-full bg-black/30 px-3 py-2 backdrop-blur-md pb-1">
+        <div className="flex max-w-full flex-wrap items-center justify-center gap-2 overflow-x-auto rounded-full bg-black/25 px-3 py-2 backdrop-blur-md pb-1">
           {scenes.map((item, index) => {
             const active = index === current;
             return (
@@ -205,7 +295,7 @@ export default function HeroSpotlight() {
                 className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[12px] font-medium tracking-tight transition-colors sm:px-4 sm:text-[13px] ${
                   active
                     ? "border-white bg-white text-[#001c2a]"
-                    : "border-white/40 bg-transparent text-white hover:border-white/70 hover:bg-white/10"
+                    : "border-white/50 bg-transparent text-white hover:border-white/80 hover:bg-white/10"
                 }`}
               >
                 {item.tab}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Renewable Energy | PDIB",
@@ -16,14 +17,15 @@ export default function RenewableEnergyPage() {
     <main>
       <Header />
       <SectorHero
-        src="/renewable-hero.jpg"
-        alt="Wind turbines along a misty mountain ridge"
+        src="/renewable-hero-v2.jpg"
+        alt="Solar panels, battery storage, and wind turbines on a green field"
         title="Renewable Energy"
         intro={intro}
+        objectClassName="object-cover object-center"
       />
 
-      <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow>
+        <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
             Energy costs in Puntland are among the highest in the world — a major
@@ -35,8 +37,8 @@ export default function RenewableEnergyPage() {
             economy, backing solar, wind, and clean power projects that serve
             communities and industry.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }

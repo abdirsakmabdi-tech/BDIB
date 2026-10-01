@@ -115,13 +115,13 @@ const focusAreas = [
 export default function WhatWeDo() {
   return (
     <section id="what-we-do" className="bg-white">
-      <div className="px-6 pt-8 pb-10 sm:px-[6.5vw] sm:pt-10 sm:pb-14">
+      <div className="px-8 pt-8 pb-10 sm:px-14 sm:pt-10 sm:pb-14 lg:px-24">
         <Reveal>
           <p className="text-[13px] font-bold tracking-[0.16em] text-pdib-green uppercase">
             Priority Sectors
           </p>
           <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-            <h2 className="max-w-2xl font-sans text-[clamp(24px,2.4vw,34px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+            <h2 className="max-w-2xl font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
               Financing the productive sectors that power Puntland&apos;s growth
             </h2>
             <Link
@@ -137,7 +137,7 @@ export default function WhatWeDo() {
 
       <div
         id="focus-areas"
-        className="grid scroll-mt-28 grid-cols-1 gap-4 px-6 pb-16 sm:grid-cols-2 sm:gap-5 sm:px-[6.5vw] sm:pb-24 lg:grid-cols-3"
+        className="grid scroll-mt-28 grid-cols-1 gap-4 px-8 pb-16 sm:grid-cols-2 sm:gap-5 sm:px-14 sm:pb-24 lg:grid-cols-3 lg:px-24"
       >
         {focusAreas.map((area, index) => (
           <Reveal
@@ -163,7 +163,7 @@ export default function WhatWeDo() {
                 <p className="text-[11px] font-bold tracking-[0.14em] text-pdib-green uppercase">
                   Priority sector
                 </p>
-                <h3 className="mt-2 text-[clamp(18px,1.6vw,22px)] leading-snug font-medium tracking-tight text-pdib-title">
+                <h3 className="mt-2 text-[clamp(16px,1.4vw,18px)] leading-snug font-medium tracking-tight text-pdib-title">
                   {area.title}
                 </h3>
                 <p className="mt-2 text-[14px] leading-[1.5] text-pdib-text">

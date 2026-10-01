@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, {
+  PageBody,
+  PageSectionTitle,
+} from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Corporate Governance | PDIB",
@@ -10,9 +14,6 @@ export const metadata: Metadata = {
 
 const intro =
   "Strong governance, transparency, and accountability guide how PDIB steers strategy and manages risk.";
-
-const sectionTitle =
-  "-mx-4 w-[calc(100%+2rem)] bg-[#46543d] px-4 py-3 text-[20px] font-semibold tracking-tight text-[#dce4c9] sm:-mx-[4vw] sm:w-[calc(100%+8vw)] sm:px-[4vw] sm:py-3.5 sm:text-[22px] lg:-mx-[5vw] lg:w-[calc(100%+10vw)] lg:px-[5vw]";
 
 export default function CorporateGovernancePage() {
   return (
@@ -25,9 +26,9 @@ export default function CorporateGovernancePage() {
         eyebrow=""
       />
 
-      <article className="bg-white px-4 pt-16 pb-24 sm:px-[4vw] sm:pt-24 sm:pb-32 lg:px-[5vw]">
-        <h2 className={sectionTitle}>Corporate Governance</h2>
-        <div className="mt-6 max-w-3xl space-y-6 text-[17px] leading-[1.65] text-pdib-text [&_strong]:font-bold">
+      <PageContent>
+        <PageSectionTitle>Corporate Governance</PageSectionTitle>
+        <PageBody>
           <p>
             PDIB maintains a robust governance framework designed to ensure{" "}
             <strong>transparency</strong>, <strong>accountability</strong>, and
@@ -45,8 +46,8 @@ export default function CorporateGovernancePage() {
             trust — so investment continues to serve development across
             Puntland.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }

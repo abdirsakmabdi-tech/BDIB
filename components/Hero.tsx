@@ -112,7 +112,7 @@ export default function Hero() {
         />
       ))}
 
-      <div className="absolute inset-x-0 top-0 bottom-12 z-10 flex items-end justify-start px-6 pb-16 sm:px-[6.5vw] sm:pb-20 lg:pb-24">
+      <div className="absolute inset-x-0 top-0 bottom-12 z-10 flex items-end justify-start px-8 pb-16 sm:px-14 sm:pb-20 lg:px-24 lg:pb-24">
         <div
           key={slide.src}
           className="w-full max-w-[min(420px,92vw)] text-left text-white transition-opacity duration-700 [text-shadow:0_1px_12px_rgba(0,0,0,0.45)]"
@@ -121,7 +121,7 @@ export default function Hero() {
             {pad(current + 1)} / {pad(total)} · Priority sectors
           </p>
 
-          <h1 className="mt-3 font-sans text-[clamp(28px,4vw,40px)] leading-[1.05] font-bold tracking-tight text-white uppercase">
+          <h1 className="mt-3 font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-white uppercase">
             {slide.title}
           </h1>
 
@@ -141,7 +141,7 @@ export default function Hero() {
       <div
         role="tablist"
         aria-label="Priority sector slides"
-        className="absolute inset-x-0 bottom-0 z-20 flex h-11 items-stretch gap-0 border-t border-white/15 bg-black/35 px-3 sm:h-12 sm:px-5 lg:px-[6.5vw]"
+        className="absolute inset-x-0 bottom-0 z-20 flex h-11 items-stretch gap-0 border-t border-white/15 bg-black/35 px-3 sm:h-12 sm:px-5 lg:px-8"
       >
         {slides.map((item, index) => {
           const active = index === current;

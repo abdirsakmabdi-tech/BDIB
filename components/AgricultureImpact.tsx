@@ -20,12 +20,12 @@ export default function AgricultureImpact() {
         className="absolute inset-0 bg-linear-to-t from-black/70 via-black/25 to-transparent"
       />
 
-      <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-10 sm:px-[6.5vw] sm:pb-12 lg:pb-14">
+      <div className="absolute inset-x-0 bottom-0 z-10 px-8 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">
         <Link
           href="/agriculture"
           className="group inline-block max-w-2xl"
         >
-          <p className="font-sans text-[clamp(22px,2.8vw,36px)] leading-[1.25] font-medium tracking-tight text-white transition-opacity group-hover:opacity-90">
+          <p className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-medium tracking-tight text-white transition-opacity group-hover:opacity-90">
             PDIB enhances agriculture
           </p>
         </Link>

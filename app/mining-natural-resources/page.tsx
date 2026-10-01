@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SectorHero from "@/components/SectorHero";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Mining & Natural Resources | PDIB",
@@ -23,8 +24,8 @@ export default function MiningNaturalResourcesPage() {
         objectClassName="object-cover object-[center_45%]"
       />
 
-      <article className="bg-white px-6 pt-12 pb-24 sm:px-[6.5vw] sm:pt-16 sm:pb-32">
-        <div className="max-w-2xl space-y-5 text-[16px] leading-[1.7] text-pdib-text sm:text-[17px]">
+      <PageContent narrow>
+        <PageBody>
           <p>{intro}</p>
           <p>
             PDIB can support the responsible development of this sector by
@@ -41,8 +42,8 @@ export default function MiningNaturalResourcesPage() {
             <strong>economic diversification</strong>, and increased{" "}
             <strong>investment and export opportunities</strong>.
           </p>
-        </div>
-      </article>
+        </PageBody>
+      </PageContent>
     </main>
   );
 }
