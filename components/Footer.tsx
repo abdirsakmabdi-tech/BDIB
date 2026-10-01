@@ -50,19 +50,19 @@ export default function Footer() {
             </p>
             <p className="mt-3 text-[14px] leading-[1.55] text-white/90">
               <a
-                href="mailto:info@pdib.so"
+                href="mailto:info@pdib.com"
                 className="transition-opacity hover:opacity-80"
               >
-                info@pdib.so
+                info@pdib.com
               </a>
               <br />
               <a
-                href="https://pdib.so"
+                href="https://pdib.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-opacity hover:opacity-80"
               >
-                pdib.so
+                pdib.com
               </a>
             </p>
           </div>
