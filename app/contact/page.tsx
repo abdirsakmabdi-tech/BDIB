@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -10,160 +8,66 @@ export const metadata: Metadata = {
     "Get in touch with the Puntland Development & Investment Bank — email, head office, and enquiry form.",
 };
 
-const intro =
-  "Reach the Puntland Development & Investment Bank — head office, email, and enquiry form for partnerships and financing.";
-
-const mapSrc =
-  "https://maps.google.com/maps?q=Garowe%2C%20Puntland%2C%20Somalia&t=&z=13&ie=UTF8&iwloc=&output=embed";
-
 export default function ContactPage() {
   return (
-    <main>
+    <main className="min-h-svh bg-white">
       <Header />
-      <SectorHero
-        variant="solid"
-        title="Contact us"
-        intro={intro}
-        eyebrow="Get in touch"
-        compactTitle
-      />
 
-      <article className="bg-white px-8 pt-14 pb-20 sm:px-14 sm:pt-16 sm:pb-28 lg:px-24">
-        <section className="grid items-start gap-14 lg:grid-cols-2 lg:gap-16 xl:gap-20">
-          <aside>
-            <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
-              Contact information
-            </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-pdib-text sm:text-[16px]">
-              We help you find direction, remove friction, and keep your
-              business moving forward — strategically and confidently across
-              Puntland&apos;s productive sectors.
+      <section className="grid min-h-[calc(100svh-7rem)] pt-[7rem] lg:grid-cols-[42%_58%]">
+        {/* Left brand panel */}
+        <aside className="relative overflow-hidden bg-[#d8efe0] px-8 py-14 sm:px-12 sm:py-16 lg:px-14 lg:py-20 xl:px-16">
+          <p className="text-[12px] font-bold tracking-[0.2em] text-[#036522] uppercase sm:text-[13px]">
+            Contact us
+          </p>
+          <h1 className="mt-6 max-w-md font-sans text-[clamp(22px,2.4vw,28px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+            Unlock support for Puntland&apos;s major growth moments
+          </h1>
+          <p className="mt-5 max-w-sm text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
+            Financing, partnerships, and guidance for enterprises and
+            institutions building Puntland&apos;s future.
+          </p>
+
+          <div className="mt-10 space-y-2 text-[14px] leading-[1.55] text-pdib-text sm:mt-12">
+            <p>
+              <a
+                href="mailto:info@pdib.com"
+                className="font-medium text-pdib-title transition-opacity hover:opacity-70"
+              >
+                info@pdib.com
+              </a>
             </p>
-
-            <ul className="mt-8 space-y-4">
-              <ContactRow
-                href="mailto:info@pdib.so"
-                label="info@pdib.so"
-                icon={<MailIcon />}
-              />
-              <ContactRow
-                label="Garowe, Puntland, Somalia"
-                icon={<PinIcon />}
-              />
-              <ContactRow
-                label="Sunday – Thursday, 8:00 AM – 4:00 PM"
-                icon={<ClockIcon />}
-              />
-              <ContactRow
-                href="https://pdib.so"
-                label="pdib.so"
-                icon={<GlobeIcon />}
-                external
-              />
-            </ul>
-
-            <div className="mt-10 overflow-hidden border border-black/10 bg-[#f3f3f3]">
-              <iframe
-                title="PDIB head office map — Garowe, Puntland"
-                src={mapSrc}
-                className="h-[240px] w-full border-0 sm:h-[280px]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-          </aside>
-
-          <div>
-            <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
-              Send Us a Message
-            </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-[1.7] text-pdib-text sm:text-[16px]">
-              Fill in the form and our team will get back to you within 24
-              hours.
-            </p>
-            <ContactForm />
+            <p>Garowe, Puntland, Somalia</p>
+            <p>Sunday – Thursday · 8:00 AM – 4:00 PM</p>
           </div>
-        </section>
-      </article>
+
+          {/* Decorative circles */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-24 -left-24 size-[280px] rounded-full bg-[#b7dfc6] sm:size-[340px] lg:-bottom-32 lg:-left-28 lg:size-[400px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-16 left-16 size-[220px] rounded-full bg-[#c8e8d4] sm:left-24 sm:size-[280px] lg:left-28 lg:size-[320px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 left-0 h-[42%] w-[55%] rounded-tr-[100%] bg-[#a8d4b8]/70"
+          />
+        </aside>
+
+        {/* Right form panel */}
+        <div className="bg-white px-8 py-14 sm:px-12 sm:py-16 lg:px-14 lg:py-20 xl:px-16">
+          <h2 className="font-sans text-[clamp(22px,2.4vw,28px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+            Talk to our team today
+          </h2>
+          <p className="mt-4 max-w-xl text-[15px] leading-[1.7] text-pdib-text sm:text-[16px]">
+            If you&apos;re an entrepreneur, partner, institution, or community
+            leader interested in learning more about PDIB, tell us a bit about
+            yourself using the form below, and we&apos;ll be in touch soon.
+          </p>
+          <ContactForm />
+        </div>
+      </section>
     </main>
-  );
-}
-
-function ContactRow({
-  icon,
-  label,
-  href,
-  external,
-}: {
-  icon: ReactNode;
-  label: string;
-  href?: string;
-  external?: boolean;
-}) {
-  const className =
-    "flex items-center gap-3 text-[15px] text-pdib-title transition-colors hover:text-pdib-green";
-
-  const content = (
-    <>
-      <span className="grid size-9 shrink-0 place-items-center text-[#6b6b6b]">
-        {icon}
-      </span>
-      <span>{label}</span>
-    </>
-  );
-
-  if (!href) {
-    return <li className="flex items-center gap-3 text-[15px] text-pdib-title">{content}</li>;
-  }
-
-  return (
-    <li>
-      <a
-        href={href}
-        className={className}
-        {...(external
-          ? { target: "_blank", rel: "noopener noreferrer" }
-          : {})}
-      >
-        {content}
-      </a>
-    </li>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <rect x="3.5" y="5.5" width="17" height="13" rx="1.5" />
-      <path d="M4 7l8 6 8-6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function PinIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <path d="M12 21s6.5-5.2 6.5-10.2A6.5 6.5 0 0 0 5.5 10.8C5.5 15.8 12 21 12 21z" />
-      <circle cx="12" cy="10.5" r="2.2" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" />
-      <path d="M12 8v4.5l3 2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function GlobeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" />
-      <path d="M4.5 12h15M12 4.5c2.5 2.6 2.5 12.4 0 15M12 4.5c-2.5 2.6-2.5 12.4 0 15" strokeLinecap="round" />
-    </svg>
   );
 }
