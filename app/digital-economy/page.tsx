@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function DigitalEconomyPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/digital-economy-hero-v2.jpg"
-        alt="Glowing lightbulb with a digital network overlay on green grass"
-        title="Digital Economy"
-        intro={intro}
-        objectClassName="object-cover object-[center_55%]"
-      />
-
+    <SplitPageLayout
+      title="Digital Economy"
+      intro={intro}
+      heroSrc="/digital-economy-hero-v2.jpg"
+      heroAlt="Glowing lightbulb with a digital network overlay on green grass"
+      heroObjectClassName="object-cover object-[center_55%]"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -39,6 +35,6 @@ export default function DigitalEconomyPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

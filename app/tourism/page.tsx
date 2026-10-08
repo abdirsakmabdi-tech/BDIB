@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function TourismPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/tourism-puntland.jpg"
-        alt="Aerial view of a busy turquoise beach with tents, banners, and boats"
-        title="Tourism"
-        intro={intro}
-        objectClassName="object-cover object-center"
-      />
-
+    <SplitPageLayout
+      title="Tourism"
+      intro={intro}
+      heroSrc="/slides/tourism-puntland.jpg"
+      heroAlt="Aerial view of a busy turquoise beach with tents, banners, and boats"
+      heroObjectClassName="object-cover object-center"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -45,6 +41,6 @@ export default function TourismPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

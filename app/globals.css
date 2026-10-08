@@ -138,8 +138,221 @@ body {
   animation-play-state: paused;
 }
 
+/* Slow fingertip drag, then elastic settle — stagger via animation-delay */
+@keyframes split-circle-drag {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  12% {
+    transform: translate3d(0, 0, 0);
+  }
+  48% {
+    transform: translate3d(var(--bounce-x, 10px), var(--bounce-y, -12px), 0);
+  }
+  68% {
+    transform: translate3d(
+      calc(var(--bounce-x, 10px) * -0.22),
+      calc(var(--bounce-y, -12px) * -0.22),
+      0
+    );
+  }
+  84% {
+    transform: translate3d(
+      calc(var(--bounce-x, 10px) * 0.08),
+      calc(var(--bounce-y, -12px) * 0.08),
+      0
+    );
+  }
+}
+
+/* Keeps the icon visually steady while the circle floats */
+@keyframes sector-icon-counter {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  12% {
+    transform: translate3d(0, 0, 0);
+  }
+  48% {
+    transform: translate3d(
+      calc(var(--bounce-x, 10px) * -0.55),
+      calc(var(--bounce-y, -12px) * -0.55),
+      0
+    );
+  }
+  68% {
+    transform: translate3d(
+      calc(var(--bounce-x, 10px) * 0.12),
+      calc(var(--bounce-y, -12px) * 0.12),
+      0
+    );
+  }
+  84% {
+    transform: translate3d(
+      calc(var(--bounce-x, 10px) * -0.04),
+      calc(var(--bounce-y, -12px) * -0.04),
+      0
+    );
+  }
+}
+
+.split-circle-drag {
+  animation: split-circle-drag var(--bounce-duration, 6.5s)
+    cubic-bezier(0.37, 0.01, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+.sector-icon-counter {
+  animation: sector-icon-counter var(--bounce-duration, 6.5s)
+    cubic-bezier(0.37, 0.01, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+.sector-circle {
+  cursor: grab;
+  touch-action: none;
+}
+
+.sector-circle:active {
+  cursor: grabbing;
+}
+
+/* Destination showcase — 10s Ken Burns + progress */
+@keyframes destination-kenburns {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.08) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+@keyframes destination-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes destination-title-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes destination-meta-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes destination-bands-in {
+  from {
+    opacity: 0;
+    transform: translate3d(12%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.destination-kenburns {
+  animation: destination-kenburns linear both;
+  will-change: transform;
+}
+
+.destination-progress {
+  animation: destination-progress linear both;
+}
+
+.destination-title {
+  animation: destination-title-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.destination-meta {
+  animation: destination-meta-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.destination-bands {
+  animation: destination-bands-in 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tourism-cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tourism-place-float {
+  0%,
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(var(--tag-rotate, 0deg))
+      translateY(0);
+  }
+  50% {
+    transform: translate3d(-50%, -50%, 0) rotate(var(--tag-rotate, 0deg))
+      translateY(-10px);
+  }
+}
+
+@keyframes tourism-place-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-50%, calc(-50% + 24px), 0)
+      rotate(var(--tag-rotate, 0deg)) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) rotate(var(--tag-rotate, 0deg))
+      scale(1);
+  }
+}
+
+.tourism-cursor-blink {
+  animation: tourism-cursor-blink 1s step-end infinite;
+}
+
+.tourism-place-tag {
+  animation:
+    tourism-place-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    tourism-place-float 4.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .partners-marquee-inner {
+    animation: none;
+  }
+
+  .split-circle-drag,
+  .sector-icon-counter,
+  .destination-kenburns,
+  .destination-progress,
+  .destination-title,
+  .destination-meta,
+  .destination-bands,
+  .tourism-cursor-blink,
+  .tourism-place-tag {
     animation: none;
   }
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -34,18 +33,15 @@ const programmes = [
 
 export default function SpecializedInterventionsPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/education.jpg"
-        alt="Specialized interventions and inclusive enterprise support"
-        title="Specialized Interventions"
-        intro={intro}
-        eyebrow="What we offer"
-        objectClassName="object-cover object-[center_40%]"
-      />
-
-      <PageContent narrow className="!pb-16 sm:!pb-20">
+    <SplitPageLayout
+      title="Specialized Interventions"
+      intro={intro}
+      eyebrow="What we offer"
+      heroSrc="/slides/education.jpg"
+      heroAlt="Specialized interventions and inclusive enterprise support"
+      heroObjectClassName="object-cover object-[center_40%]"
+    >
+      <PageContent narrow className="!pb-12 sm:!pb-16">
         <PageBody>
           <p>{intro}</p>
           <p className="font-semibold text-pdib-title">
@@ -63,7 +59,7 @@ export default function SpecializedInterventionsPage() {
 
       <section
         aria-label="Special programmes"
-        className="flex flex-col gap-8 bg-white px-8 pb-20 sm:gap-10 sm:px-14 sm:pb-28 lg:px-24"
+        className="flex flex-col gap-8 bg-white px-8 pb-20 sm:gap-10 sm:px-12 sm:pb-28 lg:px-14 xl:px-16"
       >
         {programmes.map((programme) => (
           <article
@@ -72,31 +68,31 @@ export default function SpecializedInterventionsPage() {
             className="scroll-mt-28 grid grid-cols-1 overflow-hidden lg:grid-cols-2"
           >
             <div
-              className={`${programme.panelClass} flex items-center px-8 py-12 sm:px-12 sm:py-16 lg:px-14 lg:py-20`}
+              className={`${programme.panelClass} flex items-center px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14`}
             >
               <div className="max-w-xl">
                 <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
                   {programme.title}
                 </h2>
-                <p className="mt-6 text-[16px] leading-[1.65] text-pdib-text sm:text-[17px]">
+                <p className="mt-5 text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
                   {programme.body}
                 </p>
               </div>
             </div>
 
-            <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-full">
+            <div className="relative min-h-[240px] sm:min-h-[300px] lg:min-h-full">
               <Image
                 src={programme.src}
                 alt={programme.alt}
                 fill
                 quality={90}
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 29vw"
                 className="object-cover"
               />
             </div>
           </article>
         ))}
       </section>
-    </main>
+    </SplitPageLayout>
   );
 }

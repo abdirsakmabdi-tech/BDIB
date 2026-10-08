@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { sectorIcons, type SectorIconKey } from "@/components/SectorIcons";
+import type { SectorIconKey } from "@/components/SectorIcons";
 
 export type InterventionArea = {
   label: string;
@@ -8,6 +8,7 @@ export type InterventionArea = {
   icon: SectorIconKey;
   src: string;
   alt: string;
+  description: string;
 };
 
 export const interventionAreas: InterventionArea[] = [
@@ -17,6 +18,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "fisheries",
     src: "/slides/fisheries-catch.jpg",
     alt: "Fishermen carrying a large shark along a Puntland beach",
+    description:
+      "Financing for boats, cold chain, processing, and coastal livelihoods along Puntland’s 1,600km coastline.",
   },
   {
     label: "Agriculture Financing",
@@ -24,6 +27,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "agriculture",
     src: "/slides/agriculture-field.jpg",
     alt: "Agricultural fields in Puntland",
+    description:
+      "Capital for crops, irrigation, and agribusinesses that strengthen food security and rural income.",
   },
   {
     label: "Education Financing",
@@ -31,6 +36,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "education",
     src: "/slides/education.jpg",
     alt: "Student studying among textbooks",
+    description:
+      "Investment in learning infrastructure and education enterprises that expand opportunity across Puntland.",
   },
   {
     label: "Livestock Financing",
@@ -38,6 +45,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "livestock",
     src: "/slides/livestock-herd.jpg",
     alt: "Herd of camels crossing dry terrain",
+    description:
+      "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
   },
   {
     label: "Energy",
@@ -45,6 +54,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "renewable",
     src: "/slides/renewable-energy-windfarm.jpg",
     alt: "Wind turbines across rolling hills",
+    description:
+      "Renewable energy and climate financing that cut costs and power productive growth.",
   },
   {
     label: "Housing & Infrastructure",
@@ -52,6 +63,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "infrastructure",
     src: "/slides/social-infrastructure.jpg",
     alt: "Highway infrastructure under construction",
+    description:
+      "Schools, health facilities, water, and community infrastructure that strengthen public services.",
   },
   {
     label: "Export & Manufacturing",
@@ -59,6 +72,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "manufacturing",
     src: "/slides/export-manufacturing-port.jpg",
     alt: "Cargo ships and cranes at an export port",
+    description:
+      "Support for processing, manufacturing, and trade that adds value and expands export capacity.",
   },
   {
     label: "Digital Economy",
@@ -66,6 +81,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "digital",
     src: "/slides/digital-economy.jpg",
     alt: "Server aisle in a modern data center",
+    description:
+      "Backing digital services, fintech, and connectivity that open new opportunities for business and citizens.",
   },
   {
     label: "Health Financing",
@@ -73,6 +90,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "health",
     src: "/slides/health.jpg",
     alt: "Stethoscope on a wooden table",
+    description:
+      "Financing for health facilities and services that improve care and community wellbeing.",
   },
   {
     label: "Mining & Natural Resources",
@@ -80,6 +99,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "mining",
     src: "/slides/mining-natural-resources.jpg",
     alt: "Heavy machinery in an open mining quarry",
+    description:
+      "Responsible development of minerals and natural resources with local value addition and jobs.",
   },
   {
     label: "Women & Youth",
@@ -87,6 +108,8 @@ export const interventionAreas: InterventionArea[] = [
     icon: "womenYouth",
     src: "/slides/women-youth-led-business.jpg",
     alt: "Woman entrepreneur at a small grocery stall",
+    description:
+      "Financing for women- and youth-led enterprises so founders can invest, grow, and create jobs.",
   },
   {
     label: "Tourism Financing",
@@ -94,56 +117,87 @@ export const interventionAreas: InterventionArea[] = [
     icon: "tourism",
     src: "/slides/tourism-puntland.jpg",
     alt: "Turquoise beach with tents, banners, and boats",
+    description:
+      "Hospitality, destinations, and visitor experiences that create jobs and grow the local economy.",
   },
 ];
 
-export default function AreasOfIntervention() {
-  return (
-    <section
-      id="areas-of-intervention"
-      className="bg-white px-8 py-14 sm:px-14 sm:py-20 lg:px-24"
-    >
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center">
-          <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] font-bold tracking-tight text-[#036522]">
-            Areas of Intervention
-          </h2>
-          <span
-            aria-hidden="true"
-            className="mx-auto mt-4 block h-1.5 w-16 rounded-full bg-[#23ba4a]"
-          />
-        </div>
+const panelTints = ["bg-[#eaf6ef]", "bg-[#f3f8f4]", "bg-[#e4f2e9]"] as const;
 
-        <ul className="mt-12 grid list-none grid-cols-1 gap-4 p-0 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
-          {interventionAreas.map((area) => {
-            const Icon = sectorIcons[area.icon];
-            return (
-              <li key={area.label}>
-                <Link
-                  href={area.href}
-                  className="group relative block aspect-[3/4] overflow-hidden"
+function ArrowCircle() {
+  return (
+    <span
+      aria-hidden="true"
+      className="mt-auto inline-flex size-10 items-center justify-center rounded-full border border-[#036522] text-[#036522] transition-colors duration-300 group-hover:bg-[#036522] group-hover:text-white sm:size-11"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="size-4 sm:size-[1.1rem]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M9 6l6 6-6 6" />
+      </svg>
+    </span>
+  );
+}
+
+export default function AreasOfIntervention({
+  className = "bg-white px-8 py-14 sm:px-14 sm:py-20 lg:px-24",
+}: {
+  className?: string;
+}) {
+  return (
+    <section id="areas-of-intervention" className={className}>
+      <header className="max-w-xl">
+        <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] font-bold tracking-tight text-pdib-title">
+          Areas of Intervention
+        </h2>
+        <span
+          aria-hidden="true"
+          className="mt-2.5 block h-0.5 w-8 rounded-full bg-[#23ba4a]"
+        />
+        <p className="mt-4 text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
+          Priority sectors where PDIB channels financing to grow Puntland’s
+          productive economy.
+        </p>
+      </header>
+
+      <div className="mt-10 bg-white p-4 sm:mt-12 sm:p-5 lg:p-6">
+        <ul className="grid list-none grid-cols-1 gap-6 p-0 sm:gap-7">
+          {interventionAreas.map((area, index) => (
+            <li key={area.label}>
+              <Link
+                href={area.href}
+                className="group grid overflow-hidden bg-white ring-1 ring-[#036522]/10 sm:grid-cols-2"
+              >
+                <div
+                  className={`${panelTints[index % panelTints.length]} flex min-h-[260px] flex-col px-6 py-8 sm:min-h-[300px] sm:px-8 sm:py-9 lg:min-h-[320px] lg:px-9 lg:py-10`}
                 >
+                  <h3 className="font-sans text-[clamp(17px,1.6vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
+                    {area.label}
+                  </h3>
+                  <p className="mt-3 max-w-sm text-[14px] leading-[1.65] text-pdib-text sm:mt-4 sm:text-[15px]">
+                    {area.description}
+                  </p>
+                  <ArrowCircle />
+                </div>
+
+                <div className="relative min-h-[240px] sm:min-h-full">
                   <Image
                     src={area.src}
                     alt={area.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 40vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col items-center px-4 pb-8 pt-16 sm:pb-10">
-                    <Icon tone="green" />
-                    <span className="mt-4 text-center text-[15px] leading-snug font-bold tracking-tight text-white sm:text-[16px]">
-                      {area.label}
-                    </span>
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
+                </div>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

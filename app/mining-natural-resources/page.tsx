@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function MiningNaturalResourcesPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/mining-natural-resources.jpg"
-        alt="Heavy machinery working in an open mining quarry"
-        title="Mining & Natural Resources"
-        intro={intro}
-        objectClassName="object-cover object-[center_45%]"
-      />
-
+    <SplitPageLayout
+      title="Mining & Natural Resources"
+      intro={intro}
+      heroSrc="/slides/mining-natural-resources.jpg"
+      heroAlt="Heavy machinery working in an open mining quarry"
+      heroObjectClassName="object-cover object-[center_45%]"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -44,6 +40,6 @@ export default function MiningNaturalResourcesPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

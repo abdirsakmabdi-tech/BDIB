@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function LivestockPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/livestock-herd.jpg"
-        alt="A large herd of camels crossing dry reddish terrain under a blue sky"
-        title="Livestock Financing"
-        intro={intro}
-        objectClassName="object-cover object-[center_58%]"
-      />
-
+    <SplitPageLayout
+      title="Livestock Financing"
+      intro={intro}
+      heroSrc="/slides/livestock-herd.jpg"
+      heroAlt="A large herd of camels crossing dry reddish terrain under a blue sky"
+      heroObjectClassName="object-cover object-[center_58%]"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -38,6 +34,6 @@ export default function LivestockPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

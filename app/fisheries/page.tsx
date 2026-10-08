@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function FisheriesPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/fisheries-catch.jpg"
-        alt="Fishermen carrying a large shark along a Puntland beach with boats offshore"
-        title="Fisheries & the Blue Economy"
-        intro={intro}
-        objectClassName="object-cover object-[center_50%]"
-      />
-
+    <SplitPageLayout
+      title="Fisheries & the Blue Economy"
+      intro={intro}
+      heroSrc="/slides/fisheries-catch.jpg"
+      heroAlt="Fishermen carrying a large shark along a Puntland beach with boats offshore"
+      heroObjectClassName="object-cover object-[center_50%]"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -37,6 +33,6 @@ export default function FisheriesPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

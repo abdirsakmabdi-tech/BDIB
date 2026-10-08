@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, {
   PageBody,
   PageSectionTitle,
@@ -17,15 +16,12 @@ const intro =
 
 export default function CorporateGovernancePage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        variant="solid"
-        title="Corporate Governance"
-        intro={intro}
-        eyebrow=""
-      />
-
+    <SplitPageLayout
+      title="Corporate Governance"
+      intro={intro}
+      eyebrow=""
+      heroVariant="solid"
+    >
       <PageContent>
         <PageSectionTitle>Corporate Governance</PageSectionTitle>
         <PageBody>
@@ -48,6 +44,6 @@ export default function CorporateGovernancePage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

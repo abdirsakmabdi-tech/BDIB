@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -40,17 +39,14 @@ const products = [
 
 export default function FinancialPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/services-hero.jpg"
-        alt="PDIB financial interventions"
-        title="Financial Interventions"
-        intro={intro}
-        eyebrow="What we offer"
-        objectClassName="object-cover object-[center_60%]"
-      />
-
+    <SplitPageLayout
+      title="Financial Interventions"
+      intro={intro}
+      eyebrow="What we offer"
+      heroSrc="/services-hero.jpg"
+      heroAlt="PDIB financial interventions"
+      heroObjectClassName="object-cover object-[center_60%]"
+    >
       <PageContent narrow className="!pb-8 sm:!pb-10">
         <PageBody>
           <p>{intro}</p>
@@ -68,42 +64,42 @@ export default function FinancialPage() {
 
       <section
         aria-label="Financial products"
-        className="flex flex-col gap-8 bg-white px-8 pb-20 sm:gap-10 sm:px-14 sm:pb-28 lg:px-24"
+        className="flex flex-col gap-8 bg-white px-8 pb-20 sm:gap-10 sm:px-12 sm:pb-28 lg:px-14 xl:px-16"
       >
         {products.map((product) => (
-            <article
-              key={product.id}
-              id={product.id}
-              className="scroll-mt-28 grid grid-cols-1 overflow-hidden lg:grid-cols-2"
-            >
-              <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-full">
-                <Image
-                  src={product.src}
-                  alt={product.alt}
-                  fill
-                  quality={90}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
+          <article
+            key={product.id}
+            id={product.id}
+            className="scroll-mt-28 grid grid-cols-1 overflow-hidden lg:grid-cols-2"
+          >
+            <div className="relative min-h-[240px] sm:min-h-[300px] lg:min-h-full">
+              <Image
+                src={product.src}
+                alt={product.alt}
+                fill
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 29vw"
+                className="object-cover"
+              />
+            </div>
 
-              <div
-                className={`${product.panelClass} flex items-center px-8 py-12 sm:px-12 sm:py-16 lg:px-14 lg:py-20`}
-              >
-                <div className="max-w-xl">
-                  <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
-                    {product.title}
-                  </h2>
-                  <div className="mt-6 space-y-4 text-[16px] leading-[1.65] text-pdib-text sm:text-[17px]">
-                    {product.paragraphs.map((paragraph) => (
-                      <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-                    ))}
-                  </div>
+            <div
+              className={`${product.panelClass} flex items-center px-6 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14`}
+            >
+              <div className="max-w-xl">
+                <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
+                  {product.title}
+                </h2>
+                <div className="mt-5 space-y-4 text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
+                  {product.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                  ))}
                 </div>
               </div>
-            </article>
+            </div>
+          </article>
         ))}
       </section>
-    </main>
+    </SplitPageLayout>
   );
 }

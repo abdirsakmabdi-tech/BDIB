@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
-import PageContent, {
-  PageBody,
-} from "@/components/PageContent";
+import SplitPageLayout from "@/components/SplitPageLayout";
+import PageContent, { PageBody } from "@/components/PageContent";
 import { AccordionPanel } from "@/components/HistoryAccordions";
 
 export const metadata: Metadata = {
@@ -47,18 +44,14 @@ const governance = [
 
 export default function HistoryPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/history-hero-v2.jpg"
-        alt="Collage of priority sectors reflecting PDIB’s development journey"
-        title="Our History"
-        intro={intro}
-        eyebrow=""
-        objectClassName="object-cover object-center"
-        compactTitle
-      />
-
+    <SplitPageLayout
+      title="Our History"
+      intro={intro}
+      eyebrow=""
+      heroSrc="/slides/history-hero-v2.jpg"
+      heroAlt="Collage of priority sectors reflecting PDIB’s development journey"
+      heroObjectClassName="object-cover object-center"
+    >
       <PageContent className="!pb-8 sm:!pb-10">
         <header className="mb-8 sm:mb-10">
           <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
@@ -94,8 +87,8 @@ export default function HistoryPage() {
         </PageBody>
       </PageContent>
 
-      <section className="bg-white px-8 pt-6 pb-14 sm:px-14 sm:pt-8 sm:pb-16 lg:px-24 lg:pb-20">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+      <section className="bg-white px-8 pt-6 pb-14 sm:px-12 sm:pt-8 sm:pb-16 lg:px-14 lg:pb-20 xl:px-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-10 xl:gap-14">
           <AccordionPanel
             title="Services Offered"
             intro="PDIB supports businesses, institutions, and communities with financing and advisory solutions that strengthen Puntland’s productive economy."
@@ -108,6 +101,6 @@ export default function HistoryPage() {
           />
         </div>
       </section>
-    </main>
+    </SplitPageLayout>
   );
 }

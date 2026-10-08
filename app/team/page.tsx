@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import { boardMembers, executiveMembers, type Member } from "@/lib/team";
 
 export const metadata: Metadata = {
@@ -15,17 +14,13 @@ const intro =
 
 export default function TeamPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        variant="solid"
-        title="Our team"
-        intro={intro}
-        eyebrow=""
-        compactTitle
-      />
-
-      <article className="bg-[#f4f5f0] px-8 pt-14 pb-8 sm:px-14 sm:pt-16 sm:pb-10 lg:px-24">
+    <SplitPageLayout
+      title="Our team"
+      intro={intro}
+      eyebrow=""
+      heroVariant="solid"
+    >
+      <article className="bg-[#f4f5f0] px-8 pt-14 pb-8 sm:px-12 sm:pt-16 sm:pb-10 lg:px-14 xl:px-16">
         <div className="max-w-2xl">
           <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
             The Faces Behind Our Mission
@@ -44,7 +39,7 @@ export default function TeamPage() {
 
       <section
         id="board-of-directors"
-        className="scroll-mt-28 bg-[#f4f5f0] px-8 pb-14 sm:px-14 sm:pb-16 lg:px-24"
+        className="scroll-mt-28 bg-[#f4f5f0] px-8 pb-14 sm:px-12 sm:pb-16 lg:px-14 xl:px-16"
       >
         <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
           The Board
@@ -53,7 +48,7 @@ export default function TeamPage() {
           A fully constituted, broad-based and independent Board of Directors
           that sets strategic direction and oversees Management.
         </p>
-        <ul className="mt-8 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <ul className="mt-8 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 lg:gap-7">
           {boardMembers.map((member) => (
             <li key={member.slug}>
               <MemberCard member={member} />
@@ -64,12 +59,12 @@ export default function TeamPage() {
 
       <section
         id="management-team"
-        className="scroll-mt-28 bg-[#f4f5f0] px-8 pb-20 sm:px-14 sm:pb-24 lg:px-24"
+        className="scroll-mt-28 bg-[#f4f5f0] px-8 pb-20 sm:px-12 sm:pb-24 lg:px-14 xl:px-16"
       >
         <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
           Executive leadership
         </h2>
-        <ul className="mt-8 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <ul className="mt-8 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 lg:gap-7">
           {executiveMembers.map((member) => (
             <li key={member.slug}>
               <MemberCard member={member} />
@@ -77,7 +72,7 @@ export default function TeamPage() {
           ))}
         </ul>
       </section>
-    </main>
+    </SplitPageLayout>
   );
 }
 

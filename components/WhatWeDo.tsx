@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
@@ -112,6 +113,29 @@ const focusAreas = [
   },
 ];
 
+const panelTints = ["bg-[#eaf6ef]", "bg-[#f3f8f4]", "bg-[#e4f2e9]"] as const;
+
+function ArrowCircle() {
+  return (
+    <span
+      aria-hidden="true"
+      className="mt-auto inline-flex size-10 items-center justify-center rounded-full border border-[#036522] text-[#036522] transition-colors duration-300 group-hover:bg-[#036522] group-hover:text-white sm:size-11"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        className="size-4 sm:size-[1.1rem]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M9 6l6 6-6 6" />
+      </svg>
+    </span>
+  );
+}
+
 export default function WhatWeDo() {
   return (
     <section id="what-we-do" className="bg-white">
@@ -125,7 +149,7 @@ export default function WhatWeDo() {
               Financing the productive sectors that power Puntland&apos;s growth
             </h2>
             <Link
-              href="#focus-areas"
+              href="/priority-sectors"
               className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-full bg-pdib-primary px-4 py-2 text-[11px] font-bold tracking-[0.1em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover lg:self-auto"
             >
               All sectors
@@ -137,42 +161,46 @@ export default function WhatWeDo() {
 
       <div
         id="focus-areas"
-        className="grid scroll-mt-28 grid-cols-1 gap-4 px-8 pb-16 sm:grid-cols-2 sm:gap-5 sm:px-14 sm:pb-24 lg:grid-cols-3 lg:px-24"
+        className="scroll-mt-28 bg-white px-8 pt-8 pb-16 sm:px-14 sm:pt-10 sm:pb-20 lg:px-24 lg:pt-12 lg:pb-24"
       >
-        {focusAreas.map((area, index) => (
-          <Reveal
-            key={area.title}
-            delayMs={(index % 3) * 70}
-            className="h-full"
-          >
-            <Link
-              id={area.href.replace(/^[#/]/, "")}
-              href={area.href}
-              aria-label={area.title}
-              className="flex h-full flex-col overflow-hidden scroll-mt-28"
+        <div className="grid grid-cols-1 gap-7 sm:gap-8 lg:grid-cols-2 lg:gap-8 xl:gap-9">
+          {focusAreas.map((area, index) => (
+            <Reveal
+              key={area.title}
+              delayMs={(index % 2) * 80}
+              className="h-full"
             >
-              <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden">
-                <img
-                  src={area.src}
-                  alt={area.alt}
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </div>
+              <Link
+                id={area.href.replace(/^[#/]/, "")}
+                href={area.href}
+                aria-label={area.title}
+                className="group grid h-full overflow-hidden scroll-mt-28 bg-white ring-1 ring-[#036522]/10 sm:grid-cols-2"
+              >
+                <div
+                  className={`${panelTints[index % panelTints.length]} flex min-h-[260px] flex-col px-6 py-8 sm:min-h-[300px] sm:px-7 sm:py-9 lg:min-h-[320px] lg:px-8 lg:py-10`}
+                >
+                  <h3 className="font-sans text-[clamp(17px,1.6vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
+                    {area.title}
+                  </h3>
+                  <p className="mt-3 max-w-sm text-[14px] leading-[1.65] text-pdib-text sm:mt-4 sm:text-[15px]">
+                    {area.description}
+                  </p>
+                  <ArrowCircle />
+                </div>
 
-              <div className="flex flex-1 flex-col bg-pdib-primary/10 px-5 py-5 sm:px-6 sm:py-6">
-                <p className="text-[11px] font-bold tracking-[0.14em] text-pdib-green uppercase">
-                  Priority sector
-                </p>
-                <h3 className="mt-2 text-[clamp(16px,1.4vw,18px)] leading-snug font-medium tracking-tight text-pdib-title">
-                  {area.title}
-                </h3>
-                <p className="mt-2 text-[14px] leading-[1.5] text-pdib-text">
-                  {area.description}
-                </p>
-              </div>
-            </Link>
-          </Reveal>
-        ))}
+                <div className="relative min-h-[240px] sm:min-h-full">
+                  <Image
+                    src={area.src}
+                    alt={area.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

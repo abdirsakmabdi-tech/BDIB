@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, {
   PageBody,
   PageSectionTitle,
@@ -17,17 +16,14 @@ const intro =
 
 export default function AboutPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/about-hero-collage.jpg"
-        alt="Collage of priority sectors including mining, agriculture, livestock, infrastructure, energy, ports, fisheries, and tourism"
-        title="About us"
-        intro={intro}
-        eyebrow=""
-        objectClassName="object-cover object-center"
-      />
-
+    <SplitPageLayout
+      title="About us"
+      intro={intro}
+      eyebrow=""
+      heroSrc="/about-hero-collage.jpg"
+      heroAlt="Collage of priority sectors including mining, agriculture, livestock, infrastructure, energy, ports, fisheries, and tourism"
+      heroObjectClassName="object-cover object-center"
+    >
       <PageContent>
         <PageSectionTitle>About us</PageSectionTitle>
         <PageBody>
@@ -48,6 +44,6 @@ export default function AboutPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

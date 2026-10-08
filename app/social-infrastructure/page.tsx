@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function SocialInfrastructurePage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/social-infrastructure-hero.jpg"
-        alt="Social infrastructure under construction"
-        title="Social Infrastructure"
-        intro={intro}
-        objectClassName="object-cover object-[center_35%]"
-      />
-
+    <SplitPageLayout
+      title="Social Infrastructure"
+      intro={intro}
+      heroSrc="/social-infrastructure-hero.jpg"
+      heroAlt="Social infrastructure under construction"
+      heroObjectClassName="object-cover object-[center_35%]"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -38,6 +34,6 @@ export default function SocialInfrastructurePage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

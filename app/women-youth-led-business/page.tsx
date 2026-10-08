@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function WomenYouthLedBusinessPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/slides/women-youth-led-business.jpg"
-        alt="A woman entrepreneur working at a small grocery stall"
-        title="Women and Youth Led Business"
-        intro={intro}
-        objectClassName="object-cover object-top"
-      />
-
+    <SplitPageLayout
+      title="Women and Youth Led Business"
+      intro={intro}
+      heroSrc="/slides/women-youth-led-business.jpg"
+      heroAlt="A woman entrepreneur working at a small grocery stall"
+      heroObjectClassName="object-cover object-top"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -44,6 +40,6 @@ export default function WomenYouthLedBusinessPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

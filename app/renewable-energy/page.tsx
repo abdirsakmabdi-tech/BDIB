@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
@@ -14,16 +13,13 @@ const intro =
 
 export default function RenewableEnergyPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/renewable-hero-v2.jpg"
-        alt="Solar panels, battery storage, and wind turbines on a green field"
-        title="Renewable Energy"
-        intro={intro}
-        objectClassName="object-cover object-center"
-      />
-
+    <SplitPageLayout
+      title="Renewable Energy"
+      intro={intro}
+      heroSrc="/renewable-hero-v2.jpg"
+      heroAlt="Solar panels, battery storage, and wind turbines on a green field"
+      heroObjectClassName="object-cover object-center"
+    >
       <PageContent narrow>
         <PageBody>
           <p>{intro}</p>
@@ -39,6 +35,6 @@ export default function RenewableEnergyPage() {
           </p>
         </PageBody>
       </PageContent>
-    </main>
+    </SplitPageLayout>
   );
 }

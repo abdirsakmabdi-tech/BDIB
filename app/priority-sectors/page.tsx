@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import SectorHero from "@/components/SectorHero";
+import SplitPageLayout from "@/components/SplitPageLayout";
 import AreasOfIntervention from "@/components/AreasOfIntervention";
 
 export const metadata: Metadata = {
@@ -14,17 +13,15 @@ const intro =
 
 export default function PrioritySectorsPage() {
   return (
-    <main>
-      <Header />
-      <SectorHero
-        src="/priority-sectors-hero-v2.jpg"
-        alt="Collage of priority sectors including mining, agriculture, livestock, infrastructure, solar, wind, ports, fisheries, and tourism"
-        title="Priority Sectors"
-        intro={intro}
-        eyebrow=""
-        objectClassName="object-cover object-center"
-      />
-      <AreasOfIntervention />
-    </main>
+    <SplitPageLayout
+      title="Priority Sectors"
+      intro={intro}
+      eyebrow=""
+      heroSrc="/priority-sectors-hero-v2.jpg"
+      heroAlt="Collage of priority sectors including mining, agriculture, livestock, infrastructure, solar, wind, ports, fisheries, and tourism"
+      heroObjectClassName="object-cover object-center"
+    >
+      <AreasOfIntervention className="bg-white px-8 py-14 sm:px-12 sm:py-16 lg:px-14 xl:px-16" />
+    </SplitPageLayout>
   );
 }

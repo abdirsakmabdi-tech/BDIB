@@ -6,7 +6,7 @@ import WhoWeAre from "@/components/WhoWeAre";
 import PartnersFeatured from "@/components/PartnersFeatured";
 import WhatWeDo from "@/components/WhatWeDo";
 import BuildingInfrastructure from "@/components/BuildingInfrastructure";
-import TourismImpact from "@/components/TourismImpact";
+import DestinationMotion from "@/components/DestinationMotion";
 import Team from "@/components/Team";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       <WhoWeAre />
       <WhatWeDo />
       <BuildingInfrastructure />
-      <TourismImpact />
+      <DestinationMotion />
       <Team />
       <PartnersFeatured />
     </main>

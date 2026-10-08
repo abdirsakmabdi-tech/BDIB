@@ -14,7 +14,7 @@ export default function PageContent({
 }: PageContentProps) {
   return (
     <article
-      className={`bg-white px-8 pt-14 pb-20 sm:px-14 sm:pt-16 sm:pb-28 lg:px-24 ${className}`}
+      className={`bg-white px-8 pt-14 pb-20 sm:px-12 sm:pt-16 sm:pb-28 lg:px-14 lg:pb-24 xl:px-16 ${className}`}
     >
       <div className={narrow ? "max-w-2xl" : "max-w-3xl"}>{children}</div>
     </article>
