@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
 
 const SLIDE_MS = 7000;
@@ -137,20 +136,6 @@ export default function DestinationMotion() {
             </h2>
           </div>
         </div>
-      </div>
-
-      <div className="flex flex-col items-start justify-between gap-4 px-8 py-6 sm:flex-row sm:items-center sm:px-14 lg:px-24">
-        <p className="max-w-xl text-[14px] leading-[1.6] text-pdib-text sm:text-[15px]">
-          Coastal destinations across Puntland — places where tourism finance
-          can grow hospitality, jobs, and local enterprise.
-        </p>
-        <Link
-          href="/tourism"
-          className="inline-flex items-center gap-1.5 text-[12px] font-bold tracking-[0.12em] text-[#036522] uppercase transition-opacity hover:opacity-70"
-        >
-          Tourism financing
-          <span aria-hidden="true">→</span>
-        </Link>
       </div>
     </section>
   );
