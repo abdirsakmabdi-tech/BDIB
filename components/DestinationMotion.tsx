@@ -112,12 +112,12 @@ export default function DestinationMotion() {
           </div>
 
           {/* Headline — top of each image */}
-          <div className="absolute inset-x-0 top-0 z-20 px-5 pt-14 sm:px-8 sm:pt-16 lg:px-10 lg:pt-[4.5rem]">
+          <div className="absolute inset-x-0 top-0 z-20 px-8 pt-20 sm:px-14 sm:pt-24 lg:px-24 lg:pt-28">
             <div
               key={`headline-${current}`}
               className="destination-meta max-w-2xl"
             >
-              <p className="font-sans text-[clamp(14px,1.6vw,20px)] leading-[1.35] font-semibold tracking-tight text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)]">
+              <p className="font-sans text-[clamp(16px,1.9vw,24px)] leading-[1.35] font-semibold tracking-tight text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)]">
                 {HEADLINE}
               </p>
               <p className="mt-2 max-w-xl font-sans text-[clamp(12px,1.2vw,15px)] leading-[1.55] text-white/88 drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
@@ -127,7 +127,7 @@ export default function DestinationMotion() {
             </div>
           </div>
 
-          <div className="absolute inset-x-0 bottom-8 z-10 px-5 sm:bottom-10 sm:px-8 lg:bottom-12 lg:px-10">
+          <div className="absolute inset-x-0 bottom-8 z-10 px-8 sm:bottom-10 sm:px-14 lg:bottom-12 lg:px-24">
             <h2
               key={`name-${current}`}
               className="destination-title font-sans text-[clamp(24px,3.4vw,44px)] leading-[0.95] font-bold tracking-tight text-white"
