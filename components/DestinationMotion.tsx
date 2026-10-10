@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState, type CSSProperties } from "react";
 
 const SLIDE_MS = 7000;
-const HEADLINE = "PDIB invests and encourages the tourism in Puntland";
 
 const destinations = [
   {
@@ -12,24 +11,32 @@ const destinations = [
     src: "/destinations/eyl.jpg",
     alt: "View from a cave overlooking the coastal town of Eyl and turquoise water",
     object: "object-cover object-[center_45%]",
+    blurb:
+      "Cliffside views and coastal livelihoods along Puntland’s eastern shore.",
   },
   {
     name: "Caluula",
     src: "/destinations/caluula.jpg",
     alt: "Aerial view of a boat crossing turquoise waters near Caluula’s green islets",
     object: "object-cover object-center",
+    blurb:
+      "Turquoise channels and island routes at the tip of the Horn of Africa.",
   },
   {
     name: "Mareero",
     src: "/destinations/mareero.jpg",
     alt: "Coastal cliffs and turquoise sea along Mareero’s shoreline",
     object: "object-cover object-[center_40%]",
+    blurb:
+      "Dramatic coastline where hospitality and visitor experiences can grow.",
   },
   {
     name: "Binna Rasasayr",
     src: "/destinations/binna-rasasayr.jpg",
     alt: "Traditional boat on calm water at sunrise near Binna Rasasayr",
     object: "object-cover object-center",
+    blurb:
+      "Quiet waters and traditional craft — a setting for sustainable tourism.",
   },
 ] as const;
 
@@ -54,86 +61,94 @@ export default function DestinationMotion() {
       aria-label="Discover Puntland destinations"
       className="bg-white"
     >
-      <div className="relative w-full overflow-hidden">
-        <div className="relative h-[90vh] w-full min-h-[420px]">
-          {destinations.map((destination, index) => {
-            const active = index === current;
-            return (
+      <div className="relative h-[90vh] min-h-[420px] w-full overflow-hidden">
+        {destinations.map((destination, index) => {
+          const active = index === current;
+          return (
+            <div
+              key={destination.name}
+              aria-hidden={!active}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+                active ? "opacity-100" : "opacity-0"
+              }`}
+            >
               <div
-                key={destination.name}
-                aria-hidden={!active}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
-                  active ? "opacity-100" : "opacity-0"
+                className={`absolute inset-0 ${
+                  active ? "destination-kenburns" : ""
                 }`}
+                style={
+                  active
+                    ? ({ animationDuration: `${SLIDE_MS}ms` } as CSSProperties)
+                    : undefined
+                }
               >
-                <div
-                  className={`absolute inset-0 ${
-                    active ? "destination-kenburns" : ""
-                  }`}
-                  style={
-                    active
-                      ? ({
-                          animationDuration: `${SLIDE_MS}ms`,
-                        } as CSSProperties)
-                      : undefined
-                  }
-                >
-                  <Image
-                    src={destination.src}
-                    alt={destination.alt}
-                    fill
-                    priority={index === 0}
-                    quality={90}
-                    sizes="100vw"
-                    className={destination.object}
-                  />
-                </div>
+                <Image
+                  src={destination.src}
+                  alt={destination.alt}
+                  fill
+                  priority={index === 0}
+                  quality={90}
+                  sizes="100vw"
+                  className={destination.object}
+                />
               </div>
-            );
-          })}
+            </div>
+          );
+        })}
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-black/35"
-          />
+        {/* Readability gradient — left + bottom */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-transparent"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20"
+        />
 
+        {/* Left content — logo gutter alignment */}
+        <div className="absolute inset-0 z-10 flex flex-col justify-between px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20">
           <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 w-[42%] overflow-hidden sm:w-[38%] lg:w-[34%]"
+            key={`copy-${current}`}
+            className="destination-meta flex max-w-md gap-5 sm:max-w-lg sm:gap-6"
           >
-            <div
-              key={`bands-${current}`}
-              className="destination-bands absolute inset-0 origin-top-right"
-            >
-              <span className="absolute top-[-10%] right-[42%] h-[120%] w-[22%] -skew-x-[18deg] bg-[#036522]/25 backdrop-blur-[1px]" />
-              <span className="absolute top-[-10%] right-[22%] h-[120%] w-[22%] -skew-x-[18deg] bg-[#036522]/45" />
-              <span className="absolute top-[-10%] right-[-2%] h-[120%] w-[26%] -skew-x-[18deg] bg-[#036522]" />
-            </div>
-          </div>
+            {/* Vertical accent */}
+            <span
+              aria-hidden="true"
+              className="mt-1 hidden w-px shrink-0 self-stretch bg-white/70 sm:block"
+            />
 
-          {/* Headline — top of each image */}
-          <div className="absolute inset-x-0 top-0 z-20 px-8 pt-20 sm:px-14 sm:pt-24 lg:px-24 lg:pt-28">
-            <div
-              key={`headline-${current}`}
-              className="destination-meta max-w-2xl"
-            >
-              <p className="font-sans text-[clamp(16px,1.9vw,24px)] leading-[1.35] font-semibold tracking-tight text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.45)]">
-                {HEADLINE}
+            <div className="min-w-0">
+              <p className="text-[12px] leading-snug font-medium tracking-[0.04em] text-white/90 sm:text-[13px]">
+                PDIB invests and encourages the tourism in Puntland
               </p>
-              <p className="mt-2 max-w-xl font-sans text-[clamp(12px,1.2vw,15px)] leading-[1.55] text-white/88 drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
-                Coastal destinations across Puntland — places where tourism
-                finance can grow hospitality, jobs, and local enterprise.
+
+              <h2 className="destination-title mt-6 font-sans text-[clamp(36px,5vw,64px)] leading-[0.95] font-bold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:mt-8">
+                {slide.name}
+              </h2>
+
+              <p className="mt-4 max-w-sm text-[15px] leading-[1.55] text-white/88 sm:mt-5 sm:text-[16px]">
+                {slide.blurb}
               </p>
             </div>
           </div>
 
-          <div className="absolute inset-x-0 bottom-8 z-10 px-8 sm:bottom-10 sm:px-14 lg:bottom-12 lg:px-24">
-            <h2
-              key={`name-${current}`}
-              className="destination-title font-sans text-[clamp(24px,3.4vw,44px)] leading-[0.95] font-bold tracking-tight text-white"
-            >
-              {slide.name}
-            </h2>
+          {/* Dots — bottom left */}
+          <div className="flex items-center gap-2.5 sm:pl-[calc(1px+1.25rem+0.25rem)] lg:pl-[calc(1px+1.5rem)]">
+            {destinations.map((destination, index) => (
+              <button
+                key={destination.name}
+                type="button"
+                aria-label={`Show ${destination.name}`}
+                aria-current={index === current ? "true" : undefined}
+                onClick={() => setCurrent(index)}
+                className={`size-2 rounded-full transition-all ${
+                  index === current
+                    ? "bg-white"
+                    : "bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

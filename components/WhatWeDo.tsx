@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import Reveal from "@/components/Reveal";
 
 const focusAreas = [
@@ -114,29 +117,15 @@ const focusAreas = [
 ];
 
 const panelTints = ["bg-[#eaf6ef]", "bg-[#f3f8f4]", "bg-[#e4f2e9]"] as const;
-
-function ArrowCircle() {
-  return (
-    <span
-      aria-hidden="true"
-      className="mt-auto inline-flex size-10 items-center justify-center rounded-full border border-[#036522] text-[#036522] transition-colors duration-300 group-hover:bg-[#036522] group-hover:text-white sm:size-11"
-    >
-      <svg
-        viewBox="0 0 24 24"
-        className="size-4 sm:size-[1.1rem]"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M9 6l6 6-6 6" />
-      </svg>
-    </span>
-  );
-}
+const INITIAL_COUNT = 4;
+const PAGE_SIZE = 2;
 
 export default function WhatWeDo() {
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const visibleAreas = focusAreas.slice(0, visibleCount);
+  const canShowMore = visibleCount < focusAreas.length;
+  const canShowLess = visibleCount > INITIAL_COUNT;
+
   return (
     <section id="what-we-do" className="bg-white">
       <div className="px-8 pt-8 pb-10 sm:px-14 sm:pt-10 sm:pb-14 lg:px-24">
@@ -161,46 +150,71 @@ export default function WhatWeDo() {
 
       <div
         id="focus-areas"
-        className="scroll-mt-28 bg-white px-8 pt-8 pb-16 sm:px-14 sm:pt-10 sm:pb-20 lg:px-24 lg:pt-12 lg:pb-24"
+        className="scroll-mt-28 bg-white px-8 pb-16 sm:px-14 sm:pb-20 lg:px-24 lg:pb-24"
       >
-        <div className="grid grid-cols-1 gap-7 sm:gap-8 lg:grid-cols-2 lg:gap-8 xl:gap-9">
-          {focusAreas.map((area, index) => (
-            <Reveal
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+          {visibleAreas.map((area, index) => (
+            <article
               key={area.title}
-              delayMs={(index % 2) * 80}
-              className="h-full"
+              className="overflow-hidden rounded-md ring-1 ring-[#036522]/10"
             >
               <Link
                 id={area.href.replace(/^[#/]/, "")}
                 href={area.href}
                 aria-label={area.title}
-                className="group grid h-full overflow-hidden scroll-mt-28 bg-white ring-1 ring-[#036522]/10 sm:grid-cols-2"
+                className="group grid h-full min-h-[280px] scroll-mt-28 grid-cols-1 sm:min-h-[300px] sm:grid-cols-[1.15fr_1fr] lg:min-h-[320px]"
               >
-                <div
-                  className={`${panelTints[index % panelTints.length]} flex min-h-[260px] flex-col px-6 py-8 sm:min-h-[300px] sm:px-7 sm:py-9 lg:min-h-[320px] lg:px-8 lg:py-10`}
-                >
-                  <h3 className="font-sans text-[clamp(17px,1.6vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
-                    {area.title}
-                  </h3>
-                  <p className="mt-3 max-w-sm text-[14px] leading-[1.65] text-pdib-text sm:mt-4 sm:text-[15px]">
-                    {area.description}
-                  </p>
-                  <ArrowCircle />
-                </div>
-
-                <div className="relative min-h-[240px] sm:min-h-full">
+                <div className="relative min-h-[200px] w-full sm:min-h-full">
                   <Image
                     src={area.src}
                     alt={area.alt}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, 40vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                 </div>
+
+                <div
+                  className={`${panelTints[index % panelTints.length]} flex w-full min-w-0 flex-col px-5 py-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6`}
+                >
+                  <p className="text-[11px] font-bold tracking-[0.14em] text-[#036522] uppercase">
+                    {area.label}
+                  </p>
+                  <h3 className="mt-2 font-sans text-[clamp(16px,1.5vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
+                    {area.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-[13px] leading-[1.65] text-pdib-text sm:text-[14px] lg:text-[15px]">
+                    {area.description}
+                  </p>
+                  <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-md bg-white px-3.5 py-2.5 text-[12px] font-semibold text-[#036522] ring-1 ring-[#036522]/20 transition-colors group-hover:bg-[#036522] group-hover:text-white group-hover:ring-[#036522]">
+                    Learn more
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </div>
               </Link>
-            </Reveal>
+            </article>
           ))}
         </div>
+
+        {canShowMore || canShowLess ? (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() =>
+                canShowMore
+                  ? setVisibleCount((count) =>
+                      Math.min(count + PAGE_SIZE, focusAreas.length),
+                    )
+                  : setVisibleCount(INITIAL_COUNT)
+              }
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#036522]/30 bg-white px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] text-[#036522] uppercase transition-colors hover:bg-[#036522] hover:text-white"
+              aria-expanded={canShowLess}
+            >
+              {canShowMore ? "Show more" : "Show less"}
+              <span aria-hidden="true">{canShowMore ? "↓" : "↑"}</span>
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );
