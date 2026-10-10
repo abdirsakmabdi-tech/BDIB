@@ -118,133 +118,154 @@ const focusAreas = [
 
 type FocusArea = (typeof focusAreas)[number];
 
-type SectorRow =
-  | { type: "full"; items: [FocusArea] }
-  | { type: "pair"; items: FocusArea[] };
+const featuredAreas = focusAreas.slice(0, 4);
 
-function buildSectorRows(areas: FocusArea[]): SectorRow[] {
-  const rows: SectorRow[] = [];
-  let i = 0;
-  let fullNext = true;
+const primaryMoreLabels = [
+  "Renewable Energy",
+  "Social Infrastructure",
+  "Export & Manufacturing",
+  "Digital Economy",
+] as const;
 
-  while (i < areas.length) {
-    if (fullNext) {
-      rows.push({ type: "full", items: [areas[i]] });
-      i += 1;
-    } else {
-      rows.push({ type: "pair", items: areas.slice(i, i + 2) });
-      i += 2;
-    }
-    fullNext = !fullNext;
-  }
+const secondaryMoreLabels = [
+  "Health",
+  "Mining & Natural Resources",
+  "Women & Youth",
+  "Tourism",
+] as const;
 
-  return rows;
-}
+const primaryMoreAreas = primaryMoreLabels
+  .map((label) => focusAreas.find((area) => area.label === label))
+  .filter((area): area is FocusArea => Boolean(area));
 
-function SectorCard({
-  area,
-  compact = false,
-}: {
-  area: FocusArea;
-  compact?: boolean;
-}) {
+const secondaryMoreAreas = secondaryMoreLabels
+  .map((label) => focusAreas.find((area) => area.label === label))
+  .filter((area): area is FocusArea => Boolean(area));
+
+function SectorCard({ area }: { area: FocusArea }) {
   return (
-    <article className="h-full overflow-hidden border border-[#1a1a1a]/15 bg-white">
+    <article>
       <Link
         id={area.href.replace(/^[#/]/, "")}
         href={area.href}
         aria-label={area.title}
-        className={`group grid h-full scroll-mt-28 grid-cols-1 sm:grid-cols-2 ${
-          compact
-            ? "min-h-[240px] sm:min-h-[260px] lg:min-h-[280px]"
-            : "min-h-[260px] sm:min-h-[300px] lg:min-h-[340px]"
-        }`}
+        className="group block scroll-mt-28"
       >
-        <div
-          className={`relative w-full sm:min-h-full ${
-            compact ? "min-h-[180px]" : "min-h-[220px]"
-          }`}
-        >
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#e8ebe8]">
           <Image
             src={area.src}
             alt={area.alt}
             fill
-            sizes={
-              compact
-                ? "(max-width: 640px) 100vw, 25vw"
-                : "(max-width: 640px) 100vw, 50vw"
-            }
+            sizes="(max-width: 640px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
+          <span className="absolute right-4 bottom-3 font-sans text-[13px] font-semibold tracking-[0.12em] text-white uppercase drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)] sm:right-5 sm:bottom-4 sm:text-[14px]">
+            {area.label}
+          </span>
         </div>
 
-        <div
-          className={`flex w-full min-w-0 flex-col bg-white ${
-            compact
-              ? "px-5 py-6 sm:px-6 sm:py-7 lg:px-7 lg:py-8"
-              : "px-6 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-11"
-          }`}
-        >
-          <h3
-            className={`font-sans leading-[1.2] font-bold tracking-tight text-pdib-title ${
-              compact
-                ? "text-[clamp(16px,1.5vw,20px)]"
-                : "text-[clamp(20px,2vw,28px)]"
-            }`}
-          >
+        <div className="mt-5 sm:mt-6">
+          <h3 className="font-sans text-[clamp(16px,1.5vw,20px)] leading-[1.3] font-bold tracking-tight text-pdib-title">
             {area.title}
           </h3>
-          <p
-            className={`mt-3 flex-1 leading-[1.65] text-pdib-text ${
-              compact
-                ? "text-[13px] sm:text-[14px]"
-                : "mt-4 max-w-xl text-[15px] sm:text-[16px]"
-            }`}
-          >
+          <p className="mt-2.5 max-w-md text-[14px] leading-[1.65] text-pdib-text sm:text-[15px]">
             {area.description}
           </p>
-
-          <div
-            className={`flex items-center justify-between gap-4 ${
-              compact ? "mt-6 sm:mt-8" : "mt-8 sm:mt-10"
-            }`}
-          >
-            <span className="text-[12px] font-bold tracking-[0.08em] text-pdib-title uppercase sm:text-[13px]">
-              {area.label}
-            </span>
-            <span
-              aria-hidden="true"
-              className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-pdib-title text-pdib-title transition-colors group-hover:border-[#036522] group-hover:bg-[#036522] group-hover:text-white sm:size-11"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="size-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.75"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </span>
-          </div>
+          <span className="mt-4 inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.06em] text-[#036522] uppercase transition-colors group-hover:text-pdib-title">
+            Learn more
+            <span aria-hidden="true">→</span>
+          </span>
         </div>
       </Link>
     </article>
   );
 }
 
-const INITIAL_COUNT = 4;
-const PAGE_SIZE = 2;
+function SectorHoverPanel({ areas }: { areas: FocusArea[] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeArea = areas[activeIndex] ?? areas[0];
+
+  if (areas.length === 0 || !activeArea) return null;
+
+  return (
+    <div className="rounded-2xl bg-[#f3f6f3] p-5 sm:rounded-3xl sm:p-7 lg:p-8">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
+        <ul className="flex list-none flex-col gap-1 p-0">
+          {areas.map((area, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <li key={area.title}>
+                <button
+                  type="button"
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onFocus={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`flex w-full items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-colors sm:px-5 sm:py-4 ${
+                    isActive
+                      ? "bg-[#cfe8d8] text-[#036522]"
+                      : "text-pdib-title hover:bg-[#eaf6ef] hover:text-[#036522]"
+                  }`}
+                >
+                  <span
+                    className={`font-sans text-[clamp(13px,1.2vw,15px)] leading-snug tracking-tight ${
+                      isActive ? "font-bold" : "font-semibold"
+                    }`}
+                  >
+                    {area.label}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`text-[14px] transition-opacity ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    →
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <div
+            key={activeArea.title}
+            className="sector-panel-in grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6"
+          >
+            <div className="relative h-[22vh] w-full overflow-hidden rounded-2xl bg-[#e8ebe8] sm:h-full sm:min-h-[220px]">
+              <Image
+                src={activeArea.src}
+                alt={activeArea.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, 25vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="flex min-w-0 flex-col justify-center">
+              <h3 className="font-sans text-[clamp(14px,1.3vw,17px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
+                {activeArea.title}
+              </h3>
+              <p className="mt-2 text-[12px] leading-[1.55] text-pdib-text sm:text-[13px]">
+                {activeArea.description}
+              </p>
+              <Link
+                id={activeArea.href.replace(/^[#/]/, "")}
+                href={activeArea.href}
+                className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-pdib-primary px-4 py-2 text-[11px] font-bold tracking-[0.1em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover"
+              >
+                Learn more
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function WhatWeDo() {
-  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const visibleAreas = focusAreas.slice(0, visibleCount);
-  const rows = buildSectorRows(visibleAreas);
-  const canShowMore = visibleCount < focusAreas.length;
-  const canShowLess = visibleCount > INITIAL_COUNT;
-
   return (
     <section id="what-we-do" className="bg-white">
       <div className="px-8 pt-8 pb-10 sm:px-14 sm:pt-10 sm:pb-14 lg:px-24">
@@ -271,44 +292,16 @@ export default function WhatWeDo() {
         id="focus-areas"
         className="scroll-mt-28 bg-white px-8 pb-16 sm:px-14 sm:pb-20 lg:px-24 lg:pb-24"
       >
-        <div className="flex flex-col gap-5 lg:gap-6">
-          {rows.map((row) =>
-            row.type === "full" ? (
-              <div key={row.items[0].title}>
-                <SectorCard area={row.items[0]} />
-              </div>
-            ) : (
-              <div
-                key={row.items.map((item) => item.title).join("-")}
-                className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6"
-              >
-                {row.items.map((area) => (
-                  <SectorCard key={area.title} area={area} compact />
-                ))}
-              </div>
-            ),
-          )}
+        <div className="grid grid-cols-1 gap-x-4 gap-y-12 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-14 lg:gap-x-6 lg:gap-y-16">
+          {featuredAreas.map((area) => (
+            <SectorCard key={area.title} area={area} />
+          ))}
         </div>
 
-        {canShowMore || canShowLess ? (
-          <div className="mt-10 flex justify-center">
-            <button
-              type="button"
-              onClick={() =>
-                canShowMore
-                  ? setVisibleCount((count) =>
-                      Math.min(count + PAGE_SIZE, focusAreas.length),
-                    )
-                  : setVisibleCount(INITIAL_COUNT)
-              }
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#036522]/30 bg-white px-5 py-2.5 text-[12px] font-bold tracking-[0.1em] text-[#036522] uppercase transition-colors hover:bg-[#036522] hover:text-white"
-              aria-expanded={canShowLess}
-            >
-              {canShowMore ? "Show more" : "Show less"}
-              <span aria-hidden="true">{canShowMore ? "↓" : "↑"}</span>
-            </button>
-          </div>
-        ) : null}
+        <div className="mt-12 flex flex-col gap-6 sm:mt-14 sm:gap-8">
+          <SectorHoverPanel areas={primaryMoreAreas} />
+          <SectorHoverPanel areas={secondaryMoreAreas} />
+        </div>
       </div>
     </section>
   );
