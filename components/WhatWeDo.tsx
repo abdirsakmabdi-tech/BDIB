@@ -114,15 +114,134 @@ const focusAreas = [
     description:
       "Support for hospitality, coastal destinations, and visitor enterprises that create jobs and grow the visitor economy.",
   },
-];
+] as const;
 
-const panelTints = ["bg-[#eaf6ef]", "bg-[#f3f8f4]", "bg-[#e4f2e9]"] as const;
+type FocusArea = (typeof focusAreas)[number];
+
+type SectorRow =
+  | { type: "full"; items: [FocusArea] }
+  | { type: "pair"; items: FocusArea[] };
+
+function buildSectorRows(areas: FocusArea[]): SectorRow[] {
+  const rows: SectorRow[] = [];
+  let i = 0;
+  let fullNext = true;
+
+  while (i < areas.length) {
+    if (fullNext) {
+      rows.push({ type: "full", items: [areas[i]] });
+      i += 1;
+    } else {
+      rows.push({ type: "pair", items: areas.slice(i, i + 2) });
+      i += 2;
+    }
+    fullNext = !fullNext;
+  }
+
+  return rows;
+}
+
+function SectorCard({
+  area,
+  compact = false,
+}: {
+  area: FocusArea;
+  compact?: boolean;
+}) {
+  return (
+    <article className="h-full overflow-hidden border border-[#1a1a1a]/15 bg-white">
+      <Link
+        id={area.href.replace(/^[#/]/, "")}
+        href={area.href}
+        aria-label={area.title}
+        className={`group grid h-full scroll-mt-28 grid-cols-1 sm:grid-cols-2 ${
+          compact
+            ? "min-h-[240px] sm:min-h-[260px] lg:min-h-[280px]"
+            : "min-h-[260px] sm:min-h-[300px] lg:min-h-[340px]"
+        }`}
+      >
+        <div
+          className={`relative w-full sm:min-h-full ${
+            compact ? "min-h-[180px]" : "min-h-[220px]"
+          }`}
+        >
+          <Image
+            src={area.src}
+            alt={area.alt}
+            fill
+            sizes={
+              compact
+                ? "(max-width: 640px) 100vw, 25vw"
+                : "(max-width: 640px) 100vw, 50vw"
+            }
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          />
+        </div>
+
+        <div
+          className={`flex w-full min-w-0 flex-col bg-white ${
+            compact
+              ? "px-5 py-6 sm:px-6 sm:py-7 lg:px-7 lg:py-8"
+              : "px-6 py-7 sm:px-8 sm:py-9 lg:px-10 lg:py-11"
+          }`}
+        >
+          <h3
+            className={`font-sans leading-[1.2] font-bold tracking-tight text-pdib-title ${
+              compact
+                ? "text-[clamp(16px,1.5vw,20px)]"
+                : "text-[clamp(20px,2vw,28px)]"
+            }`}
+          >
+            {area.title}
+          </h3>
+          <p
+            className={`mt-3 flex-1 leading-[1.65] text-pdib-text ${
+              compact
+                ? "text-[13px] sm:text-[14px]"
+                : "mt-4 max-w-xl text-[15px] sm:text-[16px]"
+            }`}
+          >
+            {area.description}
+          </p>
+
+          <div
+            className={`flex items-center justify-between gap-4 ${
+              compact ? "mt-6 sm:mt-8" : "mt-8 sm:mt-10"
+            }`}
+          >
+            <span className="text-[12px] font-bold tracking-[0.08em] text-pdib-title uppercase sm:text-[13px]">
+              {area.label}
+            </span>
+            <span
+              aria-hidden="true"
+              className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-pdib-title text-pdib-title transition-colors group-hover:border-[#036522] group-hover:bg-[#036522] group-hover:text-white sm:size-11"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </Link>
+    </article>
+  );
+}
+
 const INITIAL_COUNT = 4;
 const PAGE_SIZE = 2;
 
 export default function WhatWeDo() {
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const visibleAreas = focusAreas.slice(0, visibleCount);
+  const rows = buildSectorRows(visibleAreas);
   const canShowMore = visibleCount < focusAreas.length;
   const canShowLess = visibleCount > INITIAL_COUNT;
 
@@ -152,48 +271,23 @@ export default function WhatWeDo() {
         id="focus-areas"
         className="scroll-mt-28 bg-white px-8 pb-16 sm:px-14 sm:pb-20 lg:px-24 lg:pb-24"
       >
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-5 lg:gap-6">
-          {visibleAreas.map((area, index) => (
-            <article
-              key={area.title}
-              className="overflow-hidden rounded-md ring-1 ring-[#036522]/10"
-            >
-              <Link
-                id={area.href.replace(/^[#/]/, "")}
-                href={area.href}
-                aria-label={area.title}
-                className="group grid h-full min-h-[280px] scroll-mt-28 grid-cols-1 sm:min-h-[300px] sm:grid-cols-[1.15fr_1fr] lg:min-h-[320px]"
+        <div className="flex flex-col gap-5 lg:gap-6">
+          {rows.map((row) =>
+            row.type === "full" ? (
+              <div key={row.items[0].title}>
+                <SectorCard area={row.items[0]} />
+              </div>
+            ) : (
+              <div
+                key={row.items.map((item) => item.title).join("-")}
+                className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6"
               >
-                <div className="relative min-h-[200px] w-full sm:min-h-full">
-                  <Image
-                    src={area.src}
-                    alt={area.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 40vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div
-                  className={`${panelTints[index % panelTints.length]} flex w-full min-w-0 flex-col px-5 py-5 sm:px-6 sm:py-5 lg:px-7 lg:py-6`}
-                >
-                  <p className="text-[11px] font-bold tracking-[0.14em] text-[#036522] uppercase">
-                    {area.label}
-                  </p>
-                  <h3 className="mt-2 font-sans text-[clamp(16px,1.5vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
-                    {area.title}
-                  </h3>
-                  <p className="mt-3 flex-1 text-[13px] leading-[1.65] text-pdib-text sm:text-[14px] lg:text-[15px]">
-                    {area.description}
-                  </p>
-                  <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-md bg-white px-3.5 py-2.5 text-[12px] font-semibold text-[#036522] ring-1 ring-[#036522]/20 transition-colors group-hover:bg-[#036522] group-hover:text-white group-hover:ring-[#036522]">
-                    Learn more
-                    <span aria-hidden="true">→</span>
-                  </span>
-                </div>
-              </Link>
-            </article>
-          ))}
+                {row.items.map((area) => (
+                  <SectorCard key={area.title} area={area} compact />
+                ))}
+              </div>
+            ),
+          )}
         </div>
 
         {canShowMore || canShowLess ? (

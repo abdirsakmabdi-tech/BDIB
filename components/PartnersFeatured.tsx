@@ -24,7 +24,7 @@ const partners = [
   {
     name: "Shuraako Capital",
     src: "/partners/shuraako.jpg",
-    scale: 1.45,
+    scale: 1.15,
   },
   {
     name: "Ministry of Finance, Puntland",
@@ -36,21 +36,21 @@ function LogoTrack({ ariaHidden }: { ariaHidden?: boolean }) {
   return (
     <ul
       aria-hidden={ariaHidden ? true : undefined}
-      className="partners-marquee-track flex shrink-0 list-none items-center gap-6 p-0 sm:gap-8 lg:gap-10"
+      className="partners-marquee-track flex shrink-0 list-none items-center gap-5 p-0"
     >
       {partners.map((partner) => {
         const scale = "scale" in partner ? partner.scale : 1;
         return (
           <li
             key={`${ariaHidden ? "dup-" : ""}${partner.name}`}
-            className="flex h-20 w-[220px] shrink-0 items-center justify-center sm:h-24 sm:w-[250px]"
+            className="flex size-[128px] shrink-0 items-center justify-center rounded-2xl border border-black/8 bg-white p-5 shadow-[0_2px_10px_rgba(15,23,15,0.06)] sm:size-[144px] sm:p-6 lg:size-[160px]"
           >
             <Image
               src={partner.src}
               alt={ariaHidden ? "" : partner.name}
-              width={250}
-              height={96}
-              className="h-full w-auto max-w-full object-contain"
+              width={140}
+              height={140}
+              className="h-full w-full object-contain"
               style={scale !== 1 ? { transform: `scale(${scale})` } : undefined}
             />
           </li>
@@ -62,18 +62,21 @@ function LogoTrack({ ariaHidden }: { ariaHidden?: boolean }) {
 
 export default function PartnersFeatured() {
   return (
-    <section id="partners-featured" className="border-y border-black/5 bg-white">
-      <div className="px-8 pt-8 pb-6 sm:px-14 sm:pt-10 sm:pb-8 lg:px-24">
+    <section
+      id="partners-featured"
+      className="flex min-h-[70vh] flex-col justify-center border-y border-black/5 bg-[#f6f7f5]"
+    >
+      <div className="px-8 pt-10 pb-6 sm:px-14 sm:pt-12 sm:pb-8 lg:px-24">
         <p className="text-center text-[11px] font-bold tracking-[0.16em] text-pdib-green uppercase sm:text-[12px]">
           Our partners
         </p>
       </div>
 
-      <div className="partners-marquee relative overflow-hidden pb-8 sm:pb-10">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-linear-to-r from-white to-transparent sm:w-20" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-linear-to-l from-white to-transparent sm:w-20" />
+      <div className="partners-marquee relative overflow-hidden pb-12 sm:pb-14 lg:pb-16">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-linear-to-r from-[#f6f7f5] to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-linear-to-l from-[#f6f7f5] to-transparent sm:w-20" />
 
-        <div className="partners-marquee-inner flex w-max items-center">
+        <div className="partners-marquee-inner flex w-max items-center gap-5">
           <LogoTrack />
           <LogoTrack ariaHidden />
         </div>
