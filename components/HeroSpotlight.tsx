@@ -115,7 +115,7 @@ export default function HeroSpotlight() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#0a1628] lg:min-h-[90svh]"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-[#0a1628]"
     >
       <div className="absolute inset-0 overflow-hidden">
         {scenes.map((item, index) => {
@@ -172,7 +172,7 @@ export default function HeroSpotlight() {
           <div className="mt-4 pl-[calc(1rem+5px)] sm:mt-5 sm:pl-[calc(1.25rem+5px)]">
             <Link
               href={scene.href}
-              className="inline-flex items-center gap-2 bg-[#036522] px-4 py-2 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-[#047a29] sm:text-[14px]"
+              className="inline-flex items-center gap-2 bg-pdib-primary px-4 py-2 text-[13px] font-semibold tracking-wide text-pdib-title transition-colors hover:bg-pdib-primary-hover sm:text-[14px]"
             >
               {scene.cta}
               <span aria-hidden="true">›</span>

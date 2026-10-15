@@ -105,7 +105,7 @@ export default function HeaderBar() {
     "group/nav relative shrink-0 px-3 py-2 text-[15px] font-medium tracking-tight whitespace-nowrap text-[#1a1a1a] transition-colors duration-200 hover:text-[#036522]";
 
   const buttonClass =
-    "inline-flex shrink-0 items-center gap-1.5 bg-[#036522] px-5 py-2.5 text-[14px] font-semibold tracking-tight whitespace-nowrap text-white transition-colors duration-200 hover:bg-[#047a29]";
+    "inline-flex shrink-0 items-center gap-1.5 bg-pdib-primary px-5 py-2.5 text-[14px] font-semibold tracking-tight whitespace-nowrap text-pdib-title transition-colors duration-200 hover:bg-pdib-primary-hover";
 
   const mainNavItems = navItems.filter((item) => item.variant !== "button");
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
@@ -227,7 +227,7 @@ export default function HeaderBar() {
           href={navHref(item.href)}
           className={
             isButton
-              ? "m-4 bg-[#036522] px-6 py-3.5 text-center text-[15px] font-semibold tracking-tight text-white"
+              ? "m-4 bg-pdib-primary px-6 py-3.5 text-center text-[15px] font-semibold tracking-tight text-pdib-title"
               : "border-b border-black/8 px-6 py-4 text-[16px] font-semibold tracking-tight text-[#1a1a1a]"
           }
           onClick={() => setMobileOpen(false)}

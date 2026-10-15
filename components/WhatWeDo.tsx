@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Reveal from "@/components/Reveal";
 
 const focusAreas = [
@@ -182,86 +179,44 @@ function SectorCard({ area }: { area: FocusArea }) {
 }
 
 function SectorHoverPanel({ areas }: { areas: FocusArea[] }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeArea = areas[activeIndex] ?? areas[0];
-
-  if (areas.length === 0 || !activeArea) return null;
+  if (areas.length === 0) return null;
 
   return (
-    <div className="rounded-2xl bg-[#f3f6f3] p-5 sm:rounded-3xl sm:p-7 lg:p-8">
-      <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
-        <ul className="flex list-none flex-col gap-1 p-0">
-          {areas.map((area, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <li key={area.title}>
-                <button
-                  type="button"
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onFocus={() => setActiveIndex(index)}
-                  onClick={() => setActiveIndex(index)}
-                  aria-current={isActive ? "true" : undefined}
-                  className={`flex w-full items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-colors sm:px-5 sm:py-4 ${
-                    isActive
-                      ? "bg-[#cfe8d8] text-[#036522]"
-                      : "text-pdib-title hover:bg-[#eaf6ef] hover:text-[#036522]"
-                  }`}
-                >
-                  <span
-                    className={`font-sans text-[clamp(13px,1.2vw,15px)] leading-snug tracking-tight ${
-                      isActive ? "font-bold" : "font-semibold"
-                    }`}
-                  >
-                    {area.label}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className={`text-[14px] transition-opacity ${
-                      isActive ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    →
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+    <ul className="flex list-none flex-col gap-4 p-0 sm:gap-5">
+      {areas.map((area) => (
+        <li key={area.title}>
+          <article className="overflow-hidden rounded-2xl border border-[#d7ddd8] bg-white shadow-[0_2px_12px_rgba(15,23,15,0.05)] transition-shadow hover:shadow-[0_8px_24px_rgba(15,23,15,0.1)]">
+            <div className="grid grid-cols-1 sm:grid-cols-[minmax(320px,1.15fr)_minmax(0,0.85fr)] lg:grid-cols-[minmax(420px,1.35fr)_minmax(0,0.65fr)]">
+                <div className="relative min-h-[280px] w-full sm:min-h-[340px] lg:min-h-[380px]">
+                <Image
+                  src={area.src}
+                  alt={area.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 55vw"
+                  className="object-cover"
+                />
+              </div>
 
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <div
-            key={activeArea.title}
-            className="sector-panel-in grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6"
-          >
-            <div className="relative h-[22vh] w-full overflow-hidden rounded-2xl bg-[#e8ebe8] sm:h-full sm:min-h-[220px]">
-              <Image
-                src={activeArea.src}
-                alt={activeArea.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, 25vw"
-                className="object-cover"
-              />
+              <div className="flex min-w-0 flex-col justify-center px-5 py-7 sm:px-6 sm:py-8 lg:px-8 lg:py-9">
+                <h3 className="font-sans text-[clamp(18px,2vw,28px)] leading-snug font-bold tracking-tight text-pdib-title">
+                  {area.title}
+                </h3>
+                <p className="mt-2 max-w-xl text-[13px] leading-[1.55] text-pdib-text sm:text-[14px]">
+                  {area.description}
+                </p>
+                <Link
+                  id={area.href.replace(/^[#/]/, "")}
+                  href={area.href}
+                  className="mt-4 inline-flex w-fit items-center rounded-full bg-pdib-primary px-4 py-2 text-[11px] font-bold tracking-[0.1em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover"
+                >
+                  Learn more
+                </Link>
+              </div>
             </div>
-            <div className="flex min-w-0 flex-col justify-center">
-              <h3 className="font-sans text-[clamp(14px,1.3vw,17px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
-                {activeArea.title}
-              </h3>
-              <p className="mt-2 text-[12px] leading-[1.55] text-pdib-text sm:text-[13px]">
-                {activeArea.description}
-              </p>
-              <Link
-                id={activeArea.href.replace(/^[#/]/, "")}
-                href={activeArea.href}
-                className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-pdib-primary px-4 py-2 text-[11px] font-bold tracking-[0.1em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover"
-              >
-                Learn more
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </article>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -298,9 +253,11 @@ export default function WhatWeDo() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 sm:mt-14 sm:gap-8">
-          <SectorHoverPanel areas={primaryMoreAreas} />
-          <SectorHoverPanel areas={secondaryMoreAreas} />
+        <div className="-mx-8 mt-12 bg-[#eef1ee] px-8 py-8 sm:-mx-14 sm:mt-14 sm:px-14 sm:py-10 lg:-mx-24 lg:px-24 lg:py-12">
+          <div className="flex flex-col gap-5 sm:gap-6">
+            <SectorHoverPanel areas={primaryMoreAreas} />
+            <SectorHoverPanel areas={secondaryMoreAreas} />
+          </div>
         </div>
       </div>
     </section>

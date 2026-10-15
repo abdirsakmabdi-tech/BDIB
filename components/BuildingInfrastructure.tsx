@@ -111,7 +111,7 @@ export default function BuildingInfrastructure() {
               </p>
               <Link
                 href="/financial"
-                className="mt-7 inline-flex items-center rounded-full border border-white/80 px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-white hover:text-[#036522]"
+                className="mt-7 inline-flex items-center rounded-full bg-pdib-primary px-5 py-2.5 text-[13px] font-semibold text-pdib-title transition-colors hover:bg-pdib-primary-hover"
               >
                 Learn More
               </Link>

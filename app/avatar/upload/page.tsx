@@ -116,7 +116,7 @@ export default function AvatarUploadPage() {
                     accept="image/jpeg, image/png, image/webp"
                     required
                     onChange={onFileChange}
-                    className="block w-full cursor-pointer text-[14px] text-pdib-text file:mr-4 file:cursor-pointer file:border-0 file:bg-pdib-green file:px-4 file:py-2.5 file:font-sans file:text-[13px] file:font-semibold file:tracking-wide file:text-white file:uppercase hover:file:bg-pdib-green-hover"
+                    className="block w-full cursor-pointer text-[14px] text-pdib-text file:mr-4 file:cursor-pointer file:border-0 file:bg-pdib-primary file:px-4 file:py-2.5 file:font-sans file:text-[13px] file:font-semibold file:tracking-wide file:text-pdib-title file:uppercase hover:file:bg-pdib-primary-hover"
                   />
                 </label>
 
@@ -127,7 +127,7 @@ export default function AvatarUploadPage() {
                 <button
                   type="submit"
                   disabled={uploading}
-                  className="inline-flex items-center bg-pdib-green px-6 py-3 text-[13px] font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-pdib-green-hover disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex items-center bg-pdib-primary px-6 py-3 text-[13px] font-semibold tracking-[0.08em] text-pdib-title uppercase transition-colors hover:bg-pdib-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {uploading ? "Uploading…" : "Upload"}
                 </button>

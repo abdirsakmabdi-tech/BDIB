@@ -23,7 +23,7 @@ export default function WhoWeAre() {
               <div className="mt-7">
                 <Link
                   href="/about"
-                  className="inline-flex items-center rounded-full border border-[#036522] bg-transparent px-5 py-2 text-[14px] font-medium text-[#036522] transition-colors hover:bg-[#036522] hover:text-white"
+                  className="inline-flex items-center rounded-full bg-pdib-primary px-5 py-2 text-[14px] font-semibold text-pdib-title transition-colors hover:bg-pdib-primary-hover"
                 >
                   Learn more
                 </Link>
