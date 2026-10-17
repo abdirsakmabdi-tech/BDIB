@@ -18,7 +18,7 @@ const focusAreas = [
     title: "Agriculture Financing",
     href: "/agriculture",
     src: "/slides/agriculture-aerial.jpg",
-    alt: "Aerial view of irrigated green farmland plots beside arid desert landscape",
+    alt: "Aerial view of a dense coastal palm grove beside a sandy shoreline and the sea",
     description:
       "Capital for crops, irrigation, and agribusinesses that strengthen food security and rural income.",
   },

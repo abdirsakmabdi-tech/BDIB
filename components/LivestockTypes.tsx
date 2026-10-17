@@ -6,14 +6,12 @@ import { useEffect, useRef, useState } from "react";
 const types = [
   {
     name: "Camels",
-    somali: "Geela",
     src: "/slides/livestock-camels.jpg",
     alt: "Camels grazing in a green field at sunset",
     objectClassName: "object-cover object-[center_55%]",
   },
   {
     name: "Goats",
-    somali: "Ari Shabeel",
     src: "/slides/livestock-goats.jpg",
     alt: "Goats grazing with sheep and camels in a green pastoral field",
     objectClassName: "object-cover object-[center_60%]",
@@ -26,7 +24,6 @@ const types = [
   },
   {
     name: "Cattle",
-    somali: "L'ada",
     src: "/slides/livestock-cattle.jpg",
     alt: "Cattle grazing in a green pasture under a bright sky",
     objectClassName: "object-cover object-[center_55%]",
@@ -131,10 +128,7 @@ export default function LivestockTypes() {
                         : "translate-y-12 opacity-0 delay-0"
                     }`}
                   >
-                    <span className="block">{type.name}</span>
-                    {"somali" in type ? (
-                      <span className="block">({type.somali})</span>
-                    ) : null}
+                    {type.name}
                   </h3>
                 </div>
               </div>
