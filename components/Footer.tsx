@@ -1,101 +1,77 @@
-import Image from "next/image";
 import Link from "next/link";
+
+const exploreLinks = [
+  { href: "/about", label: "About us" },
+  { href: "/about/history", label: "Our History" },
+  { href: "/about/mission-vision", label: "Mission and Vision" },
+  { href: "/team", label: "Our team" },
+  { href: "/about/corporate-governance", label: "Corporate Governance" },
+];
+
+const sectorLinks = [
+  { href: "/fisheries", label: "Fisheries" },
+  { href: "/agriculture", label: "Agriculture" },
+  { href: "/livestock", label: "Livestock" },
+  { href: "/social-infrastructure", label: "Social Infrastructure" },
+  { href: "/renewable-energy", label: "Renewable Energy" },
+];
+
+const connectLinks = [
+  {
+    href: "https://www.linkedin.com",
+    label: "LinkedIn",
+    external: true,
+  },
+  { href: "/contact", label: "Contact us", external: false },
+  {
+    href: "mailto:info@pdib.com",
+    label: "Email",
+    external: true,
+  },
+];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-auto overflow-hidden bg-[#036522] text-white">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <Image
-          src="/pdib-mark-hero-blend.png"
-          alt=""
-          fill
-          quality={90}
-          sizes="100vw"
-          className="object-contain object-[92%_center] opacity-25 mix-blend-soft-light sm:object-[88%_center] lg:object-[85%_55%]"
-        />
-      </div>
+    <footer className="mt-auto border-t border-black/8 bg-[#f7f6f3] text-[#2c2c2c]">
+      <div className="grid lg:grid-cols-[minmax(220px,1.1fr)_minmax(0,2fr)_minmax(0,0.9fr)]">
+        {/* Logo column */}
+        <div className="flex items-center justify-center border-b border-black/10 bg-white px-6 py-12 sm:px-8 lg:border-r lg:border-b-0 lg:px-8 lg:py-16">
+          <Link
+            href="/"
+            className="block w-full max-w-[340px]"
+            aria-label="Puntland Development & Investment Bank home"
+          >
+            <img
+              src="/Mylogo.png?v=16"
+              alt="Puntland Development & Investment Bank"
+              width={640}
+              height={200}
+              className="h-auto w-full object-contain object-center"
+            />
+          </Link>
+        </div>
 
-      <div className="relative z-10 flex flex-col gap-12 px-8 py-20 sm:px-14 sm:py-24 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-24 lg:py-28">
-        <Link
-          href="/"
-          className="relative z-10 inline-flex shrink-0 items-center rounded-md bg-white px-4 py-3 sm:px-5 sm:py-3.5"
-          aria-label="Puntland Development & Investment Bank home"
-        >
-          <img
-            src="/Mylogo.png?v=16"
-            alt="Puntland Development & Investment Bank"
-            width={300}
-            height={94}
-            className="h-14 w-auto object-contain object-left sm:h-16"
-          />
-        </Link>
-
-        <div className="flex flex-col gap-10 sm:flex-row sm:flex-wrap sm:gap-x-14 sm:gap-y-10 lg:gap-x-16 xl:gap-x-20">
-          <div>
-            <p className="text-[15px] font-semibold tracking-tight text-white">
-              Hours
-            </p>
-            <p className="mt-3 text-[14px] leading-[1.55] text-white/90">
-              Sunday to Thursday
-              <br />
-              8:00 AM – 4:00 PM
-            </p>
+        {/* Link groups */}
+        <div className="border-b border-white/15 bg-[#036522] px-8 py-12 sm:px-12 sm:py-14 lg:border-r lg:border-b-0 lg:border-white/15 lg:px-10 lg:py-16 xl:px-12">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+            <FooterGroup title="Explore" links={exploreLinks} onGreen />
+            <FooterGroup title="Priority Sectors" links={sectorLinks} onGreen />
+            <FooterGroup title="Connect" links={connectLinks} withArrow onGreen />
           </div>
+        </div>
 
-          <div>
-            <p className="text-[15px] font-semibold tracking-tight text-white">
-              Contact
-            </p>
-            <p className="mt-3 text-[14px] leading-[1.55] text-white/90">
-              <a
-                href="mailto:info@pdib.com"
-                className="transition-opacity hover:opacity-80"
-              >
-                info@pdib.com
-              </a>
-              <br />
-              <a
-                href="https://pdib.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-opacity hover:opacity-80"
-              >
-                pdib.com
-              </a>
-            </p>
-          </div>
-
-          <div>
-            <p className="text-[15px] font-semibold tracking-tight text-white">
-              Address
-            </p>
-            <p className="mt-3 text-[14px] leading-[1.55] text-white/90">
-              Garowe
-              <br />
-              Puntland
-              <br />
-              Somalia
-            </p>
-          </div>
-
-          <div className="flex items-start sm:pt-0.5">
-            <a
-              href="https://www.linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="PDIB on LinkedIn"
-              className="inline-flex size-9 items-center justify-center rounded-md border border-white/80 text-white transition-colors hover:bg-white hover:text-[#036522]"
-            >
-              <LinkedInIcon />
-            </a>
-          </div>
+        {/* Featured statement */}
+        <div className="flex items-center justify-start bg-[#036522] px-8 py-14 sm:px-12 sm:py-16 lg:px-12 lg:py-16 xl:px-14">
+          <p className="max-w-[14ch] text-left font-sans text-[26px] leading-[1.15] font-bold tracking-tight text-white sm:text-[28px]">
+            Where Investment Meets Development
+          </p>
         </div>
       </div>
 
-      <div className="relative z-10 border-t border-white/15 px-8 py-4 sm:px-14 lg:px-24">
-        <p className="text-center text-[12px] text-white/65 sm:text-left">
+      <div className="border-t border-black/10 px-8 py-4 sm:px-14 lg:px-24">
+        <p className="text-[12px] text-[#2c2c2c]/55">
           Copyright © {year} — Puntland Development &amp; Investment Bank
         </p>
       </div>
@@ -103,10 +79,70 @@ export default function Footer() {
   );
 }
 
-function LinkedInIcon() {
+function FooterGroup({
+  title,
+  links,
+  withArrow = false,
+  onGreen = false,
+}: {
+  title: string;
+  links: { href: string; label: string; external?: boolean }[];
+  withArrow?: boolean;
+  onGreen?: boolean;
+}) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S.02 4.88.02 3.5 1.14 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.5h4.56V23H.22V8.5zM8.34 8.5h4.37v1.98h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7V23h-4.56v-6.6c0-1.57-.03-3.59-2.19-3.59-2.19 0-2.53 1.71-2.53 3.48V23H8.34V8.5z" />
-    </svg>
+    <div>
+      <p
+        className={`text-[13px] font-bold tracking-[0.08em] uppercase ${
+          onGreen ? "text-white" : "text-[#2c2c2c]"
+        }`}
+      >
+        {title}
+      </p>
+      <ul className="mt-4 flex list-none flex-col gap-2.5 p-0 pl-0 sm:pl-0">
+        {links.map((link) => {
+          const className = onGreen
+            ? "inline-flex items-center gap-1.5 text-[15px] font-normal text-white/85 transition-colors hover:text-white"
+            : "inline-flex items-center gap-1.5 text-[15px] font-normal text-[#2c2c2c]/85 transition-colors hover:text-[#036522]";
+          const content = (
+            <>
+              {withArrow ? (
+                <span aria-hidden="true" className="text-[12px]">
+                  ↗
+                </span>
+              ) : null}
+              {link.label}
+            </>
+          );
+
+          if (link.external) {
+            return (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={
+                    link.href.startsWith("mailto:")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
+                  className={className}
+                >
+                  {content}
+                </a>
+              </li>
+            );
+          }
+
+          return (
+            <li key={link.label}>
+              <Link href={link.href} className={className}>
+                {content}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }

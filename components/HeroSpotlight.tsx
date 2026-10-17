@@ -162,10 +162,10 @@ export default function HeroSpotlight() {
           className="relative w-full max-w-[min(540px,92vw)] translate-y-4 bg-white/70 px-7 py-6 backdrop-blur-[2px] transition-opacity duration-500 sm:translate-y-6 sm:px-9 sm:py-7"
         >
           <div className="relative border-l-[5px] border-[#036522] pl-4 sm:pl-5">
-            <h1 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-[#1a1a1a]">
+            <h1 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
               {scene.headline}
             </h1>
-            <p className="mt-2.5 max-w-[38ch] text-[14px] leading-[1.55] text-[#333] sm:mt-3 sm:text-[15px]">
+            <p className="mt-2.5 max-w-[38ch] text-[14px] leading-snug text-[#333] sm:mt-3">
               {scene.body}
             </p>
           </div>

@@ -8,7 +8,7 @@ export default function Team() {
       className="scroll-mt-28 bg-white px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20"
     >
       <div className="max-w-3xl">
-        <h2 className="font-sans text-[clamp(22px,2.8vw,36px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+        <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
           Our team
         </h2>
       </div>
@@ -52,10 +52,10 @@ function TeamGroup({
 }) {
   return (
     <div className={className || "mt-12 sm:mt-14"}>
-      <h3 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-semibold tracking-tight text-pdib-title">
+      <h3 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
         {title}
       </h3>
-      <p className="mt-2 max-w-2xl text-[14px] leading-[1.6] text-pdib-text sm:text-[15px]">
+      <p className="mt-2 max-w-2xl text-[14px] leading-snug text-pdib-text">
         {description}
       </p>
 

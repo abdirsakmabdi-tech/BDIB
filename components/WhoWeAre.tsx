@@ -12,10 +12,10 @@ export default function WhoWeAre() {
               <p className="text-[12px] font-bold tracking-[0.18em] text-[#036522] uppercase sm:text-[13px]">
                 About us
               </p>
-              <h2 className="mt-3 font-sans text-[clamp(22px,2.4vw,28px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
+              <h2 className="mt-3 font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
                 The Puntland Development &amp; Investment Bank
               </h2>
-              <p className="mt-5 text-[15px] leading-[1.7] text-pdib-text sm:text-[16px]">
+              <p className="mt-5 text-[14px] leading-snug text-pdib-text">
                 Puntland&apos;s leading development finance institution —
                 providing affordable short, medium- and long-term financing that
                 creates jobs, boosts productivity, and strengthens the economy.

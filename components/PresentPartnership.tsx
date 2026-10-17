@@ -1,11 +1,46 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
+
+const focusAreas = [
+  {
+    id: "roads",
+    label: "Roads",
+    href: "/social-infrastructure#roads",
+    src: "/slides/infra-roads.jpg",
+    alt: "An aerial view of a paved road cutting through arid scrubland",
+  },
+  {
+    id: "bridges",
+    label: "Bridges",
+    href: "/social-infrastructure#bridges",
+    src: "/slides/infra-bridges.jpg",
+    alt: "A concrete bridge spanning a dry riverbed toward a city skyline",
+  },
+  {
+    id: "ports",
+    label: "Ports",
+    href: "/social-infrastructure#ports",
+    src: "/slides/infra-ports.jpg",
+    alt: "An aerial view of a busy coastal port and harbor",
+  },
+  {
+    id: "airports",
+    label: "Airports",
+    href: "/social-infrastructure#airports",
+    src: "/slides/infra-airports.jpg",
+    alt: "Aerial view representing airport infrastructure in Puntland",
+  },
+] as const;
+
+type FocusId = (typeof focusAreas)[number]["id"];
 
 export default function PresentPartnership() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hoveredId, setHoveredId] = useState<FocusId | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -41,51 +76,75 @@ export default function PresentPartnership() {
             >
               <source src="/slides/garowe-bridges.mp4" type="video/mp4" />
             </video>
+
+            {focusAreas.map((area) => (
+              <div
+                key={area.id}
+                className={`absolute inset-0 transition-opacity duration-500 ease-out ${
+                  hoveredId === area.id ? "opacity-100" : "opacity-0"
+                }`}
+                aria-hidden={hoveredId !== area.id}
+              >
+                <Image
+                  src={area.src}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 55vw, 100vw"
+                  className="object-cover"
+                  priority={area.id === "roads"}
+                />
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="flex items-center px-8 py-14 sm:px-14 sm:py-16 lg:px-12 lg:py-20 xl:px-16">
           <Reveal>
             <div className="max-w-xl text-left">
-              <h2 className="font-sans text-[clamp(26px,3vw,40px)] leading-[1.15] font-normal tracking-tight text-pdib-title">
-                Bridges &amp; Culverts
+              <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
+                Social Infrastructure
               </h2>
-              <div className="mt-6 space-y-5 text-[15px] leading-[1.7] text-pdib-text sm:text-[16px]">
-                <p>
-                  <span className="font-semibold text-pdib-title">Location:</span>{" "}
-                  Major bridge structures built across seasonal riverbeds in
-                  Garowe.
-                </p>
-                <p>
-                  <span className="font-semibold text-pdib-title">Overview:</span>{" "}
-                  High-capacity bridges that connect city districts and keep
-                  urban transport running during heavy rains.
-                </p>
-              </div>
+              <p className="mt-6 text-[14px] leading-snug text-pdib-text">
+                PDIB finances essential social infrastructure — roads, bridges,
+                ports, and airports — that connects communities, expands access
+                to markets and services, and supports inclusive growth across
+                Puntland.
+              </p>
 
-              <Link
-                href="/social-infrastructure#bridges"
-                className="mt-8 inline-flex items-center gap-3 text-[15px] font-medium text-pdib-text transition-colors hover:text-pdib-title"
+              <div
+                className="mt-8 flex flex-wrap gap-x-5 gap-y-4"
+                onMouseLeave={() => setHoveredId(null)}
               >
-                <span className="inline-flex size-8 shrink-0 items-center justify-center bg-pdib-primary text-pdib-title">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
+                {focusAreas.map((area) => (
+                  <Link
+                    key={area.id}
+                    href={area.href}
+                    className="inline-flex items-center gap-3 text-[14px] font-medium text-pdib-text transition-colors hover:text-pdib-title"
+                    onMouseEnter={() => setHoveredId(area.id)}
+                    onFocus={() => setHoveredId(area.id)}
+                    onBlur={() => setHoveredId(null)}
                   >
-                    <path
-                      d="M5 12h14M13 6l6 6-6 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-                Explore social infrastructure
-              </Link>
+                    <span className="inline-flex size-8 shrink-0 items-center justify-center bg-pdib-primary text-pdib-title">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M5 12h14M13 6l6 6-6 6"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    {area.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>

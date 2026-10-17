@@ -67,7 +67,7 @@ export default function PartnersFeatured() {
       className="flex min-h-[70vh] flex-col justify-center border-y border-black/5 bg-[#f6f7f5]"
     >
       <div className="px-8 pt-10 pb-6 sm:px-14 sm:pt-12 sm:pb-8 lg:px-24">
-        <p className="text-center text-[11px] font-bold tracking-[0.16em] text-pdib-green uppercase sm:text-[12px]">
+        <p className="text-center font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
           Our partners
         </p>
       </div>

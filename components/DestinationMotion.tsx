@@ -123,11 +123,11 @@ export default function DestinationMotion() {
                 PDIB invests and encourages the tourism in Puntland
               </p>
 
-              <h2 className="destination-title mt-6 font-sans text-[clamp(36px,5vw,64px)] leading-[0.95] font-bold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:mt-8">
+              <h2 className="destination-title mt-6 font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-white drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)] sm:mt-8">
                 {slide.name}
               </h2>
 
-              <p className="mt-4 max-w-sm text-[15px] leading-[1.55] text-white/88 sm:mt-5 sm:text-[16px]">
+              <p className="mt-4 max-w-sm text-[14px] leading-snug text-white/88 sm:mt-5">
                 {slide.blurb}
               </p>
             </div>

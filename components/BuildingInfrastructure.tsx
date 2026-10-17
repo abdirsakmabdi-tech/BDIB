@@ -102,10 +102,10 @@ export default function BuildingInfrastructure() {
           <aside className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[1.5rem] bg-[#036522] px-8 py-9 sm:min-h-[380px] sm:px-10 sm:py-11 lg:min-h-full lg:px-11 lg:py-12">
             <FeatureDecor />
             <div className="relative z-10">
-              <h2 className="max-w-[12ch] font-sans text-[clamp(28px,3.2vw,42px)] leading-[1.1] font-bold tracking-tight text-[#9fd4b4]">
+              <h2 className="max-w-[12ch] font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#9fd4b4]">
                 What We Offer
               </h2>
-              <p className="mt-4 max-w-sm text-[15px] leading-[1.6] text-white/85 sm:text-[16px]">
+              <p className="mt-4 max-w-sm text-[14px] leading-snug text-white/85">
                 Financing, advisory, and governance support that helps
                 enterprises and institutions grow across Puntland.
               </p>
@@ -124,10 +124,10 @@ export default function BuildingInfrastructure() {
               <li key={item.id} id={item.id} className="scroll-mt-28">
                 <article className="flex h-full flex-col rounded-[1.25rem] bg-white px-6 py-7 shadow-[0_8px_28px_rgba(15,23,15,0.06)] sm:px-7 sm:py-8">
                   <OfferIcon type={item.icon} />
-                  <h3 className="mt-5 font-sans text-[clamp(16px,1.4vw,18px)] leading-snug font-bold tracking-tight text-pdib-title">
+                  <h3 className="mt-5 font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-[14px] leading-[1.65] text-pdib-text sm:text-[15px]">
+                  <p className="mt-3 text-[14px] leading-snug text-pdib-text">
                     {item.body}
                   </p>
                 </article>
