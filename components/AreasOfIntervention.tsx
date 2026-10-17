@@ -59,7 +59,7 @@ export const interventionAreas: InterventionArea[] = [
   },
   {
     label: "Housing & Infrastructure",
-    href: "/social-infrastructure",
+    href: "/social-infrastructure#focus-areas",
     icon: "infrastructure",
     src: "/slides/social-infrastructure.jpg",
     alt: "Highway infrastructure under construction",

@@ -7,8 +7,9 @@ const focusAreas = [
     label: "Fisheries",
     title: "Fisheries (the Blue Economy)",
     href: "/fisheries",
-    src: "/slides/fisheries-catch.jpg",
-    alt: "Fishermen carrying a large shark along a Puntland beach with boats offshore",
+    src: "/slides/fisheries-boat.jpg",
+    alt: "A fisherman holding a large catch on a beach with fish laid out on an orange tarp",
+    imageClass: "object-cover object-center",
     description:
       "Financing for boats, cold chain, processing, and coastal livelihoods along Puntland’s coastline.",
   },
@@ -16,8 +17,8 @@ const focusAreas = [
     label: "Agriculture",
     title: "Agriculture Financing",
     href: "/agriculture",
-    src: "/slides/agriculture-field.jpg",
-    alt: "A yellow flowering agricultural field",
+    src: "/slides/agriculture-aerial.jpg",
+    alt: "Aerial view of irrigated green farmland plots beside arid desert landscape",
     description:
       "Capital for crops, irrigation, and agribusinesses that strengthen food security and rural income.",
   },
@@ -35,7 +36,7 @@ const focusAreas = [
     title: "Livestock Financing",
     href: "/livestock",
     src: "/slides/livestock-herd.jpg",
-    alt: "A large herd of camels crossing dry reddish terrain under a blue sky",
+    alt: "Camels grazing among green shrubs in a bright pastoral landscape",
     description:
       "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
   },
@@ -51,7 +52,7 @@ const focusAreas = [
   {
     label: "Social Infrastructure",
     title: "Social infrastructure",
-    href: "/social-infrastructure",
+    href: "/social-infrastructure#focus-areas",
     src: "/slides/social-infrastructure.jpg",
     alt: "A highway overpass under construction",
     description:
@@ -140,6 +141,11 @@ const secondaryMoreAreas = secondaryMoreLabels
   .filter((area): area is FocusArea => Boolean(area));
 
 function SectorCard({ area }: { area: FocusArea }) {
+  const imageClass =
+    "imageClass" in area && typeof area.imageClass === "string"
+      ? area.imageClass
+      : "object-cover";
+
   return (
     <article>
       <Link
@@ -149,13 +155,15 @@ function SectorCard({ area }: { area: FocusArea }) {
         className="group block scroll-mt-28"
       >
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#e8ebe8]">
-          <Image
-            src={area.src}
-            alt={area.alt}
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-          />
+          <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
+            <Image
+              src={area.src}
+              alt={area.alt}
+              fill
+              sizes="(max-width: 640px) 100vw, 50vw"
+              className={imageClass}
+            />
+          </div>
           <span className="absolute right-4 bottom-3 font-sans text-[13px] font-semibold tracking-[0.12em] text-white uppercase drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)] sm:right-5 sm:bottom-4 sm:text-[14px]">
             {area.label}
           </span>

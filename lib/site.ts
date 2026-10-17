@@ -163,7 +163,7 @@ export const searchableContent: SearchResult[] = [
   },
   {
     title: "Social Infrastructure",
-    href: "/social-infrastructure",
+    href: "/social-infrastructure#focus-areas",
     summary:
       "PDIB finances schools, health facilities, water, and community infrastructure",
   },
