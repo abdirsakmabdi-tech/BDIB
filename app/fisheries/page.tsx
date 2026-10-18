@@ -22,25 +22,17 @@ export default function FisheriesPage() {
           {
             body: (
               <>
-                <p>
-                  Financing for boats, cold chain, processing, and coastal
-                  livelihoods along Puntland’s coastline.
-                </p>
                 <p className="font-semibold text-white">
                   Puntland has a 1,600km coastline with immense untapped
                   potential.
                 </p>
+                <p>
+                  PDIB develops the coastal fisheries sector through{" "}
+                  <strong>access to finance</strong> and promotion of{" "}
+                  <strong>sustainable practices</strong> across the blue
+                  economy.
+                </p>
               </>
-            ),
-          },
-          {
-            heading: "How PDIB supports the Blue Economy",
-            body: (
-              <p>
-                PDIB develops the coastal fisheries sector through{" "}
-                <strong>access to finance</strong> and promotion of{" "}
-                <strong>sustainable practices</strong> across the blue economy.
-              </p>
             ),
           },
         ]}

@@ -99,6 +99,7 @@ const focusAreas = [
     href: "/tourism",
     src: "/slides/tourism-puntland.jpg",
     alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
+    imageClass: "object-cover object-[center_75%]",
   },
 ] as const;
 
@@ -116,30 +117,28 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
         id={area.href.replace(/^[#/]/, "").replace(/#.*$/, "") || area.label}
         href={area.href}
         aria-label={`${area.label}: ${area.title}`}
-        className="group flex h-full min-h-[360px] flex-col overflow-hidden rounded-[1rem] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-shadow duration-300 hover:shadow-[0_3px_10px_rgba(0,0,0,0.1)] sm:min-h-[390px] sm:rounded-[1.15rem]"
+        className="grid h-full min-h-[360px] grid-rows-[1fr_auto] overflow-hidden rounded-[1rem] bg-[#F3F3F5] sm:min-h-[390px] sm:rounded-[1.15rem]"
       >
-        <div className="px-7 pt-8 sm:px-8 sm:pt-9">
+        <div className="flex flex-col px-7 pt-8 pb-5 sm:px-8 sm:pt-9 sm:pb-6">
           <h3 className="max-w-[16ch] font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
             {area.title}
           </h3>
           <p className="mt-3 max-w-[28ch] text-[14px] leading-snug text-[#6e6e73]">
             {area.blurb}
           </p>
-          <span className="mt-5 inline-flex items-center rounded-full bg-[#036522] px-5 py-2.5 text-[13px] font-semibold tracking-tight text-white transition-colors group-hover:bg-[#047a29] sm:text-[14px]">
+          <span className="mt-auto inline-flex items-center self-start rounded-full bg-[#036522] px-5 py-2.5 text-[13px] font-semibold tracking-tight text-white sm:text-[14px]">
             Read more
           </span>
         </div>
 
-        <div className="relative mt-auto w-full pt-4 sm:pt-5">
-          <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#f5f5f7]">
-            <Image
-              src={area.src}
-              alt={area.alt}
-              fill
-              sizes="(max-width: 640px) 100vw, 33vw"
-              className={`transition-transform duration-700 ease-out group-hover:scale-[1.03] ${imageClass}`}
-            />
-          </div>
+        <div className="relative -mt-px aspect-[16/10] w-full overflow-hidden bg-[#F3F3F5]">
+          <Image
+            src={area.src}
+            alt={area.alt}
+            fill
+            sizes="(max-width: 640px) 100vw, 33vw"
+            className={imageClass}
+          />
         </div>
       </Link>
     </article>
@@ -148,7 +147,7 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
 
 export default function WhatWeDo() {
   return (
-    <section id="what-we-do" className="bg-[rgb(0_0_0_/_1.5%)]">
+    <section id="what-we-do" className="bg-white">
       <div className="px-8 pt-14 pb-6 sm:px-14 sm:pt-16 sm:pb-8 lg:px-24 lg:pt-20">
         <Reveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">

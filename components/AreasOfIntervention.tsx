@@ -124,11 +124,16 @@ export const interventionAreas: InterventionArea[] = [
 
 const panelTints = ["bg-[#eaf6ef]", "bg-[#f3f8f4]", "bg-[#e4f2e9]"] as const;
 
-function ArrowCircle() {
+function ArrowCircle({ variant }: { variant: "green" | "blue" }) {
+  const isGreen = variant === "green";
   return (
     <span
       aria-hidden="true"
-      className="mt-auto inline-flex size-10 items-center justify-center rounded-full border border-[#036522] text-[#036522] transition-colors duration-300 group-hover:bg-[#036522] group-hover:text-white sm:size-11"
+      className={`mt-auto inline-flex size-10 items-center justify-center rounded-full border border-[#036522] bg-[#036522] text-white transition-colors duration-300 sm:size-11 ${
+        isGreen
+          ? "group-hover:border-white group-hover:bg-white group-hover:text-[#036522]"
+          : "group-hover:border-white group-hover:bg-white group-hover:text-[#2a6f94]"
+      }`}
     >
       <svg
         viewBox="0 0 24 24"
@@ -168,36 +173,47 @@ export default function AreasOfIntervention({
 
       <div className="mt-10 bg-white p-4 sm:mt-12 sm:p-5 lg:p-6">
         <ul className="grid list-none grid-cols-1 gap-6 p-0 sm:gap-7">
-          {interventionAreas.map((area, index) => (
-            <li key={area.label}>
-              <Link
-                href={area.href}
-                className="group grid overflow-hidden bg-white ring-1 ring-[#036522]/10 sm:grid-cols-2"
-              >
-                <div
-                  className={`${panelTints[index % panelTints.length]} flex min-h-[260px] flex-col px-6 py-8 sm:min-h-[300px] sm:px-8 sm:py-9 lg:min-h-[320px] lg:px-9 lg:py-10`}
+          {interventionAreas.map((area, index) => {
+            const isGreenHover = index % 2 === 0;
+            return (
+              <li key={area.label}>
+                <Link
+                  href={area.href}
+                  className={`group grid overflow-hidden bg-white ring-1 sm:grid-cols-2 ${
+                    isGreenHover
+                      ? "ring-[#036522]/10"
+                      : "ring-[#3b82a8]/15"
+                  }`}
                 >
-                  <h3 className="font-sans text-[clamp(17px,1.6vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
-                    {area.label}
-                  </h3>
-                  <p className="mt-3 max-w-sm text-[14px] leading-[1.65] text-pdib-text sm:mt-4 sm:text-[15px]">
-                    {area.description}
-                  </p>
-                  <ArrowCircle />
-                </div>
+                  <div
+                    className={`${panelTints[index % panelTints.length]} flex min-h-[260px] flex-col px-6 py-8 transition-colors duration-300 sm:min-h-[300px] sm:px-8 sm:py-9 lg:min-h-[320px] lg:px-9 lg:py-10 ${
+                      isGreenHover
+                        ? "group-hover:bg-[#2d8f52]"
+                        : "group-hover:bg-[#5ba3c9]"
+                    }`}
+                  >
+                    <h3 className="font-sans text-[clamp(17px,1.6vw,20px)] leading-[1.25] font-bold tracking-tight text-pdib-title transition-colors duration-300 group-hover:text-white">
+                      {area.label}
+                    </h3>
+                    <p className="mt-3 max-w-sm text-[14px] leading-[1.65] text-pdib-text transition-colors duration-300 group-hover:text-white/90 sm:mt-4 sm:text-[15px]">
+                      {area.description}
+                    </p>
+                    <ArrowCircle variant={isGreenHover ? "green" : "blue"} />
+                  </div>
 
-                <div className="relative min-h-[240px] sm:min-h-full">
-                  <Image
-                    src={area.src}
-                    alt={area.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 40vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                  />
-                </div>
-              </Link>
-            </li>
-          ))}
+                  <div className="relative min-h-[240px] sm:min-h-full">
+                    <Image
+                      src={area.src}
+                      alt={area.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 40vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

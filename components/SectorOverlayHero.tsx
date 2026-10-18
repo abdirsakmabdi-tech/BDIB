@@ -101,13 +101,13 @@ export default function SectorOverlayHero({
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/80 via-black/45 to-black/15 sm:from-black/85 sm:via-black/50 sm:to-transparent"
+        className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/88 via-black/55 to-black/25 sm:from-black/90 sm:via-black/60 sm:to-black/10"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[62%] lg:w-[52%]"
+        className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[68%] lg:w-[56%]"
         style={{
-          background: `linear-gradient(to left, ${tint}f2 0%, ${tint}a6 45%, transparent 100%)`,
+          background: `linear-gradient(to left, ${tint}fa 0%, ${tint}cc 50%, transparent 100%)`,
         }}
       />
 
@@ -132,10 +132,10 @@ export default function SectorOverlayHero({
         </>
       ) : null}
 
-      <div className="relative z-10 flex h-full items-end justify-end px-8 pt-[7rem] pb-16 sm:px-14 sm:pb-20 lg:items-center lg:justify-end lg:px-24 lg:pb-16">
-        <div className="flex w-full max-w-xl flex-col text-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:max-w-md lg:max-w-lg">
+      <div className="relative z-10 flex h-full items-start justify-end px-8 pt-[11rem] pb-16 sm:px-14 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:px-24 lg:pt-[13rem] lg:pb-16">
+        <div className="flex w-full max-w-xl flex-col text-left [text-shadow:0_2px_18px_rgba(0,0,0,0.65)] sm:max-w-md lg:max-w-lg">
           {eyebrow ? (
-            <p className="text-[12px] font-bold tracking-[0.18em] text-white/85 uppercase sm:text-[13px]">
+            <p className="text-[12px] font-bold tracking-[0.18em] text-white uppercase sm:text-[13px]">
               {eyebrow}
             </p>
           ) : null}
@@ -151,7 +151,7 @@ export default function SectorOverlayHero({
 
           <div
             key={`body-${current}`}
-            className="mt-5 min-h-[9.5rem] space-y-3 text-[14px] leading-[1.55] text-white sm:mt-6 sm:min-h-[10.5rem] sm:space-y-4"
+            className="mt-5 space-y-3 text-[16px] leading-[1.55] text-white sm:mt-6 sm:space-y-4"
           >
             {slide.heading ? (
               <p className="font-semibold text-white">{slide.heading}</p>
