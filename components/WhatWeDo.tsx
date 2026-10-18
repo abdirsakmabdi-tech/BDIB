@@ -149,10 +149,10 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
 export default function WhatWeDo() {
   return (
     <section id="what-we-do" className="bg-[rgb(0_0_0_/_1.5%)]">
-      <div className="px-8 pt-10 pb-6 sm:px-14 sm:pt-14 sm:pb-8 lg:px-24">
+      <div className="px-8 pt-14 pb-6 sm:px-14 sm:pt-16 sm:pb-8 lg:px-24 lg:pt-20">
         <Reveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-            <h2 className="max-w-2xl font-sans text-[22px] leading-[1.12] font-bold tracking-tight text-[#1a1a1a]">
+            <h2 className="max-w-2xl pl-7 font-sans text-[22px] leading-[1.12] font-bold tracking-tight text-[#1a1a1a] sm:pl-8">
               Priority Sectors
             </h2>
             <Link
@@ -167,7 +167,7 @@ export default function WhatWeDo() {
 
       <div
         id="focus-areas"
-        className="scroll-mt-28 px-8 pb-16 sm:px-14 sm:pb-20 lg:px-24 lg:pb-24"
+        className="scroll-mt-28 px-8 pb-14 sm:px-14 sm:pb-16 lg:px-24 lg:pb-20"
       >
         <div className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-20">
           {focusAreas.map((area) => (

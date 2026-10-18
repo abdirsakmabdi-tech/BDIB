@@ -15,13 +15,15 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <WhoWeAre />
-      <WhatWeDo />
-      <BuildingInfrastructure />
-      <DestinationMotion />
-      <PresentPartnership />
-      <Team />
-      <PartnersFeatured />
+      <div className="divide-y divide-black/10 border-t border-black/10">
+        <WhoWeAre />
+        <WhatWeDo />
+        <BuildingInfrastructure />
+        <DestinationMotion />
+        <PresentPartnership />
+        <Team />
+        <PartnersFeatured />
+      </div>
     </main>
   );
 }

@@ -156,57 +156,57 @@ export default function HeroSpotlight() {
         <ChevronRightIcon />
       </button>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-start px-8 pt-28 pb-24 sm:px-14 sm:pt-32 lg:px-24 lg:pt-20 lg:pb-28">
-        <div
-          key={scene.id}
-          className="relative w-full max-w-[min(540px,92vw)] translate-y-4 bg-white/70 px-7 py-6 backdrop-blur-[2px] transition-opacity duration-500 sm:translate-y-6 sm:px-9 sm:py-7"
-        >
-          <div className="relative border-l-[5px] border-[#036522] pl-4 sm:pl-5">
-            <h1 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
-              {scene.headline}
-            </h1>
-            <p className="mt-2.5 max-w-[38ch] text-[14px] leading-snug text-[#333] sm:mt-3">
-              {scene.body}
-            </p>
-          </div>
-          <div className="mt-4 pl-[calc(1rem+5px)] sm:mt-5 sm:pl-[calc(1.25rem+5px)]">
-            <Link
-              href={scene.href}
-              className="inline-flex items-center gap-2 bg-pdib-primary px-4 py-2 text-[13px] font-semibold tracking-wide text-pdib-title transition-colors hover:bg-pdib-primary-hover sm:text-[14px]"
-            >
-              {scene.cta}
-              <span aria-hidden="true">›</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div
-        role="tablist"
-        aria-label="Hero scenes"
-        className="absolute inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-5 sm:pb-7"
-      >
-        <div className="flex max-w-full flex-wrap items-center justify-center gap-2 overflow-x-auto rounded-full bg-black/30 px-3 py-2 backdrop-blur-md pb-1">
-          {scenes.map((item, index) => {
-            const active = index === current;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                aria-label={`Show ${item.tab}`}
-                onClick={() => setCurrent(index)}
-                className={`shrink-0 rounded-full border px-3.5 py-1.5 text-[12px] font-medium tracking-tight transition-colors sm:px-4 sm:text-[13px] ${
-                  active
-                    ? "border-white bg-white text-[#001c2a]"
-                    : "border-white/40 bg-transparent text-white hover:border-white/70 hover:bg-white/10"
-                }`}
+      <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pt-28 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">
+        <div className="relative w-full max-w-[min(720px,92vw)] bg-white/70 px-7 py-6 backdrop-blur-[2px] sm:px-9 sm:py-7">
+          <div
+            key={scene.id}
+            className="transition-opacity duration-500"
+          >
+            <div className="relative border-l-[5px] border-[#036522] pl-4 sm:pl-5">
+              <h1 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
+                {scene.headline}
+              </h1>
+              <p className="mt-2.5 max-w-[38ch] text-[14px] leading-snug text-[#333] sm:mt-3">
+                {scene.body}
+              </p>
+            </div>
+            <div className="mt-4 pl-[calc(1rem+5px)] sm:mt-5 sm:pl-[calc(1.25rem+5px)]">
+              <Link
+                href={scene.href}
+                className="inline-flex items-center gap-2 bg-pdib-primary px-4 py-2 text-[13px] font-semibold tracking-wide text-pdib-title transition-colors hover:bg-pdib-primary-hover sm:text-[14px]"
               >
-                {item.tab}
-              </button>
-            );
-          })}
+                {scene.cta}
+                <span aria-hidden="true">›</span>
+              </Link>
+            </div>
+          </div>
+
+          <div
+            role="tablist"
+            aria-label="Hero scenes"
+            className="mt-5 flex max-w-full flex-wrap items-center gap-1.5 overflow-x-auto sm:mt-6"
+          >
+            {scenes.map((item, index) => {
+              const active = index === current;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-label={`Show ${item.tab}`}
+                  onClick={() => setCurrent(index)}
+                  className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-tight transition-colors sm:px-3 sm:text-[12px] ${
+                    active
+                      ? "border-[#036522] bg-[#036522] text-white"
+                      : "border-black/20 bg-transparent text-[#1a1a1a] hover:border-[#036522]/50 hover:text-[#036522]"
+                  }`}
+                >
+                  {item.tab}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
