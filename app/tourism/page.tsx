@@ -8,18 +8,50 @@ export const metadata: Metadata = {
     "PDIB is empowering tourism in Puntland — financing hospitality, destinations, and visitor experiences that create jobs and grow the local economy.",
 };
 
+const destinations = [
+  {
+    title: "EYL",
+    src: "/destinations/eyl.jpg",
+    alt: "Aerial view of Eyl where the river meets the Indian Ocean along cliffs and coastline",
+    objectClassName: "object-cover object-[center_40%]",
+    body: "Cliffside coasts and eastern shore livelihoods — a flagship destination for coastal tourism and blue-economy enterprise.",
+  },
+  {
+    title: "Mareero",
+    src: "/destinations/mareero.jpg",
+    alt: "Aerial view of Mareero beach with cliffs, turquoise water, and shoreline gathering",
+    objectClassName: "object-cover object-[center_45%]",
+    body: "Dramatic shoreline and beach gatherings that showcase Mareero’s potential for hospitality and visitor experiences.",
+  },
+  {
+    title: "Murcanyo",
+    src: "/destinations/murcanyo.jpg",
+    alt: "Aerial view of Murcanyo coastal village with white beach, turquoise sea, and mountains",
+    objectClassName: "object-cover object-[center_40%]",
+    body: "A coastal village between mountains and white sand — ideal for community-led tourism and scenic visitor routes.",
+  },
+  {
+    title: "Butiyaalo",
+    src: "/destinations/butiyaalo.jpg",
+    alt: "Aerial view of a boat on turquoise water between red cliffs at Butiyaalo",
+    objectClassName: "object-cover object-[center_45%]",
+    body: "Turquoise channels framed by red cliffs — a striking setting for boat-based tourism and coastal adventure.",
+  },
+] as const;
+
 export default function TourismPage() {
   return (
     <main className="min-h-svh bg-white">
       <Header />
       <SectorOverlayHero
         title="Tourism"
-        src="/slides/tourism-puntland.jpg"
-        alt="Aerial view of a busy turquoise beach with tents, banners, and boats"
-        objectClassName="object-cover object-center"
+        src="/destinations/eyl.jpg"
+        alt="Aerial view of Eyl where the river meets the Indian Ocean along cliffs and coastline"
+        objectClassName="object-cover object-[center_40%]"
         tint="#043047"
         slides={[
           {
+            title: "Tourism",
             body: (
               <>
                 <p>
@@ -32,28 +64,17 @@ export default function TourismPage() {
                 </p>
               </>
             ),
+            src: "/destinations/eyl.jpg",
+            alt: "Aerial view of Eyl where the river meets the Indian Ocean along cliffs and coastline",
+            objectClassName: "object-cover object-[center_40%]",
           },
-          {
-            heading: "Who we support",
-            body: (
-              <p>
-                From coastal getaways and cultural experiences to hotels and
-                local tour operators, PDIB provides{" "}
-                <strong>access to finance</strong> so tourism businesses can
-                invest, expand, and welcome more visitors.
-              </p>
-            ),
-          },
-          {
-            heading: "A stronger visitor economy",
-            body: (
-              <p>
-                Our support helps build a more competitive visitor economy that
-                creates opportunities for young people, women-led enterprises,
-                and local suppliers across the tourism value chain.
-              </p>
-            ),
-          },
+          ...destinations.map((destination) => ({
+            title: destination.title,
+            body: <p>{destination.body}</p>,
+            src: destination.src,
+            alt: destination.alt,
+            objectClassName: destination.objectClassName,
+          })),
         ]}
       />
     </main>
