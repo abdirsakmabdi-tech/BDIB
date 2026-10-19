@@ -41,14 +41,14 @@ const focusAreas = [
     title: "Renewable Energy",
     blurb: "Expanding clean power solutions that strengthen energy access.",
     href: "/renewable-energy",
-    src: "/slides/renewable-energy.jpg",
-    alt: "Wind turbines along a misty mountain ridge",
+    src: "/slides/renewable-energy-card.jpg",
+    alt: "A solar panel array on a grassy hillside under a cloudy sky",
   },
   {
     label: "Social Infrastructure",
     title: "Social infrastructure",
     blurb: "Building roads, bridges, ports, and airports that connect communities.",
-    href: "/social-infrastructure#focus-areas",
+    href: "/social-infrastructure",
     src: "/slides/social-infrastructure.jpg",
     alt: "A highway cutting through arid landscape with a green belt beside it",
   },
@@ -72,9 +72,9 @@ const focusAreas = [
     label: "Health",
     title: "Health Financing",
     blurb: "Strengthening healthcare access and essential health services.",
-    href: "#health-financing",
-    src: "/slides/health.jpg",
-    alt: "A stethoscope on a wooden table",
+    href: "/health-financing",
+    src: "/slides/health-financing-card.jpg",
+    alt: "A healthcare worker examining a patient’s hand in a clinic",
   },
   {
     label: "Mining & Natural Resources",
@@ -89,8 +89,8 @@ const focusAreas = [
     title: "Women and Youth Led Business",
     blurb: "Financing enterprises led by women and young entrepreneurs.",
     href: "/women-youth-led-business",
-    src: "/slides/women-youth-led-business.jpg",
-    alt: "A woman entrepreneur working at a small grocery stall",
+    src: "/slides/women-youth-card.jpg",
+    alt: "A woman entrepreneur smiling in her textile shop",
   },
   {
     label: "Tourism",
@@ -114,7 +114,6 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
   return (
     <article className="h-full">
       <Link
-        id={area.href.replace(/^[#/]/, "").replace(/#.*$/, "") || area.label}
         href={area.href}
         aria-label={`${area.label}: ${area.title}`}
         className="grid h-full min-h-[360px] grid-rows-[1fr_auto] overflow-hidden rounded-[1rem] bg-[#F3F3F5] sm:min-h-[390px] sm:rounded-[1.15rem]"

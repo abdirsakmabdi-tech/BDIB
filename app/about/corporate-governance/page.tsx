@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import SplitPageLayout from "@/components/SplitPageLayout";
-import PageContent, {
-  PageBody,
-  PageSectionTitle,
-} from "@/components/PageContent";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "Corporate Governance | PDIB",
@@ -19,11 +16,10 @@ export default function CorporateGovernancePage() {
     <SplitPageLayout
       title="Corporate Governance"
       intro={intro}
-      eyebrow=""
+      eyebrow="About us"
       heroVariant="solid"
     >
       <PageContent>
-        <PageSectionTitle>Corporate Governance</PageSectionTitle>
         <PageBody>
           <p>
             PDIB maintains a robust governance framework designed to ensure{" "}

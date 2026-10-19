@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import SplitPageLayout from "@/components/SplitPageLayout";
-import PageContent, {
-  PageBody,
-  PageSectionTitle,
-} from "@/components/PageContent";
+import PageContent, { PageBody } from "@/components/PageContent";
 
 export const metadata: Metadata = {
   title: "About us | PDIB",
@@ -25,7 +22,6 @@ export default function AboutPage() {
       heroObjectClassName="object-cover object-center"
     >
       <PageContent>
-        <PageSectionTitle>About us</PageSectionTitle>
         <PageBody>
           <p>
             The Puntland Development and Investment Bank (PDIB) is Puntland&apos;s{" "}

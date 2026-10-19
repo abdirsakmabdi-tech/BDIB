@@ -162,8 +162,14 @@ export const searchableContent: SearchResult[] = [
       "PDIB promotes renewable energy adoption and climate financing in Puntland",
   },
   {
+    title: "Health Financing",
+    href: "/health-financing",
+    summary:
+      "PDIB financing for health facilities and services that improve care across Puntland",
+  },
+  {
     title: "Social Infrastructure",
-    href: "/social-infrastructure#focus-areas",
+    href: "/social-infrastructure",
     summary:
       "PDIB finances schools, health facilities, water, and community infrastructure",
   },

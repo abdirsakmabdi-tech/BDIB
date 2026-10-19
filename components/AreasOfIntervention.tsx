@@ -59,7 +59,7 @@ export const interventionAreas: InterventionArea[] = [
   },
   {
     label: "Housing & Infrastructure",
-    href: "/social-infrastructure#focus-areas",
+    href: "/social-infrastructure",
     icon: "infrastructure",
     src: "/slides/social-infrastructure.jpg",
     alt: "Highway infrastructure under construction",
@@ -86,10 +86,10 @@ export const interventionAreas: InterventionArea[] = [
   },
   {
     label: "Health Financing",
-    href: "/#health-financing",
+    href: "/health-financing",
     icon: "health",
-    src: "/slides/health.jpg",
-    alt: "Stethoscope on a wooden table",
+    src: "/slides/health-financing-card.jpg",
+    alt: "A healthcare worker examining a patient’s hand in a clinic",
     description:
       "Financing for health facilities and services that improve care and community wellbeing.",
   },
@@ -157,15 +157,11 @@ export default function AreasOfIntervention({
 }) {
   return (
     <section id="areas-of-intervention" className={className}>
-      <header className="max-w-xl">
-        <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] font-bold tracking-tight text-pdib-title">
+      <header className="max-w-2xl px-4 sm:px-5 lg:px-6">
+        <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
           Areas of Intervention
         </h2>
-        <span
-          aria-hidden="true"
-          className="mt-2.5 block h-0.5 w-8 rounded-full bg-[#23ba4a]"
-        />
-        <p className="mt-4 text-[15px] leading-[1.65] text-pdib-text sm:text-[16px]">
+        <p className="mt-3 text-[14px] leading-snug text-[#6e6e73]">
           Priority sectors where PDIB channels financing to grow Puntland’s
           productive economy.
         </p>

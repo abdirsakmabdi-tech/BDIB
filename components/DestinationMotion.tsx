@@ -10,61 +10,33 @@ const GAP = "1.5rem";
 const destinations = [
   {
     name: "Eyl",
-    title: "Cliffside coasts and eastern shore livelihoods in Eyl.",
+    title: "EYL",
     src: "/destinations/eyl.jpg",
-    alt: "View from a cave overlooking the coastal town of Eyl and turquoise water",
-    object: "object-cover object-[center_45%]",
-    blurb:
-      "PDIB supports tourism and coastal enterprise along Puntland’s eastern shore — where dramatic cliffs meet working harbours.",
-    points: [
-      "Coastal hospitality and visitor experiences",
-      "Local livelihoods tied to the Blue Economy",
-      "Scenic routes that attract regional travel",
-    ],
-  },
-  {
-    name: "Caluula",
-    title: "Turquoise channels and island routes at Caluula.",
-    src: "/destinations/caluula.jpg",
-    alt: "Aerial view of a boat crossing turquoise waters near Caluula’s green islets",
-    object: "object-cover object-center",
-    blurb:
-      "At the tip of the Horn of Africa, Caluula offers island channels and marine landscapes that can anchor sustainable tourism growth.",
-    points: [
-      "Island and boat-based visitor routes",
-      "Marine landscapes with high scenic value",
-      "Opportunity for eco-tourism investment",
-    ],
+    alt: "Aerial view of Eyl where the river meets the Indian Ocean along cliffs and coastline",
+    object: "object-cover object-[center_40%]",
   },
   {
     name: "Mareero",
-    title: "Dramatic coastline where hospitality can grow in Mareero.",
+    title: "Mareero",
     src: "/destinations/mareero.jpg",
-    alt: "Coastal cliffs and turquoise sea along Mareero’s shoreline",
-    object: "object-cover object-[center_40%]",
-    blurb:
-      "Mareero’s shoreline pairs striking natural beauty with room for hospitality, guiding, and community-led visitor services.",
-    points: [
-      "Cliff and shoreline visitor experiences",
-      "Hospitality and guiding enterprises",
-      "Community-led tourism development",
-    ],
+    alt: "Aerial view of Mareero beach with cliffs, turquoise water, and shoreline gathering",
+    object: "object-cover object-[center_45%]",
   },
   {
-    name: "Binna Rasasayr",
-    title: "Quiet waters and traditional craft at Binna Rasasayr.",
-    src: "/destinations/binna-rasasayr.jpg",
-    alt: "Traditional boat on calm water at sunrise near Binna Rasasayr",
-    object: "object-cover object-center",
-    blurb:
-      "Calm waters and traditional boats create a setting for low-impact tourism that respects culture and the coastal environment.",
-    points: [
-      "Sunrise and calm-water experiences",
-      "Traditional craft and cultural tourism",
-      "Sustainable, low-impact visitor models",
-    ],
+    name: "Murcanyo",
+    title: "Murcanyo",
+    src: "/destinations/murcanyo.jpg",
+    alt: "Aerial view of Murcanyo coastal village with white beach, turquoise sea, and mountains",
+    object: "object-cover object-[center_40%]",
   },
-] as const;
+  {
+    name: "Butiyaalo",
+    title: "Butiyaalo",
+    src: "/destinations/butiyaalo.jpg",
+    alt: "Aerial view of a boat on turquoise water between red cliffs at Butiyaalo",
+    object: "object-cover object-[center_45%]",
+  },
+];
 
 function NavButton({
   direction,
@@ -176,14 +148,6 @@ export default function DestinationMotion() {
                     <h2 className="font-sans text-[22px] leading-[1.2] font-bold tracking-tight text-white">
                       {destination.title}
                     </h2>
-                    <p className="mt-4 text-[14px] leading-snug text-white/90">
-                      {destination.blurb}
-                    </p>
-                    <ul className="mt-4 list-disc space-y-1.5 pl-5 text-[14px] leading-snug text-white/90">
-                      {destination.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </article>

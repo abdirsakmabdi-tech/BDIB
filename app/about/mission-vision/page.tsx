@@ -40,7 +40,7 @@ export default function MissionVisionPage() {
     <SplitPageLayout
       title="Mission and Vision"
       intro={intro}
-      eyebrow=""
+      eyebrow="About us"
       heroSrc="/mission-vision-hero.jpg"
       heroAlt="Collage of priority sectors including mining, agriculture, livestock, infrastructure, energy, ports, fisheries, and tourism"
       heroObjectClassName="object-cover object-center"

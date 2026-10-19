@@ -14,10 +14,10 @@ export default function RenewableEnergyPage() {
       <Header />
       <SectorOverlayHero
         title="Renewable Energy"
-        src="/renewable-hero-v2.jpg"
-        alt="Solar panels, battery storage, and wind turbines on a green field"
-        objectClassName="object-cover object-center"
-        tint="#0f2a18"
+        src="/slides/renewable-energy-hero.jpg"
+        alt="Electricity pylons and power lines silhouetted against a sunset sky"
+        objectClassName="object-cover object-[center_40%]"
+        tint="#0a1a28"
         slides={[
           {
             body: (

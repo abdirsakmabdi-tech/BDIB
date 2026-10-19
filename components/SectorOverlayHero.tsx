@@ -47,6 +47,10 @@ export default function SectorOverlayHero({
   const imageObject = slide.objectClassName ?? objectClassName;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (!hasSlider) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 

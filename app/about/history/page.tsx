@@ -47,21 +47,12 @@ export default function HistoryPage() {
     <SplitPageLayout
       title="Our History"
       intro={intro}
-      eyebrow=""
+      eyebrow="About us"
       heroSrc="/slides/history-hero-v2.jpg"
       heroAlt="Collage of priority sectors reflecting PDIB’s development journey"
       heroObjectClassName="object-cover object-center"
     >
       <PageContent className="!pb-8 sm:!pb-10">
-        <header className="mb-8 sm:mb-10">
-          <h2 className="font-sans text-[clamp(18px,1.8vw,22px)] leading-[1.25] font-bold tracking-tight text-pdib-title">
-            Our History
-          </h2>
-          <span
-            aria-hidden="true"
-            className="mt-2.5 block h-0.5 w-8 rounded-full bg-[#23ba4a]"
-          />
-        </header>
         <PageBody>
           <p>
             PDIB was established to advance Puntland&apos;s development agenda

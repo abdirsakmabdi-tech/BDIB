@@ -17,7 +17,7 @@ export default function TeamPage() {
     <SplitPageLayout
       title="Our team"
       intro={intro}
-      eyebrow=""
+      eyebrow="About us"
       heroVariant="solid"
     >
       <article className="bg-[#f4f5f0] px-8 pt-14 pb-8 sm:px-12 sm:pt-16 sm:pb-10 lg:px-14 xl:px-16">

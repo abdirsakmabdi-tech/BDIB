@@ -42,7 +42,7 @@ export default function PrioritySectorsPage() {
           },
         ]}
       />
-      <AreasOfIntervention className="bg-white px-8 py-14 sm:px-12 sm:py-16 lg:px-14 xl:px-16" />
+      <AreasOfIntervention className="bg-white px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20" />
     </main>
   );
 }
