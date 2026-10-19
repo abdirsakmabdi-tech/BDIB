@@ -57,7 +57,7 @@ export default function PresentPartnership() {
     <section className="overflow-hidden bg-white">
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-center">
         {/* Left edge aligns with header logo; video grows toward the text */}
-        <div className="py-14 pl-8 pr-0 sm:py-16 sm:pl-14 lg:py-20 lg:pl-24">
+        <div className="px-4 pt-10 pb-4 sm:py-16 sm:pr-0 sm:pl-14 lg:py-20 lg:pl-24">
           <div className="relative h-[min(56svh,480px)] w-full overflow-hidden bg-[#1a1a1a] sm:h-[min(58svh,500px)]">
             <video
               ref={videoRef}
@@ -93,13 +93,13 @@ export default function PresentPartnership() {
           </div>
         </div>
 
-        <div className="flex items-center px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20">
+        <div className="flex items-center px-4 pt-4 pb-10 sm:px-14 sm:py-16 lg:px-24 lg:py-20">
           <Reveal>
             <div className="max-w-xl text-left">
               <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
                 Social Infrastructure
               </h2>
-              <p className="mt-6 text-[14px] leading-snug text-pdib-text">
+              <p className="mt-4 text-[14px] leading-snug text-pdib-text sm:mt-6">
                 PDIB finances essential social infrastructure — roads, bridges,
                 ports, and airports — that connects communities, expands access
                 to markets and services, and supports inclusive growth across
