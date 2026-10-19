@@ -26,8 +26,8 @@ const livestockTypes = [
   {
     name: "Sheep",
     src: "/slides/livestock-sheep.jpg",
-    alt: "A Somali Blackhead sheep grazing in a green pasture",
-    objectClassName: "object-cover object-[center_55%]",
+    alt: "A Somali Blackhead sheep grazing in a green field with camels behind",
+    objectClassName: "object-cover object-[center_60%]",
     body: "Sheep, including Somali Blackhead breeds, are a key export and household resource. PDIB financing supports breeding, fattening, and livestock trade along pastoral value chains.",
   },
   {
@@ -46,8 +46,8 @@ export default function LivestockPage() {
       <SectorOverlayHero
         title="Livestock Financing"
         src="/slides/livestock-hero.jpg"
-        alt="Sheep, goats, and camels grazing in a green pastoral field"
-        objectClassName="object-cover object-[center_45%]"
+        alt="A herder with camels, goats, and sheep grazing in a green scrubland"
+        objectClassName="object-cover object-[center_50%]"
         tint="#2a2116"
         slides={[
           {
@@ -67,8 +67,8 @@ export default function LivestockPage() {
               </>
             ),
             src: "/slides/livestock-hero.jpg",
-            alt: "Sheep, goats, and camels grazing in a green pastoral field",
-            objectClassName: "object-cover object-[center_45%]",
+            alt: "A herder with camels, goats, and sheep grazing in a green scrubland",
+            objectClassName: "object-cover object-[center_50%]",
           },
           ...livestockTypes.map((type) => ({
             title: type.name,

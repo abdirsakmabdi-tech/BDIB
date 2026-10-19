@@ -34,6 +34,45 @@ export default function FisheriesPage() {
                 </p>
               </>
             ),
+            src: "/slides/fisheries-hero.jpg",
+            alt: "A fisherman in a small blue boat on calm seas surrounded by seagulls",
+            objectClassName: "object-cover object-[42%_58%]",
+          },
+          {
+            body: (
+              <p>
+                Small-scale fishing fleets are the backbone of Puntland&apos;s
+                coastal economy — providing jobs, food security, and trade along
+                the Horn of Africa shoreline.
+              </p>
+            ),
+            src: "/slides/fisheries-boats.jpg",
+            alt: "Fishermen gathered in wooden boats on calm turquoise water",
+            objectClassName: "object-cover object-center",
+          },
+          {
+            body: (
+              <p>
+                Clear coastal waters and productive fishing grounds offer strong
+                potential for sustainable catch, cold-chain investment, and
+                blue-economy growth.
+              </p>
+            ),
+            src: "/slides/fisheries-shallow.jpg",
+            alt: "Aerial view of a fishing boat in shallow turquoise water near a green shoreline",
+            objectClassName: "object-cover object-center",
+          },
+          {
+            body: (
+              <p>
+                PDIB finances boats, gear, processing, and market access so
+                coastal communities can turn daily catch into lasting
+                livelihoods.
+              </p>
+            ),
+            src: "/slides/fisheries-landing.jpg",
+            alt: "A fisherman standing in turquoise water holding a fresh catch beside his boat",
+            objectClassName: "object-cover object-[center_40%]",
           },
         ]}
       />

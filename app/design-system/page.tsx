@@ -1,3 +1,5 @@
+import PageBreadcrumb from "@/components/PageBreadcrumb";
+
 const roles = [
   {
     name: "Hero headlines",
@@ -73,9 +75,7 @@ export default function DesignSystemPage() {
   return (
     <main className="min-h-screen bg-white text-body text-[#0b2240]">
       <div className="mx-auto max-w-5xl px-6 py-12 lg:px-8 lg:py-16">
-        <a href="/" className="text-nav font-medium text-pdib-green hover:underline">
-          ← Home
-        </a>
+        <PageBreadcrumb current="Design system" tone="dark" />
         <p className="mt-8 text-eyebrow font-semibold uppercase text-pdib-green">
           Hierarchy after BADEA
         </p>

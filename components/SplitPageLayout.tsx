@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 type SplitPageLayoutProps = {
   title: string;
@@ -69,6 +70,11 @@ export default function SplitPageLayout({
                   ? "bg-linear-to-r from-black/35 via-transparent to-transparent"
                   : "bg-linear-to-r from-black/75 via-black/40 to-black/15"
               }`}
+            />
+
+            <PageBreadcrumb
+              current={title}
+              className="absolute top-8 left-8 z-10 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] sm:top-10 sm:left-14 lg:top-12 lg:left-24"
             />
 
             <div className="absolute inset-0 z-10 flex items-end px-8 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">

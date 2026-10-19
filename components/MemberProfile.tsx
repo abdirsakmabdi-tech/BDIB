@@ -1,5 +1,6 @@
 import { ViewTransition } from "react";
 import Link from "next/link";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import type { Member } from "@/lib/team";
 
 export default function MemberProfile({ member }: { member: Member }) {
@@ -13,6 +14,10 @@ export default function MemberProfile({ member }: { member: Member }) {
             className="h-full w-full object-cover object-top"
           />
         </ViewTransition>
+        <PageBreadcrumb
+          current={member.name}
+          className="absolute top-8 left-5 z-10 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:top-10 sm:left-6"
+        />
       </div>
 
       <ViewTransition enter="profile-panel" exit="profile-panel" default="none">

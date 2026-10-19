@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 
 export const metadata: Metadata = {
   title: "Contact Us | PDIB",
@@ -16,7 +17,8 @@ export default function ContactPage() {
       <section className="grid min-h-[calc(100svh-7rem)] pt-[7rem] lg:grid-cols-[42%_58%]">
         {/* Left brand panel */}
         <aside className="relative overflow-hidden bg-[#d8efe0] px-8 py-14 sm:px-12 sm:py-16 lg:px-14 lg:py-20 xl:px-16">
-          <p className="text-[12px] font-bold tracking-[0.2em] text-[#036522] uppercase sm:text-[13px]">
+          <PageBreadcrumb current="Contact us" tone="dark" />
+          <p className="mt-6 text-[12px] font-bold tracking-[0.2em] text-[#036522] uppercase sm:text-[13px]">
             Contact us
           </p>
           <h1 className="mt-6 max-w-md font-sans text-[clamp(22px,2.4vw,28px)] leading-[1.2] font-bold tracking-tight text-pdib-title">
