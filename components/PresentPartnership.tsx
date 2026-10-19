@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
 
@@ -9,28 +8,24 @@ const focusAreas = [
   {
     id: "roads",
     label: "Roads",
-    href: "/social-infrastructure",
     src: "/slides/infra-roads.jpg",
-    alt: "An aerial view of a paved road cutting through arid scrubland",
+    alt: "A paved two-lane road through arid landscape with a car flying the Puntland flag",
   },
   {
     id: "bridges",
     label: "Bridges",
-    href: "/social-infrastructure",
     src: "/slides/infra-bridges.jpg",
     alt: "A concrete bridge spanning a dry riverbed toward a city skyline",
   },
   {
     id: "ports",
     label: "Ports",
-    href: "/social-infrastructure",
     src: "/slides/infra-ports.jpg",
     alt: "An aerial view of a busy coastal port and harbor",
   },
   {
     id: "airports",
     label: "Airports",
-    href: "/social-infrastructure",
     src: "/slides/infra-airports.jpg",
     alt: "Aerial view representing airport infrastructure in Puntland",
   },
@@ -116,13 +111,18 @@ export default function PresentPartnership() {
                 onMouseLeave={() => setHoveredId(null)}
               >
                 {focusAreas.map((area) => (
-                  <Link
+                  <button
                     key={area.id}
-                    href={area.href}
-                    className="inline-flex items-center gap-3 text-[14px] font-medium text-pdib-text transition-colors hover:text-pdib-title"
+                    type="button"
+                    className={`inline-flex items-center gap-3 text-[14px] font-medium transition-colors ${
+                      hoveredId === area.id
+                        ? "text-pdib-title"
+                        : "text-pdib-text hover:text-pdib-title"
+                    }`}
                     onMouseEnter={() => setHoveredId(area.id)}
                     onFocus={() => setHoveredId(area.id)}
                     onBlur={() => setHoveredId(null)}
+                    aria-pressed={hoveredId === area.id}
                   >
                     <span className="inline-flex size-8 shrink-0 items-center justify-center bg-pdib-primary text-pdib-title">
                       <svg
@@ -142,7 +142,7 @@ export default function PresentPartnership() {
                       </svg>
                     </span>
                     {area.label}
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>

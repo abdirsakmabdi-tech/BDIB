@@ -25,7 +25,7 @@ const programmes = [
     id: "sme-women-prosper-loans",
     title: "SME Women Prosper Loans",
     src: "/slides/sme-women-prosper.jpg",
-    alt: "Woman-led small business owner in a retail shop",
+    alt: "A smiling woman entrepreneur in a blue hijab beside a sewing machine in her workshop",
     body: "Dedicated financing for women-led small and medium enterprises, designed to strengthen business sustainability, expand market access, and promote women’s economic empowerment across Puntland. Tailored products and advisory support for women entrepreneurs at different stages of growth.",
     panelClass: "bg-pdib-green/10",
   },
