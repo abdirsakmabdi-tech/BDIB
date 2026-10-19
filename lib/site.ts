@@ -168,6 +168,13 @@ export const searchableContent: SearchResult[] = [
       "PDIB financing for health facilities and services that improve care across Puntland",
   },
   {
+    title: "Education Financing",
+    href: "/education-financing",
+    summary:
+      "PDIB financing for schools, skills, and learning infrastructure across Puntland",
+  },
+
+  {
     title: "Social Infrastructure",
     href: "/social-infrastructure",
     summary:
@@ -179,6 +186,25 @@ export const searchableContent: SearchResult[] = [
     summary:
       "PDIB financing for responsible mining, quarrying, and natural resource ventures in Puntland",
   },
+  {
+    title: "Export & Manufacturing",
+    href: "/export-and-manufacturing",
+    summary:
+      "PDIB financing for processing, manufacturing, and trade that expands Puntland’s export capacity",
+  },
+  {
+    title: "Digital Economy",
+    href: "/digital-economy",
+    summary:
+      "PDIB financing for digital services, fintech, and connectivity across Puntland",
+  },
+  {
+    title: "Tourism",
+    href: "/tourism",
+    summary:
+      "PDIB financing for hospitality, destinations, and visitor experiences in Puntland",
+  },
+
   {
     title: "Women and Youth Led Business",
     href: "/women-youth-led-business",

@@ -15,8 +15,8 @@ export default function HealthFinancingPage() {
       <SectorOverlayHero
         title="Health Financing"
         src="/slides/health-financing-hero.jpg"
-        alt="A doctor in a white coat and hijab with a stethoscope seated at a clinic desk"
-        objectClassName="object-cover object-[center_25%]"
+        alt="Surgical team working under operating lights in a hospital theatre"
+        objectClassName="object-cover object-[center_35%]"
         tint="#0a2a28"
         slides={[
           {
@@ -36,8 +36,8 @@ export default function HealthFinancingPage() {
               </>
             ),
             src: "/slides/health-financing-hero.jpg",
-            alt: "A doctor in a white coat and hijab with a stethoscope seated at a clinic desk",
-            objectClassName: "object-cover object-[center_25%]",
+            alt: "Surgical team working under operating lights in a hospital theatre",
+            objectClassName: "object-cover object-[center_35%]",
           },
           {
             title: "Health Financing",
@@ -51,8 +51,8 @@ export default function HealthFinancingPage() {
               </p>
             ),
             src: "/slides/health-financing-hero.jpg",
-            alt: "A doctor in a white coat and hijab with a stethoscope seated at a clinic desk",
-            objectClassName: "object-cover object-[center_30%]",
+            alt: "Surgical team working under operating lights in a hospital theatre",
+            objectClassName: "object-cover object-[center_40%]",
           },
           {
             title: "Health Financing",
@@ -66,7 +66,7 @@ export default function HealthFinancingPage() {
               </p>
             ),
             src: "/slides/health-financing-hero.jpg",
-            alt: "A doctor in a white coat and hijab with a stethoscope seated at a clinic desk",
+            alt: "Surgical team working under operating lights in a hospital theatre",
             objectClassName: "object-cover object-center",
           },
         ]}

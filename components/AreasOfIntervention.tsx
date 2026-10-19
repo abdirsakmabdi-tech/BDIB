@@ -32,10 +32,10 @@ export const interventionAreas: InterventionArea[] = [
   },
   {
     label: "Education Financing",
-    href: "/#education-financing",
+    href: "/education-financing",
     icon: "education",
-    src: "/slides/education.jpg",
-    alt: "Student studying among textbooks",
+    src: "/slides/education-financing-card.jpg",
+    alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
     description:
       "Investment in learning infrastructure and education enterprises that expand opportunity across Puntland.",
   },
@@ -68,7 +68,7 @@ export const interventionAreas: InterventionArea[] = [
   },
   {
     label: "Export & Manufacturing",
-    href: "/#export-and-manufacturing",
+    href: "/export-and-manufacturing",
     icon: "manufacturing",
     src: "/slides/export-manufacturing-port.jpg",
     alt: "Cargo ships and cranes at an export port",
@@ -89,7 +89,7 @@ export const interventionAreas: InterventionArea[] = [
     href: "/health-financing",
     icon: "health",
     src: "/slides/health-financing-card.jpg",
-    alt: "A healthcare worker examining a patient’s hand in a clinic",
+    alt: "Surgical team working under operating lights in a hospital theatre",
     description:
       "Financing for health facilities and services that improve care and community wellbeing.",
   },

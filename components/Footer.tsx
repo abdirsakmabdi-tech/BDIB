@@ -13,6 +13,9 @@ const sectorLinks = [
   { href: "/agriculture", label: "Agriculture" },
   { href: "/livestock", label: "Livestock" },
   { href: "/social-infrastructure", label: "Social Infrastructure" },
+  { href: "/export-and-manufacturing", label: "Export & Manufacturing" },
+  { href: "/health-financing", label: "Health Financing" },
+  { href: "/education-financing", label: "Education Financing" },
   { href: "/renewable-energy", label: "Renewable Energy" },
 ];
 
