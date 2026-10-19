@@ -6,81 +6,70 @@ import { useEffect, useState } from "react";
 
 const scenes = [
   {
-    id: "intro",
-    tab: "Who We Are",
-    src: "/slides/hero-priority-sectors-v2.jpg",
-    alt: "Collage of priority sectors including mining, agriculture, livestock, infrastructure, solar, wind, ports, fisheries, and tourism",
-    object: "object-cover object-center",
-    headline: "Puntland Development & Investment Bank",
-    body: "Puntland’s leading development finance institution — providing affordable short, medium- and long-term financing that creates jobs, boosts productivity, and strengthens the economy.",
-    href: "/about",
-    cta: "About PDIB",
+    id: "tourism",
+    tab: "Tourism",
+    src: "/destinations/murcanyo.jpg",
+    alt: "Aerial view of Murcanyo coastal village with white beach, turquoise sea, and mountains",
+    object: "object-cover object-[center_40%]",
+    headline: "Tourism",
+    body: "Capital for hospitality, coastal experiences, and visitor enterprises that create jobs across Puntland.",
+    href: "/tourism",
+    cta: "Explore tourism",
   },
   {
-    id: "fisheries",
-    tab: "Fisheries",
-    src: "/slides/fisheries-catch.jpg",
-    alt: "Fishermen carrying a large shark along a Puntland beach with boats offshore",
-    object: "object-cover object-[center_50%]",
-    headline: "Grow Puntland’s blue economy",
-    body: "Financing boats, cold chain, processing, and coastal livelihoods along our shoreline.",
+    id: "fishing",
+    tab: "Fishing",
+    src: "/slides/hero-fishing.jpg",
+    alt: "Fishermen on the beach with a large catch laid out on an orange tarp by the sea",
+    object: "object-cover object-[center_45%]",
+    headline: "Fishing",
+    body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
     href: "/fisheries",
-    cta: "Explore fisheries",
+    cta: "Explore fishing",
+  },
+  {
+    id: "infrastructure",
+    tab: "Infrastructure",
+    src: "/slides/hero-infrastructure.jpg",
+    alt: "A long paved road stretching through arid landscape under a cloudy sky",
+    object: "object-cover object-[center_45%]",
+    headline: "Infrastructure",
+    body: "Capital for roads, bridges, ports, and airports that connect communities and expand access to markets.",
+    href: "/social-infrastructure",
+    cta: "Explore infrastructure",
+  },
+  {
+    id: "livestock",
+    tab: "Livestock",
+    src: "/slides/hero-livestock.jpg",
+    alt: "Sheep, goats, and camels grazing in a green pastoral field",
+    object: "object-cover object-[center_55%]",
+    headline: "Livestock",
+    body: "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
+    href: "/livestock",
+    cta: "Explore livestock",
   },
   {
     id: "agriculture",
     tab: "Agriculture",
-    src: "/slides/agriculture-field.jpg",
-    alt: "A flowering agricultural field in Puntland",
-    object: "object-cover object-[center_45%]",
-    headline: "Invest in the harvest ahead",
+    src: "/slides/hero-agriculture.jpg",
+    alt: "A farmer tilling reddish soil between crop rows with a hoe",
+    object: "object-cover object-[center_40%]",
+    headline: "Agriculture",
     body: "Capital for crops, irrigation, and agribusinesses that strengthen food security and rural income.",
     href: "/agriculture",
     cta: "Explore agriculture",
   },
   {
-    id: "livestock",
-    tab: "Livestock",
-    src: "/slides/livestock-herd.jpg",
-    alt: "A large herd of camels crossing dry reddish terrain under a blue sky",
-    object: "object-cover object-[center_58%] scale-105",
-    headline: "Back the herds that feed Puntland",
-    body: "Specialized finance for pastoralists and livestock value chains that anchor the economy.",
-    href: "/livestock",
-    cta: "Explore livestock",
-  },
-  {
-    id: "youth",
-    tab: "Women & Youth",
-    src: "/slides/women-youth-led-business.jpg",
-    alt: "A woman entrepreneur working at a small grocery stall",
-    object: "object-cover object-top",
-    headline: "Fund the founders shaping tomorrow",
-    body: "Financing women- and youth-led enterprises so founders can invest, grow, and create jobs.",
-    href: "/women-youth-led-business",
-    cta: "Explore this sector",
-  },
-  {
-    id: "energy",
-    tab: "Energy",
-    src: "/slides/renewable-energy-windfarm.jpg",
-    alt: "Wind turbines across rolling hills at sunset",
-    object: "object-cover object-[center_45%]",
-    headline: "Power growth with clean energy",
-    body: "Climate-aligned funding for solar, wind, and clean energy projects that power communities and industry.",
-    href: "/renewable-energy",
-    cta: "Explore energy",
-  },
-  {
-    id: "tourism",
-    tab: "Tourism",
-    src: "/slides/tourism-puntland.jpg",
-    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
-    object: "object-cover object-center scale-105",
-    headline: "Finance destinations that welcome the world",
-    body: "Capital for hospitality, coastal experiences, and visitor enterprises that create jobs across Puntland.",
-    href: "/tourism",
-    cta: "Explore tourism",
+    id: "health",
+    tab: "Health",
+    src: "/slides/hero-health.jpg",
+    alt: "A healthcare worker assisting a patient in a community clinic",
+    object: "object-cover object-[center_28%] scale-105 sm:scale-100 sm:object-[center_32%]",
+    headline: "Health",
+    body: "Financing that strengthens healthcare access, facilities, and community health services across Puntland.",
+    href: "/health-financing",
+    cta: "Explore health",
   },
 ] as const;
 
@@ -127,7 +116,7 @@ export default function HeroSpotlight() {
               alt={active ? item.alt : ""}
               fill
               priority={index === 0}
-              quality={95}
+              quality={item.id === "health" ? 100 : 95}
               sizes="100vw"
               className={`${item.object} transition-opacity duration-1000 ease-out ${
                 active ? "opacity-100" : "opacity-0"
@@ -137,7 +126,7 @@ export default function HeroSpotlight() {
         })}
       </div>
 
-      <div aria-hidden="true" className="absolute inset-0 bg-black/30" />
+      <div aria-hidden="true" className="absolute inset-0 bg-black/25" />
 
       <button
         type="button"

@@ -74,10 +74,10 @@ export default function SplitPageLayout({
 
             <PageBreadcrumb
               current={title}
-              className="absolute top-8 left-8 z-10 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] sm:top-10 sm:left-14 lg:top-12 lg:left-24"
+              className="absolute top-8 left-8 z-20 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)] sm:top-10 sm:left-14 lg:top-12 lg:left-24"
             />
 
-            <div className="absolute inset-0 z-10 flex items-end px-8 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">
+            <div className="pointer-events-none absolute inset-0 z-10 flex items-end px-8 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">
               <div className="max-w-2xl text-left [text-shadow:0_2px_16px_rgba(0,0,0,0.55)]">
                 {eyebrow ? (
                   <p className="text-[12px] font-bold tracking-[0.18em] text-white/85 uppercase sm:text-[13px]">

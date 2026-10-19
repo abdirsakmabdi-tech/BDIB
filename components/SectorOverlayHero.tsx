@@ -139,10 +139,10 @@ export default function SectorOverlayHero({
 
       <PageBreadcrumb
         current={title}
-        className="absolute top-[9rem] left-8 z-20 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:top-[9.5rem] sm:left-14 lg:top-[10rem] lg:left-24"
+        className="absolute top-[9rem] left-8 z-30 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:top-[9.5rem] sm:left-14 lg:top-[10rem] lg:left-24"
       />
 
-      <div className="relative z-10 flex h-full items-start justify-end px-8 pt-[11rem] pb-16 sm:px-14 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:px-24 lg:pt-[13rem] lg:pb-16">
+      <div className="pointer-events-none relative z-10 flex h-full items-start justify-end px-8 pt-[11rem] pb-16 sm:px-14 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:px-24 lg:pt-[13rem] lg:pb-16">
         <div className="flex w-full max-w-xl flex-col text-left [text-shadow:0_2px_18px_rgba(0,0,0,0.65)] sm:max-w-md lg:max-w-lg">
           {eyebrow ? (
             <p className="text-[12px] font-bold tracking-[0.18em] text-white uppercase sm:text-[13px]">
@@ -170,7 +170,7 @@ export default function SectorOverlayHero({
           </div>
 
           {hasSlider ? (
-            <div className="mt-6 flex items-center gap-1.5 sm:mt-7">
+            <div className="pointer-events-auto mt-6 flex items-center gap-1.5 sm:mt-7">
               {slides.map((_, index) => (
                 <button
                   key={index}

@@ -22,9 +22,12 @@ export default function PageBreadcrumb({
   return (
     <nav
       aria-label="Breadcrumb"
-      className={`flex flex-wrap items-center gap-2.5 text-[14px] font-medium tracking-tight sm:text-[15px] ${className}`}
+      className={`pointer-events-auto relative z-20 flex flex-wrap items-center gap-2.5 text-[14px] font-medium tracking-tight sm:text-[15px] ${className}`}
     >
-      <Link href="/" className={homeClass}>
+      <Link
+        href="/"
+        className={`relative z-20 cursor-pointer underline-offset-2 hover:underline ${homeClass}`}
+      >
         Home
       </Link>
       <span aria-hidden="true" className={sepClass}>
