@@ -37,6 +37,20 @@ const destinations = [
     objectClassName: "object-cover object-[center_45%]",
     body: "Turquoise channels framed by red cliffs — a striking setting for boat-based tourism and coastal adventure.",
   },
+  {
+    title: "Caluula",
+    src: "/destinations/caluula.jpg",
+    alt: "Aerial view of Caluula coastal village between white beach, turquoise sea, and green mangroves",
+    objectClassName: "object-cover object-[center_40%]",
+    body: "White sands, turquoise lagoons, and mangrove shores — Caluula offers striking coastal landscapes for sustainable tourism.",
+  },
+  {
+    title: "Xaabo",
+    src: "/destinations/xaabo.jpg",
+    alt: "Aerial view of a turquoise waterway winding through dense green mangroves at Xaabo",
+    objectClassName: "object-cover object-center",
+    body: "Turquoise channels through lush mangroves — Xaabo’s waterways invite eco-tourism and nature-based visitor experiences.",
+  },
 ] as const;
 
 export default function TourismPage() {

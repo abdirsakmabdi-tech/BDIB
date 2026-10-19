@@ -37,6 +37,20 @@ const destinations = [
     alt: "Aerial view of a boat on turquoise water between red cliffs at Butiyaalo",
     object: "object-cover object-[center_45%]",
   },
+  {
+    name: "Caluula",
+    title: "Caluula",
+    src: "/destinations/caluula.jpg",
+    alt: "Aerial view of Caluula coastal village between white beach, turquoise sea, and green mangroves",
+    object: "object-cover object-[center_40%]",
+  },
+  {
+    name: "Xaabo",
+    title: "Xaabo",
+    src: "/destinations/xaabo.jpg",
+    alt: "Aerial view of a turquoise waterway winding through dense green mangroves at Xaabo",
+    object: "object-cover object-center",
+  },
 ];
 
 function NavButton({
