@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const SLIDE_MS = 8000;
+const TRANSITION_MS = 950;
 const PEEK = "4.5rem";
 const GAP = "1.5rem";
 
@@ -51,19 +52,19 @@ function NavButton({
       type="button"
       aria-label={isNext ? "Next destination" : "Previous destination"}
       onClick={onClick}
-      className={`grid size-10 place-items-center rounded-md transition-colors sm:size-11 ${
+      className={`grid size-7 place-items-center rounded-md transition-all duration-300 ease-out will-change-transform active:scale-90 sm:size-8 ${
         isNext
-          ? "bg-white text-[#1a1a1a] hover:bg-white/90"
-          : "bg-black/35 text-white backdrop-blur-sm hover:bg-black/45"
+          ? "bg-white text-[#1a1a1a] hover:bg-white/90 hover:shadow-sm"
+          : "bg-black/35 text-white backdrop-blur-sm hover:bg-black/50"
       }`}
     >
       <svg
-        width="16"
-        height="16"
+        width="12"
+        height="12"
         viewBox="0 0 24 24"
         fill="none"
         aria-hidden="true"
-        className="sm:h-[18px] sm:w-[18px]"
+        className="sm:h-[14px] sm:w-[14px]"
       >
         <path
           d={isNext ? "M9 6l6 6-6 6" : "M15 6l-6 6 6 6"}
@@ -79,20 +80,43 @@ function NavButton({
 
 export default function DestinationMotion() {
   const [current, setCurrent] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const animating = useRef(false);
   const total = destinations.length;
 
-  const goPrev = () => setCurrent((i) => (i - 1 + total) % total);
-  const goNext = () => setCurrent((i) => (i + 1) % total);
+  useEffect(() => {
+    setReducedMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }, []);
+
+  const goTo = useCallback(
+    (next: number) => {
+      if (animating.current || next === current) return;
+      animating.current = true;
+      setCurrent(next);
+      window.setTimeout(
+        () => {
+          animating.current = false;
+        },
+        reducedMotion ? 0 : TRANSITION_MS,
+      );
+    },
+    [current, reducedMotion],
+  );
+
+  const goPrev = () => goTo((current - 1 + total) % total);
+  const goNext = () => goTo((current + 1) % total);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reducedMotion) return;
 
     const timer = window.setTimeout(() => {
-      setCurrent((i) => (i + 1) % total);
+      goTo((current + 1) % total);
     }, SLIDE_MS);
 
     return () => window.clearTimeout(timer);
-  }, [current, total]);
+  }, [current, total, reducedMotion, goTo]);
 
   return (
     <section
@@ -102,22 +126,41 @@ export default function DestinationMotion() {
     >
       <div className="overflow-hidden px-8 sm:px-14 lg:px-24">
         <div
-          className="flex w-full"
+          className="flex w-full will-change-transform"
           style={{
             gap: GAP,
-            transform: `translateX(calc(-${current} * (100% - ${PEEK} + ${GAP})))`,
-            transition:
-              "transform 700ms cubic-bezier(0.22, 1, 0.36, 1)",
+            transform: `translate3d(calc(-${current} * (100% - ${PEEK} + ${GAP})), 0, 0)`,
+            transition: reducedMotion
+              ? "none"
+              : `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
           }}
         >
           {destinations.map((destination, index) => {
             const active = index === current;
+            const distance = Math.abs(index - current);
+
             return (
               <article
                 key={destination.name}
                 aria-hidden={!active}
                 className="relative h-[min(72vh,560px)] min-h-[420px] shrink-0 overflow-hidden rounded-[1.25rem] sm:rounded-[1.5rem] lg:h-[min(78vh,620px)]"
-                style={{ flex: `0 0 calc(100% - ${PEEK})` }}
+                style={{
+                  flex: `0 0 calc(100% - ${PEEK})`,
+                  transform: reducedMotion
+                    ? undefined
+                    : `scale(${active ? 1 : distance === 1 ? 0.985 : 0.97})`,
+                  opacity: reducedMotion
+                    ? 1
+                    : active
+                      ? 1
+                      : distance === 1
+                        ? 0.72
+                        : 0.5,
+                  transition: reducedMotion
+                    ? "none"
+                    : `transform ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1), opacity ${TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+                  transformOrigin: "center center",
+                }}
               >
                 <Image
                   src={destination.src}
@@ -126,12 +169,14 @@ export default function DestinationMotion() {
                   priority={index === 0}
                   quality={90}
                   sizes="(max-width: 1024px) 92vw, 85vw"
-                  className={destination.object}
+                  className={`${destination.object} transition-transform duration-[1200ms] ease-out ${
+                    active ? "scale-100" : "scale-[1.04]"
+                  }`}
                 />
 
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent transition-opacity duration-700"
                 />
                 <div
                   aria-hidden="true"
@@ -139,13 +184,25 @@ export default function DestinationMotion() {
                 />
 
                 <div className="absolute inset-0 z-10 flex flex-col p-6 sm:p-8 lg:p-10">
-                  <div className="flex items-center gap-2">
+                  <div
+                    className={`flex items-center gap-2 transition-all duration-500 ease-out ${
+                      active
+                        ? "translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-1 opacity-0"
+                    }`}
+                  >
                     <NavButton direction="prev" onClick={goPrev} />
                     <NavButton direction="next" onClick={goNext} />
                   </div>
 
                   <div className="mt-auto max-w-lg pb-2 sm:max-w-xl">
-                    <h2 className="font-sans text-[22px] leading-[1.2] font-bold tracking-tight text-white">
+                    <h2
+                      className={`font-sans text-[22px] leading-[1.2] font-bold tracking-tight text-white transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                        active
+                          ? "translate-y-0 opacity-100 delay-100"
+                          : "translate-y-3 opacity-0"
+                      }`}
+                    >
                       {destination.title}
                     </h2>
                   </div>

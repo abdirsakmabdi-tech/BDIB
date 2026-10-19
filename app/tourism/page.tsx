@@ -45,9 +45,9 @@ export default function TourismPage() {
       <Header />
       <SectorOverlayHero
         title="Tourism"
-        src="/destinations/eyl.jpg"
-        alt="Aerial view of Eyl where the river meets the Indian Ocean along cliffs and coastline"
-        objectClassName="object-cover object-[center_40%]"
+        src="/destinations/tourism-intro.jpg"
+        alt="Welcome to Mareero Beach sign with lounge chairs and umbrella on the sand"
+        objectClassName="object-cover object-[center_45%]"
         tint="#043047"
         slides={[
           {
@@ -64,9 +64,9 @@ export default function TourismPage() {
                 </p>
               </>
             ),
-            src: "/destinations/eyl.jpg",
-            alt: "Aerial view of Eyl where the river meets the Indian Ocean along cliffs and coastline",
-            objectClassName: "object-cover object-[center_40%]",
+            src: "/destinations/tourism-intro.jpg",
+            alt: "Welcome to Mareero Beach sign with lounge chairs and umbrella on the sand",
+            objectClassName: "object-cover object-[center_45%]",
           },
           ...destinations.map((destination) => ({
             title: destination.title,
