@@ -13,6 +13,16 @@ const locations = [
     body: "Geesalay is a coastal town along the Gulf of Aden in the Gardafuul / Bari region. It is home to a prominent coastal oasis fed by mountain runoff and shallow aquifers.",
   },
   {
+    name: "Murcanyo",
+    src: "/slides/agriculture-murcanyo.jpg",
+    body: "Murcanyo sits along the Gulf of Aden coast in the Gardafuul / Bari region. Cultivated plots and irrigated plantings in the surrounding valleys support local food production amid arid mountain terrain.",
+  },
+  {
+    name: "Frankincense tree",
+    src: "/slides/agriculture-frankincense.jpg",
+    body: "Frankincense trees grow across Puntland’s dry uplands and coastal escarpments. Harvesting and trading frankincense resin supports rural livelihoods and remains an important natural-product value chain for the region.",
+  },
+  {
     name: "Dharoor Valley",
     body: "Dharoor Valley is a major inland valley depression running east of Bossaso in the Bari region. It is a premier oasis farming hub that utilizes underground water reserves for valley cultivation.",
   },

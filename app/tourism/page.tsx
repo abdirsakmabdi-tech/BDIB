@@ -51,6 +51,13 @@ const destinations = [
     objectClassName: "object-cover object-center",
     body: "Turquoise channels through lush mangroves — Xaabo’s waterways invite eco-tourism and nature-based visitor experiences.",
   },
+  {
+    title: "Ras-bina",
+    src: "/destinations/ras-bina.jpg",
+    alt: "Coastal settlement at Ras-bina with fishing boats along a curved sandy beach at sunset",
+    objectClassName: "object-cover object-[center_45%]",
+    body: "A quiet coastal shoreline at sunset — Ras-bina’s beaches and fishing boats offer serene settings for coastal tourism and visitor experiences.",
+  },
 ] as const;
 
 export default function TourismPage() {

@@ -20,8 +20,8 @@ const scenes = [
     id: "fishing",
     tab: "Fishing",
     src: "/slides/hero-fishing.jpg",
-    alt: "Fishermen on a sunny beach displaying a large catch on an orange tarp by turquoise water",
-    object: "object-cover object-[center_48%]",
+    alt: "Fishermen displaying a large catch on the beach and in turquoise coastal water",
+    object: "object-cover object-[center_18%]",
     headline: "Fishing",
     body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
     href: "/fisheries",
@@ -110,7 +110,7 @@ export default function HeroSpotlight() {
   }
 
   const arrowClass =
-    "absolute top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-black/25 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-[#001c2a] sm:size-12";
+    "absolute top-auto bottom-[13.5rem] z-20 flex size-11 items-center justify-center rounded-full border border-white/50 bg-black/40 text-white shadow-[0_2px_10px_rgba(0,0,0,0.2)] backdrop-blur-md transition-colors hover:border-white hover:bg-black/55 sm:bottom-[15rem] sm:size-12 lg:bottom-[16rem]";
 
   return (
     <section

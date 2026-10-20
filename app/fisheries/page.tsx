@@ -74,6 +74,18 @@ export default function FisheriesPage() {
             alt: "A fisherman standing in turquoise water holding a fresh catch beside his boat",
             objectClassName: "object-cover object-[center_40%]",
           },
+          {
+            body: (
+              <p>
+                Strong landings and skilled coastal fishers show the scale of
+                Puntland&apos;s blue economy — and the opportunity to invest in
+                boats, cold chain, and processing that grow local incomes.
+              </p>
+            ),
+            src: "/slides/fisheries-catch-collage.jpg",
+            alt: "Fishermen displaying a large catch on the beach and in turquoise coastal water",
+            objectClassName: "object-cover object-[center_18%]",
+          },
         ]}
       />
     </main>

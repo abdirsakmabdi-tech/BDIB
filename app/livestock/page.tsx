@@ -17,6 +17,13 @@ const livestockTypes = [
     body: "Camels are central to pastoral livelihoods across Puntland — valued for transport, milk, meat, and trade. PDIB supports camel herders and related value chains with specialized finance.",
   },
   {
+    name: "Camel grazing",
+    src: "/slides/livestock-camel-sunset.jpg",
+    alt: "A camel grazing in a green field at sunset",
+    wideFrame: true,
+    body: "Camels thrive on Puntland’s rangelands — providing milk, meat, transport, and trade. PDIB financing helps herders sustain flocks and grow related livelihoods.",
+  },
+  {
     name: "Goats",
     src: "/slides/livestock-goats.jpg",
     alt: "Goats grazing with sheep and camels in a green pastoral field",
@@ -76,6 +83,9 @@ export default function LivestockPage() {
             src: type.src,
             alt: type.alt,
             objectClassName: type.objectClassName,
+            ...("wideFrame" in type && type.wideFrame
+              ? { wideFrame: true as const }
+              : {}),
           })),
         ]}
       />

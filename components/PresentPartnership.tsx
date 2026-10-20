@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
 
@@ -9,7 +10,7 @@ const focusAreas = [
     id: "roads",
     label: "Roads",
     src: "/slides/infra-roads.jpg",
-    alt: "A paved two-lane road through arid landscape with a car flying the Puntland flag",
+    alt: "Aerial views of Ceeldaahir–Ceerigaabo and Garoowe–Gaalkacyo paved roads across arid landscape",
   },
   {
     id: "bridges",
@@ -31,11 +32,11 @@ const focusAreas = [
   },
 ] as const;
 
-type FocusId = (typeof focusAreas)[number]["id"];
+const ROTATE_MS = 4500;
 
 export default function PresentPartnership() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [hoveredId, setHoveredId] = useState<FocusId | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -53,36 +54,45 @@ export default function PresentPartnership() {
     return () => video.removeEventListener("loadeddata", play);
   }, []);
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((index) => (index + 1) % focusAreas.length);
+    }, ROTATE_MS);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="overflow-hidden bg-white">
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-center">
-        {/* Left edge aligns with header logo; video grows toward the text */}
         <div className="px-4 pt-10 pb-4 sm:py-16 sm:pr-0 sm:pl-14 lg:py-20 lg:pl-24">
           <div className="relative h-[min(56svh,480px)] w-full overflow-hidden bg-[#1a1a1a] sm:h-[min(58svh,500px)]">
+            {/* Soft video base under rotating images */}
             <video
               ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover opacity-30"
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
-              aria-label="Aerial view of Garowe urban river bridges and surrounding infrastructure"
+              aria-hidden="true"
             >
               <source src="/slides/garowe-bridges.mp4" type="video/mp4" />
             </video>
 
-            {focusAreas.map((area) => (
+            {focusAreas.map((area, index) => (
               <div
                 key={area.id}
-                className={`absolute inset-0 transition-opacity duration-500 ease-out ${
-                  hoveredId === area.id ? "opacity-100" : "opacity-0"
+                className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                  index === activeIndex ? "opacity-100" : "opacity-0"
                 }`}
-                aria-hidden={hoveredId !== area.id}
+                aria-hidden={index !== activeIndex}
               >
                 <Image
                   src={area.src}
-                  alt=""
+                  alt={index === activeIndex ? area.alt : ""}
                   fill
                   sizes="(min-width: 1024px) 55vw, 100vw"
                   className="object-cover"
@@ -90,6 +100,34 @@ export default function PresentPartnership() {
                 />
               </div>
             ))}
+
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b from-black/55 to-transparent"
+            />
+
+            {/* Labels over the image */}
+            <div className="absolute inset-x-0 top-0 z-20 flex flex-wrap items-center gap-2 px-4 py-4 sm:gap-3 sm:px-5 sm:py-5">
+              {focusAreas.map((area, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <button
+                    key={area.id}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className={`rounded-full px-3 py-1.5 text-[12px] font-semibold tracking-tight transition-colors sm:text-[13px] ${
+                      isActive
+                        ? "bg-white text-[#1a1a1a]"
+                        : "bg-white/20 text-white hover:bg-white/35"
+                    }`}
+                    aria-pressed={isActive}
+                    aria-label={`Show ${area.label}`}
+                  >
+                    {area.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
@@ -100,51 +138,17 @@ export default function PresentPartnership() {
                 Social Infrastructure
               </h2>
               <p className="mt-4 text-[14px] leading-snug text-pdib-text sm:mt-6">
-                PDIB finances essential social infrastructure — roads, bridges,
-                ports, and airports — that connects communities, expands access
-                to markets and services, and supports inclusive growth across
-                Puntland.
+                PDIB finances essential social infrastructure that connects
+                communities, expands access to markets and services, and
+                supports inclusive growth across Puntland.
               </p>
-
-              <div
-                className="mt-8 flex flex-wrap gap-x-5 gap-y-4"
-                onMouseLeave={() => setHoveredId(null)}
+              <Link
+                href="/social-infrastructure"
+                className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#036522] underline underline-offset-4 transition-opacity hover:opacity-70"
               >
-                {focusAreas.map((area) => (
-                  <button
-                    key={area.id}
-                    type="button"
-                    className={`inline-flex items-center gap-3 text-[14px] font-medium transition-colors ${
-                      hoveredId === area.id
-                        ? "text-pdib-title"
-                        : "text-pdib-text hover:text-pdib-title"
-                    }`}
-                    onMouseEnter={() => setHoveredId(area.id)}
-                    onFocus={() => setHoveredId(area.id)}
-                    onBlur={() => setHoveredId(null)}
-                    aria-pressed={hoveredId === area.id}
-                  >
-                    <span className="inline-flex size-8 shrink-0 items-center justify-center bg-pdib-primary text-pdib-title">
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M5 12h14M13 6l6 6-6 6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                    {area.label}
-                  </button>
-                ))}
-              </div>
+                Read more
+                <span aria-hidden="true">›</span>
+              </Link>
             </div>
           </Reveal>
         </div>

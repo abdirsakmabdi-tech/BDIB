@@ -11,6 +11,8 @@ export type SectorHeroSlide = {
   src?: string;
   alt?: string;
   objectClassName?: string;
+  /** Full-width blurred fill + clear contained photo (no empty sides) */
+  wideFrame?: boolean;
 };
 
 type SectorOverlayHeroProps = {
@@ -46,6 +48,7 @@ export default function SectorOverlayHero({
   const imageSrc = slide.src ?? src;
   const imageAlt = slide.alt ?? alt;
   const imageObject = slide.objectClassName ?? objectClassName;
+  const isWideFrame = slide.wideFrame === true;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -70,6 +73,7 @@ export default function SectorOverlayHero({
       {/* Background images — one layer per slide so each content swap changes the photo */}
       {slides.map((item, index) => {
         const active = index === current;
+        const wide = item.wideFrame === true;
         return (
           <div
             key={`bg-${index}-${item.src ?? src}`}
@@ -78,15 +82,43 @@ export default function SectorOverlayHero({
               active ? "z-[1] opacity-100" : "z-0 opacity-0"
             }`}
           >
-            <Image
-              src={item.src ?? src}
-              alt={active ? (item.alt ?? alt) : ""}
-              fill
-              priority={index === 0}
-              quality={95}
-              sizes="100vw"
-              className={item.objectClassName ?? objectClassName}
-            />
+            <div className="absolute inset-0 overflow-hidden">
+              {wide ? (
+                <>
+                  {/* Soft right panel — no photo, light wash only */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[#0a1628]"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-y-0 right-0 w-[48%] bg-gradient-to-l from-black/50 via-black/25 to-transparent sm:w-[46%] lg:w-[44%]"
+                  />
+                  {/* Clear photo on left — starts below header so heads aren’t hidden */}
+                  <div className="absolute top-[7rem] bottom-0 left-0 z-[1] w-[56%] sm:top-[7.5rem] sm:w-[58%] lg:w-[60%]">
+                    <Image
+                      src={item.src ?? src}
+                      alt={active ? (item.alt ?? alt) : ""}
+                      fill
+                      priority={index === 0}
+                      quality={100}
+                      sizes="60vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                </>
+              ) : (
+                <Image
+                  src={item.src ?? src}
+                  alt={active ? (item.alt ?? alt) : ""}
+                  fill
+                  priority={index === 0}
+                  quality={100}
+                  sizes="100vw"
+                  className={item.objectClassName ?? objectClassName}
+                />
+              )}
+            </div>
           </div>
         );
       })}
@@ -106,11 +138,17 @@ export default function SectorOverlayHero({
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/88 via-black/55 to-black/25 sm:from-black/90 sm:via-black/60 sm:to-black/10"
+        className={`pointer-events-none absolute inset-0 z-[2] bg-linear-to-l ${
+          isWideFrame
+            ? "from-black/55 via-black/25 to-transparent sm:from-black/60 sm:via-black/20"
+            : "from-black/88 via-black/55 to-black/25 sm:from-black/90 sm:via-black/60 sm:to-black/10"
+        }`}
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[68%] lg:w-[56%]"
+        className={`pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[68%] lg:w-[56%] ${
+          isWideFrame ? "opacity-70" : ""
+        }`}
         style={{
           background: `linear-gradient(to left, ${tint}fa 0%, ${tint}cc 50%, transparent 100%)`,
         }}
@@ -142,8 +180,8 @@ export default function SectorOverlayHero({
         className="absolute top-[9rem] left-8 z-30 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:top-[9.5rem] sm:left-14 lg:top-[10rem] lg:left-24"
       />
 
-      <div className="pointer-events-none relative z-10 flex h-full items-start justify-end px-8 pt-[11rem] pb-16 sm:px-14 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:px-24 lg:pt-[13rem] lg:pb-16">
-        <div className="flex w-full max-w-xl flex-col text-left [text-shadow:0_2px_18px_rgba(0,0,0,0.65)] sm:max-w-md lg:max-w-lg">
+      <div className="pointer-events-none relative z-10 flex h-full items-start justify-end pl-8 pr-4 pt-[11rem] pb-16 sm:pl-14 sm:pr-6 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:pl-24 lg:pr-8 lg:pt-[13rem] lg:pb-16">
+        <div className="flex w-full max-w-xl translate-x-2 flex-col text-left [text-shadow:0_2px_18px_rgba(0,0,0,0.65)] sm:max-w-md sm:translate-x-4 lg:max-w-lg lg:translate-x-6">
           {eyebrow ? (
             <p className="text-[12px] font-bold tracking-[0.18em] text-white uppercase sm:text-[13px]">
               {eyebrow}
@@ -168,27 +206,27 @@ export default function SectorOverlayHero({
             ) : null}
             {slide.body}
           </div>
-
-          {hasSlider ? (
-            <div className="pointer-events-auto mt-6 flex items-center gap-1.5 sm:mt-7">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  aria-label={`Show slide ${index + 1}`}
-                  aria-current={index === current ? "true" : undefined}
-                  onClick={() => setCurrent(index)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === current
-                      ? "w-5 bg-white"
-                      : "w-1.5 bg-white/45 hover:bg-white/70"
-                  }`}
-                />
-              ))}
-            </div>
-          ) : null}
         </div>
       </div>
+
+      {hasSlider ? (
+        <div className="absolute inset-x-0 bottom-8 z-20 flex items-center justify-center gap-1.5 sm:bottom-10">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Show slide ${index + 1}`}
+              aria-current={index === current ? "true" : undefined}
+              onClick={() => setCurrent(index)}
+              className={`h-1.5 rounded-full transition-all ${
+                index === current
+                  ? "w-5 bg-white"
+                  : "w-1.5 bg-white/45 hover:bg-white/70"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }

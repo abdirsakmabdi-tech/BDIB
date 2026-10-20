@@ -51,6 +51,13 @@ const destinations = [
     alt: "Aerial view of a turquoise waterway winding through dense green mangroves at Xaabo",
     object: "object-cover object-center",
   },
+  {
+    name: "Ras-bina",
+    title: "Ras-bina",
+    src: "/destinations/ras-bina.jpg",
+    alt: "Coastal settlement at Ras-bina with fishing boats along a curved sandy beach at sunset",
+    object: "object-cover object-[center_45%]",
+  },
 ];
 
 function NavButton({

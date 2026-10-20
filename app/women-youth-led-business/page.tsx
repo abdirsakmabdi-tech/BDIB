@@ -15,8 +15,8 @@ export default function WomenYouthLedBusinessPage() {
       <SectorOverlayHero
         title="Women and Youth Led Business"
         src="/slides/women-youth-led-business.jpg"
-        alt="A woman entrepreneur working at a small grocery stall"
-        objectClassName="object-cover object-top"
+        alt="A woman holding handmade knitted bags in front of bookshelves"
+        objectClassName="object-cover object-center"
         tint="#1a2a18"
         slides={[
           {
@@ -32,6 +32,9 @@ export default function WomenYouthLedBusinessPage() {
                 </p>
               </>
             ),
+            src: "/slides/women-youth-led-business.jpg",
+            alt: "A woman holding handmade knitted bags in front of bookshelves",
+            wideFrame: true,
           },
           {
             heading: "Access to finance",
@@ -44,6 +47,23 @@ export default function WomenYouthLedBusinessPage() {
                 markets.
               </p>
             ),
+            src: "/slides/women-youth-shopkeeper.jpg",
+            alt: "A young woman entrepreneur seated in her small grocery shop",
+            wideFrame: true,
+          },
+          {
+            heading: "Skills and crafts",
+            body: (
+              <p>
+                Handicrafts and artisanal production create income for women and
+                youth across Puntland. PDIB financing helps makers invest in
+                materials, tools, and market access so local craft enterprises
+                can grow.
+              </p>
+            ),
+            src: "/slides/women-youth-crafts.jpg",
+            alt: "A woman crocheting with yellow and maroon yarn at a workshop table",
+            wideFrame: true,
           },
           {
             heading: "Inclusive growth",
@@ -55,6 +75,9 @@ export default function WomenYouthLedBusinessPage() {
                 growth.
               </p>
             ),
+            src: "/slides/women-youth-crochet-bag.jpg",
+            alt: "A woman displaying a handmade blue and white crochet bag outdoors",
+            wideFrame: true,
           },
         ]}
       />
