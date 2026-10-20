@@ -16,8 +16,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Fisheries",
     href: "/fisheries",
     icon: "fisheries",
-    src: "/slides/fisheries-catch.jpg",
-    alt: "Fishermen carrying a large shark along a Puntland beach",
+    src: "/slides/hero-fishing.jpg",
+    alt: "A fisherman walking along a sandy beach carrying a fish and nets",
     description:
       "Financing for boats, cold chain, processing, and coastal livelihoods along Puntland’s 1,600km coastline.",
   },
@@ -25,8 +25,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Agriculture Financing",
     href: "/agriculture",
     icon: "agriculture",
-    src: "/slides/agriculture-field.jpg",
-    alt: "Agricultural fields in Puntland",
+    src: "/slides/hero-agriculture.jpg",
+    alt: "A farmer tilling reddish soil between green crop rows with a hoe",
     description:
       "Capital for crops, irrigation, and agribusinesses that strengthen food security and rural income.",
   },
@@ -34,7 +34,7 @@ export const interventionAreas: InterventionArea[] = [
     label: "Education Financing",
     href: "/education-financing",
     icon: "education",
-    src: "/slides/education-financing-card.jpg",
+    src: "/slides/hero-education.jpg",
     alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
     description:
       "Investment in learning infrastructure and education enterprises that expand opportunity across Puntland.",
@@ -43,8 +43,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Livestock Financing",
     href: "/livestock",
     icon: "livestock",
-    src: "/slides/livestock-herd.jpg",
-    alt: "Herd of camels crossing dry terrain",
+    src: "/slides/hero-livestock.jpg",
+    alt: "Sheep, goats, and camels grazing in a green pastoral field",
     description:
       "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
   },
@@ -61,8 +61,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Housing & Infrastructure",
     href: "/social-infrastructure",
     icon: "infrastructure",
-    src: "/slides/social-infrastructure.jpg",
-    alt: "Highway infrastructure under construction",
+    src: "/slides/hero-infrastructure.jpg",
+    alt: "Aerial view of a paved highway through arid land with a green belt along the roadside",
     description:
       "Schools, health facilities, water, and community infrastructure that strengthen public services.",
   },
@@ -88,7 +88,7 @@ export const interventionAreas: InterventionArea[] = [
     label: "Health Financing",
     href: "/health-financing",
     icon: "health",
-    src: "/slides/health-financing-card.jpg",
+    src: "/slides/hero-health.jpg",
     alt: "Surgical team working under operating lights in a hospital theatre",
     description:
       "Financing for health facilities and services that improve care and community wellbeing.",
@@ -115,8 +115,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Tourism Financing",
     href: "/tourism",
     icon: "tourism",
-    src: "/slides/tourism-puntland.jpg",
-    alt: "Turquoise beach with tents, banners, and boats",
+    src: "/slides/hero-tourism.jpg",
+    alt: "Aerial view of a turquoise waterway winding through dense green mangroves",
     description:
       "Hospitality, destinations, and visitor experiences that create jobs and grow the local economy.",
   },
