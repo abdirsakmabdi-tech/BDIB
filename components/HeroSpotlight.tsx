@@ -156,7 +156,7 @@ export default function HeroSpotlight() {
 
       <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pt-28 pb-8 sm:px-14 sm:pb-10 lg:px-24 lg:pb-12">
         <div className="relative mt-auto w-full max-w-[min(1100px,96vw)] pt-16 sm:pt-20">
-          <h1 className="mb-4 text-[48px] font-normal leading-[1.05] tracking-tight text-white sm:mb-5 sm:text-[56px] lg:text-[64px]">
+          <h1 className="mb-4 text-[52px] font-normal leading-[1.05] tracking-tight text-white sm:mb-5 sm:text-[60px] lg:text-[70px]">
             Our Priority Sectors
           </h1>
           <p className="sr-only">{scene.headline}</p>
