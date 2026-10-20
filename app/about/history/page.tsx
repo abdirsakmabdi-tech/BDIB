@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SplitPageLayout from "@/components/SplitPageLayout";
 import PageContent, { PageBody } from "@/components/PageContent";
-import { AccordionPanel } from "@/components/HistoryAccordions";
+import FeatureSplit, { FeatureIcon } from "@/components/FeatureSplit";
 
 export const metadata: Metadata = {
   title: "Our History | PDIB",
@@ -12,33 +12,74 @@ export const metadata: Metadata = {
 const intro =
   "How PDIB grew into a trusted partner for enterprises, communities, and institutions across Puntland.";
 
-const services = [
+const serviceItems = [
   {
     title: "Loans and Financing",
     body: "Offering various loan products tailored for businesses, agriculture, and infrastructure projects.",
+    icon: (
+      <FeatureIcon>
+        <rect x="3" y="6" width="18" height="12" rx="2" />
+        <path d="M3 10h18" />
+        <circle cx="8" cy="14" r="1" fill="currentColor" stroke="none" />
+      </FeatureIcon>
+    ),
   },
   {
     title: "Financial Advisory",
     body: "Providing guidance and support to entrepreneurs and businesses to enhance their financial management and operational efficiency.",
+    icon: (
+      <FeatureIcon>
+        <path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
+        <path d="M14 3v5h5" />
+        <path d="M8 13h8M8 17h5" />
+      </FeatureIcon>
+    ),
   },
   {
     title: "Capacity Building",
     body: "Investing in training and development programs for local financial institutions and businesses to strengthen the overall economic landscape.",
+    icon: (
+      <FeatureIcon>
+        <circle cx="12" cy="8" r="3.2" />
+        <path d="M5.5 19c1.5-3 4-4.5 6.5-4.5S17 16 18.5 19" />
+        <path d="M17 4.5v3M18.5 6h-3" />
+      </FeatureIcon>
+    ),
   },
 ];
 
-const governance = [
+const governanceItems = [
   {
     title: "Corporate Governance",
     body: "Ensuring transparency and accountability in operations through a well-structured governance framework.",
+    icon: (
+      <FeatureIcon>
+        <path d="M12 3 4 7v5c0 4.5 3.2 8.2 8 9 4.8-.8 8-4.5 8-9V7l-8-4Z" />
+        <path d="M9.5 12.5 11 14l3.5-3.5" />
+      </FeatureIcon>
+    ),
   },
   {
     title: "Risk Management",
     body: "Implementing robust risk assessment and management practices to safeguard the bank's financial health and sustainability.",
+    icon: (
+      <FeatureIcon>
+        <path d="M12 3 4 7v5c0 4.5 3.2 8.2 8 9 4.8-.8 8-4.5 8-9V7l-8-4Z" />
+        <path d="M12 8v5" />
+        <circle cx="12" cy="16" r="0.8" fill="currentColor" stroke="none" />
+      </FeatureIcon>
+    ),
   },
   {
     title: "Capacity Building",
     body: "Investing in training and development programs for local financial institutions and businesses to strengthen the overall economic landscape.",
+    icon: (
+      <FeatureIcon>
+        <path d="M12 3v18" />
+        <path d="M5 8h14M7 13h10M9 18h6" />
+        <circle cx="12" cy="5" r="2" />
+      </FeatureIcon>
+    ),
   },
 ];
 
@@ -78,20 +119,47 @@ export default function HistoryPage() {
         </PageBody>
       </PageContent>
 
-      <section className="bg-white px-8 pt-6 pb-14 sm:px-12 sm:pt-8 sm:pb-16 lg:px-14 lg:pb-20 xl:px-16">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-10 xl:gap-14">
-          <AccordionPanel
-            title="Services Offered"
-            intro="PDIB supports businesses, institutions, and communities with financing and advisory solutions that strengthen Puntland’s productive economy."
-            items={services}
-          />
-          <AccordionPanel
-            title="Governance and Management"
-            intro="Strong oversight, risk discipline, and continuous capability building keep PDIB accountable as it delivers on its development mandate."
-            items={governance}
-          />
-        </div>
-      </section>
+      <FeatureSplit
+        eyebrow="Services"
+        title="Services Offered"
+        intro="PDIB supports businesses, institutions, and communities with financing and advisory solutions that strengthen Puntland’s productive economy."
+        linkHref="/financial"
+        linkLabel="View financial solutions"
+        items={serviceItems}
+        panelSrc="/slides/history-hero-v2.jpg"
+        panelAlt="PDIB services supporting Puntland’s productive economy"
+        coverTitle="Services Overview"
+        tocItems={[
+          "Loans & Financing",
+          "Financial Advisory",
+          "Capacity Building",
+          "Risk Management",
+          "Partnerships",
+          "Sector Focus",
+          "Impact",
+        ]}
+      />
+
+      <FeatureSplit
+        eyebrow="Governance"
+        title="Governance and Management"
+        intro="Strong oversight, risk discipline, and continuous capability building keep PDIB accountable as it delivers on its development mandate."
+        linkHref="/about/corporate-governance"
+        linkLabel="View corporate governance"
+        items={governanceItems}
+        panelSrc="/slides/social-infrastructure.jpg"
+        coverTitle="Governance Framework"
+        tocItems={[
+          "Board Oversight",
+          "Accountability",
+          "Risk Management",
+          "Ethics & Conduct",
+          "Policy Framework",
+          "Audit & Controls",
+          "Leadership",
+        ]}
+        reverse
+      />
     </SplitPageLayout>
   );
 }

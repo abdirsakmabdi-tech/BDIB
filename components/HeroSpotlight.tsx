@@ -84,10 +84,7 @@ const scenes = [
   },
 ] as const;
 
-const SLIDE_INTERVAL_MS = 7000;
-
-const arrowClass =
-  "absolute top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-black/25 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-[#001c2a] sm:size-12";
+const SLIDE_INTERVAL_MS = 9000;
 
 export default function HeroSpotlight() {
   const [current, setCurrent] = useState(0);
@@ -111,6 +108,9 @@ export default function HeroSpotlight() {
   function goNext() {
     setCurrent((index) => (index + 1) % total);
   }
+
+  const arrowClass =
+    "absolute top-1/2 z-20 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-black/25 text-white backdrop-blur-md transition-colors hover:border-white hover:bg-white hover:text-[#001c2a] sm:size-12";
 
   return (
     <section
@@ -136,7 +136,6 @@ export default function HeroSpotlight() {
           );
         })}
       </div>
-
       <div aria-hidden="true" className="absolute inset-0 bg-black/25" />
 
       <button
@@ -157,59 +156,78 @@ export default function HeroSpotlight() {
       </button>
 
       <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pt-28 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">
-        <div className="relative w-full max-w-[min(720px,92vw)] bg-white/70 px-7 py-6 backdrop-blur-[2px] sm:px-9 sm:py-7">
-          <div
-            key={scene.id}
-            className="transition-opacity duration-500"
-          >
-            <div className="relative border-l-[5px] border-[#036522] pl-4 sm:pl-5">
-              <h1 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
+        <div className="relative w-full max-w-[min(720px,92vw)]">
+          <div className="relative border-l-[5px] border-[#9ca3af] pl-4 sm:pl-5">
+            <p className="mb-3 text-[44px] font-bold leading-[1.1] tracking-tight text-white sm:mb-4">
+              Our Priority Sectors
+            </p>
+
+            <div key={scene.id} className="transition-opacity duration-500">
+              <h1 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-white sm:text-[26px]">
                 {scene.headline}
               </h1>
-              <p className="mt-2.5 max-w-[38ch] text-[14px] leading-snug text-[#333] sm:mt-3">
+              <p className="mt-2.5 max-w-[38ch] text-[14px] leading-snug text-white/90 sm:mt-3">
                 {scene.body}
               </p>
-            </div>
-            <div className="mt-4 pl-[calc(1rem+5px)] sm:mt-5 sm:pl-[calc(1.25rem+5px)]">
-              <Link
-                href={scene.href}
-                className="inline-flex items-center gap-2 bg-pdib-primary px-4 py-2 text-[13px] font-semibold tracking-wide text-pdib-title transition-colors hover:bg-pdib-primary-hover sm:text-[14px]"
-              >
-                {scene.cta}
-                <span aria-hidden="true">›</span>
-              </Link>
-            </div>
-          </div>
-
-          <div
-            role="tablist"
-            aria-label="Hero scenes"
-            className="mt-5 flex max-w-full flex-wrap items-center gap-1.5 overflow-x-auto sm:mt-6"
-          >
-            {scenes.map((item, index) => {
-              const active = index === current;
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  aria-label={`Show ${item.tab}`}
-                  onClick={() => setCurrent(index)}
-                  className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-tight transition-colors sm:px-3 sm:text-[12px] ${
-                    active
-                      ? "border-[#036522] bg-[#036522] text-white"
-                      : "border-black/20 bg-transparent text-[#1a1a1a] hover:border-[#036522]/50 hover:text-[#036522]"
-                  }`}
+              <div className="mt-4 sm:mt-5">
+                <Link
+                  href={scene.href}
+                  className="inline-flex items-center gap-2 bg-pdib-primary px-4 py-2 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-pdib-primary-hover sm:text-[14px]"
                 >
-                  {item.tab}
-                </button>
-              );
-            })}
+                  {scene.cta}
+                  <span aria-hidden="true">›</span>
+                </Link>
+              </div>
+            </div>
+
+            <HeroTabs
+              scenes={scenes}
+              current={current}
+              setCurrent={setCurrent}
+            />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroTabs({
+  scenes: tabScenes,
+  current,
+  setCurrent,
+}: {
+  scenes: typeof scenes;
+  current: number;
+  setCurrent: (index: number) => void;
+}) {
+  return (
+    <div
+      role="tablist"
+      aria-label="Hero scenes"
+      className="mt-3 flex max-w-full flex-wrap items-center gap-1.5 overflow-x-auto sm:mt-4"
+    >
+      {tabScenes.map((item, index) => {
+        const active = index === current;
+        return (
+          <button
+            key={item.id}
+            type="button"
+            role="tab"
+            aria-selected={active}
+            aria-label={`Show ${item.tab}`}
+            onClick={() => setCurrent(index)}
+            className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-tight transition-colors sm:px-3 sm:text-[12px] ${
+              active
+                ? "border-[#036522] bg-[#036522] text-white"
+                : "border-black/10 bg-white/90 text-[#1a1a1a] hover:border-[#036522]/50 hover:text-[#036522]"
+            }`}
+          >
+            {item.tab}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

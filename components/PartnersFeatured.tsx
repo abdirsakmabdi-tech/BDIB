@@ -64,7 +64,7 @@ export default function PartnersFeatured() {
   return (
     <section
       id="partners-featured"
-      className="flex min-h-[70vh] flex-col justify-center bg-[#f6f7f5]"
+      className="flex min-h-[70vh] flex-col justify-center bg-white"
     >
       <div className="px-8 pt-14 pb-6 sm:px-14 sm:pt-16 sm:pb-8 lg:px-24 lg:pt-20">
         <p className="text-center font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
@@ -73,8 +73,8 @@ export default function PartnersFeatured() {
       </div>
 
       <div className="partners-marquee relative overflow-hidden pb-14 sm:pb-16 lg:pb-20">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-linear-to-r from-[#f6f7f5] to-transparent sm:w-20" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-linear-to-l from-[#f6f7f5] to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-linear-to-r from-white to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-linear-to-l from-white to-transparent sm:w-20" />
 
         <div className="partners-marquee-inner flex w-max items-center gap-5">
           <LogoTrack />

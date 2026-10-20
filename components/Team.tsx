@@ -5,10 +5,10 @@ export default function Team() {
   return (
     <section
       id="our-team"
-      className="scroll-mt-28 bg-white px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20"
+      className="scroll-mt-28 bg-[#2a6f94] px-8 py-14 sm:px-14 sm:py-16 lg:px-24 lg:py-20"
     >
       <div className="max-w-3xl">
-        <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
+        <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-white">
           Our team
         </h2>
       </div>
@@ -30,7 +30,7 @@ export default function Team() {
       <div className="mt-10 sm:mt-12">
         <Link
           href="/team"
-          className="inline-flex text-[14px] font-medium text-[#036522] underline-offset-4 transition-opacity hover:underline"
+          className="inline-flex text-[14px] font-medium text-white underline-offset-4 transition-opacity hover:underline"
         >
           View full team
         </Link>
@@ -52,10 +52,10 @@ function TeamGroup({
 }) {
   return (
     <div className={className || "mt-12 sm:mt-14"}>
-      <h3 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
+      <h3 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-white">
         {title}
       </h3>
-      <p className="mt-2 max-w-2xl text-[14px] leading-snug text-pdib-text">
+      <p className="mt-2 max-w-2xl text-[14px] leading-snug text-white/90">
         {description}
       </p>
 
@@ -77,10 +77,10 @@ function MemberCard({ member }: { member: Member }) {
       className="group relative flex flex-col"
       aria-label={`${member.name}, ${member.role}`}
     >
-      <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#5a6b52]">
+      <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#e8eef2] shadow-[0_2px_12px_rgba(15,23,42,0.08)]">
         <PersonIcon />
-        <div className="absolute inset-0 flex items-center justify-center bg-[#d8e5d0] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-          <span className="text-[14px] font-semibold tracking-[0.08em] text-[#036522] uppercase">
+        <div className="absolute inset-0 flex items-center justify-center bg-[#e8eef2]/95 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <span className="text-[14px] font-semibold tracking-[0.08em] text-[#2a6f94] uppercase">
             Coming soon
           </span>
         </div>
@@ -93,7 +93,7 @@ function PersonIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="size-16 text-white/85 sm:size-20"
+      className="size-16 text-[#2a6f94]/55 sm:size-20"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.35"
