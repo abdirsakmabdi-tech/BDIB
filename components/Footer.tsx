@@ -40,14 +40,14 @@ export default function Footer() {
     <footer className="mt-auto border-t border-black/8 bg-[#f7f6f3] text-[#2c2c2c]">
       <div className="grid lg:grid-cols-[minmax(220px,1.1fr)_minmax(0,2fr)_minmax(0,0.9fr)]">
         {/* Logo column */}
-        <div className="flex items-center justify-center border-b border-black/10 bg-white px-6 py-12 sm:px-8 lg:border-r lg:border-b-0 lg:px-8 lg:py-16">
+        <div className="flex items-center justify-center border-b border-black/10 bg-white px-5 py-4 sm:px-6 lg:border-r lg:border-b-0 lg:px-6 lg:py-5">
           <Link
             href="/"
-            className="block w-full max-w-[340px]"
+            className="block w-full max-w-[220px]"
             aria-label="Puntland Development & Investment Bank home"
           >
             <img
-              src="/Mylogo.png?v=16"
+              src="/pdib-logo-footer.png?v=17"
               alt="Puntland Development & Investment Bank"
               width={640}
               height={200}
@@ -57,8 +57,8 @@ export default function Footer() {
         </div>
 
         {/* Link groups */}
-        <div className="border-b border-white/15 bg-[#036522] px-8 py-12 sm:px-12 sm:py-14 lg:border-r lg:border-b-0 lg:border-white/15 lg:px-10 lg:py-16 xl:px-12">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-8">
+        <div className="border-b border-white/15 bg-[#036522] px-6 py-4 sm:px-8 sm:py-5 lg:border-r lg:border-b-0 lg:border-white/15 lg:px-8 lg:py-5 xl:px-10">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-4 lg:gap-5">
             <FooterGroup title="Explore" links={exploreLinks} onGreen />
             <FooterGroup title="Priority Sectors" links={sectorLinks} onGreen />
             <FooterGroup title="Connect" links={connectLinks} withArrow onGreen />
@@ -66,15 +66,15 @@ export default function Footer() {
         </div>
 
         {/* Featured statement */}
-        <div className="flex items-center justify-start bg-[#036522] px-8 py-14 sm:px-12 sm:py-16 lg:px-12 lg:py-16 xl:px-14">
-          <p className="max-w-[14ch] text-left font-sans text-[26px] leading-[1.15] font-bold tracking-tight text-white sm:text-[28px]">
+        <div className="flex items-center justify-start bg-[#036522] px-6 py-5 sm:px-8 sm:py-5 lg:px-10 lg:py-5 xl:px-12">
+          <p className="max-w-[14ch] text-left font-sans text-[18px] leading-[1.15] font-bold tracking-tight text-white sm:text-[20px]">
             Where Investment Meets Development
           </p>
         </div>
       </div>
 
-      <div className="border-t border-black/10 px-8 py-4 sm:px-14 lg:px-24">
-        <p className="text-[12px] text-[#2c2c2c]/55">
+      <div className="border-t border-black/10 px-6 py-2 sm:px-14 lg:px-24">
+        <p className="text-[11px] text-[#2c2c2c]/55">
           Copyright © {year} — Puntland Development &amp; Investment Bank
         </p>
       </div>
@@ -96,17 +96,17 @@ function FooterGroup({
   return (
     <div>
       <p
-        className={`text-[13px] font-bold tracking-[0.08em] uppercase ${
+        className={`text-[11px] font-bold tracking-[0.08em] uppercase ${
           onGreen ? "text-white" : "text-[#2c2c2c]"
         }`}
       >
         {title}
       </p>
-      <ul className="mt-4 flex list-none flex-col gap-2.5 p-0 pl-0 sm:pl-0">
+      <ul className="mt-2 flex list-none flex-col gap-1 p-0 pl-0 sm:pl-0">
         {links.map((link) => {
           const className = onGreen
-            ? "inline-flex items-center gap-1.5 text-[15px] font-normal text-white/85 transition-colors hover:text-white"
-            : "inline-flex items-center gap-1.5 text-[15px] font-normal text-[#2c2c2c]/85 transition-colors hover:text-[#036522]";
+            ? "inline-flex items-center gap-1.5 text-[13px] leading-snug font-normal text-white/85 transition-colors hover:text-white"
+            : "inline-flex items-center gap-1.5 text-[13px] leading-snug font-normal text-[#2c2c2c]/85 transition-colors hover:text-[#036522]";
           const content = (
             <>
               {withArrow ? (

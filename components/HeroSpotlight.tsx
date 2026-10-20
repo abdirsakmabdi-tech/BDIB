@@ -1,16 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const scenes = [
   {
     id: "tourism",
     tab: "Tourism",
-    src: "/destinations/murcanyo.jpg",
-    alt: "Aerial view of Murcanyo coastal village with white beach, turquoise sea, and mountains",
-    object: "object-cover object-[center_40%]",
+    src: "/slides/hero-tourism.jpg",
+    alt: "Aerial view of a turquoise waterway winding through dense green mangroves",
+    object: "object-cover object-center",
     headline: "Tourism",
     body: "Capital for hospitality, coastal experiences, and visitor enterprises that create jobs across Puntland.",
     href: "/tourism",
@@ -20,8 +19,8 @@ const scenes = [
     id: "fishing",
     tab: "Fishing",
     src: "/slides/hero-fishing.jpg",
-    alt: "Fishermen displaying a large catch on the beach and in turquoise coastal water",
-    object: "object-cover object-[center_18%]",
+    alt: "A fisherman walking along a sandy beach carrying a fish and nets with turquoise sea and mountains beyond",
+    object: "object-cover object-[center_50%]",
     headline: "Fishing",
     body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
     href: "/fisheries",
@@ -31,8 +30,8 @@ const scenes = [
     id: "infrastructure",
     tab: "Infrastructure",
     src: "/slides/hero-infrastructure.jpg",
-    alt: "A long paved road stretching through arid landscape under a cloudy sky",
-    object: "object-cover object-[center_45%]",
+    alt: "A paved two-lane road through arid scrubland with a vehicle flying the Puntland flag",
+    object: "object-cover object-[center_40%]",
     headline: "Infrastructure",
     body: "Capital for roads, bridges, ports, and airports that connect communities and expand access to markets.",
     href: "/social-infrastructure",
@@ -155,37 +154,17 @@ export default function HeroSpotlight() {
         <ChevronRightIcon />
       </button>
 
-      <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pt-28 pb-10 sm:px-14 sm:pb-12 lg:px-24 lg:pb-14">
-        <div className="relative w-full max-w-[min(720px,92vw)]">
-          <div className="relative border-l-[5px] border-[#9ca3af] pl-4 sm:pl-5">
-            <p className="mb-3 text-[44px] font-bold leading-[1.1] tracking-tight text-white sm:mb-4">
-              Our Priority Sectors
-            </p>
-
-            <div key={scene.id} className="transition-opacity duration-500">
-              <h1 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-white sm:text-[26px]">
-                {scene.headline}
-              </h1>
-              <p className="mt-2.5 max-w-[38ch] text-[14px] leading-snug text-white/90 sm:mt-3">
-                {scene.body}
-              </p>
-              <div className="mt-4 sm:mt-5">
-                <Link
-                  href={scene.href}
-                  className="inline-flex items-center gap-2 bg-pdib-primary px-4 py-2 text-[13px] font-semibold tracking-wide text-white transition-colors hover:bg-pdib-primary-hover sm:text-[14px]"
-                >
-                  {scene.cta}
-                  <span aria-hidden="true">›</span>
-                </Link>
-              </div>
-            </div>
-
-            <HeroTabs
-              scenes={scenes}
-              current={current}
-              setCurrent={setCurrent}
-            />
-          </div>
+      <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pt-28 pb-8 sm:px-14 sm:pb-10 lg:px-24 lg:pb-12">
+        <div className="relative mt-auto w-full max-w-[min(1100px,96vw)] pt-16 sm:pt-20">
+          <h1 className="mb-4 text-[48px] font-normal leading-[1.05] tracking-tight text-white sm:mb-5 sm:text-[56px] lg:text-[64px]">
+            Our Priority Sectors
+          </h1>
+          <p className="sr-only">{scene.headline}</p>
+          <HeroTabs
+            scenes={scenes}
+            current={current}
+            setCurrent={setCurrent}
+          />
         </div>
       </div>
     </section>
@@ -205,7 +184,7 @@ function HeroTabs({
     <div
       role="tablist"
       aria-label="Hero scenes"
-      className="mt-3 flex max-w-full flex-wrap items-center gap-1.5 overflow-x-auto sm:mt-4"
+      className="flex max-w-full flex-wrap items-center justify-start gap-1.5 overflow-x-auto"
     >
       {tabScenes.map((item, index) => {
         const active = index === current;
@@ -217,7 +196,7 @@ function HeroTabs({
             aria-selected={active}
             aria-label={`Show ${item.tab}`}
             onClick={() => setCurrent(index)}
-            className={`shrink-0 rounded-full border px-2.5 py-1 text-[11px] font-medium tracking-tight transition-colors sm:px-3 sm:text-[12px] ${
+            className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium tracking-tight transition-colors sm:px-2.5 sm:text-[11px] ${
               active
                 ? "border-[#036522] bg-[#036522] text-white"
                 : "border-black/10 bg-white/90 text-[#1a1a1a] hover:border-[#036522]/50 hover:text-[#036522]"

@@ -105,13 +105,13 @@ export default function HeaderBar() {
     "group/nav relative shrink-0 px-3 py-2 text-[15px] font-medium tracking-tight whitespace-nowrap text-[#1a1a1a] transition-colors duration-200 hover:text-[#036522]";
 
   const buttonClass =
-    "inline-flex shrink-0 items-center gap-1.5 bg-pdib-primary px-5 py-2.5 text-[14px] font-semibold tracking-tight whitespace-nowrap text-white transition-colors duration-200 hover:bg-pdib-primary-hover";
+    "inline-flex shrink-0 items-center gap-1.5 bg-pdib-primary px-5 py-2 text-[14px] font-semibold tracking-tight whitespace-nowrap text-white transition-colors duration-200 hover:bg-pdib-primary-hover";
 
   const mainNavItems = navItems.filter((item) => item.variant !== "button");
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
 
   const headerBarClass =
-    "flex h-[112px] items-center gap-4 border-b border-black/8 px-8 transition-[height,gap] duration-300 ease-out sm:px-14 lg:h-[120px] lg:gap-10 lg:px-24";
+    "flex h-[88px] items-center gap-4 border-b border-black/8 px-8 transition-[height,gap] duration-300 ease-out sm:px-14 lg:h-[96px] lg:gap-10 lg:px-24";
 
   const logoClass =
     "h-14 origin-left transition-transform duration-300 ease-out sm:h-16 lg:h-[4.5rem] group-hover:scale-105";
@@ -119,9 +119,9 @@ export default function HeaderBar() {
   const mobileLogoClass =
     "h-14 origin-left transition-transform duration-300 ease-out sm:h-16 group-hover:scale-105";
 
-  const mobileSheetTop = "top-[112px]";
+  const mobileSheetTop = "top-[88px]";
   const mobileHeaderClass =
-    "relative z-10 flex h-[112px] items-center justify-between border-b border-black/8 bg-white px-8 sm:px-14";
+    "relative z-10 flex h-[88px] items-center justify-between border-b border-black/8 bg-white px-8 sm:px-14";
 
   function renderDesktopItem(item: (typeof navItems)[number]) {
     const withMenu = hasSubmenu(item);

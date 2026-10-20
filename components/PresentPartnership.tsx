@@ -22,19 +22,7 @@ const focusAreas = [
     id: "ports",
     label: "Ports",
     src: "/slides/infra-ports.jpg",
-    alt: "Bosaso Port and Garacad Port side by side",
-    panels: [
-      {
-        title: "Bosaso Port",
-        src: "/slides/infra-port-bosaso.jpg",
-        alt: "Aerial view of Bosaso Port harbor and vessels",
-      },
-      {
-        title: "Garacad Port",
-        src: "/slides/infra-port-garacad.jpg",
-        alt: "Aerial view of Garacad Port pier, cargo ship, and coastal infrastructure",
-      },
-    ],
+    alt: "Aerial view of port infrastructure along the Puntland coast",
   },
   {
     id: "airports",
@@ -78,104 +66,86 @@ export default function PresentPartnership() {
 
   return (
     <section className="overflow-hidden bg-white">
-      <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-center">
-        <div className="px-4 pt-10 pb-4 sm:py-16 sm:pr-0 sm:pl-14 lg:py-20 lg:pl-24">
-          <div className="relative h-[min(56svh,480px)] w-full overflow-hidden bg-[#1a1a1a] sm:h-[min(58svh,500px)]">
-            <video
-              ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover opacity-30"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden="true"
-            >
-              <source src="/slides/garowe-bridges.mp4" type="video/mp4" />
-            </video>
+      <div className="grid lg:min-h-[72svh] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)] lg:items-stretch">
+        {/* Left — full-bleed image with overlay type */}
+        <div className="relative min-h-[52svh] lg:min-h-[72svh]">
+          <video
+            ref={videoRef}
+            className="absolute inset-0 h-full w-full object-cover opacity-25"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          >
+            <source src="/slides/garowe-bridges.mp4" type="video/mp4" />
+          </video>
 
+          {focusAreas.map((area, index) => {
+            const isActive = index === activeIndex;
+
+            return (
+              <div
+                key={area.id}
+                className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                  isActive ? "opacity-100" : "opacity-0"
+                }`}
+                aria-hidden={!isActive}
+              >
+                <Image
+                  src={area.src}
+                  alt={isActive ? area.alt : ""}
+                  fill
+                  sizes="(min-width: 1024px) 58vw, 100vw"
+                  className="object-cover"
+                  priority={area.id === "roads"}
+                />
+              </div>
+            );
+          })}
+
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-black/10 to-black/25"
+          />
+
+          {/* Focus pills */}
+          <div className="absolute inset-x-0 top-0 z-20 flex flex-wrap items-center gap-2 px-5 py-5 sm:gap-3 sm:px-8 sm:py-6 lg:px-10">
             {focusAreas.map((area, index) => {
               const isActive = index === activeIndex;
-              const panels = "panels" in area ? area.panels : null;
-
               return (
-                <div
+                <button
                   key={area.id}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-                    isActive ? "opacity-100" : "opacity-0"
+                  type="button"
+                  onClick={() => setActiveIndex(index)}
+                  className={`rounded-full px-3 py-1.5 text-[12px] font-semibold tracking-tight transition-colors sm:text-[13px] ${
+                    isActive
+                      ? "bg-white text-[#1a1a1a]"
+                      : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/35"
                   }`}
-                  aria-hidden={!isActive}
+                  aria-pressed={isActive}
+                  aria-label={`Show ${area.label}`}
                 >
-                  {panels ? (
-                    <div className="absolute inset-0 grid grid-cols-2">
-                      {panels.map((panel) => (
-                        <div key={panel.title} className="relative h-full min-h-0">
-                          <Image
-                            src={panel.src}
-                            alt={isActive ? panel.alt : ""}
-                            fill
-                            quality={100}
-                            sizes="(min-width: 1024px) 28vw, 50vw"
-                            className="object-cover object-center"
-                            priority={area.id === "ports"}
-                          />
-                          <p className="absolute bottom-3 left-3 z-10 bg-[#036522] px-2.5 py-1 text-[12px] font-bold tracking-tight text-white sm:bottom-4 sm:left-4 sm:px-3 sm:py-1.5 sm:text-[13px]">
-                            {panel.title}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <Image
-                      src={area.src}
-                      alt={isActive ? area.alt : ""}
-                      fill
-                      sizes="(min-width: 1024px) 55vw, 100vw"
-                      className="object-cover"
-                      priority={area.id === "roads"}
-                    />
-                  )}
-                </div>
+                  {area.label}
+                </button>
               );
             })}
+          </div>
 
-            <div
-              aria-hidden="true"
-              className={`pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b to-transparent ${
-                active.id === "ports"
-                  ? "from-black/35"
-                  : "from-black/55"
-              }`}
-            />
-
-            <div className="absolute inset-x-0 top-0 z-20 flex flex-wrap items-center gap-2 px-4 py-4 sm:gap-3 sm:px-5 sm:py-5">
-              {focusAreas.map((area, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <button
-                    key={area.id}
-                    type="button"
-                    onClick={() => setActiveIndex(index)}
-                    className={`rounded-full px-3 py-1.5 text-[12px] font-semibold tracking-tight transition-colors sm:text-[13px] ${
-                      isActive
-                        ? "bg-white text-[#1a1a1a]"
-                        : "bg-white/20 text-white hover:bg-white/35"
-                    }`}
-                    aria-pressed={isActive}
-                    aria-label={`Show ${area.label}`}
-                  >
-                    {area.label}
-                  </button>
-                );
-              })}
-            </div>
+          {/* Overlay title only */}
+          <div className="absolute inset-x-0 bottom-0 z-20 px-5 pb-5 sm:px-8 sm:pb-6 lg:px-10 lg:pb-7">
+            <h3 className="font-sans text-[26px] leading-[1.1] font-bold tracking-tight text-white sm:text-[30px] lg:text-[34px]">
+              {active.label}
+            </h3>
           </div>
         </div>
 
-        <div className="flex items-center px-4 pt-4 pb-10 sm:px-14 sm:py-16 lg:px-24 lg:py-20">
+        {/* Right — content */}
+        <div className="flex items-center bg-white px-8 py-12 sm:px-14 sm:py-16 lg:px-16 lg:py-20 xl:px-20">
           <Reveal>
             <div className="max-w-xl text-left">
-              <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
+              <h2 className="font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title sm:text-[26px]">
                 Social Infrastructure
               </h2>
               <p className="mt-4 text-[14px] leading-snug text-pdib-text sm:mt-6">
@@ -183,14 +153,9 @@ export default function PresentPartnership() {
                 communities, expands access to markets and services, and
                 supports inclusive growth across Puntland.
               </p>
-              {active.id === "ports" ? (
-                <p className="mt-3 text-[13px] font-semibold text-pdib-title">
-                  Bosaso Port · Garacad Port
-                </p>
-              ) : null}
               <Link
                 href="/social-infrastructure"
-                className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#036522] underline underline-offset-4 transition-opacity hover:opacity-70"
+                className="mt-7 inline-flex items-center gap-2 text-[14px] font-semibold text-[#036522] underline underline-offset-4 transition-opacity hover:opacity-70"
               >
                 Read more
                 <span aria-hidden="true">›</span>

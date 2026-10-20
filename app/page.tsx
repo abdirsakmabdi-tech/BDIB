@@ -7,6 +7,7 @@ import PartnersFeatured from "@/components/PartnersFeatured";
 import WhatWeDo from "@/components/WhatWeDo";
 import BuildingInfrastructure from "@/components/BuildingInfrastructure";
 import DestinationMotion from "@/components/DestinationMotion";
+import LivestockInvestment from "@/components/LivestockInvestment";
 import PresentPartnership from "@/components/PresentPartnership";
 import Team from "@/components/Team";
 
@@ -20,6 +21,7 @@ export default function Home() {
         <WhatWeDo />
         <BuildingInfrastructure />
         <DestinationMotion />
+        <LivestockInvestment />
         <PresentPartnership />
         <Team />
         <PartnersFeatured />
