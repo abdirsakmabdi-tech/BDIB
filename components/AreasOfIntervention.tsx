@@ -44,7 +44,7 @@ export const interventionAreas: InterventionArea[] = [
     href: "/livestock",
     icon: "livestock",
     src: "/slides/hero-livestock.jpg",
-    alt: "Sheep, goats, and camels grazing in a green pastoral field",
+    alt: "Cattle grazing in a green grassy field under a bright sky",
     description:
       "Specialized finance for pastoralists and livestock value chains that anchor Puntland’s economy.",
   },
