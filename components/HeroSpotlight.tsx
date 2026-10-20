@@ -20,7 +20,7 @@ const scenes = [
     tab: "Fishing",
     src: "/slides/hero-fishing.jpg",
     alt: "A fisherman walking along a sandy beach carrying a fish and nets with turquoise sea and mountains beyond",
-    object: "object-cover object-[center_50%]",
+    object: "object-cover object-[center_48%]",
     headline: "Fishing",
     body: "Financing boats, cold chain, processing, and coastal livelihoods that grow Puntland’s blue economy.",
     href: "/fisheries",

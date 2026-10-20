@@ -97,7 +97,7 @@ export default function AgricultureLocations() {
       }}
     >
       <div
-        className="sticky top-[88px] h-[calc(100svh-88px)] overflow-hidden lg:top-[96px] lg:h-[calc(100svh-96px)]"
+        className="sticky top-[76px] h-[calc(100svh-76px)] overflow-hidden lg:top-[84px] lg:h-[calc(100svh-84px)]"
         style={{ backgroundColor: SECTION_BG }}
       >
         <div className="relative h-full">

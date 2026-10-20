@@ -111,7 +111,7 @@ export default function HeaderBar() {
   const ctaNavItems = navItems.filter((item) => item.variant === "button");
 
   const headerBarClass =
-    "flex h-[88px] items-center gap-4 border-b border-black/8 px-8 transition-[height,gap] duration-300 ease-out sm:px-14 lg:h-[96px] lg:gap-10 lg:px-24";
+    "flex h-[76px] items-center gap-4 border-b border-black/8 px-8 transition-[height,gap] duration-300 ease-out sm:px-14 lg:h-[84px] lg:gap-8 lg:px-24";
 
   const logoClass =
     "h-14 origin-left transition-transform duration-300 ease-out sm:h-16 lg:h-[4.5rem] group-hover:scale-105";
@@ -119,9 +119,9 @@ export default function HeaderBar() {
   const mobileLogoClass =
     "h-14 origin-left transition-transform duration-300 ease-out sm:h-16 group-hover:scale-105";
 
-  const mobileSheetTop = "top-[88px]";
+  const mobileSheetTop = "top-[76px]";
   const mobileHeaderClass =
-    "relative z-10 flex h-[88px] items-center justify-between border-b border-black/8 bg-white px-8 sm:px-14";
+    "relative z-10 flex h-[76px] items-center justify-between border-b border-black/8 bg-white px-8 sm:px-14";
 
   function renderDesktopItem(item: (typeof navItems)[number]) {
     const withMenu = hasSubmenu(item);

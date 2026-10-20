@@ -14,7 +14,7 @@ export default function ContactPage() {
     <main className="min-h-svh bg-white">
       <Header />
 
-      <section className="grid min-h-[calc(100svh-5.5rem)] pt-[5.5rem] lg:min-h-[calc(100svh-6rem)] lg:pt-[6rem] lg:grid-cols-[42%_58%]">
+      <section className="grid min-h-[calc(100svh-76px)] pt-[76px] lg:min-h-[calc(100svh-84px)] lg:pt-[84px] lg:grid-cols-[42%_58%]">
         {/* Left brand panel */}
         <aside className="relative overflow-hidden bg-[#d8efe0] px-8 py-14 sm:px-12 sm:py-16 lg:px-14 lg:py-20 xl:px-16">
           <PageBreadcrumb current="Contact us" tone="dark" />

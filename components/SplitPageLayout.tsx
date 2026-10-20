@@ -36,7 +36,7 @@ export default function SplitPageLayout({
     <main className="min-h-svh bg-white">
       <Header />
 
-      <section className="min-h-[calc(100svh-5.5rem)] pt-[5.5rem] lg:min-h-[calc(100svh-6rem)] lg:pt-[6rem]">
+      <section className="min-h-[calc(100svh-76px)] pt-[76px] lg:min-h-[calc(100svh-84px)] lg:pt-[84px]">
         {showHero ? (
           <div className="relative h-[42svh] min-h-[280px] w-full overflow-hidden sm:h-[48svh] lg:h-[min(56svh,560px)]">
             {isSolid ? (

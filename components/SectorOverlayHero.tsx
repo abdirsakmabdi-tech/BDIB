@@ -94,7 +94,7 @@ export default function SectorOverlayHero({
                     className="absolute inset-0 bg-white"
                   />
                   {/* Clear photo on left — starts below header so heads aren’t hidden */}
-                  <div className="absolute top-[5.5rem] bottom-0 left-0 z-[1] w-[56%] sm:top-[6rem] sm:w-[58%] lg:w-[60%]">
+                  <div className="absolute top-[76px] bottom-0 left-0 z-[1] w-[56%] sm:top-[84px] sm:w-[58%] lg:w-[60%]">
                     <Image
                       src={item.src ?? src}
                       alt={active ? (item.alt ?? alt) : ""}
