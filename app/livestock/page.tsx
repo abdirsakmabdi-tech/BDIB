@@ -82,7 +82,9 @@ export default function LivestockPage() {
             body: <p>{type.body}</p>,
             src: type.src,
             alt: type.alt,
-            objectClassName: type.objectClassName,
+            ...("objectClassName" in type
+              ? { objectClassName: type.objectClassName }
+              : {}),
             ...("wideFrame" in type && type.wideFrame
               ? { wideFrame: true as const }
               : {}),
