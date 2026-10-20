@@ -13,6 +13,8 @@ export type SectorHeroSlide = {
   objectClassName?: string;
   /** Full-width blurred fill + clear contained photo (no empty sides) */
   wideFrame?: boolean;
+  /** Green name badge over the photo (e.g. port name) */
+  imageLabel?: string;
 };
 
 type SectorOverlayHeroProps = {
@@ -49,6 +51,7 @@ export default function SectorOverlayHero({
   const imageAlt = slide.alt ?? alt;
   const imageObject = slide.objectClassName ?? objectClassName;
   const isWideFrame = slide.wideFrame === true;
+  const imageLabel = slide.imageLabel;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -85,14 +88,10 @@ export default function SectorOverlayHero({
             <div className="absolute inset-0 overflow-hidden">
               {wide ? (
                 <>
-                  {/* Soft right panel — no photo, light wash only */}
+                  {/* Full white content card (right) */}
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[#0a1628]"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-y-0 right-0 w-[48%] bg-gradient-to-l from-black/50 via-black/25 to-transparent sm:w-[46%] lg:w-[44%]"
+                    className="absolute inset-0 bg-white"
                   />
                   {/* Clear photo on left — starts below header so heads aren’t hidden */}
                   <div className="absolute top-[7rem] bottom-0 left-0 z-[1] w-[56%] sm:top-[7.5rem] sm:w-[58%] lg:w-[60%]">
@@ -136,23 +135,21 @@ export default function SectorOverlayHero({
         />
       ) : null}
 
-      <div
-        aria-hidden="true"
-        className={`pointer-events-none absolute inset-0 z-[2] bg-linear-to-l ${
-          isWideFrame
-            ? "from-black/55 via-black/25 to-transparent sm:from-black/60 sm:via-black/20"
-            : "from-black/88 via-black/55 to-black/25 sm:from-black/90 sm:via-black/60 sm:to-black/10"
-        }`}
-      />
-      <div
-        aria-hidden="true"
-        className={`pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[68%] lg:w-[56%] ${
-          isWideFrame ? "opacity-70" : ""
-        }`}
-        style={{
-          background: `linear-gradient(to left, ${tint}fa 0%, ${tint}cc 50%, transparent 100%)`,
-        }}
-      />
+      {!isWideFrame ? (
+        <>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/88 via-black/55 to-black/25 sm:from-black/90 sm:via-black/60 sm:to-black/10"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[68%] lg:w-[56%]"
+            style={{
+              background: `linear-gradient(to left, ${tint}fa 0%, ${tint}cc 50%, transparent 100%)`,
+            }}
+          />
+        </>
+      ) : null}
 
       {hasSlider ? (
         <>
@@ -177,32 +174,60 @@ export default function SectorOverlayHero({
 
       <PageBreadcrumb
         current={title}
-        className="absolute top-[9rem] left-8 z-30 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:top-[9.5rem] sm:left-14 lg:top-[10rem] lg:left-24"
+        className={`absolute top-[9rem] left-8 z-30 sm:top-[9.5rem] sm:left-14 lg:top-[10rem] lg:left-24 ${
+          isWideFrame
+            ? "text-[#1a1a1a] [&_a]:text-[#1a1a1a]/70"
+            : "[text-shadow:0_1px_10px_rgba(0,0,0,0.55)]"
+        }`}
       />
 
+      {imageLabel ? (
+        <p className="absolute top-[11.25rem] left-8 z-30 bg-[#036522] px-3 py-1.5 text-[13px] font-bold tracking-tight text-white sm:top-[11.75rem] sm:left-14 sm:text-[14px] lg:top-[12.25rem] lg:left-24">
+          {imageLabel}
+        </p>
+      ) : null}
+
       <div className="pointer-events-none relative z-10 flex h-full items-start justify-end pl-8 pr-4 pt-[11rem] pb-16 sm:pl-14 sm:pr-6 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:pl-24 lg:pr-8 lg:pt-[13rem] lg:pb-16">
-        <div className="flex w-full max-w-xl translate-x-2 flex-col text-left [text-shadow:0_2px_18px_rgba(0,0,0,0.65)] sm:max-w-md sm:translate-x-4 lg:max-w-lg lg:translate-x-6">
+        <div
+          className={`flex w-full max-w-xl translate-x-2 flex-col text-left sm:max-w-md sm:translate-x-4 lg:max-w-lg lg:translate-x-6 ${
+            isWideFrame ? "" : "[text-shadow:0_2px_18px_rgba(0,0,0,0.65)]"
+          }`}
+        >
           {eyebrow ? (
-            <p className="text-[12px] font-bold tracking-[0.18em] text-white uppercase sm:text-[13px]">
+            <p
+              className={`text-[12px] font-bold tracking-[0.18em] uppercase sm:text-[13px] ${
+                isWideFrame ? "text-[#036522]" : "text-white"
+              }`}
+            >
               {eyebrow}
             </p>
           ) : null}
 
           <h1
             key={`title-${current}`}
-            className={`font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-white sm:text-[28px] lg:text-[clamp(28px,3.5vw,40px)] ${
+            className={`font-sans text-[22px] leading-[1.15] font-bold tracking-tight sm:text-[28px] lg:text-[clamp(28px,3.5vw,40px)] ${
               eyebrow ? "mt-4" : ""
-            }`}
+            } ${isWideFrame ? "text-[#1a1a1a]" : "text-white"}`}
           >
             {displayTitle}
           </h1>
 
           <div
             key={`body-${current}`}
-            className="mt-5 space-y-3 text-[16px] leading-[1.55] text-white sm:mt-6 sm:space-y-4"
+            className={`mt-5 space-y-3 text-[16px] leading-[1.55] sm:mt-6 sm:space-y-4 ${
+              isWideFrame
+                ? "text-[#333] [&_p]:text-[#333] [&_strong]:text-[#1a1a1a]"
+                : "text-white"
+            }`}
           >
             {slide.heading ? (
-              <p className="font-semibold text-white">{slide.heading}</p>
+              <p
+                className={`font-semibold ${
+                  isWideFrame ? "text-[#1a1a1a]" : "text-white"
+                }`}
+              >
+                {slide.heading}
+              </p>
             ) : null}
             {slide.body}
           </div>

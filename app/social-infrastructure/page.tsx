@@ -25,10 +25,19 @@ const focusAreas = [
   },
   {
     name: "Ports",
-    src: "/slides/infra-ports.jpg",
-    alt: "An aerial view of a busy coastal port and harbor",
+    heading: "Bosaso Port",
+    src: "/slides/infra-port-bosaso.jpg",
+    alt: "Aerial view of Bosaso Port harbor and vessels",
     objectClassName: "object-cover object-center",
-    body: "Port infrastructure anchors trade and the Blue Economy. PDIB finances harbor and logistics assets that expand export capacity and coastal livelihoods.",
+    body: "Bosaso Port anchors trade on the Gulf of Aden. PDIB finances harbor and logistics assets that expand export capacity and coastal livelihoods.",
+  },
+  {
+    name: "Ports",
+    heading: "Garacad Port",
+    src: "/slides/infra-port-garacad.jpg",
+    alt: "Aerial view of Garacad Port pier, cargo ship, and coastal infrastructure",
+    objectClassName: "object-cover object-center",
+    body: "Garacad Port strengthens Puntland’s maritime trade corridor. PDIB supports port infrastructure that grows commerce and coastal enterprise.",
   },
   {
     name: "Airports",
@@ -72,6 +81,7 @@ export default function SocialInfrastructurePage() {
           },
           ...focusAreas.map((area) => ({
             title: area.name,
+            heading: "heading" in area ? area.heading : undefined,
             body: <p>{area.body}</p>,
             src: area.src,
             alt: area.alt,

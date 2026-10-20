@@ -24,7 +24,7 @@ const items = [
     label: "Ports",
     href: "/social-infrastructure",
     src: "/slides/infra-ports.jpg",
-    alt: "An aerial view of a busy coastal port and harbor",
+    alt: "Bosaso Port and Garacad Port side by side",
   },
   {
     id: "airports",

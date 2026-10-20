@@ -22,7 +22,19 @@ const focusAreas = [
     id: "ports",
     label: "Ports",
     src: "/slides/infra-ports.jpg",
-    alt: "An aerial view of a busy coastal port and harbor",
+    alt: "Bosaso Port and Garacad Port side by side",
+    panels: [
+      {
+        title: "Bosaso Port",
+        src: "/slides/infra-port-bosaso.jpg",
+        alt: "Aerial view of Bosaso Port harbor and vessels",
+      },
+      {
+        title: "Garacad Port",
+        src: "/slides/infra-port-garacad.jpg",
+        alt: "Aerial view of Garacad Port pier, cargo ship, and coastal infrastructure",
+      },
+    ],
   },
   {
     id: "airports",
@@ -37,6 +49,7 @@ const ROTATE_MS = 4500;
 export default function PresentPartnership() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const active = focusAreas[activeIndex];
 
   useEffect(() => {
     const video = videoRef.current;
@@ -68,7 +81,6 @@ export default function PresentPartnership() {
       <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-center">
         <div className="px-4 pt-10 pb-4 sm:py-16 sm:pr-0 sm:pl-14 lg:py-20 lg:pl-24">
           <div className="relative h-[min(56svh,480px)] w-full overflow-hidden bg-[#1a1a1a] sm:h-[min(58svh,500px)]">
-            {/* Soft video base under rotating images */}
             <video
               ref={videoRef}
               className="absolute inset-0 h-full w-full object-cover opacity-30"
@@ -82,31 +94,60 @@ export default function PresentPartnership() {
               <source src="/slides/garowe-bridges.mp4" type="video/mp4" />
             </video>
 
-            {focusAreas.map((area, index) => (
-              <div
-                key={area.id}
-                className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-                  index === activeIndex ? "opacity-100" : "opacity-0"
-                }`}
-                aria-hidden={index !== activeIndex}
-              >
-                <Image
-                  src={area.src}
-                  alt={index === activeIndex ? area.alt : ""}
-                  fill
-                  sizes="(min-width: 1024px) 55vw, 100vw"
-                  className="object-cover"
-                  priority={area.id === "roads"}
-                />
-              </div>
-            ))}
+            {focusAreas.map((area, index) => {
+              const isActive = index === activeIndex;
+              const panels = "panels" in area ? area.panels : null;
+
+              return (
+                <div
+                  key={area.id}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
+                  aria-hidden={!isActive}
+                >
+                  {panels ? (
+                    <div className="absolute inset-0 grid grid-cols-2">
+                      {panels.map((panel) => (
+                        <div key={panel.title} className="relative h-full min-h-0">
+                          <Image
+                            src={panel.src}
+                            alt={isActive ? panel.alt : ""}
+                            fill
+                            quality={100}
+                            sizes="(min-width: 1024px) 28vw, 50vw"
+                            className="object-cover object-center"
+                            priority={area.id === "ports"}
+                          />
+                          <p className="absolute bottom-3 left-3 z-10 bg-[#036522] px-2.5 py-1 text-[12px] font-bold tracking-tight text-white sm:bottom-4 sm:left-4 sm:px-3 sm:py-1.5 sm:text-[13px]">
+                            {panel.title}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <Image
+                      src={area.src}
+                      alt={isActive ? area.alt : ""}
+                      fill
+                      sizes="(min-width: 1024px) 55vw, 100vw"
+                      className="object-cover"
+                      priority={area.id === "roads"}
+                    />
+                  )}
+                </div>
+              );
+            })}
 
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b from-black/55 to-transparent"
+              className={`pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b to-transparent ${
+                active.id === "ports"
+                  ? "from-black/35"
+                  : "from-black/55"
+              }`}
             />
 
-            {/* Labels over the image */}
             <div className="absolute inset-x-0 top-0 z-20 flex flex-wrap items-center gap-2 px-4 py-4 sm:gap-3 sm:px-5 sm:py-5">
               {focusAreas.map((area, index) => {
                 const isActive = index === activeIndex;
@@ -142,6 +183,11 @@ export default function PresentPartnership() {
                 communities, expands access to markets and services, and
                 supports inclusive growth across Puntland.
               </p>
+              {active.id === "ports" ? (
+                <p className="mt-3 text-[13px] font-semibold text-pdib-title">
+                  Bosaso Port · Garacad Port
+                </p>
+              ) : null}
               <Link
                 href="/social-infrastructure"
                 className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[#036522] underline underline-offset-4 transition-opacity hover:opacity-70"

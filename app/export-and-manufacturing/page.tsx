@@ -14,9 +14,9 @@ export default function ExportAndManufacturingPage() {
       <Header />
       <SectorOverlayHero
         title="Export & Manufacturing"
-        src="/slides/export-manufacturing-port.jpg"
-        alt="Cargo ships and cranes at a busy export port"
-        objectClassName="object-cover object-[center_45%]"
+        src="/slides/export-manufacturing-hero.jpg"
+        alt="Cargo ship AK Hamburg docked at a coastal pier with cranes and tugboat"
+        objectClassName="object-cover object-center"
         tint="#0a2a3a"
         slides={[
           {
@@ -32,24 +32,10 @@ export default function ExportAndManufacturingPage() {
                 </p>
               </>
             ),
-            src: "/slides/export-manufacturing-port.jpg",
-            alt: "Cargo ships and cranes at a busy export port",
-            objectClassName: "object-cover object-[center_45%]",
-          },
-          {
-            heading: "What we finance",
-            body: (
-              <p>
-                Support for{" "}
-                <strong>value-adding processing</strong>,{" "}
-                <strong>manufacturing enterprises</strong>, packaging, cold
-                chain for export goods, and logistics that help Puntland
-                producers reach new markets.
-              </p>
-            ),
-            src: "/slides/export-manufacturing.jpg",
-            alt: "Industrial manufacturing and export production facilities",
+            src: "/slides/export-manufacturing-hero.jpg",
+            alt: "Cargo ship AK Hamburg docked at a coastal pier with cranes and tugboat",
             objectClassName: "object-cover object-center",
+            imageLabel: "Garacad Port",
           },
           {
             heading: "Strategic objective",

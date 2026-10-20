@@ -26,7 +26,7 @@ export default function WomenYouthLedBusinessPage() {
                   Financing women- and youth-led enterprises so founders can
                   invest, grow, and create jobs across Puntland.
                 </p>
-                <p className="font-semibold text-white">
+                <p className="font-semibold">
                   Women and young entrepreneurs are central to Puntland&apos;s
                   economic future.
                 </p>
