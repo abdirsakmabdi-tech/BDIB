@@ -17,24 +17,17 @@ const livestockTypes = [
     body: "Camels are central to pastoral livelihoods across Puntland — valued for transport, milk, meat, and trade. PDIB supports camel herders and related value chains with specialized finance.",
   },
   {
-    name: "Camel grazing",
-    src: "/slides/livestock-camel-sunset.jpg",
-    alt: "A camel grazing in a green field at sunset",
-    wideFrame: true,
-    body: "Camels thrive on Puntland’s rangelands — providing milk, meat, transport, and trade. PDIB financing helps herders sustain flocks and grow related livelihoods.",
-  },
-  {
     name: "Goats",
     src: "/slides/livestock-goats.jpg",
-    alt: "Goats grazing with sheep and camels in a green pastoral field",
-    objectClassName: "object-cover object-[center_60%]",
+    alt: "White goats with black markings grazing in a green field",
+    objectClassName: "object-cover object-center",
     body: "Goats are a resilient and widely held asset for households across Puntland. Financing helps pastoralists expand flocks, improve productivity, and strengthen market access.",
   },
   {
     name: "Sheep",
     src: "/slides/livestock-sheep.jpg",
-    alt: "A Somali Blackhead sheep grazing in a green field with camels behind",
-    objectClassName: "object-cover object-[center_60%]",
+    alt: "A Somali Blackhead sheep and lamb nursing in a green field by water",
+    objectClassName: "object-cover object-center",
     body: "Sheep, including Somali Blackhead breeds, are a key export and household resource. PDIB financing supports breeding, fattening, and livestock trade along pastoral value chains.",
   },
   {
@@ -53,8 +46,8 @@ export default function LivestockPage() {
       <SectorOverlayHero
         title="Livestock Financing"
         src="/slides/livestock-hero.jpg"
-        alt="A herder with camels, goats, and sheep grazing in a green scrubland"
-        objectClassName="object-cover object-[center_50%]"
+        alt="A herder with camels, sheep, and goats grazing in a green scrubland with hills beyond"
+        objectClassName="object-cover object-center"
         tint="#2a2116"
         slides={[
           {
@@ -74,8 +67,8 @@ export default function LivestockPage() {
               </>
             ),
             src: "/slides/livestock-hero.jpg",
-            alt: "A herder with camels, goats, and sheep grazing in a green scrubland",
-            objectClassName: "object-cover object-[center_50%]",
+            alt: "A herder with camels, sheep, and goats grazing in a green scrubland with hills beyond",
+            objectClassName: "object-cover object-center",
           },
           ...livestockTypes.map((type) => ({
             title: type.name,

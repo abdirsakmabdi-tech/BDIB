@@ -15,8 +15,8 @@ export default function EducationFinancingPage() {
       <SectorOverlayHero
         title="Education Financing"
         src="/slides/education-financing-hero.jpg"
-        alt="Graduates silhouetted against a sunset sky tossing their caps in the air"
-        objectClassName="object-cover object-[center_55%]"
+        alt="A student in a cream hijab with henna on her hand among classmates"
+        objectClassName="object-cover object-center"
         tint="#0a2a3a"
         slides={[
           {
@@ -35,8 +35,8 @@ export default function EducationFinancingPage() {
               </>
             ),
             src: "/slides/education-financing-hero.jpg",
-            alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
-            objectClassName: "object-cover object-[center_55%]",
+            alt: "A student in a cream hijab with henna on her hand among classmates",
+            objectClassName: "object-cover object-center",
           },
           {
             title: "Education Financing",
@@ -50,8 +50,8 @@ export default function EducationFinancingPage() {
               </p>
             ),
             src: "/slides/education-financing-hero.jpg",
-            alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
-            objectClassName: "object-cover object-[center_50%]",
+            alt: "A student in a cream hijab with henna on her hand among classmates",
+            objectClassName: "object-cover object-center",
           },
           {
             title: "Education Financing",
@@ -64,7 +64,7 @@ export default function EducationFinancingPage() {
               </p>
             ),
             src: "/slides/education-financing-hero.jpg",
-            alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
+            alt: "A student in a cream hijab with henna on her hand among classmates",
             objectClassName: "object-cover object-center",
           },
         ]}

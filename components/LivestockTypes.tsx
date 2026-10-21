@@ -13,14 +13,14 @@ const types = [
   {
     name: "Goats",
     src: "/slides/livestock-goats.jpg",
-    alt: "Goats grazing with sheep and camels in a green pastoral field",
-    objectClassName: "object-cover object-[center_60%]",
+    alt: "White goats with black markings grazing in a green field",
+    objectClassName: "object-cover object-center",
   },
   {
     name: "Sheep",
     src: "/slides/livestock-sheep.jpg",
-    alt: "A Somali Blackhead sheep grazing in a green pasture",
-    objectClassName: "object-cover object-[center_55%]",
+    alt: "A Somali Blackhead sheep and lamb nursing in a green field by water",
+    objectClassName: "object-cover object-center",
   },
   {
     name: "Cattle",

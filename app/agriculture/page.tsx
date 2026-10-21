@@ -28,40 +28,10 @@ const locations = [
     body: "Frankincense trees grow across Puntland’s dry uplands and coastal escarpments. Harvesting and trading frankincense resin supports rural livelihoods and remains an important natural-product value chain for the region.",
   },
   {
-    name: "Dharoor Valley",
-    src: "/slides/agriculture-aerial.jpg",
-    objectClassName: "object-cover object-[center_40%]",
-    body: "Dharoor Valley is a major inland valley depression running east of Bossaso in the Bari region. It is a premier oasis farming hub that utilizes underground water reserves for valley cultivation.",
-  },
-  {
-    name: "Laag Valley",
-    src: "/slides/agriculture-hero.jpg",
-    objectClassName: "object-cover object-[center_55%]",
-    body: "Laag Valley is located approximately 30 km south of Bossaso along seasonal riverbeds in the Bari region. It serves as a primary agricultural supply corridor for Bossaso’s growing urban market.",
-  },
-  {
-    name: "Jibagalle",
-    src: "/slides/agriculture-aerial.jpg",
-    objectClassName: "object-cover object-[center_25%]",
-    body: "Jibagalle is situated 15 km northeast of Garowe in the Nugaal region. It is Central Puntland’s leading farming hub, utilizing shallow wells and irrigated field systems.",
-  },
-  {
     name: "Nugaal Valley (Togga Nugaaleed)",
-    src: "/slides/agriculture-hero.jpg",
-    objectClassName: "object-cover object-[center_70%]",
+    src: "/slides/agriculture-nugaal-valley.jpg",
+    objectClassName: "object-cover object-center",
     body: "Nugaal Valley (Togga Nugaaleed) is a major broad valley system extending east from Garowe through the central Nugaal region toward the coast. It is a key regional corridor where seasonal stream channels and groundwater recharge support localized farming and agro-pastoral activities.",
-  },
-  {
-    name: "Qardho Valley",
-    src: "/slides/agriculture-aerial.jpg",
-    objectClassName: "object-cover object-[center_50%]",
-    body: "Qardho Valley sits across alluvial plains and water catchments surrounding Qardho in the Karkaar region. It is a vital agro-pastoral area where seasonal crop farming supports local land use and rural livelihoods.",
-  },
-  {
-    name: "Cal Madow Foothills",
-    src: "/slides/agriculture-geesalay.jpg",
-    objectClassName: "object-cover object-[center_30%]",
-    body: "Cal Madow Foothills spans mountain valley terraces across the Haylaan and Sanaag regions. It offers a spring-fed highland microclimate suitable for terraced farming and valley agriculture.",
   },
 ] as const;
 

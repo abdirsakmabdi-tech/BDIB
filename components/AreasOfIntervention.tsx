@@ -35,7 +35,7 @@ export const interventionAreas: InterventionArea[] = [
     href: "/education-financing",
     icon: "education",
     src: "/slides/hero-education.jpg",
-    alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
+    alt: "A student in a cream hijab with henna on her hand among classmates",
     description:
       "Investment in learning infrastructure and education enterprises that expand opportunity across Puntland.",
   },
