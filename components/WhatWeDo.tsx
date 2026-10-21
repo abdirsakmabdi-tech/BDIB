@@ -21,20 +21,29 @@ const focusAreas = [
     alt: "Aerial view of a dense coastal palm grove beside a sandy shoreline and the sea",
   },
   {
-    label: "Education",
-    title: "Education Financing",
-    blurb: "Investing in schools, skills, and learning opportunities for communities.",
-    href: "/education-financing",
-    src: "/slides/education-financing-card.jpg",
-    alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
-  },
-  {
     label: "Livestock",
     title: "Livestock Financing",
     blurb: "Backing pastoral livelihoods and livestock value chains across Puntland.",
     href: "/livestock",
     src: "/slides/livestock-herd.jpg",
     alt: "Camels grazing among green shrubs in a bright pastoral landscape",
+  },
+  {
+    label: "Tourism",
+    title: "Tourism Financing",
+    blurb: "Growing tourism experiences that showcase Puntland’s coastline.",
+    href: "/tourism",
+    src: "/slides/tourism-puntland.jpg",
+    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
+    imageClass: "object-cover object-[center_75%]",
+  },
+  {
+    label: "Education",
+    title: "Education Financing",
+    blurb: "Investing in schools, skills, and learning opportunities for communities.",
+    href: "/education-financing",
+    src: "/slides/education-financing-card.jpg",
+    alt: "Graduates silhouetted against a sunset sky tossing their caps in the air",
   },
   {
     label: "Renewable Energy",
@@ -91,15 +100,6 @@ const focusAreas = [
     href: "/women-youth-led-business",
     src: "/slides/women-youth-card.jpg",
     alt: "A woman entrepreneur smiling in her textile shop",
-  },
-  {
-    label: "Tourism",
-    title: "Tourism Financing",
-    blurb: "Growing tourism experiences that showcase Puntland’s coastline.",
-    href: "/tourism",
-    src: "/slides/tourism-puntland.jpg",
-    alt: "Aerial view of a busy turquoise beach with tents, banners, and boats",
-    imageClass: "object-cover object-[center_75%]",
   },
 ] as const;
 
