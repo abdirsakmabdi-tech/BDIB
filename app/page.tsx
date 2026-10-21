@@ -5,11 +5,11 @@ import Hero from "@/components/HeroSpotlight";
 import WhoWeAre from "@/components/WhoWeAre";
 import PartnersFeatured from "@/components/PartnersFeatured";
 import WhatWeDo from "@/components/WhatWeDo";
+import BuildingInfrastructure from "@/components/BuildingInfrastructure";
 import TourismVideos from "@/components/TourismVideos";
 import FishingVideos from "@/components/FishingVideos";
 import LivestockVideos from "@/components/LivestockVideos";
 import InfrastructureVideos from "@/components/InfrastructureVideos";
-import PresentPartnership from "@/components/PresentPartnership";
 import Team from "@/components/Team";
 
 export default function Home() {
@@ -20,11 +20,11 @@ export default function Home() {
       <div className="divide-y divide-black/10 border-t border-black/10">
         <WhoWeAre />
         <WhatWeDo />
+        <BuildingInfrastructure />
         <TourismVideos />
         <FishingVideos />
         <LivestockVideos />
         <InfrastructureVideos />
-        <PresentPartnership />
         <Team />
         <PartnersFeatured />
       </div>

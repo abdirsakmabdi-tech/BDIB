@@ -14,12 +14,6 @@ const videos = [
     src: "/Tourism/tourism-reel.mp4",
   },
   {
-    id: "bina",
-    title: "Bina",
-    tag: "Destination",
-    src: "/Tourism/bina.mp4",
-  },
-  {
     id: "shoreline",
     title: "Shoreline",
     tag: "Coast",
