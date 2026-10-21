@@ -137,7 +137,7 @@ export default function VideoGallerySection({
         ) : null}
       </div>
 
-      <div className="relative h-[min(78svh,720px)] min-h-[480px] overflow-hidden border-t border-black/10 bg-[#0a1628]">
+      <div className="relative h-[min(78svh,720px)] min-h-[480px] overflow-hidden bg-[#0a1628]">
         <div
           className="absolute inset-0 grid"
           style={{

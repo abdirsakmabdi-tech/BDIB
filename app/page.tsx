@@ -21,10 +21,12 @@ export default function Home() {
         <WhoWeAre />
         <WhatWeDo />
         <BuildingInfrastructure />
-        <TourismVideos />
-        <FishingVideos />
-        <LivestockVideos />
-        <InfrastructureVideos />
+      </div>
+      <TourismVideos />
+      <FishingVideos />
+      <LivestockVideos />
+      <InfrastructureVideos />
+      <div className="divide-y divide-black/10 border-t border-black/5">
         <Team />
         <PartnersFeatured />
       </div>
