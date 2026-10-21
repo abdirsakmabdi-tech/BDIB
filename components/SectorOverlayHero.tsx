@@ -139,13 +139,13 @@ export default function SectorOverlayHero({
         <>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/88 via-black/55 to-black/25 sm:from-black/90 sm:via-black/60 sm:to-black/10"
+            className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/10 via-transparent to-transparent"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[68%] lg:w-[56%]"
+            className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[38%] lg:w-[30%]"
             style={{
-              background: `linear-gradient(to left, ${tint}fa 0%, ${tint}cc 50%, transparent 100%)`,
+              background: `linear-gradient(to left, ${tint}33 0%, ${tint}14 40%, transparent 100%)`,
             }}
           />
         </>

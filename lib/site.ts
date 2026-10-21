@@ -35,6 +35,12 @@ export const navItems: NavItem[] = [
     ],
   },
   {
+    href: "/priority-sectors",
+    label: "Priority Sectors",
+    kicker: "Areas of intervention across Puntland",
+    groups: [],
+  },
+  {
     href: "",
     label: "What we offer",
     kicker: "Financial solutions, interventions, and priority sectors",

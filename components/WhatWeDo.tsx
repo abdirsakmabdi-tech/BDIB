@@ -59,7 +59,7 @@ const focusAreas = [
     blurb: "Building roads, bridges, ports, and airports that connect communities.",
     href: "/social-infrastructure",
     src: "/slides/social-infrastructure.jpg",
-    alt: "A highway cutting through arid landscape with a green belt beside it",
+    alt: "Aerial view of a busy harbor with cargo ships, breakwaters, and a coastal town",
   },
   {
     label: "Export & Manufacturing",
