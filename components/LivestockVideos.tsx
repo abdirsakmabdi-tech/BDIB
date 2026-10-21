@@ -13,6 +13,12 @@ const videos = [
     tag: "Livestock",
     src: "/Xoolaha/pastoral-life.mp4",
   },
+  {
+    id: "livestock-range",
+    title: "Livestock Range",
+    tag: "Livestock",
+    src: "/Xoolaha/livestock-range.mp4",
+  },
 ] as const;
 
 export default function LivestockVideos() {

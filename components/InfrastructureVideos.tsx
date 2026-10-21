@@ -13,6 +13,12 @@ const videos = [
     tag: "Infrastructure",
     src: "/infrastructure/construction-progress.mp4",
   },
+  {
+    id: "bridges",
+    title: "Bridges",
+    tag: "Infrastructure",
+    src: "/infrastructure/bridges.mp4",
+  },
 ] as const;
 
 export default function InfrastructureVideos() {
