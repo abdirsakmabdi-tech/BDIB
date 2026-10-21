@@ -15,8 +15,8 @@ export default function HealthFinancingPage() {
       <SectorOverlayHero
         title="Health Financing"
         src="/slides/health-financing-hero.jpg"
-        alt="Surgical team working under operating lights in a hospital theatre"
-        objectClassName="object-cover object-[center_35%]"
+        alt="Pharmacists assisting a customer at a pharmacy counter stocked with medicines"
+        objectClassName="object-cover object-[12%_top]"
         tint="#0a2a28"
         slides={[
           {
@@ -36,8 +36,8 @@ export default function HealthFinancingPage() {
               </>
             ),
             src: "/slides/health-financing-hero.jpg",
-            alt: "Surgical team working under operating lights in a hospital theatre",
-            objectClassName: "object-cover object-[center_35%]",
+            alt: "Pharmacists assisting a customer at a pharmacy counter stocked with medicines",
+            objectClassName: "object-cover object-[12%_top]",
           },
           {
             title: "Health Financing",
@@ -51,8 +51,8 @@ export default function HealthFinancingPage() {
               </p>
             ),
             src: "/slides/health-financing-hero.jpg",
-            alt: "Surgical team working under operating lights in a hospital theatre",
-            objectClassName: "object-cover object-[center_40%]",
+            alt: "Pharmacists assisting a customer at a pharmacy counter stocked with medicines",
+            objectClassName: "object-cover object-[12%_top]",
           },
           {
             title: "Health Financing",
@@ -66,8 +66,8 @@ export default function HealthFinancingPage() {
               </p>
             ),
             src: "/slides/health-financing-hero.jpg",
-            alt: "Surgical team working under operating lights in a hospital theatre",
-            objectClassName: "object-cover object-center",
+            alt: "Pharmacists assisting a customer at a pharmacy counter stocked with medicines",
+            objectClassName: "object-cover object-[12%_top]",
           },
         ]}
       />

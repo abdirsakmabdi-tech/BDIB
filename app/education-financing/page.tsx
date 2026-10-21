@@ -16,7 +16,7 @@ export default function EducationFinancingPage() {
         title="Education Financing"
         src="/slides/education-financing-hero.jpg"
         alt="A student in a cream hijab with henna on her hand among classmates"
-        objectClassName="object-cover object-center"
+        objectClassName="object-contain object-center"
         tint="#0a2a3a"
         slides={[
           {
@@ -36,7 +36,7 @@ export default function EducationFinancingPage() {
             ),
             src: "/slides/education-financing-hero.jpg",
             alt: "A student in a cream hijab with henna on her hand among classmates",
-            objectClassName: "object-cover object-center",
+            objectClassName: "object-contain object-center",
           },
           {
             title: "Education Financing",

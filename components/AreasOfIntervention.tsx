@@ -89,7 +89,7 @@ export const interventionAreas: InterventionArea[] = [
     href: "/health-financing",
     icon: "health",
     src: "/slides/hero-health.jpg",
-    alt: "Surgical team working under operating lights in a hospital theatre",
+    alt: "Pharmacists assisting a customer at a pharmacy counter stocked with medicines",
     description:
       "Financing for health facilities and services that improve care and community wellbeing.",
   },

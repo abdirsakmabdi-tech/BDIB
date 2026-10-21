@@ -83,7 +83,7 @@ const focusAreas = [
     blurb: "Strengthening healthcare access and essential health services.",
     href: "/health-financing",
     src: "/slides/health-financing-card.jpg",
-    alt: "Surgical team working under operating lights in a hospital theatre",
+    alt: "Pharmacists assisting a customer at a pharmacy counter stocked with medicines",
   },
   {
     label: "Mining & Natural Resources",
