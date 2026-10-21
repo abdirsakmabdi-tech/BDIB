@@ -70,8 +70,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Export & Manufacturing",
     href: "/export-and-manufacturing",
     icon: "manufacturing",
-    src: "/slides/export-manufacturing-port.jpg",
-    alt: "Cargo ships and cranes at an export port",
+    src: "/slides/export-manufacturing-hero.jpg",
+    alt: "Garacad Port — aerial view of the harbor and coastal facilities",
     description:
       "Support for processing, manufacturing, and trade that adds value and expands export capacity.",
   },

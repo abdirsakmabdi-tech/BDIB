@@ -66,8 +66,8 @@ const focusAreas = [
     title: "Export and manufacturing",
     blurb: "Helping producers scale trade and manufacturing for regional markets.",
     href: "/export-and-manufacturing",
-    src: "/slides/export-manufacturing-port.jpg",
-    alt: "Cargo ships and cranes at a busy export port",
+    src: "/slides/export-manufacturing-hero.jpg",
+    alt: "Garacad Port — aerial view of the harbor and coastal facilities",
   },
   {
     label: "Digital Economy",

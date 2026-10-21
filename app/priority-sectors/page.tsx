@@ -18,7 +18,7 @@ const objectBySector: Record<string, string> = {
   "/slides/hero-livestock.jpg": "object-cover object-[center_55%]",
   "/slides/renewable-energy-windfarm.jpg": "object-cover object-[center_45%]",
   "/slides/hero-infrastructure.jpg": "object-cover object-[center_45%]",
-  "/slides/export-manufacturing-port.jpg": "object-cover object-center",
+  "/slides/export-manufacturing-hero.jpg": "object-cover object-center",
   "/slides/digital-economy.jpg": "object-cover object-[center_40%]",
   "/slides/hero-health.jpg": "object-cover object-[center_35%]",
   "/slides/mining-natural-resources.jpg": "object-cover object-[center_45%]",
