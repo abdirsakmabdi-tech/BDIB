@@ -146,12 +146,12 @@ export default function TourismVideos() {
       {/* Title above the videos */}
       <div className="flex items-end justify-between gap-6 px-8 pt-12 pb-6 sm:px-14 sm:pt-14 sm:pb-8 lg:px-24 lg:pt-16">
         <div>
-          <p className="text-[11px] font-bold tracking-[0.2em] text-[#036522] uppercase sm:text-[12px]">
-            Experience Puntland
-          </p>
-          <h2 className="mt-2 font-sans text-[26px] font-bold tracking-tight text-pdib-title sm:text-[32px]">
+          <h2 className="font-sans text-[26px] font-bold tracking-tight text-pdib-title sm:text-[32px]">
             Tourism Videos
           </h2>
+          <p className="mt-2 text-[14px] leading-snug text-pdib-text sm:text-[15px]">
+            Discover the beauty of Puntland
+          </p>
         </div>
         <div className="hidden shrink-0 items-center gap-2 sm:flex">
           <button
