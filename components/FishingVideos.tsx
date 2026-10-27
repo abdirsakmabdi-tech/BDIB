@@ -11,7 +11,7 @@ const videos = [
     id: "blue-economy",
     title: "Blue Economy",
     tag: "Coast",
-    src: "/Fishing/blue-economy.mp4",
+    src: "/videos/fishing/blue-economy.mp4",
   },
 ] as const;
 

@@ -2,22 +2,16 @@ import VideoGallerySection from "@/components/VideoGallerySection";
 
 const videos = [
   {
-    id: "ports",
-    title: "Ports",
-    tag: "Infrastructure",
-    src: "/infrastructure/road-works.mp4",
-  },
-  {
-    id: "roads",
+    id: "roads-1",
     title: "Roads",
     tag: "Infrastructure",
-    src: "/infrastructure/construction-progress.mp4",
+    src: "/videos/infrustructure/ports.mp4",
   },
   {
-    id: "bridges",
-    title: "Bridges",
+    id: "roads-2",
+    title: "Roads",
     tag: "Infrastructure",
-    src: "/infrastructure/bridges.mp4",
+    src: "/videos/infrustructure/roads.mp4",
   },
 ] as const;
 

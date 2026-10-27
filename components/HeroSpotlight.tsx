@@ -8,7 +8,7 @@ const scenes = [
     id: "tourism",
     tab: "Tourism",
     src: "/slides/hero-tourism.jpg",
-    alt: "Aerial view of a turquoise waterway winding through dense green mangroves",
+    alt: "A small boat on turquoise water off a sandy beach with cloud-covered mountains",
     object: "object-cover object-center",
     headline: "Tourism",
     body: "Capital for hospitality, coastal experiences, and visitor enterprises that create jobs across Puntland.",
