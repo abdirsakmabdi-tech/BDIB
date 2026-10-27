@@ -59,7 +59,7 @@ const focusAreas = [
     blurb: "Building roads, bridges, ports, and airports that connect communities.",
     href: "/social-infrastructure",
     src: "/slides/social-infrastructure.jpg",
-    alt: "Aerial view of a busy harbor with cargo ships, breakwaters, and a coastal town",
+    alt: "Aerial view of a port pier, vessels, and a coastal city along turquoise water",
   },
   {
     label: "Export & Manufacturing",
@@ -100,6 +100,14 @@ const focusAreas = [
     href: "/women-youth-led-business",
     src: "/slides/women-youth-card.jpg",
     alt: "A woman entrepreneur smiling in her textile shop",
+  },
+  {
+    label: "Diaspora",
+    title: "Diaspora Investment",
+    blurb: "Channeling diaspora capital into productive investment across Puntland.",
+    href: "/diaspora",
+    src: "/slides/diaspora.jpg",
+    alt: "Puntland diaspora community gathered at round tables for a formal event",
   },
 ] as const;
 

@@ -17,6 +17,7 @@ const sectorLinks = [
   { href: "/health-financing", label: "Health Financing" },
   { href: "/education-financing", label: "Education Financing" },
   { href: "/renewable-energy", label: "Renewable Energy" },
+  { href: "/diaspora", label: "Diaspora" },
 ];
 
 const connectLinks = [

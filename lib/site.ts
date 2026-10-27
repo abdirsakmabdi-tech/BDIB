@@ -218,6 +218,12 @@ export const searchableContent: SearchResult[] = [
       "PDIB financing for women- and youth-led enterprises that create jobs across Puntland",
   },
   {
+    title: "Diaspora Investment",
+    href: "/diaspora",
+    summary:
+      "PDIB financing that helps the Puntland diaspora invest in businesses, jobs, and productive growth at home",
+  },
+  {
     title: "Apply for funding",
     href: "#how-to-apply",
     summary: "How to apply, business plan outline, and application requirements",

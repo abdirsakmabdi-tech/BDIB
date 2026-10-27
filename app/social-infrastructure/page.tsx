@@ -33,6 +33,14 @@ const focusAreas = [
   },
   {
     name: "Ports",
+    heading: "Bosaso Port",
+    src: "/slides/infra-port-bosaso-coast.jpg",
+    alt: "Aerial view of Bosaso Port pier, vessels, and the coastal city along turquoise water",
+    objectClassName: "object-cover object-center",
+    body: "The Bosaso waterfront links the city to Gulf of Aden shipping lanes. PDIB supports port and coastal infrastructure that keeps trade and livelihoods moving.",
+  },
+  {
+    name: "Ports",
     heading: "Garacad Port",
     src: "/slides/infra-port-garacad.jpg",
     alt: "Aerial view of Garacad Port pier, cargo ship, and coastal infrastructure",

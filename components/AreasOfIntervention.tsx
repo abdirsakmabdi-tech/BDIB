@@ -120,6 +120,15 @@ export const interventionAreas: InterventionArea[] = [
     description:
       "Hospitality, destinations, and visitor experiences that create jobs and grow the local economy.",
   },
+  {
+    label: "Diaspora Investment",
+    href: "/diaspora",
+    icon: "diaspora",
+    src: "/slides/diaspora.jpg",
+    alt: "Puntland diaspora community gathered at round tables for a formal event",
+    description:
+      "Financing that helps the Puntland diaspora invest in businesses, jobs, and productive growth at home.",
+  },
 ];
 
 const panelTints = ["bg-[#eaf6ef]", "bg-[#f3f8f4]", "bg-[#e4f2e9]"] as const;

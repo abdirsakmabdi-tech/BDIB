@@ -94,7 +94,7 @@ export default function SectorOverlayHero({
                     className="absolute inset-0 bg-white"
                   />
                   {/* Clear photo on left — starts below header so heads aren’t hidden */}
-                  <div className="absolute top-[76px] bottom-0 left-0 z-[1] w-[56%] sm:top-[84px] sm:w-[58%] lg:w-[60%]">
+                  <div className="absolute top-[76px] bottom-0 left-0 z-[1] w-[64%] sm:top-[84px] sm:w-[66%] lg:w-[68%]">
                     <Image
                       src={item.src ?? src}
                       alt={active ? (item.alt ?? alt) : ""}
@@ -102,7 +102,7 @@ export default function SectorOverlayHero({
                       priority={index === 0}
                       quality={100}
                       sizes="60vw"
-                      className="object-cover object-top"
+                      className={item.objectClassName ?? "object-cover object-top"}
                     />
                   </div>
                 </>
@@ -135,7 +135,7 @@ export default function SectorOverlayHero({
         />
       ) : null}
 
-      {!isWideFrame ? (
+          {!isWideFrame ? (
         <>
           <div
             aria-hidden="true"
@@ -189,8 +189,10 @@ export default function SectorOverlayHero({
 
       <div className="pointer-events-none relative z-10 flex h-full items-start justify-end pl-8 pr-4 pt-[11rem] pb-16 sm:pl-14 sm:pr-6 sm:pt-[12rem] sm:pb-20 lg:justify-end lg:pl-24 lg:pr-8 lg:pt-[13rem] lg:pb-16">
         <div
-          className={`flex w-full max-w-xl translate-x-2 flex-col text-left sm:max-w-md sm:translate-x-4 lg:max-w-lg lg:translate-x-6 ${
-            isWideFrame ? "" : "[text-shadow:0_2px_18px_rgba(0,0,0,0.65)]"
+          className={`flex w-full max-w-xl flex-col text-left sm:max-w-md lg:max-w-lg ${
+            isWideFrame
+              ? "translate-x-2 sm:translate-x-4 lg:translate-x-6"
+              : "translate-x-2 [text-shadow:0_2px_22px_rgba(0,0,0,0.85),0_0_2px_rgba(0,0,0,0.9)] sm:translate-x-4 lg:translate-x-6"
           }`}
         >
           {eyebrow ? (
@@ -214,7 +216,7 @@ export default function SectorOverlayHero({
 
           <div
             key={`body-${current}`}
-            className={`mt-5 space-y-3 text-[16px] leading-[1.55] sm:mt-6 sm:space-y-4 ${
+            className={`mt-5 space-y-3 text-[16px] leading-[1.6] sm:mt-6 sm:space-y-4 sm:text-[17px] ${
               isWideFrame
                 ? "text-[#333] [&_p]:text-[#333] [&_strong]:text-[#1a1a1a]"
                 : "text-white"

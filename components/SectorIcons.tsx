@@ -293,6 +293,24 @@ export function WomenYouthIcon({ className, tone }: IconProps) {
   );
 }
 
+export function DiasporaIcon({ className, tone }: IconProps) {
+  return (
+    <IconShell className={className} tone={tone}>
+      <svg viewBox="0 0 48 48" fill="none" className={glyphClass} aria-hidden>
+        <circle cx="24" cy="24" r="12" stroke="currentColor" strokeWidth="2" />
+        <path
+          d="M12 24h24M24 12c4 4 6 8 6 12s-2 8-6 12c-4-4-6-8-6-12s2-8 6-12Z"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+        />
+        <circle cx="18" cy="16" r="2.5" fill="currentColor" />
+        <circle cx="32" cy="18" r="2.5" fill="currentColor" />
+      </svg>
+    </IconShell>
+  );
+}
+
 export function TourismIcon({ className, tone }: IconProps) {
   return (
     <IconShell className={className} tone={tone}>
@@ -331,6 +349,7 @@ export const sectorIcons = {
   mining: MiningIcon,
   womenYouth: WomenYouthIcon,
   tourism: TourismIcon,
+  diaspora: DiasporaIcon,
 } as const;
 
 export type SectorIconKey = keyof typeof sectorIcons;

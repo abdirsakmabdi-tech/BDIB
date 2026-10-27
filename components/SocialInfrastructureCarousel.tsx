@@ -24,7 +24,7 @@ const items = [
     label: "Ports",
     href: "/social-infrastructure",
     src: "/slides/infra-ports.jpg",
-    alt: "Bosaso Port and Garacad Port side by side",
+    alt: "Aerial view of a Puntland port pier, vessels, and coastal city",
   },
   {
     id: "airports",
