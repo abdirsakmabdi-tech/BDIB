@@ -106,8 +106,8 @@ const focusAreas = [
     title: "Diaspora Investment",
     blurb: "Channeling diaspora capital into productive investment across Puntland.",
     href: "/diaspora",
-    src: "/slides/diaspora.jpg",
-    alt: "Puntland diaspora community gathered at round tables for a formal event",
+    src: "/slides/diaspora-card.jpg",
+    alt: "Puntland Diaspora Community wordmark",
   },
 ] as const;
 

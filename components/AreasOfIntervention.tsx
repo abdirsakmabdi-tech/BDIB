@@ -124,8 +124,8 @@ export const interventionAreas: InterventionArea[] = [
     label: "Diaspora Investment",
     href: "/diaspora",
     icon: "diaspora",
-    src: "/slides/diaspora.jpg",
-    alt: "Puntland diaspora community gathered at round tables for a formal event",
+    src: "/slides/diaspora-card.jpg",
+    alt: "Puntland Diaspora Community wordmark",
     description:
       "Financing that helps the Puntland diaspora invest in businesses, jobs, and productive growth at home.",
   },

@@ -8,16 +8,10 @@ const videos = [
     src: "/Xoolaha/herding.mp4",
   },
   {
-    id: "pastoral-life",
-    title: "Pastoral Life",
+    id: "xoolo",
+    title: "Xoolo",
     tag: "Livestock",
-    src: "/Xoolaha/pastoral-life.mp4",
-  },
-  {
-    id: "livestock-range",
-    title: "Livestock Range",
-    tag: "Livestock",
-    src: "/Xoolaha/livestock-range.mp4",
+    src: "/Xoolaha/xoolo.mp4",
   },
 ] as const;
 

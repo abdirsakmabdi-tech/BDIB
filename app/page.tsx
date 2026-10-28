@@ -8,6 +8,7 @@ import WhatWeDo from "@/components/WhatWeDo";
 import BuildingInfrastructure from "@/components/BuildingInfrastructure";
 import TourismVideos from "@/components/TourismVideos";
 import FishingVideos from "@/components/FishingVideos";
+import AgricultureVideos from "@/components/AgricultureVideos";
 import LivestockVideos from "@/components/LivestockVideos";
 import InfrastructureVideos from "@/components/InfrastructureVideos";
 import Team from "@/components/Team";
@@ -24,6 +25,7 @@ export default function Home() {
       </div>
       <TourismVideos />
       <FishingVideos />
+      <AgricultureVideos />
       <LivestockVideos />
       <InfrastructureVideos />
       <div className="divide-y divide-black/10 border-t border-black/5">

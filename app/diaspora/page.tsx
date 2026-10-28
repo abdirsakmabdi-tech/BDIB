@@ -15,7 +15,7 @@ export default function DiasporaPage() {
       <SectorOverlayHero
         title="Diaspora Investment"
         src="/slides/diaspora-stage.jpg"
-        alt="Stage celebrating the Puntland Diaspora Community in Australia 28th anniversary"
+        alt="White Puntland Diaspora Community backdrop and banner at an event"
         objectClassName="object-cover object-center"
         tint="#0f2a18"
         slides={[
@@ -36,8 +36,9 @@ export default function DiasporaPage() {
               </>
             ),
             src: "/slides/diaspora-stage.jpg",
-            alt: "Stage celebrating the Puntland Diaspora Community in Australia 28th anniversary",
+            alt: "White Puntland Diaspora Community backdrop and banner at an event",
             objectClassName: "object-cover object-center",
+            textSideOverlay: true,
           },
           {
             title: "Diaspora Investment",
@@ -110,21 +111,6 @@ export default function DiasporaPage() {
             src: "/slides/diaspora-dance.jpg",
             alt: "Two dancers in traditional dress performing at a diaspora community event",
             objectClassName: "object-cover object-[center_40%]",
-          },
-          {
-            title: "Diaspora Investment",
-            heading: "Partners in the diaspora",
-            body: (
-              <p>
-                Forums and community networks — including the Australian
-                Puntland Diaspora Forum — help organize diaspora engagement.
-                PDIB works with these networks to open a clear path for
-                investment into Puntland.
-              </p>
-            ),
-            src: "/slides/diaspora-forum.jpg",
-            alt: "Australian Puntland Diaspora Forum backdrop at a community event",
-            objectClassName: "object-cover object-center",
           },
           {
             title: "Diaspora Investment",

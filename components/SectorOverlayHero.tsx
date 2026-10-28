@@ -15,6 +15,8 @@ export type SectorHeroSlide = {
   wideFrame?: boolean;
   /** Green name badge over the photo (e.g. port name) */
   imageLabel?: string;
+  /** Darker right-side overlay so white text stays readable on light photos */
+  textSideOverlay?: boolean;
 };
 
 type SectorOverlayHeroProps = {
@@ -52,6 +54,7 @@ export default function SectorOverlayHero({
   const imageObject = slide.objectClassName ?? objectClassName;
   const isWideFrame = slide.wideFrame === true;
   const imageLabel = slide.imageLabel;
+  const readableSide = slide.textSideOverlay === true;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -139,13 +142,23 @@ export default function SectorOverlayHero({
         <>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-[2] bg-linear-to-l from-black/10 via-transparent to-transparent"
+            className={`pointer-events-none absolute inset-0 z-[2] bg-linear-to-l to-transparent ${
+              readableSide
+                ? "from-black/70 via-black/25 sm:from-black/75 sm:via-black/20"
+                : "from-black/10 via-transparent"
+            }`}
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-full sm:w-[38%] lg:w-[30%]"
+            className={`pointer-events-none absolute inset-y-0 right-0 z-[2] w-full ${
+              readableSide
+                ? "sm:w-[58%] lg:w-[50%]"
+                : "sm:w-[38%] lg:w-[30%]"
+            }`}
             style={{
-              background: `linear-gradient(to left, ${tint}33 0%, ${tint}14 40%, transparent 100%)`,
+              background: readableSide
+                ? `linear-gradient(to left, ${tint}e8 0%, ${tint}99 42%, transparent 100%)`
+                : `linear-gradient(to left, ${tint}33 0%, ${tint}14 40%, transparent 100%)`,
             }}
           />
         </>

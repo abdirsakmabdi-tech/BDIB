@@ -45,6 +45,7 @@ next-env.d.ts
 !public/Tourism/*.mp4
 !public/Fishing/*.mp4
 !public/Xoolaha/*.mp4
+!public/beeraha/*.mp4
 !public/infrastructure/*.mp4
 !public/videos/*.mp4
 !public/videos/**/*.mp4

@@ -24,7 +24,7 @@ const objectBySector: Record<string, string> = {
   "/slides/mining-natural-resources.jpg": "object-cover object-[center_45%]",
   "/slides/women-youth-led-business.jpg": "object-cover object-top",
   "/slides/hero-tourism.jpg": "object-cover object-center",
-  "/slides/diaspora.jpg": "object-cover object-center",
+  "/slides/diaspora-card.jpg": "object-cover object-center",
 };
 
 export default function PrioritySectorsPage() {
