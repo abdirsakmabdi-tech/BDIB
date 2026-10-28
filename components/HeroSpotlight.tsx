@@ -148,7 +148,7 @@ export default function HeroSpotlight() {
               alt={active ? item.alt : ""}
               fill
               priority={index === 0}
-              quality={item.id === "health" ? 100 : 95}
+              quality={95}
               sizes="100vw"
               className={`${item.object} transition-opacity duration-1000 ease-out ${
                 active ? "opacity-100" : "opacity-0"
