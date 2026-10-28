@@ -66,37 +66,7 @@ export default function DiasporaPage() {
             ),
             src: "/slides/diaspora-flag.jpg",
             alt: "Three women holding the Puntland flag at a diaspora gathering",
-            objectClassName: "object-cover object-[center_30%]",
-          },
-          {
-            title: "Diaspora Investment",
-            heading: "What PDIB finances",
-            body: (
-              <p>
-                We support diaspora-backed enterprises, joint ventures, and
-                remittance-linked investment into agriculture, livestock,
-                fisheries, infrastructure, and SMEs — so capital from abroad
-                becomes lasting local value.
-              </p>
-            ),
-            src: "/slides/diaspora.jpg",
-            alt: "Puntland diaspora community gathered at round tables for a formal event",
-            objectClassName: "object-cover object-center",
-          },
-          {
-            title: "Diaspora Investment",
-            heading: "Invest with confidence",
-            body: (
-              <p>
-                Our role is to reduce risk and raise impact — matching diaspora
-                investors with bankable projects, local partners, and
-                development finance that strengthens Puntland&apos;s productive
-                economy.
-              </p>
-            ),
-            src: "/slides/diaspora.jpg",
-            alt: "Puntland diaspora community gathered at round tables for a formal event",
-            objectClassName: "object-cover object-center",
+            objectClassName: "object-cover object-[center_18%]",
           },
           {
             title: "Diaspora Investment",
@@ -110,7 +80,7 @@ export default function DiasporaPage() {
             ),
             src: "/slides/diaspora-dance.jpg",
             alt: "Two dancers in traditional dress performing at a diaspora community event",
-            objectClassName: "object-cover object-[center_40%]",
+            objectClassName: "object-cover object-[center_22%]",
           },
           {
             title: "Diaspora Investment",
@@ -124,7 +94,7 @@ export default function DiasporaPage() {
             ),
             src: "/slides/diaspora-leaders.jpg",
             alt: "Diaspora community leaders standing together at a formal gathering",
-            objectClassName: "object-cover object-[center_35%]",
+            objectClassName: "object-cover object-[center_22%]",
           },
         ]}
       />

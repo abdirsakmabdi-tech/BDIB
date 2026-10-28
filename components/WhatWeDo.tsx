@@ -107,7 +107,9 @@ const focusAreas = [
     blurb: "Channeling diaspora capital into productive investment across Puntland.",
     href: "/diaspora",
     src: "/slides/diaspora-card.jpg",
-    alt: "Puntland Diaspora Community wordmark",
+    alt: "Puntland Diaspora Investments wordmark",
+    imageClass: "object-contain object-center",
+    imageWrapClass: "aspect-[16/10] bg-[#dddddd]",
   },
 ] as const;
 
@@ -118,6 +120,10 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
     "imageClass" in area && typeof area.imageClass === "string"
       ? area.imageClass
       : "object-cover";
+  const imageWrapClass =
+    "imageWrapClass" in area && typeof area.imageWrapClass === "string"
+      ? area.imageWrapClass
+      : "aspect-[16/10] bg-[#F3F3F5]";
 
   return (
     <article className="h-full">
@@ -138,7 +144,7 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
           </span>
         </div>
 
-        <div className="relative -mt-px aspect-[16/10] w-full overflow-hidden bg-[#F3F3F5]">
+        <div className={`relative -mt-px w-full overflow-hidden ${imageWrapClass}`}>
           <Image
             src={area.src}
             alt={area.alt}
