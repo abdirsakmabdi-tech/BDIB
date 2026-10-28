@@ -2,10 +2,16 @@ import VideoGallerySection from "@/components/VideoGallerySection";
 
 const videos = [
   {
-    id: "geesaleey",
-    title: "Geesaleey",
+    id: "22-aad",
+    title: "22-aad",
     tag: "Agriculture",
-    src: "/beeraha/geesaleey.mp4",
+    src: "/beeraha/22-aad.mp4",
+  },
+  {
+    id: "geeska-oo-cod-leh",
+    title: "Geeska oo cod leh",
+    tag: "Agriculture",
+    src: "/beeraha/geeska-oo-cod-leh.mp4",
   },
 ] as const;
 

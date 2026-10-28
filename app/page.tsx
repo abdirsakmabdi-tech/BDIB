@@ -10,7 +10,7 @@ import TourismVideos from "@/components/TourismVideos";
 import FishingVideos from "@/components/FishingVideos";
 import AgricultureVideos from "@/components/AgricultureVideos";
 import LivestockVideos from "@/components/LivestockVideos";
-import InfrastructureVideos from "@/components/InfrastructureVideos";
+import AirportsShowcase from "@/components/AirportsShowcase";
 import Team from "@/components/Team";
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
       <FishingVideos />
       <AgricultureVideos />
       <LivestockVideos />
-      <InfrastructureVideos />
+      <AirportsShowcase />
       <div className="divide-y divide-black/10 border-t border-black/5">
         <Team />
         <PartnersFeatured />
