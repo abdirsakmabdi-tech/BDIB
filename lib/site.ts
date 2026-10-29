@@ -43,7 +43,7 @@ export const navItems: NavItem[] = [
   {
     href: "",
     label: "What we offer",
-    kicker: "Financial solutions, interventions, and priority sectors",
+    kicker: "Financial solutions and specialized interventions",
     groups: [
       {
         title: "What we offer",
@@ -53,7 +53,6 @@ export const navItems: NavItem[] = [
             href: "/specialized-interventions",
             label: "Specialized interventions",
           },
-          { href: "/priority-sectors", label: "Priority Sectors" },
         ],
       },
     ],
