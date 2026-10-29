@@ -2,16 +2,17 @@ import VideoGallerySection from "@/components/VideoGallerySection";
 
 const videos = [
   {
-    id: "catch-of-the-day",
+    id: "tiktok",
     title: "Catch of the Day",
     tag: "Fishing",
-    src: "/Fishing/catch-of-the-day.mp4",
+    src: "/Tourism/tiktok.mp4",
   },
   {
     id: "blue-economy",
     title: "Blue Economy",
-    tag: "Coast",
+    tag: "Fishing",
     src: "/videos/fishing/blue-economy.mp4",
+    muted: true,
   },
 ] as const;
 

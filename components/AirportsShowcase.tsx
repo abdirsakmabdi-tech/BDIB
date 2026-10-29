@@ -74,17 +74,17 @@ export default function AirportsShowcase() {
     >
       <div className="px-8 pt-12 pb-6 sm:px-14 sm:pt-14 sm:pb-8 lg:px-24 lg:pt-16">
         <h2 className="font-sans text-[26px] font-bold tracking-tight text-pdib-title sm:text-[32px]">
-          Infrastructure Videos
+          Infrastructure
         </h2>
         <p className="mt-2 text-[14px] leading-snug text-pdib-text sm:text-[15px]">
           Discover the beauty of Puntland infrastructure
         </p>
       </div>
 
-      <div className="grid h-[min(92svh,880px)] min-h-[560px] gap-3 bg-white pb-12 pr-8 sm:gap-4 sm:pb-16 sm:pr-14 lg:grid-cols-[minmax(0,4fr)_minmax(0,1fr)] lg:pb-20 lg:pr-24">
-        <div className="relative min-h-[320px] overflow-hidden bg-[#0a1628] lg:rounded-r-[1.15rem]">
+      <div className="grid grid-cols-1 gap-3 px-8 pb-12 sm:gap-4 sm:px-14 sm:pb-16 lg:h-[min(78svh,760px)] lg:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] lg:px-24 lg:pb-20">
+        <div className="relative min-h-[280px] overflow-hidden bg-[#0a1628] sm:min-h-[360px] lg:min-h-0">
           <video
-            className="absolute inset-0 h-full w-full object-cover object-left"
+            className="absolute inset-0 h-full w-full object-cover"
             src="/Airports/bosaso-airport.mp4"
             autoPlay
             muted
@@ -93,18 +93,17 @@ export default function AirportsShowcase() {
             preload="metadata"
             aria-hidden="true"
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-black/35" />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-linear-to-br from-black/55 via-black/15 to-transparent"
+            className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent"
           />
-          <div className="relative z-10 flex h-full items-start justify-start px-5 pt-6 sm:px-8 sm:pt-8 lg:px-10 lg:pt-10">
-            <h3 className="max-w-2xl text-left font-sans text-[22px] leading-[1.35] font-semibold tracking-tight text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.65)] sm:text-[28px] lg:text-[34px]">
+          <div className="relative z-10 flex h-full items-end justify-start px-5 pb-5 sm:px-6 sm:pb-6">
+            <h3 className="max-w-md text-left font-sans text-[15px] leading-[1.4] font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.7)] sm:text-[17px] lg:text-[18px]">
               <span className="sr-only">
                 Puntland has three international airports, Garowe, Bosaso and
                 Galkacayo
               </span>
-              <span aria-hidden="true" className="flex flex-col gap-1">
+              <span aria-hidden="true" className="flex flex-col gap-0.5">
                 {LINES.map((line, lineIndex) => {
                   const start = LINES.slice(0, lineIndex).reduce(
                     (count, words) => count + words.length,
@@ -117,10 +116,10 @@ export default function AirportsShowcase() {
                         return (
                           <span
                             key={`${word}-${index}`}
-                            className={`mr-[0.35em] inline-block transition-all duration-500 ease-out last:mr-0 ${
+                            className={`mr-[0.3em] inline-block transition-all duration-500 ease-out last:mr-0 ${
                               index < visibleCount
                                 ? "translate-y-0 opacity-100"
-                                : "translate-y-3 opacity-0"
+                                : "translate-y-2 opacity-0"
                             }`}
                           >
                             {word}
@@ -136,38 +135,35 @@ export default function AirportsShowcase() {
         </div>
 
         <div className="grid min-h-[280px] grid-rows-2 gap-3 sm:gap-4">
-          {INFRA_VIDEOS.map((video) => (
-            <button
-              key={video.id}
-              type="button"
-              onClick={() => setPlayingId(video.id)}
-              className="group relative overflow-hidden rounded-[1rem] bg-[#0a1628] text-left sm:rounded-[1.15rem]"
-              aria-label={`Open player for ${video.title}`}
-            >
-              <video
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                src={video.src}
-                muted
-                loop
-                autoPlay
-                playsInline
-                preload="metadata"
-                aria-hidden="true"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-black/35 transition-colors group-hover:bg-black/20"
-              />
-              <div className="absolute inset-x-0 bottom-0 z-10 px-4 py-4 sm:px-5">
-                <p className="font-sans text-[16px] font-bold tracking-tight text-white">
-                  {video.title}
-                </p>
-                <p className="mt-1 text-[11px] font-bold tracking-[0.16em] text-white/75 uppercase">
-                  Infrastructure
-                </p>
-              </div>
-            </button>
-          ))}
+        {INFRA_VIDEOS.map((video) => (
+          <button
+            key={video.id}
+            type="button"
+            onClick={() => setPlayingId(video.id)}
+            className="group relative overflow-hidden bg-[#0a1628] text-left"
+            aria-label={`Open player for ${video.title}`}
+          >
+            <video
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              src={video.src}
+              muted
+              loop
+              autoPlay
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/15"
+            />
+            <div className="absolute inset-x-0 bottom-0 z-10 px-4 py-4 sm:px-5">
+              <p className="font-sans text-[15px] font-semibold tracking-tight text-white">
+                Infrastructure
+              </p>
+            </div>
+          </button>
+        ))}
         </div>
       </div>
 
@@ -180,7 +176,7 @@ export default function AirportsShowcase() {
         >
           <div className="flex shrink-0 items-center justify-between gap-4 px-4 py-3 sm:px-6">
             <h3 className="font-sans text-[18px] font-bold text-white">
-              {playing.title}
+              Infrastructure
             </h3>
             <button
               type="button"
@@ -196,7 +192,7 @@ export default function AirportsShowcase() {
             onClick={() => setPlayingId(null)}
           >
             <div
-              className="relative mx-auto h-full w-full max-w-[1600px] overflow-hidden rounded-xl bg-black"
+              className="relative mx-auto h-full w-full max-w-[1600px] overflow-hidden bg-black"
               onClick={(event) => event.stopPropagation()}
             >
               <video

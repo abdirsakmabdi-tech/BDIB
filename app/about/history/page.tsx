@@ -89,77 +89,55 @@ export default function HistoryPage() {
       title="Our History"
       intro={intro}
       eyebrow="About us"
-      heroSrc="/slides/history-hero-v2.jpg"
-      heroAlt="Collage of priority sectors reflecting PDIB’s development journey"
-      heroObjectClassName="object-cover object-center"
+      heroSrc="/slides/history-hero-v3.jpg"
+      heroAlt="Invest in Puntland — PDIB banner with Puntland map and priority sectors"
+      heroBanner
+      heroWidth={1024}
+      heroHeight={415}
     >
-      <PageContent className="!pb-8 sm:!pb-10">
-        <PageBody>
-          <p>
-            PDIB was established to advance Puntland&apos;s development agenda
-            by mobilizing long-term capital for productive sectors. From the
-            outset, the Bank was created to bridge financing gaps that
-            conventional lenders could not fill — supporting projects that
-            create jobs, raise productivity, and strengthen the regional
-            economy.
-          </p>
-          <p>
-            Over time, the Bank has grown into a trusted partner for
-            enterprises, communities, and institutions investing in inclusive,
-            sustainable growth across Puntland. Its portfolio and partnerships
-            have expanded alongside the region&apos;s priorities — from
-            fisheries and agriculture to energy, infrastructure, and
-            enterprise development.
-          </p>
-          <p>
-            Today, PDIB continues that mandate as Puntland&apos;s leading
-            development finance institution — where investment meets
-            development.
-          </p>
-        </PageBody>
-      </PageContent>
+      <div className="divide-y divide-black/10 border-t border-black/10">
+        <PageContent className="!pt-8 !pb-8 sm:!pt-10 sm:!pb-10">
+          <PageBody>
+            <p>
+              PDIB was established to advance Puntland&apos;s development agenda
+              by mobilizing long-term capital for productive sectors. From the
+              outset, the Bank was created to bridge financing gaps that
+              conventional lenders could not fill — supporting projects that
+              create jobs, raise productivity, and strengthen the regional
+              economy.
+            </p>
+            <p>
+              Over time, the Bank has grown into a trusted partner for
+              enterprises, communities, and institutions investing in inclusive,
+              sustainable growth across Puntland. Its portfolio and partnerships
+              have expanded alongside the region&apos;s priorities — from
+              fisheries and agriculture to energy, infrastructure, and
+              enterprise development.
+            </p>
+            <p>
+              Today, PDIB continues that mandate as Puntland&apos;s leading
+              development finance institution — where investment meets
+              development.
+            </p>
+          </PageBody>
+        </PageContent>
 
-      <FeatureSplit
-        eyebrow="Services"
-        title="Services Offered"
-        intro="PDIB supports businesses, institutions, and communities with financing and advisory solutions that strengthen Puntland’s productive economy."
-        linkHref="/financial"
-        linkLabel="View financial solutions"
-        items={serviceItems}
-        panelSrc="/slides/history-hero-v2.jpg"
-        panelAlt="PDIB services supporting Puntland’s productive economy"
-        coverTitle="Services Overview"
-        tocItems={[
-          "Loans & Financing",
-          "Financial Advisory",
-          "Capacity Building",
-          "Risk Management",
-          "Partnerships",
-          "Sector Focus",
-          "Impact",
-        ]}
-      />
+        <FeatureSplit
+          eyebrow="Services"
+          title="Services Offered"
+          intro="PDIB supports businesses, institutions, and communities with financing and advisory solutions that strengthen Puntland’s productive economy."
+          items={serviceItems}
+          hidePanel
+        />
 
-      <FeatureSplit
-        eyebrow="Governance"
-        title="Governance and Management"
-        intro="Strong oversight, risk discipline, and continuous capability building keep PDIB accountable as it delivers on its development mandate."
-        linkHref="/about/corporate-governance"
-        linkLabel="View corporate governance"
-        items={governanceItems}
-        panelSrc="/slides/social-infrastructure.jpg"
-        coverTitle="Governance Framework"
-        tocItems={[
-          "Board Oversight",
-          "Accountability",
-          "Risk Management",
-          "Ethics & Conduct",
-          "Policy Framework",
-          "Audit & Controls",
-          "Leadership",
-        ]}
-        reverse
-      />
+        <FeatureSplit
+          eyebrow="Governance"
+          title="Governance and Management"
+          intro="Strong oversight, risk discipline, and continuous capability building keep PDIB accountable as it delivers on its development mandate."
+          items={governanceItems}
+          hidePanel
+        />
+      </div>
     </SplitPageLayout>
   );
 }

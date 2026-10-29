@@ -30,6 +30,10 @@ const partners = [
     name: "Ministry of Finance, Puntland",
     src: "/partners/ministry-of-finance-puntland.jpg",
   },
+  {
+    name: "MERIT Advisory Services",
+    src: "/partners/merit-advisory.png",
+  },
 ] as const;
 
 function LogoTrack({ ariaHidden }: { ariaHidden?: boolean }) {

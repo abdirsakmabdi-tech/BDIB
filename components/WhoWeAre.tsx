@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 export default function WhoWeAre() {
@@ -15,18 +14,24 @@ export default function WhoWeAre() {
               <h2 className="mt-3 font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-pdib-title">
                 The Puntland Development &amp; Investment Bank
               </h2>
-              <p className="mt-5 text-[14px] leading-snug text-pdib-text">
-                Puntland&apos;s leading development finance institution —
-                providing affordable short, medium- and long-term financing that
-                creates jobs, boosts productivity, and strengthens the economy.
-              </p>
-              <div className="mt-7">
-                <Link
-                  href="/about"
-                  className="inline-flex items-center rounded-full bg-pdib-primary px-5 py-2 text-[14px] font-semibold text-pdib-title transition-colors hover:bg-pdib-primary-hover"
-                >
-                  Learn more
-                </Link>
+              <div className="mt-5 space-y-4 text-[15px] leading-snug text-pdib-text">
+                <p>
+                  The Puntland Development and Investment Bank (PDIB) is
+                  Puntland&apos;s{" "}
+                  <strong>leading development finance institution</strong>,
+                  dedicated to supporting sustainable economic growth. PDIB
+                  provides affordable{" "}
+                  <strong>short, medium- and long-term financing</strong> for
+                  businesses and infrastructure projects that create jobs, boost
+                  productivity, and strengthen the economy.
+                </p>
+                <p>
+                  Aligned with <strong>Puntland&apos;s Development Plan</strong>,
+                  the Bank plays a key role in promoting{" "}
+                  <strong>private sector growth</strong>, unlocking investment,
+                  and expanding <strong>financial inclusion</strong> — where
+                  investment meets development.
+                </p>
               </div>
             </div>
           </Reveal>

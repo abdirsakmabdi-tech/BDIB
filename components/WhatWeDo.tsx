@@ -130,21 +130,21 @@ function SectorPromoCard({ area }: { area: FocusArea }) {
       <Link
         href={area.href}
         aria-label={`${area.label}: ${area.title}`}
-        className="grid h-full min-h-[360px] grid-rows-[1fr_auto] overflow-hidden rounded-[1rem] bg-[#F3F3F5] sm:min-h-[390px] sm:rounded-[1.15rem]"
+        className="flex h-full min-h-[360px] flex-col overflow-hidden rounded-[1rem] bg-[#F3F3F5] sm:min-h-[390px] sm:rounded-[1.15rem]"
       >
-        <div className="flex flex-col px-7 pt-8 pb-5 sm:px-8 sm:pt-9 sm:pb-6">
-          <h3 className="max-w-[16ch] font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
+        <div className="flex min-h-0 flex-1 flex-col px-7 pt-8 pb-5 sm:px-8 sm:pt-9 sm:pb-6">
+          <h3 className="min-h-[2.3em] max-w-[16ch] font-sans text-[22px] leading-[1.15] font-bold tracking-tight text-[#1a1a1a]">
             {area.title}
           </h3>
-          <p className="mt-3 max-w-[28ch] text-[14px] leading-snug text-[#6e6e73]">
+          <p className="mt-3 max-w-[28ch] flex-1 text-[14px] leading-snug text-[#6e6e73]">
             {area.blurb}
           </p>
-          <span className="mt-auto inline-flex items-center self-start rounded-full bg-[#036522] px-5 py-2.5 text-[13px] font-semibold tracking-tight text-white sm:text-[14px]">
+          <span className="mt-5 inline-flex min-h-[40px] items-center self-start rounded-full bg-[#036522] px-5 py-2.5 text-[13px] font-semibold tracking-tight text-white sm:text-[14px]">
             Read more
           </span>
         </div>
 
-        <div className={`relative -mt-px w-full overflow-hidden ${imageWrapClass}`}>
+        <div className={`relative w-full shrink-0 overflow-hidden ${imageWrapClass}`}>
           <Image
             src={area.src}
             alt={area.alt}
@@ -169,7 +169,7 @@ export default function WhatWeDo() {
             </h2>
             <Link
               href="/priority-sectors"
-              className="inline-flex shrink-0 items-center rounded-full bg-[#036522] px-5 py-2.5 text-[13px] font-semibold tracking-tight text-white transition-colors hover:bg-[#047a29] lg:self-auto"
+              className="inline-flex w-fit shrink-0 items-center self-start rounded-full bg-[#036522] px-5 py-2.5 text-[13px] font-semibold tracking-tight text-white transition-colors hover:bg-[#047a29]"
             >
               All sectors
             </Link>
@@ -181,9 +181,9 @@ export default function WhatWeDo() {
         id="focus-areas"
         className="scroll-mt-28 px-8 pb-14 sm:px-14 sm:pb-16 lg:px-24 lg:pb-20"
       >
-        <div className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-20">
+        <div className="grid grid-cols-1 items-stretch gap-x-8 gap-y-14 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-12 lg:gap-y-20">
           {focusAreas.map((area) => (
-            <Reveal key={area.label}>
+            <Reveal key={area.label} className="h-full">
               <SectorPromoCard area={area} />
             </Reveal>
           ))}

@@ -11,6 +11,7 @@ import FishingVideos from "@/components/FishingVideos";
 import AgricultureVideos from "@/components/AgricultureVideos";
 import LivestockVideos from "@/components/LivestockVideos";
 import AirportsShowcase from "@/components/AirportsShowcase";
+import PortsShowcase from "@/components/PortsShowcase";
 import Team from "@/components/Team";
 
 export default function Home() {
@@ -23,11 +24,14 @@ export default function Home() {
         <WhatWeDo />
         <BuildingInfrastructure />
       </div>
-      <TourismVideos />
-      <FishingVideos />
-      <AgricultureVideos />
-      <LivestockVideos />
-      <AirportsShowcase />
+      <div className="divide-y divide-black/10 border-t border-black/10">
+        <TourismVideos />
+        <FishingVideos />
+        <AgricultureVideos />
+        <LivestockVideos />
+        <AirportsShowcase />
+        <PortsShowcase />
+      </div>
       <div className="divide-y divide-black/10 border-t border-black/5">
         <Team />
         <PartnersFeatured />
